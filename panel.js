@@ -47,7 +47,10 @@ function download(content, fileName, contentType) {
   }
 
 function routeToPage(link) {
-    window.location.href = link
+    console.log('called to route', link)
+    chrome.tabs.update({
+        url: link
+   });
 }
 
 function buildURL(category, page, sortBy = 'pop', location = HASH_LOCATION) {
@@ -65,7 +68,7 @@ function autoCrawl() {
                 clearInterval(idInterval)
             }
         }
-    }, 3000)
+    }, 30000)
 }
 
 chrome.devtools.network.onRequestFinished.addListener(
@@ -137,7 +140,7 @@ chrome.devtools.network.onRequestFinished.addListener(
                 download(JSON.stringify(out), LOCATION + '_' + (PAGE + 1) + '.txt', 'text/plain')
                 setTimeout(() => {
                     // autoCrawl()
-                }, 2000)
+                }, 20000)
             });
         }
     }
