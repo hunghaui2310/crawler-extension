@@ -1,0 +1,37 @@
+HELP.md
+/crawler/target/
+/crawler/!.mvn/wrapper/maven-wrapper.jar
+/crawler/!**/src/main/**/target/
+/crawler/!**/src/test/**/target/
+
+### STS ###
+/crawler/.apt_generated
+/crawler/.classpath
+/crawler/.factorypath
+/crawler/.project
+/crawler/.settings
+/crawler/.springBeans
+/crawler/.sts4-cache
+
+### IntelliJ IDEA ###
+/crawler/.idea
+/crawler/*.iws
+/crawler/*.iml
+/crawler/*.ipr
+
+### NetBeans ###
+/crawler/nbproject/private/
+/crawler/nbbuild/
+/crawler/dist/
+/crawler/nbdist/
+/crawler/.nb-gradle/
+/crawler/build/
+!**/crawler/src/main/**/build/
+!**/crawler/src/test/**/build/
+
+### VS Code ###
+.vscode/
+/crawler/.vscode/
+
+.DS_Store
+/crawler/.DS_Store/
