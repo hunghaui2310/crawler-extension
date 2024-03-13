@@ -139,7 +139,7 @@ chrome.devtools.network.onRequestFinished.addListener(
                 }
                 download(JSON.stringify(out), LOCATION + '_' + (PAGE + 1) + '.txt', 'text/plain')
                 setTimeout(() => {
-                    // autoCrawl()
+                    autoCrawl()
                 }, 20000)
             });
         }
