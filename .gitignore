@@ -32,6 +32,8 @@ HELP.md
 ### VS Code ###
 .vscode/
 /crawler/.vscode/
+/extension/.vscode/
 
 .DS_Store
 /crawler/.DS_Store/
+/extension/.DS_Store/
