@@ -19,6 +19,7 @@ const HASH_LOCATION = 'H%25E1%25BA%25A3i%2520D%25C6%25B0%25C6%25A1ng'
 let PAGE = -1;
 const MAX_PAGE = 17;
 let idInterval;
+let tabId;
 // chrome.devtools.inspectedWindow.getResources((resources) => {
 //   resources.forEach((resource) => {
 //     if (!(resource.type in types)) {
@@ -38,6 +39,14 @@ let idInterval;
 //   document.body.appendChild(div);
 // });
 
+function getTabId() {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        tabId = tabs[0].id;
+    });
+}
+
+getTabId();
+
 function download(content, fileName, contentType) {
     var a = document.createElement("a");
     var file = new Blob([content], {type: contentType});
@@ -48,9 +57,13 @@ function download(content, fileName, contentType) {
 
 function routeToPage(link) {
     console.log('called to route', link)
-    chrome.tabs.update({
-        url: link
-   });
+    chrome.tabs.update(
+        tabId,
+        {
+            active: false,
+            url: link
+        }
+    );
 }
 
 function buildURL(category, page, sortBy = 'pop', location = HASH_LOCATION) {
@@ -68,7 +81,7 @@ function autoCrawl() {
                 clearInterval(idInterval)
             }
         }
-    }, 30000)
+    }, 15000)
 }
 
 chrome.devtools.network.onRequestFinished.addListener(
@@ -138,6 +151,7 @@ chrome.devtools.network.onRequestFinished.addListener(
                     }
                 }
                 download(JSON.stringify(out), LOCATION + '_' + (PAGE + 1) + '.txt', 'text/plain');
+                // console.log(PAGE +1);
             });
         }
     }
