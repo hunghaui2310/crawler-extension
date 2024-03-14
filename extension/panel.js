@@ -16,7 +16,7 @@ const types = {};
 const LOCATION = 'Hải Dương'
 const CATEGORY = 'Thời-Trang-Nam-cat.11035567'
 const HASH_LOCATION = 'H%25E1%25BA%25A3i%2520D%25C6%25B0%25C6%25A1ng'
-let PAGE = 0;
+let PAGE = -1;
 const MAX_PAGE = 17;
 let idInterval;
 // chrome.devtools.inspectedWindow.getResources((resources) => {
@@ -137,11 +137,13 @@ chrome.devtools.network.onRequestFinished.addListener(
                         })
                     }
                 }
-                download(JSON.stringify(out), LOCATION + '_' + (PAGE + 1) + '.txt', 'text/plain')
-                setTimeout(() => {
-                    autoCrawl()
-                }, 20000)
+                download(JSON.stringify(out), LOCATION + '_' + (PAGE + 1) + '.txt', 'text/plain');
             });
         }
     }
   );
+
+
+  document.getElementById('crawl-shop').addEventListener('click', () => {
+    autoCrawl();
+  });
