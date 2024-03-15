@@ -22,13 +22,13 @@ public class Shop {
     private String shopId;
 
     private String name;
-    private int quantity;
-    private Boolean isCheck;
+    private String phoneNumber;
+    private String address;
 
-    public Shop(String name, int quantity, Boolean isCheck) {
+    public Shop(String name, String phoneNumber, String address) {
         this.name = name;
-        this.quantity = quantity;
-        this.isCheck = isCheck;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
     }
 
 }
