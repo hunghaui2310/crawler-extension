@@ -16,10 +16,12 @@ const types = {};
 const LOCATION = 'Hải Dương'
 const CATEGORY = 'Thời-Trang-Nam-cat.11035567'
 const HASH_LOCATION = 'H%25E1%25BA%25A3i%2520D%25C6%25B0%25C6%25A1ng'
+const INTERVAL_ROUTE_PAGE = 25000; // 25s
 let PAGE = -1;
 const MAX_PAGE = 17;
 let idInterval;
 let tabId;
+let currentUrl = '';
 // chrome.devtools.inspectedWindow.getResources((resources) => {
 //   resources.forEach((resource) => {
 //     if (!(resource.type in types)) {
@@ -41,7 +43,10 @@ let tabId;
 
 function getTabId() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        tabId = tabs[0].id;
+        if (tabs && tabs[0]) {
+            tabId = tabs[0].id;
+            currentUrl = tabs[0].url
+        }
     });
 }
 
@@ -56,7 +61,6 @@ function download(content, fileName, contentType) {
   }
 
 function routeToPage(link) {
-    console.log('called to route', link)
     chrome.tabs.update(
         tabId,
         {
@@ -67,7 +71,8 @@ function routeToPage(link) {
 }
 
 function buildURL(category, page, sortBy = 'pop', location = HASH_LOCATION) {
-    return `https://shopee.vn/${category}?locations=${location}&page=${page}&sortBy=${sortBy}`;
+    currentUrl = `https://shopee.vn/${category}?locations=${location}&page=${page}&sortBy=${sortBy}`
+    return currentUrl;
 }
 
 function autoCrawl() {
@@ -81,7 +86,7 @@ function autoCrawl() {
                 clearInterval(idInterval)
             }
         }
-    }, 15000)
+    }, INTERVAL_ROUTE_PAGE)
 }
 
 chrome.devtools.network.onRequestFinished.addListener(
@@ -150,8 +155,8 @@ chrome.devtools.network.onRequestFinished.addListener(
                         })
                     }
                 }
-                download(JSON.stringify(out), LOCATION + '_' + (PAGE + 1) + '.txt', 'text/plain');
-                // console.log(PAGE +1);
+                // download(JSON.stringify(out), LOCATION + '_' + (PAGE + 1) + '.txt', 'text/plain');
+                // saveRawItem(JSON.stringify(out), currentUrl)
             });
         }
     }
