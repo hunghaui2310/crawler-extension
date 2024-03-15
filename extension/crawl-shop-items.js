@@ -63,8 +63,7 @@ chrome.devtools.network.onRequestFinished.addListener(
             request.getContent((content, mimeType) => {
                 if (tempShopId !== currentShopId) {
                     // console.log('content', content);
-                    //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
-                    //TODO: push data shop to BE
+                    //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text) - nếu có thông tin thì mới push lên
                 }
                 tempShopId = currentShopId;
             });
@@ -75,7 +74,6 @@ chrome.devtools.network.onRequestFinished.addListener(
                 console.log('content', data);
                 console.log('total', data.total);
                 console.log('page', PAGE_SHOP);
-                //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
                 //TODO: push data shop to BE
                 if ((PAGE_SHOP + 1) * 30 > data.total) {
                     window.dispatchEvent(
