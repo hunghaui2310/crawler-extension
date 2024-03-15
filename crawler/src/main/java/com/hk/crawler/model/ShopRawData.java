@@ -21,7 +21,6 @@ public class ShopRawData {
     @NotNull(message = "Data cannot be null")
     private String data;
 
-    @NotNull(message = "Data cannot be null")
     private String url;
 
     public ShopRawData(String data, String url) {
