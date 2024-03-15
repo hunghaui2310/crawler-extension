@@ -28,3 +28,16 @@ const saveRawShop = (data, url) => fetch(API_URL + "/shop-raw", {
 const statusRawShop = (status) => fetch(API_URL + "/shop-raw/status?staus=" + status, {
     method: 'GET',
 }).then(response => response.json())
+// const getListShop = (data, url) => fetch(API_URL + "/shops", {
+//     method: 'GET',
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json'
+//     }
+// })
+//   .then(response => response.json());
+
+const getListShop = {
+  items: [98353787, 255447711],
+  count: 2
+}
