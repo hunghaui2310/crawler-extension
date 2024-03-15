@@ -1,13 +1,14 @@
-package com.hk.crawler.service;
+package com.hk.crawler.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hk.crawler.dto.ShopRawDto;
+import com.hk.crawler.dto.ProductRawDto;
 import com.hk.crawler.model.Shop;
 import com.hk.crawler.model.ShopRawData;
 import com.hk.crawler.repository.IShopRawDataRepository;
 import com.hk.crawler.repository.IShopRepository;
+import com.hk.crawler.service.IShopService;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j
@@ -43,9 +43,9 @@ public class ShopServiceImpl implements IShopService {
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
                 List<Shop> shops = new ArrayList<>();
-                List<ShopRawDto> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
+                List<ProductRawDto> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
                 for (int j = 0; j < participantJsonList.size(); j++) {
-                    ShopRawDto dto = participantJsonList.get(j);
+                    ProductRawDto dto = participantJsonList.get(j);
                     Shop optionalShop = shopRepository.findItemByShopId(dto.getShopid());
                     if (optionalShop == null) {
                         Shop shop = new Shop(dto.getShopid(), dto.getShop_location());
