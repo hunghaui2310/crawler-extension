@@ -39,7 +39,7 @@ public class ProductServiceImpl implements IProductService {
     @SneakyThrows
     @Transactional
     public void saveFromRawProduct() {
-        log.info("Thread to save Product from raw data! " + Thread.currentThread().getName());
+        log.info("Thread to save Shop Id from Product raw data! " + Thread.currentThread().getName());
         List<ProductRawData> shopRawData = productRawDataRepository.findAll();
         ObjectMapper mapper = new ObjectMapper();
         try {

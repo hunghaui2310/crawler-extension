@@ -5,7 +5,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hk.crawler.dto.ProductRawDto;
 import com.hk.crawler.model.Shop;
+import com.hk.crawler.model.ShopProductRawData;
 import com.hk.crawler.model.ShopRawData;
+import com.hk.crawler.repository.IShopProductRawDataRepository;
 import com.hk.crawler.repository.IShopRawDataRepository;
 import com.hk.crawler.repository.IShopRepository;
 import com.hk.crawler.service.IShopService;
@@ -30,7 +32,7 @@ public class ShopServiceImpl implements IShopService {
     private IShopRepository shopRepository;
 
     @Autowired
-    private IShopRawDataRepository shopRawDataRepository;
+    private IShopProductRawDataRepository shopProductRawDataRepository;
 
     @Override
     @Async("threadPoolTaskExecutor")
@@ -38,7 +40,7 @@ public class ShopServiceImpl implements IShopService {
     @Transactional
     public void saveFromRawShop() {
         log.info("Thread to save shop from raw data! " + Thread.currentThread().getName());
-        List<ShopRawData> shopRawData = shopRawDataRepository.findAll();
+        List<ShopProductRawData> shopRawData = shopProductRawDataRepository.findAll();
         ObjectMapper mapper = new ObjectMapper();
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
