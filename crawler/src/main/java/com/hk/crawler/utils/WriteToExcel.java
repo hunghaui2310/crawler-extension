@@ -130,14 +130,14 @@ public class WriteToExcel {
         cell.setCellValue(book.getId());
 
         cell = row.createCell(COLUMN_INDEX_TITLE);
-        cell.setCellValue(book.getShopId());
+        cell.setCellValue(book.getShopid());
 
         cell = row.createCell(COLUMN_INDEX_PRICE);
         cell.setCellValue(book.getName());
         cell.setCellStyle(cellStyleFormatNumber);
 
         cell = row.createCell(COLUMN_INDEX_QUANTITY);
-        cell.setCellValue(book.getAddress());
+        cell.setCellValue(book.getShopLocation());
 
         // Create cell formula
         // totalMoney = price * quantity
