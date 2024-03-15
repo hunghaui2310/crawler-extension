@@ -75,7 +75,7 @@ function buildURL(category, page, sortBy = 'pop', location = HASH_LOCATION) {
     return currentUrl;
 }
 
-function autoCrawl() {
+function autoCrawlShop() {
     idInterval = setInterval(() => {
         if (PAGE < MAX_PAGE) {
             PAGE += 1
@@ -100,58 +100,8 @@ chrome.devtools.network.onRequestFinished.addListener(
                     if (!item) return
                     if (item.shop_location?.toUpperCase() === LOCATION.toUpperCase()) {
                         out.push({
-                            itemid: item.itemid,
                             shopid: item.shopid,
-                            name: item.name,
-                            currency: item.currency,
-                            stock: item.stock,
-                            status: item.status,
-                            sold: item.sold,
-                            historical_sold: item.historical_sold,
-                            liked: item.liked,
-                            liked_count: item.liked_count,
-                            view_count: item.view_count,
-                            catid: item.catid,
-                            brand: item.brand,
-                            cmt_count: item.cmt_count,
-                            flag: item.flag,
-                            cb_option: item.cb_option,
-                            item_status: item.item_status,
-                            price: item.price,
-                            price_min: item.price_min,
-                            price_max: item.price_max,
-                            price_min_before_discount: item.price_min_before_discount,
-                            price_max_before_discount: item.price_max_before_discount,
-                            hidden_price_display: item.hidden_price_display,
-                            price_before_discount: item.price_before_discount,
-                            has_lowest_price_guarantee: item.has_lowest_price_guarantee,
-                            show_discount: item.show_discount,
-                            raw_discount: item.raw_discount,
-                            discount: item.discount,
-                            is_category_failed: item.is_category_failed,
-                            item_type: item.item_type,
-                            reference_item_id: item.reference_item_id,
-                            is_adult: item.is_adult,
-                            shopee_verified: item.shopee_verified,
-                            is_official_shop: item.is_official_shop,
-                            show_official_shop_label: item.show_official_shop_label,
-                            show_shopee_verified_label: item.show_shopee_verified_label,
-                            show_official_shop_label_in_title: item.show_official_shop_label_in_title,
-                            is_cc_installment_payment_eligible: item.is_cc_installment_payment_eligible,
-                            is_non_cc_installment_payment_eligible: item.is_non_cc_installment_payment_eligible,
-                            show_free_shipping: item.show_free_shipping,
-                            preview_info: item.preview_info,
-                            exclusive_price_info: item.exclusive_price_info,
-                            add_on_deal_info: item.add_on_deal_info,
-                            is_preferred_plus_seller: item.is_preferred_plus_seller,
-                            shop_location: item.shop_location,
-                            voucher_info: item.voucher_info,
-                            can_use_cod: item.can_use_cod,
-                            is_on_flash_sale: item.is_on_flash_sale,
-                            is_live_streaming_price: item.is_live_streaming_price,
-                            is_mart: item.is_mart,
-                            free_shipping_info: item.free_shipping_info,
-                            model_id: item.model_id
+                            shopLocation: item.shop_location,
                         })
                     }
                 }
@@ -164,5 +114,5 @@ chrome.devtools.network.onRequestFinished.addListener(
 
 
   document.getElementById('crawl-shop').addEventListener('click', () => {
-    autoCrawl();
+    autoCrawlShop();
   });
