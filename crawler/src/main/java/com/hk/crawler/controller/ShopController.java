@@ -1,31 +1,27 @@
 package com.hk.crawler.controller;
 
 import com.hk.crawler.model.Shop;
-import com.hk.crawler.repository.IShopRepository;
+import com.hk.crawler.service.IShopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-//@CrossOrigin(origins = "http://localost:8080")
 @RestController
 @RequestMapping("/api/shop")
 public class ShopController {
 
     @Autowired
-    IShopRepository shopRepository;
+    IShopService shopService;
 
     @GetMapping("")
-    public ResponseEntity<List<Shop>> getAll(@RequestParam(required = false) String title) {
+    public ResponseEntity<?> getAll(@RequestParam(required = false, defaultValue = "0") int page,
+                                    @RequestParam(required = false, defaultValue = "10") int size) {
         try {
-            List<Shop> tutorials = new ArrayList<>();
-
-            return new ResponseEntity<>(tutorials, HttpStatus.OK);
+            return new ResponseEntity<>(shopService.getShopByPage(page, size), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e.getCause(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
