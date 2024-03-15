@@ -1,11 +1,8 @@
 package com.hk.crawler.controller;
 
 import com.hk.crawler.model.ProductRawData;
-import com.hk.crawler.model.ShopRawData;
 import com.hk.crawler.repository.IProductRawDataRepository;
-import com.hk.crawler.repository.IShopRawDataRepository;
 import com.hk.crawler.service.IProductService;
-import com.hk.crawler.service.IShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

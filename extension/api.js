@@ -4,6 +4,17 @@ const BASE_HEADER = {
     'Content-Type': 'application/json'
   };
 
+const saveRawItem = (data, url) => fetch(API_URL + "/product-raw", {
+    method: 'POST',
+    headers: BASE_HEADER,
+    body: JSON.stringify({ url, data })
+}).then(response => response.json())
+
+// call after crawl done all item to filter shopid from item. save if status = true
+const statusRawItem = (status) => fetch(API_URL + "/product-raw/status?staus=" + status, {
+    method: 'GET'
+}).then(response => response.json())
+
 const getAllShopId = () => fetch(API_URL + "/shop", {
     method: 'GET',
 }).then(response => response.json())
@@ -14,8 +25,6 @@ const saveRawShop = (data, url) => fetch(API_URL + "/shop-raw", {
     body: JSON.stringify({ url, data })
 }).then(response => response.json())
 
-const saveRawItem = (data, url) => fetch(API_URL + "/product-raw", {
-    method: 'POST',
-    headers: BASE_HEADER,
-    body: JSON.stringify({ url, data })
+const statusRawShop = (status) => fetch(API_URL + "/shop-raw/status?staus=" + status, {
+    method: 'GET',
 }).then(response => response.json())
