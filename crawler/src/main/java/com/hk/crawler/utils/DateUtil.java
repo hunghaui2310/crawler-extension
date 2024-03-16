@@ -7,7 +7,7 @@ public class DateUtil {
 
     public static String getCurrentTimeStamp(String dateFormat) {
         if (dateFormat == null) {
-            dateFormat = "dd/MM/yyyy";
+            dateFormat = "dd_MM_yyyy";
         }
         return new SimpleDateFormat(dateFormat).format(new Date());
     }
