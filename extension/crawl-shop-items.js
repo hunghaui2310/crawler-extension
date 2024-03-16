@@ -3,6 +3,8 @@ let currentShopId;
 let tempShopId;
 const SHOP_IDS = 'SHOP_IDS';
 const localStorageManager = new LocalStorageManager();
+let urlShop;
+
 window.addEventListener('getListShops', (event) => {
     let response = getListShop;
     localStorageManager.setItem(SHOP_IDS, response.items);
@@ -33,7 +35,8 @@ window.addEventListener('callLoopPageShop', (event) => {
 });
 
 function buildUrlShop(shopId) {
-    return `https://shopee.vn/shop/${shopId}?page=${PAGE_SHOP}&sortBy=pop`
+    urlShop = `https://shopee.vn/shop/${shopId}?page=${PAGE_SHOP}&sortBy=pop`
+    return urlShop
 }
 
 async function crawlShopItems(shopId) {
@@ -50,11 +53,13 @@ chrome.devtools.network.onRequestFinished.addListener(
                     //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
                     const { data } = JSON.parse(content)
                     const out = {
+                        shopid: data.shopid,
                         username: data.account.username,
                         shopName: data.name,
                         description: data.description
                     }
                     //TODO: push data shop to BE
+                    // saveRawShopAPI(JSON.stringify(out), urlShop);
                 }
                 tempShopId = currentShopId;
             });
@@ -75,6 +80,7 @@ chrome.devtools.network.onRequestFinished.addListener(
                 console.log('total', data.total);
                 console.log('page', PAGE_SHOP);
                 //TODO: push data shop to BE
+                // saveRawProductAPI(JSON.stringify(data.items), urlShop);
                 if ((PAGE_SHOP + 1) * 30 > data.total) {
                     window.dispatchEvent(
                         new CustomEvent(

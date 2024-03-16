@@ -1,12 +1,9 @@
 package com.hk.crawler.utils;
 
-import com.hk.crawler.dto.ShopExcelDTO;
 import com.hk.crawler.model.Shop;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.util.CellReference;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -26,7 +23,7 @@ public class WriteToExcel {
     }
 
     private void writeHeaderLine() {
-        sheet = workbook.createSheet("Hải Dương" + DateUtil.getCurrentTimeStamp(null));
+        sheet = workbook.createSheet("Hải Dương_" + DateUtil.getCurrentTimeStamp(null));
 
         Row row = sheet.createRow(0);
 

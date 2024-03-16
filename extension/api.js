@@ -10,7 +10,7 @@ const saveShopItemRawDataAPI = (data, url) => fetch(API_URL + "/shop-product-raw
     body: JSON.stringify({ url, data })
 }).then(response => response.json())
 
-const saveRawItemAPI = (data, url) => fetch(API_URL + "/product-raw", {
+const saveRawProductAPI = (data, url) => fetch(API_URL + "/product-raw", {
     method: 'POST',
     headers: BASE_HEADER,
     body: JSON.stringify({ url, data })

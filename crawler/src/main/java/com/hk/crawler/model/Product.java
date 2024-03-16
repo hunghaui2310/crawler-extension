@@ -1,5 +1,6 @@
 package com.hk.crawler.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "product")
 @Getter
 @Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
 
     @Id
@@ -34,14 +36,14 @@ public class Product {
     private Integer flag;
     private Integer cb_option;
     private String item_status;
-    @NotNull(message = "Price cannot be null")
-    private Integer price;
-    private Integer price_min;
-    private Integer price_max;
-    private Integer price_min_before_discount;
-    private Integer price_max_before_discount;
-    private Integer hidden_price_display;
-    private Integer price_before_discount;
+//    @NotNull(message = "Price cannot be null")
+    private Long price;
+    private Long price_min;
+    private Long price_max;
+    private Long price_min_before_discount;
+    private Long price_max_before_discount;
+    private Long hidden_price_display;
+    private Long price_before_discount;
     private Boolean has_lowest_price_guarantee;
     private Integer show_discount;
     private Integer raw_discount;
@@ -60,7 +62,7 @@ public class Product {
     private Boolean show_free_shipping;
     private String preview_info;
     private String exclusive_price_info;
-    private String add_on_deal_info;
+    private Object add_on_deal_info;
     private Boolean is_preferred_plus_seller;
     @NotNull(message = "Shop Location cannot be null")
     private String shop_location;

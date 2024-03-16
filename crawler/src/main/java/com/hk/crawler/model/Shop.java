@@ -26,11 +26,12 @@ public class Shop {
     @Indexed(unique = true)
     private String shopid;
 
+    private String username;
     private String name;
 
     @Field("shop_location")
     private String shopLocation;
-//    private String phoneNumber;
+    private String description;
 //    private String address;
 
     public Shop(String shopid, String name, String shopLocation) {
