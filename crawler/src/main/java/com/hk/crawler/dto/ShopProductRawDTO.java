@@ -7,8 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ProductRawDto {
-
+public class ShopProductRawDTO {
     private String shopid;
-    private String shop_location;
+    private String shopLocation;
 }

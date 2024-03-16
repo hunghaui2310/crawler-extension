@@ -106,7 +106,7 @@ chrome.devtools.network.onRequestFinished.addListener(
                     }
                 }
                 // download(JSON.stringify(out), LOCATION + '_' + (PAGE + 1) + '.txt', 'text/plain');
-                // saveRawItem(JSON.stringify(out), currentUrl)
+                saveShopItemRawDataAPI(JSON.stringify(out), currentUrl)
             });
         }
     }
