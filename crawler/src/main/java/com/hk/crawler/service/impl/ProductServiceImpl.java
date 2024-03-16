@@ -3,7 +3,7 @@ package com.hk.crawler.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hk.crawler.dto.ProductRawDto;
+import com.hk.crawler.dto.ProductRawDTO;
 import com.hk.crawler.model.Product;
 import com.hk.crawler.model.ProductRawData;
 import com.hk.crawler.model.Shop;
@@ -44,17 +44,17 @@ public class ProductServiceImpl implements IProductService {
         ObjectMapper mapper = new ObjectMapper();
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
-                List<Shop> shops = new ArrayList<>();
-                List<ProductRawDto> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
-                for (int j = 0; j < participantJsonList.size(); j++) {
-                    ProductRawDto dto = participantJsonList.get(j);
-                    Shop optionalShop = shopRepository.findItemByShopId(dto.getShopid());
-                    if (optionalShop == null) {
-                        Shop shop = new Shop(dto.getShopid(), dto.getShop_location());
-                        shops.add(shop);
-                    }
-                }
-                shopRepository.saveAll(shops);
+                List<Product> products = new ArrayList<>();
+                List<ProductRawDTO> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
+//                for (int j = 0; j < participantJsonList.size(); j++) {
+//                    ProductRawDto dto = participantJsonList.get(j);
+//                    Shop optionalShop = shopRepository.findItemByShopId(dto.getShopid());
+//                    if (optionalShop == null) {
+//                        Shop shop = new Shop(dto.getShopid(), dto.getShopLocation());
+//                        shops.add(shop);
+//                    }
+//                }
+                productRepository.saveAll(products);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();

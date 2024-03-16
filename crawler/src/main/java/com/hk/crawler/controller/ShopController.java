@@ -25,15 +25,15 @@ public class ShopController {
         }
     }
 
-    @GetMapping("/status")
-    public ResponseEntity<Boolean> checkStatus(@RequestParam(name = "status", required = false) Boolean status) {
-        try {
-            shopService.saveFromRawShop();
-            return new ResponseEntity<>(status, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @GetMapping("/status")
+//    public ResponseEntity<Boolean> checkStatus(@RequestParam(name = "status", required = false) Boolean status) {
+//        try {
+//            shopService.saveFromRawShop();
+//            return new ResponseEntity<>(status, HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
 //    @PostMapping("")
 //    public ResponseEntity<Shop> createTutorial(@RequestBody Shop shop) {

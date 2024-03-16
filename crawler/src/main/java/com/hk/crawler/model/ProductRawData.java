@@ -34,5 +34,6 @@ public class ProductRawData {
     public ProductRawData(String data, String url) {
         this.data = data;
         this.url = url;
+        this.createdDate = new Date();
     }
 }
