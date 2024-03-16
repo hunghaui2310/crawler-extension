@@ -34,14 +34,10 @@ const saveRawShopAPI = (data, url) => fetch(API_URL + "/shop-raw", {
 const statusRawShopAPI = (status) => fetch(API_URL + "/shop-raw/status?staus=" + status, {
     method: 'GET',
 }).then(response => response.json())
-// const getListShop = (data, url) => fetch(API_URL + "/shops", {
-//     method: 'GET',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     }
-// })
-//   .then(response => response.json());
+
+const downloadExcelAPI = () => fetch(API_URL + "/excel/shop", {
+    method: 'GET',
+}).then(response => response.blob())
 
 const getListShop = {
   items: [98353787, 255447711],
