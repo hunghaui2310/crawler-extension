@@ -49,11 +49,13 @@ public class ProductServiceImpl implements IProductService {
                     if (optionalProduct == null) {
                         products.add(dto);
                     } else {
-                        BeanUtils.copyProperties(dto, optionalProduct); // copy new value to old value
-                        productRepository.save(optionalProduct);
+                        BeanUtils.copyProperties(dto, optionalProduct, "id"); // copy new value to old value
+                        products.add(optionalProduct);
                     }
                 }
-                productRepository.saveAll(products);
+                if (products.size() > 0) {
+                    productRepository.saveAll(products);
+                }
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
