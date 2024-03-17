@@ -44,12 +44,18 @@ async function crawlShopItems(shopId) {
     routeToPage(url);
 }
 
+function getRandomTime() {
+    const arrayTime = [3000, 5000, 6000];
+    const randomIndex = Math.floor(Math.random() * arrayTime.length);
+    return arrayTime[randomIndex];
+}
+
 chrome.devtools.network.onRequestFinished.addListener(
     function(request) {
         if (request.request.url && request.request.url.includes('get_shop_base')) {
             request.getContent((content, mimeType) => {
                 if (tempShopId !== currentShopId) {
-                    // console.log('content', content);
+                    console.log('get_shop_base', content);
                     //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
                     const { data } = JSON.parse(content)
                     const out = {
@@ -61,16 +67,14 @@ chrome.devtools.network.onRequestFinished.addListener(
                     //TODO: push data shop to BE
                     // saveRawShopAPI(JSON.stringify(out), urlShop);
                 }
-                tempShopId = currentShopId;
             });
         }
         if (request.request.url && request.request.url.includes('get_shop_tab')) {
             request.getContent((content, mimeType) => {
                 if (tempShopId !== currentShopId) {
-                    // console.log('content', content);
+                    console.log('get_shop_tab', content);
                     //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text) - nếu có thông tin thì mới push lên
                 }
-                tempShopId = currentShopId;
             });
         }
         if (request.request.url && request.request.url.includes('shop/rcmd_items')) {
@@ -81,19 +85,22 @@ chrome.devtools.network.onRequestFinished.addListener(
                 console.log('page', PAGE_SHOP);
                 //TODO: push data shop to BE
                 // saveRawProductAPI(JSON.stringify(data.items), urlShop);
-                if ((PAGE_SHOP + 1) * 30 > data.total) {
-                    window.dispatchEvent(
-                        new CustomEvent(
-                            'getItemsList'
+                setTimeout(() => {
+                    tempShopId = currentShopId;
+                    if ((PAGE_SHOP + 1) * 30 > data.total) {
+                        window.dispatchEvent(
+                            new CustomEvent(
+                                'getItemsList'
+                            )
                         )
-                    )
-                } else {
-                    window.dispatchEvent(
-                        new CustomEvent(
-                            'callLoopPageShop'
+                    } else {
+                        window.dispatchEvent(
+                            new CustomEvent(
+                                'callLoopPageShop'
+                            )
                         )
-                    )
-                }
+                    }
+                }, getRandomTime())
             });
         }
     }
