@@ -15,3 +15,16 @@ services:
     - "$PWD/mongo-entrypoint/:/docker-entrypoint-initdb.d/"
     # no --auth is needed here as presence of username and password add this option automatically
     command: mongod
+
+  spring-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=mongodb://user:pass@localhost:27017/crawler
+      - SPRING_MONGO_DATABASE=crawler

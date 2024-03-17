@@ -1,37 +1,17 @@
-FROM node:19-alpine as development
+# Base image được sử dụng để build image
+FROM eclipse-temurin:17-jdk-alpine
 
-WORKDIR /usr/src/app
+# Thông tin tác giả
+LABEL authors="hungnn"
 
-ENV NODE_ENV=development
+# Set working directory trong container
+WORKDIR /app
 
-# node:19-alpine throw `ps: not found` if using nestjs watch mode, so install this stuff will help us resolve this error 
-# RUN apt-get update && apt-get install -y procps && rm -rf /var/lib/apt/lists/*
+# Copy file JAR được build từ ứng dụng Spring Boot vào working directory trong container
+COPY target/*.jar app.jar
 
-COPY package*.json ./
+# Expose port của ứng dụng
+EXPOSE 8080
 
-RUN npm install glob rimraf
-
-RUN npm install --only=development
-
-COPY . .
-
-RUN npm run build
-
-CMD [ "npm","run","start:dev" ]
-
-FROM node:19-alpine as production
-
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-
-RUN npm install --only=production
-
-COPY . .
-
-COPY --from=development /usr/src/app/dist ./dist
-
-CMD [ "node", "dist/main" ]
+# Chỉ định command để chạy ứng dụng khi container khởi chạy
+CMD ["java", "-jar", "app.jar"]
