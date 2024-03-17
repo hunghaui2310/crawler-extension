@@ -8,4 +8,5 @@ public interface IProductService {
     void saveFromRawProduct();
 
     List<Product> filterByShop(String shopid);
+
 }

@@ -11,17 +11,19 @@ public class ShopExcelDTO {
 
     private String id;
 
-    private String shopId;
-
+    private String shopid;
+    private String username;
     private String name;
     private String phoneNumber;
     private String address;
-    private Integer STT;
+    private String totalRevenue;
+    private String shopLocation;
 
-    public ShopExcelDTO(Integer STT, String name, String phoneNumber, String address) {
-        this.STT = STT;
+    public ShopExcelDTO(String shopid, String name, String address, String totalRevenue, String shopLocation) {
+        this.shopid = shopid;
         this.name = name;
-        this.phoneNumber = phoneNumber;
         this.address = address;
+        this.totalRevenue = totalRevenue;
+        this.shopLocation = shopLocation;
     }
 }

@@ -8,7 +8,8 @@ import java.util.List;
 
 public interface IProductRepository extends MongoRepository<Product, String> {
 
-    Product findByItemid(String itemid);
+    @Query("{itemid:'?0'}")
+    List<Product> findAllByItemid(String itemid);
 
     @Query("{shopid:'?0'}")
     List<Product> findAllByShopid(String shopid);
