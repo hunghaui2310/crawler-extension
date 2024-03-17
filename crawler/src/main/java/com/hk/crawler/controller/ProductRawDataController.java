@@ -24,6 +24,7 @@ public class ProductRawDataController {
             ProductRawData newProduct = productRawDataRepository.save(new ProductRawData(productRawData.getData(), productRawData.getUrl()));
             return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

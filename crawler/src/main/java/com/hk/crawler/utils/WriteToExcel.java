@@ -1,5 +1,6 @@
 package com.hk.crawler.utils;
 
+import com.hk.crawler.dto.ShopExcelDTO;
 import com.hk.crawler.model.Shop;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,9 +16,9 @@ public class WriteToExcel {
 
     private XSSFWorkbook workbook;
     private XSSFSheet sheet;
-    private List<Shop> shops;
+    private List<ShopExcelDTO> shops;
 
-    public WriteToExcel(List<Shop> shops) {
+    public WriteToExcel(List<ShopExcelDTO> shops) {
         this.shops = shops;
         workbook = new XSSFWorkbook();
     }
@@ -30,12 +31,15 @@ public class WriteToExcel {
         CellStyle style = workbook.createCellStyle();
         XSSFFont font = workbook.createFont();
         font.setBold(true);
-        font.setFontHeight(16);
+        font.setFontHeight(14);
         style.setFont(font);
 
-        createCell(row, 0, "ShopID", style);
-        createCell(row, 1, "Địa chỉ", style);
-
+        createCell(row, 0, "STT", style);
+        createCell(row, 1, "ShopID", style);
+        createCell(row, 2, "Username", style);
+        createCell(row, 3, "Địa chỉ", style);
+        createCell(row, 4, "Doanh thu", style);
+        createCell(row, 5, "Tỉnh", style);
     }
 
     private void createCell(Row row, int columnCount, Object value, CellStyle style) {
@@ -59,13 +63,16 @@ public class WriteToExcel {
         font.setFontHeight(14);
         style.setFont(font);
 
-        for (Shop user : shops) {
+        for (ShopExcelDTO shop : shops) {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
 
-            createCell(row, columnCount++, user.getShopid(), style);
-            createCell(row, columnCount++, user.getShopLocation(), style);
-
+            createCell(row, columnCount++, rowCount - 1, style);
+            createCell(row, columnCount++, shop.getShopid(), style);
+            createCell(row, columnCount++, shop.getUsername(), style);
+            createCell(row, columnCount++, shop.getAddress(), style);
+            createCell(row, columnCount++, shop.getTotalRevenue(), style);
+            createCell(row, columnCount++, shop.getShopLocation(), style);
         }
     }
 

@@ -45,12 +45,12 @@ public class ProductServiceImpl implements IProductService {
                 List<Product> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
                 for (int j = 0; j < participantJsonList.size(); j++) {
                     Product dto = participantJsonList.get(j);
-                    Product optionalProduct = productRepository.findByItemid(dto.getItemid());
-                    if (optionalProduct == null) {
+                    List<Product> optionalProduct = productRepository.findAllByShopid(dto.getItemid());
+                    if (optionalProduct.size() == 0) {
                         products.add(dto);
                     } else {
-                        BeanUtils.copyProperties(dto, optionalProduct, "id"); // copy new value to old value
-                        products.add(optionalProduct);
+                        BeanUtils.copyProperties(dto, optionalProduct.get(0), "id"); // copy new value to old value
+                        products.add(optionalProduct.get(0));
                     }
                 }
                 if (products.size() > 0) {
@@ -59,7 +59,7 @@ public class ProductServiceImpl implements IProductService {
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-            System.out.println("Error when parse data");
+            log.error("Error when parse data");
         }
     }
 

@@ -35,7 +35,7 @@ public class Shop {
     @Field("shop_location")
     private String shopLocation;
     private String description;
-//    private String address;
+    private String address;
 
     public Shop(String shopid, String shopName, String shopLocation) {
         this.shopid = shopid;
