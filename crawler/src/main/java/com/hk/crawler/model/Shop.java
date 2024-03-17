@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Shop {
 
     @Id
@@ -29,16 +29,17 @@ public class Shop {
     private String shopid;
 
     private String username;
-    private String name;
+    @Field("shop_name")
+    private String shopName;
 
     @Field("shop_location")
     private String shopLocation;
     private String description;
 //    private String address;
 
-    public Shop(String shopid, String name, String shopLocation) {
+    public Shop(String shopid, String shopName, String shopLocation) {
         this.shopid = shopid;
-        this.name = name;
+        this.shopName = shopName;
         this.shopLocation = shopLocation;
     }
 

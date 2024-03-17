@@ -15,6 +15,7 @@ import com.hk.crawler.repository.IShopRepository;
 import com.hk.crawler.service.IShopService;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -50,22 +51,20 @@ public class ShopServiceImpl implements IShopService {
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
                 List<Shop> shops = new ArrayList<>();
-                List<ShopRawDTO> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
+                List<Shop> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
                 for (int j = 0; j < participantJsonList.size(); j++) {
-                    ShopRawDTO dto = participantJsonList.get(j);
+                    Shop dto = participantJsonList.get(j);
                     Shop optionalShop = shopRepository.findItemByShopId(dto.getShopid());
-                    Shop shop = new Shop();
                     if (optionalShop == null) {
-                        shop.setShopid(dto.getShopid());
+                        shops.add(dto);
                     } else {
-                        shop.setId(optionalShop.getId());
+                        BeanUtils.copyProperties(dto, optionalShop, "id"); // copy new value to old value
+                        shops.add(optionalShop);
                     }
-                    shop.setName(dto.getShopName());
-                    shop.setUsername(dto.getUsername());
-                    shop.setDescription(dto.getDescription());
-                    shops.add(shop);
                 }
-                shopRepository.saveAll(shops);
+                if (shops.size() > 0) {
+                    shopRepository.saveAll(shops);
+                }
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
