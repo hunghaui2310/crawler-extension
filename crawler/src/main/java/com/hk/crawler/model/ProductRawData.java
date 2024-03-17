@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -20,7 +21,8 @@ import java.util.Date;
 public class ProductRawData {
 
     @Id
-    private String _id;
+    @Field("_id")
+    private ObjectId id;
 
     @NotNull(message = "Data cannot be null")
     private String data;

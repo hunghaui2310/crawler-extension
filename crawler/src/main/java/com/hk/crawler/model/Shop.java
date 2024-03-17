@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -20,7 +21,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class Shop {
 
     @Id
-    private String id;
+    @Field("_id")
+    private ObjectId id;
 
     @NotNull(message = "Shop Id cannot be null")
     @Indexed(unique = true)
