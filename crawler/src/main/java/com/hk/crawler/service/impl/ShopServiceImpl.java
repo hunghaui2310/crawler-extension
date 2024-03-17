@@ -51,16 +51,13 @@ public class ShopServiceImpl implements IShopService {
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
                 List<Shop> shops = new ArrayList<>();
-                List<Shop> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
-                for (int j = 0; j < participantJsonList.size(); j++) {
-                    Shop dto = participantJsonList.get(j);
-                    Shop optionalShop = shopRepository.findItemByShopId(dto.getShopid());
-                    if (optionalShop == null) {
-                        shops.add(dto);
-                    } else {
-                        BeanUtils.copyProperties(dto, optionalShop, "id"); // copy new value to old value
-                        shops.add(optionalShop);
-                    }
+                Shop participantJson = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
+                Shop optionalShop = shopRepository.findItemByShopId(participantJson.getShopid());
+                if (optionalShop == null) {
+                    shops.add(participantJson);
+                } else {
+                    BeanUtils.copyProperties(participantJson, optionalShop, "id"); // copy new value to old value
+                    shops.add(optionalShop);
                 }
                 if (shops.size() > 0) {
                     shopRepository.saveAll(shops);
