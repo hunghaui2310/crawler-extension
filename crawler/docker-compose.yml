@@ -26,5 +26,5 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - SPRING_DATASOURCE_URL=mongodb://user:pass@localhost:27017/crawler
+      - SPRING_DATASOURCE_URL=mongodb://user:pass@mongo:27017/crawler
       - SPRING_MONGO_DATABASE=crawler
