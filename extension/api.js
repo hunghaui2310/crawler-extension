@@ -40,6 +40,6 @@ const downloadExcelAPI = () => fetch(API_URL + "/excel/shop", {
 }).then(response => response.blob())
 
 const getListShop = {
-  items: [134741968],
+  items: [98353787, 255447711],
   count: 2
 }
