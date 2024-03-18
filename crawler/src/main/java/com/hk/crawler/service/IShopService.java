@@ -6,5 +6,7 @@ public interface IShopService {
 
     void saveFromRawShop();
 
+    void saveFromShopProductRawData();
+
     List<String> getShopByPage(int page, int size);
 }

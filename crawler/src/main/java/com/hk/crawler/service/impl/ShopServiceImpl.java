@@ -3,7 +3,9 @@ package com.hk.crawler.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hk.crawler.dto.ProductRawDto;
+import com.hk.crawler.dto.ProductRawDTO;
+import com.hk.crawler.dto.ShopProductRawDTO;
+import com.hk.crawler.dto.ShopRawDTO;
 import com.hk.crawler.model.Shop;
 import com.hk.crawler.model.ShopProductRawData;
 import com.hk.crawler.model.ShopRawData;
@@ -32,6 +34,9 @@ public class ShopServiceImpl implements IShopService {
     private IShopRepository shopRepository;
 
     @Autowired
+    private IShopRawDataRepository shopRawDataRepository;
+
+    @Autowired
     private IShopProductRawDataRepository shopProductRawDataRepository;
 
     @Override
@@ -39,18 +44,53 @@ public class ShopServiceImpl implements IShopService {
     @SneakyThrows
     @Transactional
     public void saveFromRawShop() {
-        log.info("Thread to save shop from raw data! " + Thread.currentThread().getName());
+        log.info("Thread to save shop from shop raw data! " + Thread.currentThread().getName());
+        List<ShopRawData> shopRawData = shopRawDataRepository.findAll();
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            for (int i = 0; i < shopRawData.size(); i++) {
+                List<Shop> shops = new ArrayList<>();
+                List<ShopRawDTO> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
+                for (int j = 0; j < participantJsonList.size(); j++) {
+                    ShopRawDTO dto = participantJsonList.get(j);
+                    Shop optionalShop = shopRepository.findItemByShopId(dto.getShopid());
+                    Shop shop = new Shop();
+                    if (optionalShop == null) {
+                        shop.setShopid(dto.getShopid());
+                    } else {
+                        shop.setId(optionalShop.getId());
+                    }
+                    shop.setName(dto.getShopName());
+                    shop.setUsername(dto.getUsername());
+                    shop.setDescription(dto.getDescription());
+                    shops.add(shop);
+                }
+                shopRepository.saveAll(shops);
+            }
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            System.out.println("Error when parse data");
+        }
+    }
+
+    @Override
+    @Async("threadPoolTaskExecutor")
+    @SneakyThrows
+    @Transactional
+    public void saveFromShopProductRawData() {
+        log.info("Thread to save shop from shop-product raw data! " + Thread.currentThread().getName());
         List<ShopProductRawData> shopRawData = shopProductRawDataRepository.findAll();
         ObjectMapper mapper = new ObjectMapper();
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
                 List<Shop> shops = new ArrayList<>();
-                List<ProductRawDto> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
+                List<ShopProductRawDTO> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
                 for (int j = 0; j < participantJsonList.size(); j++) {
-                    ProductRawDto dto = participantJsonList.get(j);
+                    ShopProductRawDTO dto = participantJsonList.get(j);
                     Shop optionalShop = shopRepository.findItemByShopId(dto.getShopid());
                     if (optionalShop == null) {
-                        Shop shop = new Shop(dto.getShopid(), dto.getShop_location());
+                        Shop shop = new Shop(dto.getShopid(), dto.getShopLocation()
+                        );
                         shops.add(shop);
                     }
                 }
@@ -63,9 +103,6 @@ public class ShopServiceImpl implements IShopService {
     }
 
     @Override
-//    @Async("threadPoolTaskExecutor")
-//    @SneakyThrows
-    @Transactional
     public List<String> getShopByPage(int page, int size) {
         log.info("Thread to filter shop by id! " + Thread.currentThread().getName());
         List<String> ids = new ArrayList<>();

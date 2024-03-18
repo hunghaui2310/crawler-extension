@@ -37,6 +37,7 @@ public class ProductRawDataController {
             return new ResponseEntity<>(status, HttpStatus.OK);
 
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
