@@ -1,5 +1,6 @@
 package com.hk.crawler.service;
 
+import com.hk.crawler.dto.ProductDTO;
 import com.hk.crawler.model.Product;
 
 import java.util.List;
@@ -9,4 +10,5 @@ public interface IProductService {
 
     List<Product> filterByShop(String shopid);
 
+    List<ProductDTO> getProductsByShop(String shopid);
 }

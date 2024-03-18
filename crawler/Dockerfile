@@ -1,5 +1,5 @@
 # Base image được sử dụng để build image
-FROM eclipse-temurin:17-jdk-alpine
+FROM openjdk:17-oracle
 
 # Thông tin tác giả
 LABEL authors="hungnn"

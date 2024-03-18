@@ -3,6 +3,7 @@ package com.hk.crawler.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hk.crawler.dto.ProductDTO;
 import com.hk.crawler.dto.ProductRawDTO;
 import com.hk.crawler.model.Product;
 import com.hk.crawler.model.ProductRawData;
@@ -66,5 +67,15 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public List<Product> filterByShop(String shopid) {
         return productRepository.findAllByShopid(shopid);
+    }
+
+    @Override
+    public List<ProductDTO> getProductsByShop(String shopid) {
+        List<Product> products = this.filterByShop(shopid);
+        List<ProductDTO> productDTOS = new ArrayList<>();
+        for (Product product : products) {
+            productDTOS.add(new ProductDTO(product.getItemid(), product.getShopid(), product.getName()));
+        }
+        return productDTOS;
     }
 }

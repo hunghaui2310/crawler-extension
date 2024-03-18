@@ -39,6 +39,10 @@ const downloadExcelAPI = () => fetch(API_URL + "/excel/shop", {
     method: 'GET',
 }).then(response => response.blob())
 
+const getProductByShopAPI = (shopId) => fetch(API_URL + "/product/getByShop?shopid=" + shopId, {
+    method: 'GET',
+}).then(response => response.json())
+
 const getListShop = {
   items: [98353787, 255447711],
   count: 2
