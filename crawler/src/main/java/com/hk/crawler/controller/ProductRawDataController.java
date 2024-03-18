@@ -21,7 +21,7 @@ public class ProductRawDataController {
     @PostMapping("")
     public ResponseEntity<ProductRawData> createShopRaw(@RequestBody ProductRawData productRawData) {
         try {
-//            ProductRawData newProduct = productRawDataRepository.fin;
+//            ProductRawData newProduct = productRawDataRepository.fi;
 //            if () {
 //                newProduct
 //            }
