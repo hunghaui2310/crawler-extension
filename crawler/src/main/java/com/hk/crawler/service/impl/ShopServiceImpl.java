@@ -126,9 +126,9 @@ public class ShopServiceImpl implements IShopService {
         List<Product> products = productService.filterByShop(shopid);
         Long totalRevenue = 0L;
         for (Product product : products) {
-            Long price = product.getPrice();
+            Long price = product.getPrice_max();
             if (price == null) {
-                price = (product.getPrice_max() + product.getPrice_min()) / 2;
+                price = product.getPrice();
             }
             totalRevenue += price * product.getHistorical_sold();
 
