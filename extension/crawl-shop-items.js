@@ -65,7 +65,7 @@ chrome.devtools.network.onRequestFinished.addListener(
                         description: data.description
                     }
                     //TODO: push data shop to BE
-                    // saveRawShopAPI(JSON.stringify(out), urlShop);
+                    saveRawShopAPI(JSON.stringify(out), urlShop);
                 }
             });
         }
@@ -84,7 +84,7 @@ chrome.devtools.network.onRequestFinished.addListener(
                 console.log('total', data.total);
                 console.log('page', PAGE_SHOP);
                 //TODO: push data shop to BE
-                // saveRawProductAPI(JSON.stringify(data.items), urlShop);
+                saveRawProductAPI(JSON.stringify(data.items), urlShop);
                 setTimeout(() => {
                     tempShopId = currentShopId;
                     if ((PAGE_SHOP + 1) * 30 > data.total) {

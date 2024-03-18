@@ -19,8 +19,7 @@ public class ProductController {
     @GetMapping("/getByShop")
     public ResponseEntity<?> getAllByShop(@RequestParam(name = "shopid") String shopid) {
         try {
-            return new ResponseEntity<>(productService.filterByShop(shopid), HttpStatus.OK);
-
+            return new ResponseEntity<>(productService.getProductsByShop(shopid), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

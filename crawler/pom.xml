@@ -10,7 +10,6 @@
 	</parent>
 	<groupId>com.hk</groupId>
 	<artifactId>crawler</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>crawler</name>
 	<description>Crawler data in the web</description>
 	<properties>
