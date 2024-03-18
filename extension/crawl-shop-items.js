@@ -49,18 +49,21 @@ chrome.devtools.network.onRequestFinished.addListener(
         if (request.request.url && request.request.url.includes('get_shop_base')) {
             request.getContent((content, mimeType) => {
                 // console.log('content', content);
-                console.log('phone ' + getPhone(content));
-                // console.log('address' + getAddress(content));
+                // console.log('phone ' + getPhone(content));
                 if (tempShopId !== currentShopId) {
                     // console.log('content', content);
                     //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
                     const { data } = JSON.parse(content)
+                    console.log('address: ' + getAddress(data.description));
                     const out = {
                         shopid: data.shopid,
                         username: data.account.username,
                         shopName: data.name,
-                        description: data.description
+                        description: data.description,
+                        phone: getPhone(content),
+                        address: getAddress(data.description)
                     }
+                    console.log(out);
                     //TODO: push data shop to BE
                     // saveRawShopAPI(JSON.stringify(out), urlShop);
                 }
@@ -70,10 +73,12 @@ chrome.devtools.network.onRequestFinished.addListener(
         if (request.request.url && request.request.url.includes('get_shop_tab')) {
             request.getContent((content, mimeType) => {
                 // console.log('content', content);
-                console.log('get shop tab:' + getPhone(content));
-                // console.log('address' + getAddress(content));
+                
 
                 if (tempShopId !== currentShopId) {
+                    const { data } = JSON.parse(content)
+                    console.log('get shop tab:' + getPhone(content));
+                    console.log('address: ' + getAddress(content));
                     // console.log('content', content);
                     //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text) - nếu có thông tin thì mới push lên
                 }
@@ -84,7 +89,7 @@ chrome.devtools.network.onRequestFinished.addListener(
             request.getContent((content, mimeType) => {
                 const { data } = JSON.parse(content);
                 console.log('phone' + getPhone(content));
-                // console.log('address' + getAddress(content));
+                console.log('address: ' + getAddress(content));
                 // console.log('content', data);
                 // console.log('total', data.total);
                 // console.log('page', PAGE_SHOP);
