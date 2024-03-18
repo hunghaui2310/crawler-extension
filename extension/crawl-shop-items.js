@@ -5,9 +5,9 @@ const SHOP_IDS = 'SHOP_IDS';
 const localStorageManager = new LocalStorageManager();
 let urlShop;
 
-window.addEventListener('getListShops', (event) => {
-    let response = getListShop;
-    localStorageManager.setItem(SHOP_IDS, response.items);
+window.addEventListener('getListShops', async (event) => {
+    let response = await getAllShopIdAPI();
+    localStorageManager.setItem(SHOP_IDS, response);
     window.dispatchEvent(
         new CustomEvent(
             'getItemsList'
@@ -15,8 +15,12 @@ window.addEventListener('getListShops', (event) => {
     )
 });
 
-window.addEventListener('getItemsList', (event) => {
+window.addEventListener('getItemsList', async (event) => {
     let shopIds = localStorageManager.getItem(SHOP_IDS);
+    if (!shopIds || shopIds.length === 0) {
+        await statusRawShopAPI(true);
+        await statusRawItemAPI(true);
+    }
     if (shopIds.length) {
         PAGE_SHOP = 0;
         const [firstShop, ...shops] = shopIds;
@@ -55,7 +59,7 @@ chrome.devtools.network.onRequestFinished.addListener(
         if (request.request.url && request.request.url.includes('get_shop_base')) {
             request.getContent((content, mimeType) => {
                 if (tempShopId !== currentShopId) {
-                    console.log('get_shop_base', content);
+                    // console.log('get_shop_base', content);
                     //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
                     const { data } = JSON.parse(content)
                     const out = {
@@ -72,7 +76,7 @@ chrome.devtools.network.onRequestFinished.addListener(
         if (request.request.url && request.request.url.includes('get_shop_tab')) {
             request.getContent((content, mimeType) => {
                 if (tempShopId !== currentShopId) {
-                    console.log('get_shop_tab', content);
+                    // console.log('get_shop_tab', content);
                     //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text) - nếu có thông tin thì mới push lên
                 }
             });
@@ -80,9 +84,9 @@ chrome.devtools.network.onRequestFinished.addListener(
         if (request.request.url && request.request.url.includes('shop/rcmd_items')) {
             request.getContent((content, mimeType) => {
                 const {data} = JSON.parse(content);
-                console.log('content', data);
-                console.log('total', data.total);
-                console.log('page', PAGE_SHOP);
+                // console.log('content', data);
+                // console.log('total', data.total);
+                // console.log('page', PAGE_SHOP);
                 //TODO: push data shop to BE
                 saveRawProductAPI(JSON.stringify(data.items), urlShop);
                 setTimeout(() => {
