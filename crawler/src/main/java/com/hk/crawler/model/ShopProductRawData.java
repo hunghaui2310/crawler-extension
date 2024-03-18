@@ -30,7 +30,7 @@ public class ShopProductRawData {
     private String url;
 
     @CreatedDate
-    @Field("created_date")
+    @Field(name = "created_date")
     private Date createdDate;
 
     public ShopProductRawData(String data, String url) {
