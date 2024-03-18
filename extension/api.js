@@ -47,6 +47,10 @@ const getProductByShopAPI = (shopId) => fetch(API_URL + "/product/getByShop?shop
     method: 'GET',
 }).then(response => response.json())
 
+const getAllCategories = () => fetch('./get_category_tree.json', {
+  method: 'GET',
+}).then(response => response.json())
+
 const getListShop = {
   items: [98353787, 255447711],
   count: 2
