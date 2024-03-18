@@ -8,7 +8,7 @@ LABEL authors="hungnn"
 WORKDIR /app
 
 # Copy file JAR được build từ ứng dụng Spring Boot vào working directory trong container
-COPY target/*.jar app.jar
+COPY build/*.jar app.jar
 
 # Expose port của ứng dụng
 EXPOSE 8080

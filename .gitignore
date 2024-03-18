@@ -25,7 +25,6 @@ HELP.md
 /crawler/dist/
 /crawler/nbdist/
 /crawler/.nb-gradle/
-/crawler/build/
 !**/crawler/src/main/**/build/
 !**/crawler/src/test/**/build/
 
