@@ -29,7 +29,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -56,7 +58,7 @@ public class ShopServiceImpl implements IShopService {
         ObjectMapper mapper = new ObjectMapper();
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
-                List<Shop> shops = new ArrayList<>();
+                Set<Shop> shops = new HashSet<>();
                 Shop participantJson = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
                 List<Shop> optionalShop = shopRepository.findItemByShopId(participantJson.getShopid());
                 if (optionalShop.size() == 0) {
@@ -84,7 +86,7 @@ public class ShopServiceImpl implements IShopService {
         ObjectMapper mapper = new ObjectMapper();
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
-                List<Shop> shops = new ArrayList<>();
+                Set<Shop> shops = new HashSet<>();
                 List<ShopProductRawDTO> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
                 for (int j = 0; j < participantJsonList.size(); j++) {
                     ShopProductRawDTO dto = participantJsonList.get(j);

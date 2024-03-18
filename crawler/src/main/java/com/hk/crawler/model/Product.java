@@ -76,4 +76,18 @@ public class Product {
     private Boolean is_mart;
     private String free_shipping_info;
     private String model_id;
+
+    @Override
+    public int hashCode() {
+        return itemid.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Product))
+            return false;
+
+        Product mdc = (Product) obj;
+        return mdc.itemid.equals(itemid);
+    }
 }

@@ -47,4 +47,18 @@ public class Shop {
         this.shopid = shopid;
         this.shopLocation = shopLocation;
     }
+
+    @Override
+    public int hashCode() {
+        return shopid.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Shop))
+            return false;
+
+        Shop mdc = (Shop) obj;
+        return mdc.shopid.equals(shopid);
+    }
 }
