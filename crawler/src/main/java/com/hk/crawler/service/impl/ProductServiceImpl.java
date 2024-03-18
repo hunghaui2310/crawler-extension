@@ -3,6 +3,7 @@ package com.hk.crawler.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hk.crawler.dto.ProductDTO;
 import com.hk.crawler.dto.ProductRawDTO;
 import com.hk.crawler.model.Product;
 import com.hk.crawler.model.ProductRawData;
@@ -20,7 +21,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -41,28 +44,40 @@ public class ProductServiceImpl implements IProductService {
         ObjectMapper mapper = new ObjectMapper();
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
-                List<Product> products = new ArrayList<>();
+                Set<Product> products = new HashSet<>();
                 List<Product> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
                 for (int j = 0; j < participantJsonList.size(); j++) {
                     Product dto = participantJsonList.get(j);
-                    Product optionalProduct = productRepository.findByItemid(dto.getItemid());
-                    if (optionalProduct == null) {
+                    List<Product> optionalProduct = productRepository.findAllByShopid(dto.getItemid());
+                    if (optionalProduct.size() == 0) {
                         products.add(dto);
                     } else {
-                        BeanUtils.copyProperties(dto, optionalProduct); // copy new value to old value
-                        productRepository.save(optionalProduct);
+                        BeanUtils.copyProperties(dto, optionalProduct.get(0), "id"); // copy new value to old value
+                        products.add(optionalProduct.get(0));
                     }
                 }
-                productRepository.saveAll(products);
+                if (products.size() > 0) {
+                    productRepository.saveAll(products);
+                }
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-            System.out.println("Error when parse data");
+            log.error("Error when parse data");
         }
     }
 
     @Override
     public List<Product> filterByShop(String shopid) {
         return productRepository.findAllByShopid(shopid);
+    }
+
+    @Override
+    public List<ProductDTO> getProductsByShop(String shopid) {
+        List<Product> products = this.filterByShop(shopid);
+        List<ProductDTO> productDTOS = new ArrayList<>();
+        for (Product product : products) {
+            productDTOS.add(new ProductDTO(product.getItemid(), product.getShopid(), product.getName()));
+        }
+        return productDTOS;
     }
 }

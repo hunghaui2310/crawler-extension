@@ -11,7 +11,7 @@ import java.util.List;
 public interface IShopRepository extends MongoRepository<Shop, String> {
 
     @Query("{shopid:'?0'}")
-    Shop findItemByShopId(String shopId);
+    List<Shop> findItemByShopId(String shopId);
 
     Page<Shop> findAll(Pageable pageable);
 
