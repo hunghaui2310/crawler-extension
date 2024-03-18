@@ -16,12 +16,14 @@ const types = {};
 const LOCATION = 'Hải Dương'
 const CATEGORY = 'Thời-Trang-Nam-cat.11035567'
 const HASH_LOCATION = 'H%25E1%25BA%25A3i%2520D%25C6%25B0%25C6%25A1ng'
+const INTERVAL_ROUTE_PAGE = 25000; // 25s
 let PAGE = -1;
 const MAX_PAGE = 1;
 let idInterval;
 let tabId;
 const divElement = document.getElementById('cdata');
 
+let currentUrl = '';
 // chrome.devtools.inspectedWindow.getResources((resources) => {
 //   resources.forEach((resource) => {
 //     if (!(resource.type in types)) {
@@ -42,8 +44,11 @@ const divElement = document.getElementById('cdata');
 // });
 
 function getTabId() {
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        tabId = tabs[0].id;
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        if (tabs && tabs[0]) {
+            tabId = tabs[0].id;
+            currentUrl = tabs[0].url
+        }
     });
 }
 
@@ -51,14 +56,13 @@ getTabId();
 
 function download(content, fileName, contentType) {
     var a = document.createElement("a");
-    var file = new Blob([content], {type: contentType});
+    var file = new Blob([content], { type: contentType });
     a.href = URL.createObjectURL(file);
     a.download = fileName;
     a.click();
-  }
+}
 
 function routeToPage(link) {
-    console.log('called to route', link)
     chrome.tabs.update(
         tabId,
         {
@@ -69,10 +73,11 @@ function routeToPage(link) {
 }
 
 function buildURL(category, page, sortBy = 'pop', location = HASH_LOCATION) {
-    return `https://shopee.vn/${category}?locations=${location}&page=${page}&sortBy=${sortBy}`;
+    currentUrl = `https://shopee.vn/${category}?locations=${location}&page=${page}&sortBy=${sortBy}`
+    return currentUrl;
 }
 
-function autoCrawl() {
+function autoCrawlShop() {
     idInterval = setInterval(() => {
         if (PAGE < MAX_PAGE) {
             PAGE += 1
@@ -83,11 +88,11 @@ function autoCrawl() {
                 clearInterval(idInterval)
             }
         }
-    }, 15000)
+    }, INTERVAL_ROUTE_PAGE)
 }
 
 chrome.devtools.network.onRequestFinished.addListener(
-    function(request) {
+    function (request) {
         if (request.request.url && request.request.url.includes('search_items')) {
             request.getContent((content, mimeType) => {
                 const { items } = JSON.parse(content)
@@ -97,72 +102,39 @@ chrome.devtools.network.onRequestFinished.addListener(
                     if (!item) return
                     if (item.shop_location?.toUpperCase() === LOCATION.toUpperCase()) {
                         out.push({
-                            itemid: item.itemid,
                             shopid: item.shopid,
-                            name: item.name,
-                            currency: item.currency,
-                            stock: item.stock,
-                            status: item.status,
-                            sold: item.sold,
-                            historical_sold: item.historical_sold,
-                            liked: item.liked,
-                            liked_count: item.liked_count,
-                            view_count: item.view_count,
-                            catid: item.catid,
-                            brand: item.brand,
-                            cmt_count: item.cmt_count,
-                            flag: item.flag,
-                            cb_option: item.cb_option,
-                            item_status: item.item_status,
-                            price: item.price,
-                            price_min: item.price_min,
-                            price_max: item.price_max,
-                            price_min_before_discount: item.price_min_before_discount,
-                            price_max_before_discount: item.price_max_before_discount,
-                            hidden_price_display: item.hidden_price_display,
-                            price_before_discount: item.price_before_discount,
-                            has_lowest_price_guarantee: item.has_lowest_price_guarantee,
-                            show_discount: item.show_discount,
-                            raw_discount: item.raw_discount,
-                            discount: item.discount,
-                            is_category_failed: item.is_category_failed,
-                            item_type: item.item_type,
-                            reference_item_id: item.reference_item_id,
-                            is_adult: item.is_adult,
-                            shopee_verified: item.shopee_verified,
-                            is_official_shop: item.is_official_shop,
-                            show_official_shop_label: item.show_official_shop_label,
-                            show_shopee_verified_label: item.show_shopee_verified_label,
-                            show_official_shop_label_in_title: item.show_official_shop_label_in_title,
-                            is_cc_installment_payment_eligible: item.is_cc_installment_payment_eligible,
-                            is_non_cc_installment_payment_eligible: item.is_non_cc_installment_payment_eligible,
-                            show_free_shipping: item.show_free_shipping,
-                            preview_info: item.preview_info,
-                            exclusive_price_info: item.exclusive_price_info,
-                            add_on_deal_info: item.add_on_deal_info,
-                            is_preferred_plus_seller: item.is_preferred_plus_seller,
-                            shop_location: item.shop_location,
-                            voucher_info: item.voucher_info,
-                            can_use_cod: item.can_use_cod,
-                            is_on_flash_sale: item.is_on_flash_sale,
-                            is_live_streaming_price: item.is_live_streaming_price,
-                            is_mart: item.is_mart,
-                            free_shipping_info: item.free_shipping_info,
-                            model_id: item.model_id
+                            shopLocation: item.shop_location,
                         })
                     }
                 }
                 // download(JSON.stringify(out), LOCATION + '_' + (PAGE + 1) + '.txt', 'text/plain');
                 // console.log(PAGE +1);
-                const paragraphElement = document.createElement('p');
-                paragraphElement.textContent = JSON.stringify(out);
-                divElement.appendChild(paragraphElement);
+                // const paragraphElement = document.createElement('p');
+                // paragraphElement.textContent = JSON.stringify(out);
+                // divElement.appendChild(paragraphElement);
+                // saveRawItem(JSON.stringify(out), currentUrl)
+                saveShopItemRawDataAPI(JSON.stringify(out), currentUrl)
             });
         }
     }
-  );
+);
 
 
-  document.getElementById('crawl-shop').addEventListener('click', () => {
-    autoCrawl();
-  });
+document.getElementById('crawl-shop').addEventListener('click', () => {
+    autoCrawlShop();
+});
+
+document.getElementById('download-excel').addEventListener('click', () => {
+    downloadExcelAPI().then(res => {
+        const url = window.URL.createObjectURL(res);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        // the filename you want
+        a.download = 'Hai Duong.xlsx';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    });
+});
