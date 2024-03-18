@@ -21,7 +21,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -42,7 +44,7 @@ public class ProductServiceImpl implements IProductService {
         ObjectMapper mapper = new ObjectMapper();
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
-                List<Product> products = new ArrayList<>();
+                Set<Product> products = new HashSet<>();
                 List<Product> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
                 for (int j = 0; j < participantJsonList.size(); j++) {
                     Product dto = participantJsonList.get(j);

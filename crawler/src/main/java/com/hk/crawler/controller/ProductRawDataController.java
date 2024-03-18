@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/product-raw")
 public class ProductRawDataController {
@@ -19,14 +21,18 @@ public class ProductRawDataController {
     private IProductService productService;
 
     @PostMapping("")
-    public ResponseEntity<ProductRawData> createShopRaw(@RequestBody ProductRawData productRawData) {
+    public ResponseEntity<?> createShopRaw(@RequestBody ProductRawData productRawData) {
         try {
-//            ProductRawData newProduct = productRawDataRepository.fi;
-//            if () {
-//                newProduct
-//            }
-            ProductRawData newProduct = productRawDataRepository.save(new ProductRawData(productRawData.getData(), productRawData.getUrl()));
-            return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
+            List<ProductRawData> productRawDataList = productRawDataRepository.findAllByUrl(productRawData.getUrl());
+            ProductRawData newProduct;
+            if (productRawDataList.size() > 0) {
+                newProduct = productRawDataList.get(0);
+                newProduct.setData(productRawData.getData());
+            } else {
+                newProduct = new ProductRawData(productRawData.getData(), productRawData.getUrl());
+            }
+            productRawDataRepository.save(newProduct);
+            return new ResponseEntity<>(true, HttpStatus.CREATED);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
