@@ -81,8 +81,11 @@ window.addEventListener('getCategories', (event) => {
     )
 });
 
-window.addEventListener('crawlShopByCategory', (event) => {
+window.addEventListener('crawlShopByCategory', async (event) => {
     let categoryTree = localStorageManagerPanel.getItem(CATEGORY_TREE);
+    if (!categoryTree || categoryTree.length === 0) {
+        await statusShopItemRawDataAPI(true);
+    }
     if (categoryTree.length) {
         PAGE_SHOP = 0;
         const [firstCategory, ...categories] = categoryTree;
