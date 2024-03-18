@@ -10,7 +10,7 @@ const saveShopItemRawDataAPI = (data, url) => fetch(API_URL + "/shop-product-raw
     body: JSON.stringify({ url, data })
 }).then(response => response.json())
 
-const statusShopItemRawDataAPI = (status) => fetch(API_URL + "/shop-product-raw/status?staus=" + status, {
+const statusShopItemRawDataAPI = (status) => fetch(API_URL + "/shop-product-raw/status?status=" + status, {
     method: 'GET'
 }).then(response => response.json())
 
@@ -21,7 +21,7 @@ const saveRawProductAPI = (data, url) => fetch(API_URL + "/product-raw", {
 }).then(response => response.json())
 
 // call after crawl done all item to filter shopid from item. save if status = true
-const statusRawItemAPI = (status) => fetch(API_URL + "/product-raw/status?staus=" + status, {
+const statusRawItemAPI = (status) => fetch(API_URL + "/product-raw/status?status=" + status, {
     method: 'GET'
 }).then(response => response.json())
 
@@ -35,7 +35,7 @@ const saveRawShopAPI = (data, url) => fetch(API_URL + "/shop-raw", {
     body: JSON.stringify({ url, data })
 }).then(response => response.json())
 
-const statusRawShopAPI = (status) => fetch(API_URL + "/shop-raw/status?staus=" + status, {
+const statusRawShopAPI = (status) => fetch(API_URL + "/shop-raw/status?status=" + status, {
     method: 'GET',
 }).then(response => response.json())
 
