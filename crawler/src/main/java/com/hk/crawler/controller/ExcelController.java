@@ -1,7 +1,9 @@
 package com.hk.crawler.controller;
 
+import com.hk.crawler.dto.ShopExcelDTO;
 import com.hk.crawler.model.Shop;
 import com.hk.crawler.repository.IShopRepository;
+import com.hk.crawler.service.IShopService;
 import com.hk.crawler.utils.DateUtil;
 import com.hk.crawler.utils.WriteToExcel;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,7 +20,7 @@ import java.util.List;
 public class ExcelController {
 
     @Autowired
-    private IShopRepository shopRepository;
+    private IShopService shopService;
 
     @GetMapping("/shop")
     public void exportToExcel(HttpServletResponse response) throws IOException {
@@ -28,9 +30,9 @@ public class ExcelController {
         String headerValue = "attachment; filename=shop_" + DateUtil.getCurrentTimeStamp(null) + ".xlsx";
         response.setHeader(headerKey, headerValue);
 
-        List<Shop> listUsers = shopRepository.findAll();
+        List<ShopExcelDTO> listShop = shopService.getExcelData();
 
-        WriteToExcel excelExporter = new WriteToExcel(listUsers);
+        WriteToExcel excelExporter = new WriteToExcel(listShop);
 
         excelExporter.export(response);
     }

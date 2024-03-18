@@ -10,6 +10,10 @@ const saveShopItemRawDataAPI = (data, url) => fetch(API_URL + "/shop-product-raw
     body: JSON.stringify({ url, data })
 }).then(response => response.json())
 
+const statusShopItemRawDataAPI = (status) => fetch(API_URL + "/shop-product-raw/status?staus=" + status, {
+    method: 'GET'
+}).then(response => response.json())
+
 const saveRawProductAPI = (data, url) => fetch(API_URL + "/product-raw", {
     method: 'POST',
     headers: BASE_HEADER,
@@ -38,6 +42,14 @@ const statusRawShopAPI = (status) => fetch(API_URL + "/shop-raw/status?staus=" +
 const downloadExcelAPI = () => fetch(API_URL + "/excel/shop", {
     method: 'GET',
 }).then(response => response.blob())
+
+const getProductByShopAPI = (shopId) => fetch(API_URL + "/product/getByShop?shopid=" + shopId, {
+    method: 'GET',
+}).then(response => response.json())
+
+const getAllCategories = () => fetch('./get_category_tree.json', {
+  method: 'GET',
+}).then(response => response.json())
 
 const getListShop = {
   items: [98353787, 255447711],

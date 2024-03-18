@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "product")
 @Getter
@@ -14,7 +16,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Product {
 
     @Id
-    private String id;
+    @Field("_id")
+    private ObjectId id;
 
     @NotNull(message = "Item Id cannot be null")
     private String itemid;
@@ -73,4 +76,18 @@ public class Product {
     private Boolean is_mart;
     private String free_shipping_info;
     private String model_id;
+
+    @Override
+    public int hashCode() {
+        return itemid.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Product))
+            return false;
+
+        Product mdc = (Product) obj;
+        return mdc.itemid.equals(itemid);
+    }
 }
