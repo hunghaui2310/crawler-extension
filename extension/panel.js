@@ -44,7 +44,7 @@ let currentUrl = '';
 // });
 
 function getTabId() {
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         if (tabs && tabs[0]) {
             tabId = tabs[0].id;
             currentUrl = tabs[0].url
@@ -56,11 +56,11 @@ getTabId();
 
 function download(content, fileName, contentType) {
     var a = document.createElement("a");
-    var file = new Blob([content], {type: contentType});
+    var file = new Blob([content], { type: contentType });
     a.href = URL.createObjectURL(file);
     a.download = fileName;
     a.click();
-  }
+}
 
 function routeToPage(link) {
     chrome.tabs.update(
@@ -92,7 +92,7 @@ function autoCrawlShop() {
 }
 
 chrome.devtools.network.onRequestFinished.addListener(
-    function(request) {
+    function (request) {
         if (request.request.url && request.request.url.includes('search_items')) {
             request.getContent((content, mimeType) => {
                 const { items } = JSON.parse(content)
@@ -109,16 +109,32 @@ chrome.devtools.network.onRequestFinished.addListener(
                 }
                 // download(JSON.stringify(out), LOCATION + '_' + (PAGE + 1) + '.txt', 'text/plain');
                 // console.log(PAGE +1);
-                const paragraphElement = document.createElement('p');
-                paragraphElement.textContent = JSON.stringify(out);
-                divElement.appendChild(paragraphElement);
+                // const paragraphElement = document.createElement('p');
+                // paragraphElement.textContent = JSON.stringify(out);
+                // divElement.appendChild(paragraphElement);
                 // saveRawItem(JSON.stringify(out), currentUrl)
+                saveShopItemRawDataAPI(JSON.stringify(out), currentUrl)
             });
         }
     }
-  );
+);
 
 
-  document.getElementById('crawl-shop').addEventListener('click', () => {
+document.getElementById('crawl-shop').addEventListener('click', () => {
     autoCrawlShop();
-  });
+});
+
+document.getElementById('download-excel').addEventListener('click', () => {
+    downloadExcelAPI().then(res => {
+        const url = window.URL.createObjectURL(res);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        // the filename you want
+        a.download = 'Hai Duong.xlsx';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    });
+});

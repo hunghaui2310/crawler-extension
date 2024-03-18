@@ -31,7 +31,9 @@ public class ShopRawDataController {
     @GetMapping("/status")
     public ResponseEntity<Boolean> checkStatus(@RequestParam(name = "status", required = false) Boolean status) {
         try {
-            shopService.saveFromRawShop();
+            if (status) {
+                shopService.saveFromRawShop();
+            }
             return new ResponseEntity<>(status, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);

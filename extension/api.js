@@ -4,40 +4,42 @@ const BASE_HEADER = {
     'Content-Type': 'application/json'
   };
 
-const saveRawItem = (data, url) => fetch(API_URL + "/product-raw", {
+const saveShopItemRawDataAPI = (data, url) => fetch(API_URL + "/shop-product-raw", {
+    method: 'POST',
+    headers: BASE_HEADER,
+    body: JSON.stringify({ url, data })
+}).then(response => response.json())
+
+const saveRawProductAPI = (data, url) => fetch(API_URL + "/product-raw", {
     method: 'POST',
     headers: BASE_HEADER,
     body: JSON.stringify({ url, data })
 }).then(response => response.json())
 
 // call after crawl done all item to filter shopid from item. save if status = true
-const statusRawItem = (status) => fetch(API_URL + "/product-raw/status?staus=" + status, {
+const statusRawItemAPI = (status) => fetch(API_URL + "/product-raw/status?staus=" + status, {
     method: 'GET'
 }).then(response => response.json())
 
-const getAllShopId = () => fetch(API_URL + "/shop", {
+const getAllShopIdAPI = () => fetch(API_URL + "/shop", {
     method: 'GET',
 }).then(response => response.json())
 
-const saveRawShop = (data, url) => fetch(API_URL + "/shop-raw", {
+const saveRawShopAPI = (data, url) => fetch(API_URL + "/shop-raw", {
     method: 'POST',
     headers: BASE_HEADER,
     body: JSON.stringify({ url, data })
 }).then(response => response.json())
 
-const statusRawShop = (status) => fetch(API_URL + "/shop-raw/status?staus=" + status, {
+const statusRawShopAPI = (status) => fetch(API_URL + "/shop-raw/status?staus=" + status, {
     method: 'GET',
 }).then(response => response.json())
-// const getListShop = (data, url) => fetch(API_URL + "/shops", {
-//     method: 'GET',
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     }
-// })
-//   .then(response => response.json());
+
+const downloadExcelAPI = () => fetch(API_URL + "/excel/shop", {
+    method: 'GET',
+}).then(response => response.blob())
 
 const getListShop = {
-  items: [98353787, 255447711],
+  items: [134741968],
   count: 2
 }

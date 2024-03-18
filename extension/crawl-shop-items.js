@@ -3,6 +3,8 @@ let currentShopId;
 let tempShopId;
 const SHOP_IDS = 'SHOP_IDS';
 const localStorageManager = new LocalStorageManager();
+let urlShop;
+
 window.addEventListener('getListShops', (event) => {
     let response = getListShop;
     localStorageManager.setItem(SHOP_IDS, response.items);
@@ -33,7 +35,8 @@ window.addEventListener('callLoopPageShop', (event) => {
 });
 
 function buildUrlShop(shopId) {
-    return `https://shopee.vn/shop/${shopId}?page=${PAGE_SHOP}&sortBy=pop`
+    urlShop = `https://shopee.vn/shop/${shopId}?page=${PAGE_SHOP}&sortBy=pop`
+    return urlShop
 }
 
 async function crawlShopItems(shopId) {
@@ -42,25 +45,34 @@ async function crawlShopItems(shopId) {
 }
 
 chrome.devtools.network.onRequestFinished.addListener(
-    function(request) {
+    function (request) {
         if (request.request.url && request.request.url.includes('get_shop_base')) {
             request.getContent((content, mimeType) => {
+                // console.log('content', content);
+                console.log('phone ' + getPhone(content));
+                // console.log('address' + getAddress(content));
                 if (tempShopId !== currentShopId) {
                     // console.log('content', content);
                     //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
                     const { data } = JSON.parse(content)
                     const out = {
+                        shopid: data.shopid,
                         username: data.account.username,
                         shopName: data.name,
                         description: data.description
                     }
                     //TODO: push data shop to BE
+                    // saveRawShopAPI(JSON.stringify(out), urlShop);
                 }
                 tempShopId = currentShopId;
             });
         }
         if (request.request.url && request.request.url.includes('get_shop_tab')) {
             request.getContent((content, mimeType) => {
+                // console.log('content', content);
+                console.log('get shop tab:' + getPhone(content));
+                // console.log('address' + getAddress(content));
+
                 if (tempShopId !== currentShopId) {
                     // console.log('content', content);
                     //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text) - nếu có thông tin thì mới push lên
@@ -70,11 +82,14 @@ chrome.devtools.network.onRequestFinished.addListener(
         }
         if (request.request.url && request.request.url.includes('shop/rcmd_items')) {
             request.getContent((content, mimeType) => {
-                const {data} = JSON.parse(content);
-                console.log('content', data);
-                console.log('total', data.total);
-                console.log('page', PAGE_SHOP);
+                const { data } = JSON.parse(content);
+                console.log('phone' + getPhone(content));
+                // console.log('address' + getAddress(content));
+                // console.log('content', data);
+                // console.log('total', data.total);
+                // console.log('page', PAGE_SHOP);
                 //TODO: push data shop to BE
+                // saveRawProductAPI(JSON.stringify(data.items), urlShop);
                 if ((PAGE_SHOP + 1) * 30 > data.total) {
                     window.dispatchEvent(
                         new CustomEvent(
@@ -95,13 +110,13 @@ chrome.devtools.network.onRequestFinished.addListener(
 
 document.getElementById('crawl-items-shop').addEventListener('click', () => {
     window.dispatchEvent(new CustomEvent(
-            'getListShops',
-            {
-                detail: {
-                    status: 'start',
-                }
+        'getListShops',
+        {
+            detail: {
+                status: 'start',
             }
-        )
+        }
+    )
     );
     document.getElementById('crawl-items-shop').disabled = true;
 });

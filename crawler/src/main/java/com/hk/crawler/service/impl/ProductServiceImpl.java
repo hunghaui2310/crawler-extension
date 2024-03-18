@@ -3,7 +3,7 @@ package com.hk.crawler.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hk.crawler.dto.ProductRawDto;
+import com.hk.crawler.dto.ProductRawDTO;
 import com.hk.crawler.model.Product;
 import com.hk.crawler.model.ProductRawData;
 import com.hk.crawler.model.Shop;
@@ -13,6 +13,7 @@ import com.hk.crawler.repository.IShopRepository;
 import com.hk.crawler.service.IProductService;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -31,34 +32,37 @@ public class ProductServiceImpl implements IProductService {
     @Autowired
     private IProductRepository productRepository;
 
-    @Autowired
-    private IShopRepository shopRepository;
-
     @Override
     @Async("threadPoolTaskExecutor")
-    @SneakyThrows
     @Transactional
     public void saveFromRawProduct() {
-        log.info("Thread to save Shop Id from Product raw data! " + Thread.currentThread().getName());
+        log.info("Thread to save from Product raw data! " + Thread.currentThread().getName());
         List<ProductRawData> shopRawData = productRawDataRepository.findAll();
         ObjectMapper mapper = new ObjectMapper();
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
-                List<Shop> shops = new ArrayList<>();
-                List<ProductRawDto> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
+                List<Product> products = new ArrayList<>();
+                List<Product> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
                 for (int j = 0; j < participantJsonList.size(); j++) {
-                    ProductRawDto dto = participantJsonList.get(j);
-                    Shop optionalShop = shopRepository.findItemByShopId(dto.getShopid());
-                    if (optionalShop == null) {
-                        Shop shop = new Shop(dto.getShopid(), dto.getShop_location());
-                        shops.add(shop);
+                    Product dto = participantJsonList.get(j);
+                    Product optionalProduct = productRepository.findByItemid(dto.getItemid());
+                    if (optionalProduct == null) {
+                        products.add(dto);
+                    } else {
+                        BeanUtils.copyProperties(dto, optionalProduct); // copy new value to old value
+                        productRepository.save(optionalProduct);
                     }
                 }
-                shopRepository.saveAll(shops);
+                productRepository.saveAll(products);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             System.out.println("Error when parse data");
         }
+    }
+
+    @Override
+    public List<Product> filterByShop(String shopid) {
+        return productRepository.findAllByShopid(shopid);
     }
 }
