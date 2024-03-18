@@ -21,6 +21,10 @@ public class ProductRawDataController {
     @PostMapping("")
     public ResponseEntity<ProductRawData> createShopRaw(@RequestBody ProductRawData productRawData) {
         try {
+//            ProductRawData newProduct = productRawDataRepository.fin;
+//            if () {
+//                newProduct
+//            }
             ProductRawData newProduct = productRawDataRepository.save(new ProductRawData(productRawData.getData(), productRawData.getUrl()));
             return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
         } catch (Exception e) {

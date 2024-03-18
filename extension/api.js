@@ -10,6 +10,12 @@ const saveShopItemRawDataAPI = (data, url) => fetch(API_URL + "/shop-product-raw
     body: JSON.stringify({ url, data })
 }).then(response => response.json())
 
+const statusShopItemRawDataAPI = (status) => fetch(API_URL + "/shop-product-raw/status?staus=" + status, {
+    method: 'POST',
+    headers: BASE_HEADER,
+    body: JSON.stringify({ url, data })
+}).then(response => response.json())
+
 const saveRawProductAPI = (data, url) => fetch(API_URL + "/product-raw", {
     method: 'POST',
     headers: BASE_HEADER,
