@@ -45,19 +45,22 @@ public class ProductServiceImpl implements IProductService {
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
                 Set<Product> products = new HashSet<>();
-                List<Product> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
-                for (int j = 0; j < participantJsonList.size(); j++) {
-                    Product dto = participantJsonList.get(j);
-                    List<Product> optionalProduct = productRepository.findAllByShopid(dto.getItemid());
-                    if (optionalProduct.size() == 0) {
-                        products.add(dto);
-                    } else {
-                        BeanUtils.copyProperties(dto, optionalProduct.get(0), "id"); // copy new value to old value
-                        products.add(optionalProduct.get(0));
+                String data = shopRawData.get(i).getData();
+                if (data != null) {
+                    List<Product> participantJsonList = mapper.readValue(data, new TypeReference<>(){});
+                    for (int j = 0; j < participantJsonList.size(); j++) {
+                        Product dto = participantJsonList.get(j);
+                        List<Product> optionalProduct = productRepository.findAllByShopid(dto.getItemid());
+                        if (optionalProduct.size() == 0) {
+                            products.add(dto);
+                        } else {
+                            BeanUtils.copyProperties(dto, optionalProduct.get(0), "id"); // copy new value to old value
+                            products.add(optionalProduct.get(0));
+                        }
                     }
-                }
-                if (products.size() > 0) {
-                    productRepository.saveAll(products);
+                    if (products.size() > 0) {
+                        productRepository.saveAll(products);
+                    }
                 }
             }
         } catch (JsonProcessingException e) {

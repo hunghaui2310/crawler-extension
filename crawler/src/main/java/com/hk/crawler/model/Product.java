@@ -5,9 +5,12 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.util.Date;
 
 @Document(collection = "product")
 @Getter
@@ -76,6 +79,10 @@ public class Product {
     private Boolean is_mart;
     private String free_shipping_info;
     private String model_id;
+
+    @CreatedDate
+    @Field("created_date")
+    private Date createdDate;
 
     @Override
     public int hashCode() {

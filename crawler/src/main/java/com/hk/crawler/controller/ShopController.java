@@ -1,5 +1,6 @@
 package com.hk.crawler.controller;
 
+import com.hk.crawler.dto.ShopRawDTO;
 import com.hk.crawler.model.Shop;
 import com.hk.crawler.service.IShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,16 @@ public class ShopController {
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/update-info")
+    public ResponseEntity<?> updateShopInfo(@RequestBody ShopRawDTO shopRawDTO) {
+        try {
+            return new ResponseEntity<>(shopService.updateShopInfo(shopRawDTO), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
