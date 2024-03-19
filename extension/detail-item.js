@@ -37,6 +37,12 @@ window.addEventListener('getListShopCrawled', async (event) => {
 
 window.addEventListener('getItemsListInShop', async (event) => {
     let shopIds = localStorageManagerItem.getItem(SHOP_CRAWLED_IDS);
+    if (!shopIds || shopIds.length === 0) {
+        const step3Done = document.createElement('p');
+        step3Done.textContent = 'Step 3 Done';
+        document.getElementById('result-crawl').appendChild(step3Done);
+        return;
+    }
     if (shopIds.length) {
         const [firstShop, ...shops] = shopIds;
         currentShopIdItemDetail = firstShop;
