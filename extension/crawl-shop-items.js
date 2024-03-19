@@ -88,6 +88,14 @@ chrome.devtools.network.onRequestFinished.addListener(
                 // console.log('total', data.total);
                 // console.log('page', PAGE_SHOP);
                 //TODO: push data shop to BE
+                if (!data.items || (data.items && data.items.length === 0 )) {
+                    window.dispatchEvent(
+                        new CustomEvent(
+                            'getItemsList'
+                        )
+                    )
+                    return;
+                }
                 saveRawProductAPI(JSON.stringify(data.items), urlShop);
                 setTimeout(() => {
                     tempShopId = currentShopId;
