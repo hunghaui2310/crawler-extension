@@ -26,7 +26,19 @@ const getAddress = (inputString) => {
   const stringTest = `Chào mừng bạn đã đến với cửa hàng online của TTSHOP,đến với TTSHOP các bạn thỏa sức mua sắm các mặt hàng áo thun tay lỡ quần baggy quần jean và các mặt hàng thời trang các cũng như các mặt hàng thời trang unisex-địa điểm : Hải dương- sdt : 0937406732- thời gian trả lời chat từ 8h-17h-nhập VUMITDTK-giảm 5% đơn hàng từ 99kscảm ơn các bạn đã ghé qua shop`;
 
   let address = null;
-  const keywords = ["địa điểm", "địa chỉ", "place", "address", "location"];
+  const keywords = [
+    "địa điểm",
+    "địa chỉ",
+    "place",
+    "address",
+    "location",
+    "đ/c",
+    "đ/đ",
+    "dc",
+    "đc",
+    "d/c",
+    "đ/c",
+  ];
 
   for (const keyword of keywords) {
     const startIndex = inputString.toLowerCase().indexOf(keyword);

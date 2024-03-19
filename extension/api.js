@@ -52,6 +52,6 @@ const getAllCategories = () => fetch('./get_category_tree.json', {
 }).then(response => response.json())
 
 const getListShop = {
-  items: [98353787, 255447711],
+  items: [98353787],
   count: 2
 }
