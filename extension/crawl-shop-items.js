@@ -22,6 +22,11 @@ window.addEventListener('getItemsList', async (event) => {
         await statusRawShopAPI(true);
         await statusRawItemAPI(true);
         step = null;
+        const step2Done = document.createElement('p');
+        step2Done.textContent = 'Step 2 Done';
+        document.getElementById('result-crawl').appendChild(step2Done);
+        
+        return;
     }
     if (shopIds.length) {
         PAGE_SHOP = 0;
