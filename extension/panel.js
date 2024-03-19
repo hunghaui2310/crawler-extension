@@ -88,6 +88,9 @@ window.addEventListener('crawlShopByCategory', async (event) => {
     if (!categoryTree || categoryTree.length === 0) {
         await statusShopItemRawDataAPI(true);
         step = null;
+        const step1Done = document.createElement('p');
+        step1Done.textContent = 'Step 1 Done';
+        document.getElementById('result-crawl').appendChild(step1Done);
         return;
     }
     if (categoryTree.length) {
