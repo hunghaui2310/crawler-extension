@@ -138,7 +138,7 @@ public class ShopServiceImpl implements IShopService {
             totalRevenue += price * product.getHistorical_sold();
 
         }
-        totalRevenue = CurrencyUtil.removeLastNDigits(totalRevenue, 2);
+        totalRevenue = CurrencyUtil.removeLastNDigits(totalRevenue, 5);
         return CurrencyUtil.toMoneyVND(totalRevenue);
     }
 
