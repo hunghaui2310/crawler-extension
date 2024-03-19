@@ -25,7 +25,7 @@ window.addEventListener('getItemsList', async (event) => {
         const step2Done = document.createElement('p');
         step2Done.textContent = 'Step 2 Done';
         document.getElementById('result-crawl').appendChild(step2Done);
-        
+
         return;
     }
     if (shopIds.length) {
@@ -107,7 +107,8 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
                     shopid: currentShopId, 
                     rawInfo: content, 
                     detailAddress: address, 
-                    detailPhone: phone
+                    detailPhone: phone,
+                    ctime: data.ctime
                 }
             )
           }
