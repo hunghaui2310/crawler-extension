@@ -42,7 +42,7 @@ const getAddress = (inputString) => {
     "đ/c",
   ];
 
-  let addresses = [];
+  let addressesSet = new Set();
 
   for (const keyword of keywords) {
     let startIndex = -1;
@@ -51,12 +51,16 @@ const getAddress = (inputString) => {
       const endIndex = subString.search(/",|\n/);
       // Nếu tìm thấy vị trí kết thúc
       if (endIndex !== -1) {
-        addresses.push(subString.substring(0, endIndex));
+        addressesSet.add(subString.substring(0, endIndex));
+        continue;
       } else {
-        addresses.push(subString);
-      }
+        addressesSet.add(subString);
+        continue;
     }
   }
+}
 
-  return addresses.join('\n ');
+// Chuyển Set thành mảng và nối các địa chỉ thành một chuỗi
+const uniqueAddresses = Array.from(addressesSet);
+return uniqueAddresses.join('\n|');
 };
