@@ -79,7 +79,7 @@ public class ProductServiceImpl implements IProductService {
         List<Product> products = this.filterByShop(shopid);
         List<ProductDTO> productDTOS = new ArrayList<>();
         for (Product product : products) {
-            productDTOS.add(new ProductDTO(product.getItemid(), product.getShopid(), product.getName()));
+            productDTOS.add(new ProductDTO(product.getItemid(), product.getShopid()));
         }
         return productDTOS;
     }
