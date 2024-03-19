@@ -9,7 +9,7 @@ let currentPhone;
 
 window.addEventListener("getListShops", async (event) => {
   // let response = await getAllShopIdAPI();
-  localStorageManager.setItem(SHOP_IDS, [98353787, 255447711, 134741968]);
+  localStorageManager.setItem(SHOP_IDS, [255447711, 134741968]);
   window.dispatchEvent(new CustomEvent("getItemsList"));
 });
 
@@ -74,7 +74,6 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
         // console.log('get_shop_base', content);
         //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
         const { data } = JSON.parse(content);
-        console.log("address: " + getAddress(data));
         currentPhone = getPhone(content);
         currentAddress = getAddress(content);
         saveShop(data, currentPhone, currentAddress);
