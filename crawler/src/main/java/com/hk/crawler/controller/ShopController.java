@@ -43,7 +43,7 @@ public class ShopController {
             return new ResponseEntity<>(shopService.updateShopInfo(shopRawDTO), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

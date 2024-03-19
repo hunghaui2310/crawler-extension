@@ -25,9 +25,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -112,6 +114,9 @@ public class ShopServiceImpl implements IShopService {
     @Override
     @Transactional
     public Shop updateShopInfo(ShopRawDTO shopRawDTO) {
+        if (shopRawDTO.getShopid() == null || shopRawDTO.getShopid().equals("")) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Bad request. shopid cannot be null");
+        }
         List<Shop> shops = shopRepository.findItemByShopId(shopRawDTO.getShopid());
         if (shops.size() == 0) {
             return null;
