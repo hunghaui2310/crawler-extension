@@ -7,10 +7,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.util.Date;
 
 @Document(collection = "shop")
 @Getter
@@ -36,6 +39,41 @@ public class Shop {
     private String shopLocation;
     private String description;
     private String address;
+
+    @Field("raw_info")
+    private String rawInfo;
+    @Field("detail_address")
+    private String detailAddress;
+    @Field("detail_phone")
+    private String detailPhone;
+
+    public void setRawInfo(String rawInfo) {
+        if (this.rawInfo == null || this.getRawInfo().equals("")) {
+            this.rawInfo = rawInfo;
+        } else {
+            this.rawInfo = this.getRawInfo().concat("\n").concat(rawInfo);
+        }
+    }
+
+    public void setDetailAddress(String detailAddress) {
+        if (this.detailAddress == null || this.getDetailAddress().equals("")) {
+            this.detailAddress = detailAddress;
+        } else {
+            this.detailAddress = this.getDetailAddress().concat("\n").concat(detailAddress);
+        }
+    }
+
+    public void setDetailPhone(String detailPhone) {
+        if (this.detailPhone == null || this.getDetailPhone().equals("")) {
+            this.detailPhone = detailPhone;
+        } else {
+            this.detailPhone = this.getDetailPhone().concat("\n").concat(detailPhone);
+        }
+    }
+
+    @CreatedDate
+    @Field("created_date")
+    private Date createdDate;
 
     public Shop(String shopid, String shopName, String shopLocation) {
         this.shopid = shopid;

@@ -17,6 +17,7 @@ import com.hk.crawler.repository.IShopRepository;
 import com.hk.crawler.service.IProductService;
 import com.hk.crawler.service.IShopService;
 import com.hk.crawler.utils.CurrencyUtil;
+import com.hk.crawler.utils.DataUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -24,9 +25,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -87,22 +90,50 @@ public class ShopServiceImpl implements IShopService {
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
                 Set<Shop> shops = new HashSet<>();
-                List<ShopProductRawDTO> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
-                for (int j = 0; j < participantJsonList.size(); j++) {
-                    ShopProductRawDTO dto = participantJsonList.get(j);
-                    List<Shop> optionalShop = shopRepository.findItemByShopId(dto.getShopid());
-                    if (optionalShop.size() == 0) {
-                        Shop shop = new Shop(dto.getShopid(), dto.getShopLocation()
-                        );
-                        shops.add(shop);
+                String data = shopRawData.get(i).getData();
+                if (data != null) {
+                    List<ShopProductRawDTO> participantJsonList = mapper.readValue(data, new TypeReference<>(){});
+                    for (int j = 0; j < participantJsonList.size(); j++) {
+                        ShopProductRawDTO dto = participantJsonList.get(j);
+                        List<Shop> optionalShop = shopRepository.findItemByShopId(dto.getShopid());
+                        if (optionalShop.size() == 0) {
+                            Shop shop = new Shop(dto.getShopid(), dto.getShopLocation()
+                            );
+                            shops.add(shop);
+                        }
                     }
+                    shopRepository.saveAll(shops);
                 }
-                shopRepository.saveAll(shops);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             log.error("Error when parse data");
         }
+    }
+
+    @Override
+    @Transactional
+    public Shop updateShopInfo(ShopRawDTO shopRawDTO) {
+        if (shopRawDTO.getShopid() == null || shopRawDTO.getShopid().equals("")) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Bad request. shopid cannot be null");
+        }
+        List<Shop> shops = shopRepository.findItemByShopId(shopRawDTO.getShopid());
+        if (shops.size() == 0) {
+            return null;
+        }
+        // if shop has size > 1, that mean shop was be duplicated -> delete shop duplicate
+        if (shops.size() > 1) {
+            for (int i = 1; i < shops.size(); i ++) {
+                shopRepository.delete(shops.get(i));
+            }
+        }
+        // update shop info
+        Shop newShopData = shops.get(0);
+        newShopData.setRawInfo(shopRawDTO.getRawInfo());
+        newShopData.setDetailPhone(shopRawDTO.getDetailPhone());
+        newShopData.setDetailAddress(shopRawDTO.getDetailAddress());
+        shopRepository.save(newShopData);
+        return newShopData;
     }
 
     @Override
@@ -135,7 +166,7 @@ public class ShopServiceImpl implements IShopService {
             totalRevenue += price * product.getHistorical_sold();
 
         }
-        totalRevenue = CurrencyUtil.removeLastNDigits(totalRevenue, 2);
+        totalRevenue = CurrencyUtil.removeLastNDigits(totalRevenue, 5);
         return CurrencyUtil.toMoneyVND(totalRevenue);
     }
 

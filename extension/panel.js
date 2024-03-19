@@ -25,6 +25,7 @@ const divElement = document.getElementById('cdata');
 let currentUrl = '';
 let currentCategory;
 let tempCategory;
+let step;
 // chrome.devtools.inspectedWindow.getResources((resources) => {
 //   resources.forEach((resource) => {
 //     if (!(resource.type in types)) {
@@ -75,7 +76,8 @@ getTabId();
 window.addEventListener('getCategories', (event) => {
     const {detail: {categoryTree}} = event;
     const flattenedDataCategoryTree = flattenChildren(categoryTree);
-    localStorageManagerPanel.setItem(CATEGORY_TREE, flattenedDataCategoryTree);
+    const slicedArray = flattenedDataCategoryTree.slice(0, 3);
+    localStorageManagerPanel.setItem(CATEGORY_TREE, slicedArray);
     window.dispatchEvent(
         new CustomEvent(
             'crawlShopByCategory'
@@ -87,9 +89,11 @@ window.addEventListener('crawlShopByCategory', async (event) => {
     let categoryTree = localStorageManagerPanel.getItem(CATEGORY_TREE);
     if (!categoryTree || categoryTree.length === 0) {
         await statusShopItemRawDataAPI(true);
+        step = null;
+        return;
     }
     if (categoryTree.length) {
-        PAGE_SHOP = 0;
+        PAGE_CATEGORY = 0;
         const [firstCategory, ...categories] = categoryTree;
         currentCategory = firstCategory;
         localStorageManagerPanel.removeItem(CATEGORY_TREE);
@@ -144,47 +148,49 @@ function crawlShopByCategory(category) {
 
 chrome.devtools.network.onRequestFinished.addListener(
     function (request) {
-        if (request.request.url && request.request.url.includes('search_items')) {
-            request.getContent((content, mimeType) => {
-                console.log(PAGE_CATEGORY);
-                const { items } = JSON.parse(content);
-                if (!items) {
-                    // window.dispatchEvent(
-                    //     new CustomEvent(
-                    //         'crawlShopByCategory'
-                    //     )
-                    // )
-                    return;
-                }
-                const out = [];
-                for (const data of items) {
-                    const item = data.item_basic
-                    if (!item) return
-                    if (item.shop_location?.toUpperCase() === LOCATION.toUpperCase()) {
-                        out.push({
-                            shopid: item.shopid,
-                            shopLocation: item.shop_location,
-                        })
-                    }
-                }
-                // download(JSON.stringify(out), LOCATION + '_' + (PAGE + 1) + '.txt', 'text/plain');
-                saveShopItemRawDataAPI(JSON.stringify(out), currentUrl);
-                setTimeout(() => {
-                    if (items.length < 60) {
-                        // window.dispatchEvent(
-                        //     new CustomEvent(
-                        //         'crawlShopByCategory'
-                        //     )
-                        // )
-                    } else {
+        if (step === 1) {
+            if (request.request.url && request.request.url.includes('search_items')) {
+                request.getContent((content, mimeType) => {
+                    console.log(PAGE_CATEGORY);
+                    const { items } = JSON.parse(content);
+                    if (!items) {
                         window.dispatchEvent(
                             new CustomEvent(
-                                'callLoopPageCategory'
+                                'crawlShopByCategory'
                             )
                         )
+                        return;
                     }
-                }, getRandomTime());
-            });
+                    const out = [];
+                    for (const data of items) {
+                        const item = data.item_basic
+                        if (!item) return
+                        if (item.shop_location?.toUpperCase() === LOCATION.toUpperCase()) {
+                            out.push({
+                                shopid: item.shopid,
+                                shopLocation: item.shop_location,
+                            })
+                        }
+                    }
+                    // download(JSON.stringify(out), LOCATION + '_' + (PAGE + 1) + '.txt', 'text/plain');
+                    saveShopItemRawDataAPI(JSON.stringify(out), currentUrl);
+                    setTimeout(() => {
+                        if (items.length < 60) {
+                            window.dispatchEvent(
+                                new CustomEvent(
+                                    'crawlShopByCategory'
+                                )
+                            )
+                        } else {
+                            window.dispatchEvent(
+                                new CustomEvent(
+                                    'callLoopPageCategory'
+                                )
+                            )
+                        }
+                    }, getRandomTime());
+                });
+            }
         }
     }
 );
@@ -203,6 +209,7 @@ document.getElementById('crawl-shop').addEventListener('click', () => {
             )
         );
         document.getElementById('crawl-shop').disabled = true;
+        step = 1;
     }, 3000);
 });
 

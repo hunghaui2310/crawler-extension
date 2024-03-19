@@ -1,55 +1,57 @@
 let PAGE_SHOP = 0;
 let currentShopId;
 let tempShopId;
-const SHOP_IDS = "SHOP_IDS";
+const SHOP_IDS = 'SHOP_IDS';
 const localStorageManager = new LocalStorageManager();
 let urlShop;
-let currentAddress;
-let currentPhone;
 
-window.addEventListener("getListShops", async (event) => {
-  // let response = await getAllShopIdAPI();
-  localStorageManager.setItem(SHOP_IDS, [255447711, 134741968]);
-  window.dispatchEvent(new CustomEvent("getItemsList"));
+window.addEventListener('getListShops', async (event) => {
+    let response = await getAllShopIdAPI();
+    localStorageManager.setItem(SHOP_IDS, response);
+    window.dispatchEvent(
+        new CustomEvent(
+            'getItemsList'
+        )
+    )
 });
 
-window.addEventListener("getItemsList", async (event) => {
-  let shopIds = localStorageManager.getItem(SHOP_IDS);
-  if (!shopIds || shopIds.length === 0) {
-    await statusRawShopAPI(true);
-    await statusRawItemAPI(true);
-  }
-  if (shopIds.length) {
-    PAGE_SHOP = 0;
-    const [firstShop, ...shops] = shopIds;
-    currentShopId = firstShop;
-    localStorageManager.removeItem(SHOP_IDS);
-    localStorageManager.setItem(SHOP_IDS, shops);
-    crawlShopItems(currentShopId);
-  }
+window.addEventListener('getItemsList', async (event) => {
+    let shopIds = localStorageManager.getItem(SHOP_IDS);
+    if (!shopIds || shopIds.length === 0) {
+        await statusRawShopAPI(true);
+        await statusRawItemAPI(true);
+    }
+    if (shopIds.length) {
+        PAGE_SHOP = 0;
+        const [firstShop, ...shops] = shopIds;
+        currentShopId = firstShop;
+        localStorageManager.removeItem(SHOP_IDS);
+        localStorageManager.setItem(SHOP_IDS, shops);
+        crawlShopItems(currentShopId);
+    }
 });
 
-window.addEventListener("callLoopPageShop", (event) => {
-  if (currentShopId) {
-    PAGE_SHOP += 1;
-    crawlShopItems(currentShopId);
-  }
+window.addEventListener('callLoopPageShop', (event) => {
+    if (currentShopId) {
+        PAGE_SHOP += 1;
+        crawlShopItems(currentShopId);
+    }
 });
 
 function buildUrlShop(shopId) {
-  urlShop = `https://shopee.vn/shop/${shopId}?page=${PAGE_SHOP}&sortBy=pop`;
-  return urlShop;
+    urlShop = `https://shopee.vn/shop/${shopId}?page=${PAGE_SHOP}&sortBy=pop`
+    return urlShop
 }
 
 async function crawlShopItems(shopId) {
-  const url = buildUrlShop(shopId);
-  routeToPage(url);
+    const url = buildUrlShop(shopId);
+    routeToPage(url);
 }
 
 function getRandomTime() {
-  const arrayTime = [3000, 5000, 6000];
-  const randomIndex = Math.floor(Math.random() * arrayTime.length);
-  return arrayTime[randomIndex];
+    const arrayTime = [3000, 5000, 6000];
+    const randomIndex = Math.floor(Math.random() * arrayTime.length);
+    return arrayTime[randomIndex];
 }
 
 function saveShop(data, phone, address) {
