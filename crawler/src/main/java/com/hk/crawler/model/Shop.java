@@ -47,6 +47,30 @@ public class Shop {
     @Field("detail_phone")
     private String detailPhone;
 
+    public void setRawInfo(String rawInfo) {
+        if (this.rawInfo == null || this.getRawInfo().equals("")) {
+            this.rawInfo = rawInfo;
+        } else {
+            this.rawInfo = this.getRawInfo().concat("\n").concat(rawInfo);
+        }
+    }
+
+    public void setDetailAddress(String detailAddress) {
+        if (this.detailAddress == null || this.getDetailAddress().equals("")) {
+            this.detailAddress = detailAddress;
+        } else {
+            this.detailAddress = this.getDetailAddress().concat("\n").concat(detailAddress);
+        }
+    }
+
+    public void setDetailPhone(String detailPhone) {
+        if (this.detailPhone == null || this.getDetailPhone().equals("")) {
+            this.detailPhone = detailPhone;
+        } else {
+            this.detailPhone = this.getDetailPhone().concat("\n").concat(detailPhone);
+        }
+    }
+
     @CreatedDate
     @Field("created_date")
     private Date createdDate;
