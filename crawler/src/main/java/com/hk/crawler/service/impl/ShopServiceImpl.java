@@ -17,6 +17,7 @@ import com.hk.crawler.repository.IShopRepository;
 import com.hk.crawler.service.IProductService;
 import com.hk.crawler.service.IShopService;
 import com.hk.crawler.utils.CurrencyUtil;
+import com.hk.crawler.utils.DataUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -106,6 +107,28 @@ public class ShopServiceImpl implements IShopService {
             e.printStackTrace();
             log.error("Error when parse data");
         }
+    }
+
+    @Override
+    @Transactional
+    public Shop updateShopInfo(ShopRawDTO shopRawDTO) {
+        List<Shop> shops = shopRepository.findItemByShopId(shopRawDTO.getShopid());
+        if (shops.size() == 0) {
+            return null;
+        }
+        // if shop has size > 1, that mean shop was be duplicated -> delete shop duplicate
+        if (shops.size() > 1) {
+            for (int i = 1; i < shops.size(); i ++) {
+                shopRepository.delete(shops.get(i));
+            }
+        }
+        // update shop info
+        Shop newShopData = shops.get(0);
+        newShopData.setRawInfo(shopRawDTO.getRawInfo());
+        newShopData.setDetailPhone(shopRawDTO.getDetailPhone());
+        newShopData.setDetailAddress(shopRawDTO.getDetailAddress());
+        shopRepository.save(newShopData);
+        return newShopData;
     }
 
     @Override

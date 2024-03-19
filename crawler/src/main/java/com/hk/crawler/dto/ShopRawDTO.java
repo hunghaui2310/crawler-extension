@@ -14,6 +14,10 @@ public class ShopRawDTO {
     private String shopName;
     private String description;
 
+    private String rawInfo;
+    private String detailAddress;
+    private String detailPhone;
+
     public static class ShopExcelDTO {
     }
 }
