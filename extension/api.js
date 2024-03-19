@@ -4,6 +4,7 @@ const BASE_HEADER = {
     'Content-Type': 'application/json'
   };
 
+// shop-product-raw API
 const saveShopItemRawDataAPI = (data, url) => fetch(API_URL + "/shop-product-raw", {
     method: 'POST',
     headers: BASE_HEADER,
@@ -14,6 +15,9 @@ const statusShopItemRawDataAPI = (status) => fetch(API_URL + "/shop-product-raw/
     method: 'GET'
 }).then(response => response.json())
 
+
+
+// product-raw API
 const saveRawProductAPI = (data, url) => fetch(API_URL + "/product-raw", {
     method: 'POST',
     headers: BASE_HEADER,
@@ -25,10 +29,26 @@ const statusRawItemAPI = (status) => fetch(API_URL + "/product-raw/status?status
     method: 'GET'
 }).then(response => response.json())
 
+
+
+// shop API
 const getAllShopIdAPI = () => fetch(API_URL + "/shop", {
     method: 'GET',
 }).then(response => response.json())
 
+/* shopInfo: {  shopid: string, 
+                rawInfo: string, 
+                detailAddress: string, 
+                detailPhone: string } */
+const updateShopAPI = (shopInfo) => fetch(API_URL + "/shop/update-info", {
+    method: 'PUT',
+    headers: BASE_HEADER,
+    body: JSON.stringify(shopInfo)
+}).then(response => response.json())
+
+
+
+// shop-raw API
 const saveRawShopAPI = (data, url) => fetch(API_URL + "/shop-raw", {
     method: 'POST',
     headers: BASE_HEADER,
@@ -43,6 +63,9 @@ const downloadExcelAPI = () => fetch(API_URL + "/excel/shop", {
     method: 'GET',
 }).then(response => response.blob())
 
+
+
+// product API
 const getProductByShopAPI = (shopId) => fetch(API_URL + "/product/getByShop?shopid=" + shopId, {
     method: 'GET',
 }).then(response => response.json())
