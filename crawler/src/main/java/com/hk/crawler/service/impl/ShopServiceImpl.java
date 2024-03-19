@@ -87,17 +87,20 @@ public class ShopServiceImpl implements IShopService {
         try {
             for (int i = 0; i < shopRawData.size(); i++) {
                 Set<Shop> shops = new HashSet<>();
-                List<ShopProductRawDTO> participantJsonList = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
-                for (int j = 0; j < participantJsonList.size(); j++) {
-                    ShopProductRawDTO dto = participantJsonList.get(j);
-                    List<Shop> optionalShop = shopRepository.findItemByShopId(dto.getShopid());
-                    if (optionalShop.size() == 0) {
-                        Shop shop = new Shop(dto.getShopid(), dto.getShopLocation()
-                        );
-                        shops.add(shop);
+                String data = shopRawData.get(i).getData();
+                if (data != null) {
+                    List<ShopProductRawDTO> participantJsonList = mapper.readValue(data, new TypeReference<>(){});
+                    for (int j = 0; j < participantJsonList.size(); j++) {
+                        ShopProductRawDTO dto = participantJsonList.get(j);
+                        List<Shop> optionalShop = shopRepository.findItemByShopId(dto.getShopid());
+                        if (optionalShop.size() == 0) {
+                            Shop shop = new Shop(dto.getShopid(), dto.getShopLocation()
+                            );
+                            shops.add(shop);
+                        }
                     }
+                    shopRepository.saveAll(shops);
                 }
-                shopRepository.saveAll(shops);
             }
         } catch (JsonProcessingException e) {
             e.printStackTrace();
