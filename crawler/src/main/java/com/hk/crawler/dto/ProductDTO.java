@@ -13,5 +13,5 @@ public class ProductDTO {
 
     private String itemid;
     private String shopid;
-    private String name;
+//    private String name;
 }

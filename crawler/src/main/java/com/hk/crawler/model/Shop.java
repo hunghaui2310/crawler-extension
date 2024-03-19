@@ -38,8 +38,7 @@ public class Shop {
     @Field("shop_location")
     private String shopLocation;
     private String description;
-    private String address;
-
+    private Long ctime;
     @Field("raw_info")
     private String rawInfo;
     @Field("detail_address")

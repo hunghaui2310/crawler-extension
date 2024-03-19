@@ -18,6 +18,7 @@ import com.hk.crawler.service.IProductService;
 import com.hk.crawler.service.IShopService;
 import com.hk.crawler.utils.CurrencyUtil;
 import com.hk.crawler.utils.DataUtil;
+import com.hk.crawler.utils.DateUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -176,8 +177,10 @@ public class ShopServiceImpl implements IShopService {
         List<Shop> shops = shopRepository.findAll();
         for (Shop shop : shops) {
             String totalRevenue = this.getRevenueByShop(shop.getShopid());
-            ShopExcelDTO shopExcelDTO = new ShopExcelDTO(shop.getShopid(), shop.getShopName(), shop.getAddress(), totalRevenue, shop.getShopLocation());
+            ShopExcelDTO shopExcelDTO = new ShopExcelDTO(shop.getShopid(), shop.getShopName(), shop.getDetailAddress(), totalRevenue, shop.getShopLocation());
             shopExcelDTO.setUsername(shop.getUsername());
+            shopExcelDTO.setPhoneNumber(shop.getDetailPhone());
+            shopExcelDTO.setShopCreateDate(DateUtil.convertTime(shop.getCtime()));
             shopExcelDTOS.add(shopExcelDTO);
         }
         return shopExcelDTOS;
