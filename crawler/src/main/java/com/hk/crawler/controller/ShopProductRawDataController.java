@@ -5,6 +5,7 @@ import com.hk.crawler.model.ShopProductRawData;
 import com.hk.crawler.model.ShopRawData;
 import com.hk.crawler.repository.IShopProductRawDataRepository;
 import com.hk.crawler.repository.IShopRawDataRepository;
+import com.hk.crawler.service.IRawDataService;
 import com.hk.crawler.service.IShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,24 +19,15 @@ import java.util.List;
 public class ShopProductRawDataController {
 
     @Autowired
-    private IShopProductRawDataRepository shopProductRawDataRepository;
+    private IRawDataService rawDataService;
 
     @Autowired
     private IShopService shopService;
 
     @PostMapping("")
-    public ResponseEntity<?> createShopRaw(@RequestBody ProductRawData productRawData) {
+    public ResponseEntity<?> createShopRaw(@RequestBody ShopProductRawData shopProductRawData) {
         try {
-            List<ShopProductRawData> productRawDataList = shopProductRawDataRepository.findAllByUrl(productRawData.getUrl());
-            ShopProductRawData newShop;
-            if (productRawDataList.size() > 0) {
-                newShop = productRawDataList.get(0);
-                newShop.setData(productRawData.getData());
-            } else {
-                newShop = new ShopProductRawData(productRawData.getData(), productRawData.getUrl());
-            }
-            shopProductRawDataRepository.save(newShop);
-            return new ResponseEntity<>(true, HttpStatus.CREATED);
+            return new ResponseEntity<>(rawDataService.saveToShopProductRawData(shopProductRawData), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

@@ -15,7 +15,4 @@ public interface IShopRepository extends MongoRepository<Shop, String> {
 
     Page<Shop> findAll(Pageable pageable);
 
-    @Query(value="{category:'?0'}", fields="{'name' : 1, 'quantity' : 1}")
-    List<Shop> findAll(String category);
-
 }

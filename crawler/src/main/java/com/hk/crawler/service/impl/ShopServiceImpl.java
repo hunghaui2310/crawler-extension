@@ -32,10 +32,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpClientErrorException;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -54,6 +51,22 @@ public class ShopServiceImpl implements IShopService {
     private IShopProductRawDataRepository shopProductRawDataRepository;
 
     @Override
+    @Transactional
+    public Shop findByShopId(String shopid) {
+        List<Shop> shops = shopRepository.findItemByShopId(shopid);
+        if (shops.size() == 1) {
+            return shops.get(0);
+        }
+        if (shops.size() > 1) {
+            for (int i = 1; i < shops.size(); i ++) {
+                shopRepository.delete(shops.get(i));
+            }
+            return shops.get(0);
+        }
+        return null;
+    }
+
+    @Override
     @Async("threadPoolTaskExecutor")
     @Transactional
     public void saveFromRawShop() {
@@ -64,12 +77,12 @@ public class ShopServiceImpl implements IShopService {
             for (int i = 0; i < shopRawData.size(); i++) {
                 Set<Shop> shops = new HashSet<>();
                 Shop participantJson = mapper.readValue(shopRawData.get(i).getData(), new TypeReference<>(){});
-                List<Shop> optionalShop = shopRepository.findItemByShopId(participantJson.getShopid());
-                if (optionalShop.size() == 0) {
+                Shop optionalShop = this.findByShopId(participantJson.getShopid());
+                if (optionalShop == null) {
                     shops.add(participantJson);
                 } else {
-                    BeanUtils.copyProperties(participantJson, optionalShop.get(0), "id", "shopLocation"); // copy new value to old value
-                    shops.add(optionalShop.get(0));
+                    BeanUtils.copyProperties(participantJson, optionalShop, "id", "shopLocation"); // copy new value to old value
+                    shops.add(optionalShop);
                 }
                 if (shops.size() > 0) {
                     shopRepository.saveAll(shops);
@@ -96,8 +109,8 @@ public class ShopServiceImpl implements IShopService {
                     List<ShopProductRawDTO> participantJsonList = mapper.readValue(data, new TypeReference<>(){});
                     for (int j = 0; j < participantJsonList.size(); j++) {
                         ShopProductRawDTO dto = participantJsonList.get(j);
-                        List<Shop> optionalShop = shopRepository.findItemByShopId(dto.getShopid());
-                        if (optionalShop.size() == 0) {
+                        Shop optionalShop = this.findByShopId(dto.getShopid());
+                        if (optionalShop == null) {
                             Shop shop = new Shop(dto.getShopid(), dto.getShopLocation()
                             );
                             shops.add(shop);
@@ -118,18 +131,11 @@ public class ShopServiceImpl implements IShopService {
         if (shopRawDTO.getShopid() == null || shopRawDTO.getShopid().equals("")) {
             throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Bad request. shopid cannot be null");
         }
-        List<Shop> shops = shopRepository.findItemByShopId(shopRawDTO.getShopid());
-        if (shops.size() == 0) {
+        Shop newShopData = this.findByShopId(shopRawDTO.getShopid());
+        if (newShopData == null) {
             return null;
         }
-        // if shop has size > 1, that mean shop was be duplicated -> delete shop duplicate
-        if (shops.size() > 1) {
-            for (int i = 1; i < shops.size(); i ++) {
-                shopRepository.delete(shops.get(i));
-            }
-        }
         // update shop info
-        Shop newShopData = shops.get(0);
         newShopData.setRawInfo(shopRawDTO.getRawInfo());
         newShopData.setDetailPhone(shopRawDTO.getDetailPhone());
         newShopData.setDetailAddress(shopRawDTO.getDetailAddress());
@@ -138,7 +144,7 @@ public class ShopServiceImpl implements IShopService {
     }
 
     @Override
-    public List<String> getShopByPage(int page, int size) {
+    public List<String> getShopByPage(boolean isCrawled, int page, int size) {
         log.info("Thread to filter shop by id! " + Thread.currentThread().getName());
         List<String> ids = new ArrayList<>();
         List<Shop> listShop;
@@ -184,5 +190,12 @@ public class ShopServiceImpl implements IShopService {
             shopExcelDTOS.add(shopExcelDTO);
         }
         return shopExcelDTOS;
+    }
+
+    @Override
+    public void updateShopLastCrawlAt(String shopid) {
+        Shop shop = this.findByShopId(shopid);
+        shop.setLastCrawlAt(new Date());
+        shopRepository.save(shop);
     }
 }
