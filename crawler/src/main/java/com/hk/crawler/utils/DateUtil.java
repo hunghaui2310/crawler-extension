@@ -4,10 +4,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+import java.util.*;
 
 public class DateUtil {
 
@@ -30,5 +27,14 @@ public class DateUtil {
             return dateTime.format(formatter);
         }
         return "";
+    }
+
+    public static Date midnightToday() {
+        Calendar date = new GregorianCalendar();
+        date.set(Calendar.HOUR_OF_DAY, 0);
+        date.set(Calendar.MINUTE, 0);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
+        return date.getTime();
     }
 }
