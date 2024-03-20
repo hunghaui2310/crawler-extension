@@ -3,6 +3,7 @@ package com.hk.crawler.controller;
 import com.hk.crawler.model.ProductRawData;
 import com.hk.crawler.model.ShopRawData;
 import com.hk.crawler.repository.IShopRawDataRepository;
+import com.hk.crawler.service.IRawDataService;
 import com.hk.crawler.service.IShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,7 @@ import java.util.List;
 public class ShopRawDataController {
 
     @Autowired
-    IShopRawDataRepository shopRawDataRepository;
+    IRawDataService rawDataService;
 
     @Autowired
     private IShopService shopService;
@@ -24,16 +25,7 @@ public class ShopRawDataController {
     @PostMapping("")
     public ResponseEntity<?> createShopRaw(@RequestBody ShopRawData shopRawData) {
         try {
-            List<ShopRawData> productRawDataList = shopRawDataRepository.findAllByUrl(shopRawData.getUrl());
-            ShopRawData newShop;
-            if (productRawDataList.size() > 0) {
-                newShop = productRawDataList.get(0);
-                newShop.setData(shopRawData.getData());
-            } else {
-                newShop = new ShopRawData(shopRawData.getData(), shopRawData.getUrl());
-            }
-            shopRawDataRepository.save(newShop);
-            return new ResponseEntity<>(true, HttpStatus.CREATED);
+            return new ResponseEntity<>(rawDataService.saveToShopRawData(shopRawData), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

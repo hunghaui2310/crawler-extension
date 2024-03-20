@@ -9,6 +9,7 @@ import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -45,6 +46,9 @@ public class Shop {
     private String detailAddress;
     @Field("detail_phone")
     private String detailPhone;
+
+    @Field("last_crawl_at")
+    private Date lastCrawlAt;
 
     public void setRawInfo(String rawInfo) {
         if (this.rawInfo == null || this.getRawInfo().equals("")) {

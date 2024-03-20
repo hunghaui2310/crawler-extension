@@ -8,15 +8,19 @@ import java.util.List;
 
 public interface IShopService {
 
+    Shop findByShopId(String shopid);
+
     void saveFromRawShop();
 
     void saveFromShopProductRawData();
 
     Shop updateShopInfo(ShopRawDTO shopRawDTO);
 
-    List<String> getShopByPage(int page, int size);
+    List<String> getShopByPage(boolean isCrawled, int page, int size);
 
     String getRevenueByShop(String shopid);
 
     List<ShopExcelDTO> getExcelData();
+
+    void updateShopLastCrawlAt(String shopid);
 }

@@ -36,6 +36,21 @@ public class ProductServiceImpl implements IProductService {
     private IProductRepository productRepository;
 
     @Override
+    public Product findByItemId(String itemid) {
+        List<Product> products = productRepository.findAllByItemid(itemid);
+        if (products.size() == 1) {
+            return products.get(0);
+        }
+        if (products.size() > 1) {
+            for (int i = 1; i < products.size(); i ++) {
+                productRepository.delete(products.get(i));
+            }
+            return products.get(0);
+        }
+        return null;
+    }
+
+    @Override
     @Async("threadPoolTaskExecutor")
     @Transactional
     public void saveFromRawProduct() {
