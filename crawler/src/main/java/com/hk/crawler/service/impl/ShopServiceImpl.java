@@ -150,10 +150,10 @@ public class ShopServiceImpl implements IShopService {
         List<Shop> listShop;
         if (page != 0) {
             Pageable pageable = PageRequest.of(page, size);
-            Page shopPage = shopRepository.findAll(pageable);
+            Page shopPage = shopRepository.findAllByLastCrawlAtAfter(pageable, DateUtil.midnightToday());
             listShop = shopPage.getContent();
         } else {
-            listShop = shopRepository.findAll();
+            listShop = shopRepository.findAllByLastCrawlAtAfter(DateUtil.midnightToday());
         }
         for (Shop shop : listShop) {
             ids.add(shop.getShopid());
