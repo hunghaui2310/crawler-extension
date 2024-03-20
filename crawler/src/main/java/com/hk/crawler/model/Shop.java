@@ -51,6 +51,7 @@ public class Shop {
     private Date lastCrawlAt;
 
     public void setRawInfo(String rawInfo) {
+        if (rawInfo == null || "".equals(rawInfo)) return;
         if (this.rawInfo == null || this.getRawInfo().equals("")) {
             this.rawInfo = rawInfo;
         } else {
@@ -59,6 +60,7 @@ public class Shop {
     }
 
     public void setDetailAddress(String detailAddress) {
+        if (detailAddress == null || "".equals(detailAddress)) return;
         if (this.detailAddress == null || this.getDetailAddress().equals("")) {
             this.detailAddress = detailAddress;
         } else {
@@ -67,6 +69,7 @@ public class Shop {
     }
 
     public void setDetailPhone(String detailPhone) {
+        if (detailPhone == null || "".equals(detailPhone)) return;
         if (this.detailPhone == null || this.getDetailPhone().equals("")) {
             this.detailPhone = detailPhone;
         } else {
