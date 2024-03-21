@@ -27,7 +27,7 @@ const getPhone = (inputString) => {
 //Get Address of shop
 const getAddress = (inputString) => {
   // Get by: place, address, địa chỉ
-  const stringTest = `"\u003c3 Tuyển ctv toàn quốc lấy hàng giá tận gốc\nVàng Bạc Khải Khải - Trang Sức Bạc 9999 cam kết :\n1 - Sản phẩm được chế tác từ LÀNG NGHỀ VÀNG BẠC LƯƠNG NGỌC\n2 - Shop cam kết cả về chất liệu vàng bạc  cũng như KIỂU DÁNG 100% GIỐNG ẢNH \n3 - bảo hành miễn phí làm sáng trọn đời\n4 - Sau quá trình sử dụng có thể bán lại \n5 - Hoàn tiền 100% nếu không phải vàng bạc \n📞 hotline: 0839463999🏡 Add: Lương Ngọc - Thúc Kháng- Bìng Giang-Hải Dương\n😄 Admin: KHẢI KHẢI"`;
+  // const inputString = `"\u003c3 Tuyển ctv toàn quốc lấy hàng giá tận gốc\nVàng Bạc Khải Khải - Trang Sức Bạc 9999 cam kết :\n1 - Sản phẩm được chế tác từ LÀNG NGHỀ VÀNG BẠC LƯƠNG NGỌC\n2 - Shop cam kết cả về chất liệu vàng bạc  cũng như KIỂU DÁNG 100% GIỐNG ẢNH \n3 - bảo hành miễn phí làm sáng trọn đời\n4 - Sau quá trình sử dụng có thể bán lại \n5 - Hoàn tiền 100% nếu không phải vàng bạc \n📞 hotline: 0839463999🏡 Add: Lương Ngọc - Thúc Kháng- Bìng Giang-Hải Dương\n😄 Admin: KHẢI KHẢI"`;
 
   const keywords = [
     "địa điểm",
@@ -50,12 +50,13 @@ const getAddress = (inputString) => {
 
   for (const keyword of keywords) {
     let startIndex = -1;
-    while ((startIndex = stringTest.toLowerCase().indexOf(keyword, startIndex + 1)) !== -1) {
-      const subString = stringTest.substring(startIndex);
-      const endIndex = subString.search(/",|\n/);
+    while ((startIndex = inputString.toLowerCase().indexOf(keyword, startIndex + 1)) !== -1) {
+      const startKey = inputString.lastIndexOf('\n', startIndex);
+      const endIndex = inputString.indexOf('\n', startIndex);
+      // console.log('test', inputString.substring(startKey, endIndex + 1));
       // Nếu tìm thấy vị trí kết thúc
       if (endIndex !== -1) {
-        addressesSet.add(subString.substring(0, endIndex));
+        addressesSet.add(inputString.substring(startKey, endIndex + 1));
         continue;
       } else {
         addressesSet.add(subString);
