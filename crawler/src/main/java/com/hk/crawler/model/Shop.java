@@ -52,14 +52,14 @@ public class Shop {
     @Field("last_crawl_at")
     private Instant lastCrawlAt;
 
-    public void setRawInfo(String rawInfo) {
-        if (rawInfo == null || "".equals(rawInfo)) return;
-        if (this.rawInfo == null || this.getRawInfo().equals("")) {
-            this.rawInfo = rawInfo;
-        } else {
-            this.rawInfo = this.getRawInfo().concat("\n").concat(rawInfo);
-        }
-    }
+//    public void setRawInfo(String rawInfo) {
+//        if (rawInfo == null || "".equals(rawInfo)) return;
+//        if (this.rawInfo == null || this.getRawInfo().equals("")) {
+//            this.rawInfo = rawInfo;
+//        } else {
+//            this.rawInfo = this.getRawInfo().concat("\n").concat(rawInfo);
+//        }
+//    }
 
     public void setDetailAddress(String detailAddress) {
         if (detailAddress == null || "".equals(detailAddress)) return;
