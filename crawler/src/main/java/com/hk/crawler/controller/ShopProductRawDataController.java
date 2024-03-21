@@ -46,4 +46,14 @@ public class ShopProductRawDataController {
             return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/getDataCrawled")
+    public ResponseEntity<?> getDataCrawled() {
+        try {
+            return new ResponseEntity<>(rawDataService.getDataCrawled(), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
