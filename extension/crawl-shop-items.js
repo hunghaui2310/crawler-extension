@@ -33,7 +33,7 @@ window.addEventListener('getItemsList', async (event) => {
         const [firstShop, ...shops] = shopIds;
         currentShopId = firstShop;
         let shop_crawled;
-        if (!localStorageManager.getItem(SHOP_CRAWLED_IDS)) {
+        if (localStorageManager.getItem(SHOP_CRAWLED_IDS)) {
             shop_crawled = [currentShopId, ...localStorageManager.getItem(SHOP_CRAWLED_IDS)];
         } else {
             shop_crawled = [currentShopId];
