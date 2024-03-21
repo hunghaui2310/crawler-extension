@@ -170,6 +170,7 @@ chrome.devtools.network.onRequestFinished.addListener(
                             out.push({
                                 shopid: item.shopid,
                                 shopLocation: item.shop_location,
+                                catid: currentCategory.catid
                             })
                         }
                     }
