@@ -1,5 +1,6 @@
 package com.hk.crawler.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.time.Instant;
 import java.util.Date;
 
 @Document(collection = "shop")
@@ -48,7 +50,7 @@ public class Shop {
     private String detailPhone;
 
     @Field("last_crawl_at")
-    private Date lastCrawlAt;
+    private Instant lastCrawlAt;
 
     public void setRawInfo(String rawInfo) {
         if (rawInfo == null || "".equals(rawInfo)) return;

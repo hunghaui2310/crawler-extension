@@ -32,7 +32,7 @@ const statusRawItemAPI = (status) => fetch(API_URL + "/product-raw/status?status
 
 
 // shop API
-const getAllShopIdAPI = () => fetch(API_URL + "/shop", {
+const getAllShopIdAPI = (isCrawled) => fetch(API_URL + "/shop?isCrawled=" + isCrawled, {
     method: 'GET',
 }).then(response => response.json())
 
@@ -46,6 +46,10 @@ const updateShopAPI = (shopInfo) => fetch(API_URL + "/shop/update-info", {
     body: JSON.stringify(shopInfo)
 }).then(response => response.json())
 
+const changeShopCrawlDone = (shopId, isCrawlDone) => fetch(API_URL + "/shop/isCrawlDone?shopid=" 
+            + shopId + "&isDone=" + isCrawlDone, {
+    method: 'GET',
+}).then(response => response.json())
 
 
 // shop-raw API
