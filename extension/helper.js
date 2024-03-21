@@ -27,7 +27,7 @@ const getPhone = (inputString) => {
 //Get Address of shop
 const getAddress = (inputString) => {
   // Get by: place, address, địa chỉ
-  const stringTest = `Chào mừng bạn đã đến với cửa hàng online của TTSHOP,đến với TTSHOP các bạn thỏa sức mua sắm các mặt hàng áo thun tay lỡ quần baggy quần jean và các mặt hàng thời trang các cũng như các mặt hàng thời trang unisex-địa điểm : Hải dương- sdt : 0937406732- thời gian trả lời chat từ 8h-17h-nhập VUMITDTK-giảm 5% đơn hàng từ 99kscảm ơn các bạn đã ghé qua shop`;
+  const stringTest = `"\u003c3 Tuyển ctv toàn quốc lấy hàng giá tận gốc\nVàng Bạc Khải Khải - Trang Sức Bạc 9999 cam kết :\n1 - Sản phẩm được chế tác từ LÀNG NGHỀ VÀNG BẠC LƯƠNG NGỌC\n2 - Shop cam kết cả về chất liệu vàng bạc  cũng như KIỂU DÁNG 100% GIỐNG ẢNH \n3 - bảo hành miễn phí làm sáng trọn đời\n4 - Sau quá trình sử dụng có thể bán lại \n5 - Hoàn tiền 100% nếu không phải vàng bạc \n📞 hotline: 0839463999🏡 Add: Lương Ngọc - Thúc Kháng- Bìng Giang-Hải Dương\n😄 Admin: KHẢI KHẢI"`;
 
   const keywords = [
     "địa điểm",
@@ -40,14 +40,18 @@ const getAddress = (inputString) => {
     "đc",
     "d/c",
     "đ/c",
+    "hải dương",
+    "hai duong",
+    "hd",
+    // "add"
   ];
 
   let addressesSet = new Set();
 
   for (const keyword of keywords) {
     let startIndex = -1;
-    while ((startIndex = inputString.toLowerCase().indexOf(keyword, startIndex + 1)) !== -1) {
-      const subString = inputString.substring(startIndex);
+    while ((startIndex = stringTest.toLowerCase().indexOf(keyword, startIndex + 1)) !== -1) {
+      const subString = stringTest.substring(startIndex);
       const endIndex = subString.search(/",|\n/);
       // Nếu tìm thấy vị trí kết thúc
       if (endIndex !== -1) {
