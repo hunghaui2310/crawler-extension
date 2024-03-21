@@ -130,7 +130,8 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
                         shopid: currentShopId, 
                         rawInfo: content, 
                         detailAddress: address, 
-                        detailPhone: phone
+                        detailPhone: phone,
+                        ctime: data.ctime
                     }
                 )
             }
@@ -153,7 +154,7 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
           setTimeout(() => {
             tempShopId = currentShopId;
             if ((PAGE_SHOP + 1) * 30 > data.total) {
-                changeShopCrawlDone(currentShopId, true);
+              changeShopCrawlDone(currentShopId, true);
               window.dispatchEvent(new CustomEvent("getItemsList"));
             } else {
               window.dispatchEvent(new CustomEvent("callLoopPageShop"));

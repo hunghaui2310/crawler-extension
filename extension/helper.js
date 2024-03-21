@@ -43,7 +43,7 @@ const getAddress = (inputString) => {
     "hải dương",
     "hai duong",
     "hd",
-    // "add"
+    "add"
   ];
 
   let addressesSet = new Set();
