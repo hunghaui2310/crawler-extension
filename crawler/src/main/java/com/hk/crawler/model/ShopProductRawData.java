@@ -33,12 +33,9 @@ public class ShopProductRawData {
     @Field(name = "created_date")
     private Date createdDate;
 
-    private String catid;
-
-    public ShopProductRawData(String data, String url, String catid) {
+    public ShopProductRawData(String data, String url) {
         this.data = data;
         this.url = url;
-        this.catid = catid;
         this.createdDate = new Date();
     }
 }

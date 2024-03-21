@@ -10,4 +10,5 @@ import lombok.Setter;
 public class ShopProductRawDTO {
     private String shopid;
     private String shopLocation;
+    private String catid;
 }
