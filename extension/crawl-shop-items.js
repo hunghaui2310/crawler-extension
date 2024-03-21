@@ -141,6 +141,7 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
         request.getContent((content, mimeType) => {
           const { data } = JSON.parse(content);
           if (!data.items || (data.items && data.items.length === 0 )) {
+            changeShopCrawlDone(currentShopId, true);
             window.dispatchEvent(
                 new CustomEvent(
                     'getItemsList'
@@ -152,6 +153,7 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
           setTimeout(() => {
             tempShopId = currentShopId;
             if ((PAGE_SHOP + 1) * 30 > data.total) {
+                changeShopCrawlDone(currentShopId, true);
               window.dispatchEvent(new CustomEvent("getItemsList"));
             } else {
               window.dispatchEvent(new CustomEvent("callLoopPageShop"));
