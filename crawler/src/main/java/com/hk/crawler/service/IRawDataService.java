@@ -4,7 +4,7 @@ import com.hk.crawler.model.ProductRawData;
 import com.hk.crawler.model.ShopProductRawData;
 import com.hk.crawler.model.ShopRawData;
 
-import java.util.List;
+import java.util.Set;
 
 public interface IRawDataService {
 
@@ -14,5 +14,5 @@ public interface IRawDataService {
 
     ProductRawData saveToProductRawData(ProductRawData productRawData);
 
-    List<String> getDataCrawled();
+    Set<String> getDataCrawled();
 }

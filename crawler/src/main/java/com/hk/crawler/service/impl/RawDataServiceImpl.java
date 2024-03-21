@@ -1,6 +1,11 @@
 package com.hk.crawler.service.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hk.crawler.dto.ShopProductRawDTO;
 import com.hk.crawler.model.ProductRawData;
+import com.hk.crawler.model.Shop;
 import com.hk.crawler.model.ShopProductRawData;
 import com.hk.crawler.model.ShopRawData;
 import com.hk.crawler.repository.IProductRawDataRepository;
@@ -13,7 +18,9 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,7 +47,7 @@ public class RawDataServiceImpl implements IRawDataService {
             newShop = productRawDataList.get(0);
             newShop.setData(shopProductRawData.getData());
         } else {
-            newShop = new ShopProductRawData(shopProductRawData.getData(), shopProductRawData.getUrl(), shopProductRawData.getCatid());
+            newShop = new ShopProductRawData(shopProductRawData.getData(), shopProductRawData.getUrl());
         }
         log.info("Saved data to Shop Product Raw Data! " + Thread.currentThread().getName());
         return shopProductRawDataRepository.save(newShop);
@@ -81,8 +88,25 @@ public class RawDataServiceImpl implements IRawDataService {
     }
 
     @Override
-    public List<String> getDataCrawled() {
+    public Set<String> getDataCrawled() {
         List<ShopProductRawData> shopProductRawDataList = shopProductRawDataRepository.findAll();
-        return shopProductRawDataList.stream().map(ShopProductRawData::getCatid).collect(Collectors.toList());
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            Set<String> catids = new HashSet<>();
+            for (int i = 0; i < shopProductRawDataList.size(); i++) {
+                String data = shopProductRawDataList.get(i).getData();
+                if (data != null) {
+                    List<ShopProductRawDTO> participantJsonList = mapper.readValue(data, new TypeReference<>(){});
+                    for (int j = 0; j < participantJsonList.size(); j++) {
+                        catids.add(participantJsonList.get(j).getCatid());
+                    }
+                }
+            }
+            return catids;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            log.error("Error when parse data");
+            return null;
+        }
     }
 }
