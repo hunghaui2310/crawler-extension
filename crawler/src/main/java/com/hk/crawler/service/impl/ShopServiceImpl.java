@@ -32,6 +32,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpClientErrorException;
 
+import java.time.Instant;
+import java.time.ZoneId;
 import java.util.*;
 
 @Service
@@ -150,10 +152,19 @@ public class ShopServiceImpl implements IShopService {
         List<Shop> listShop;
         if (page != 0) {
             Pageable pageable = PageRequest.of(page, size);
-            Page shopPage = shopRepository.findAllByLastCrawlAtAfter(pageable, DateUtil.midnightToday());
+            Page shopPage;
+            if (isCrawled) {
+                shopPage = shopRepository.findAllByLastCrawlAtAfterOrLastCrawlAtIsNull(pageable, DateUtil.midnightToday());
+            } else {
+                shopPage = shopRepository.findAllByLastCrawlAtBeforeOrLastCrawlAtIsNull(pageable, DateUtil.midnightToday());
+            }
             listShop = shopPage.getContent();
         } else {
-            listShop = shopRepository.findAllByLastCrawlAtAfter(DateUtil.midnightToday());
+            if (isCrawled) {
+                listShop = shopRepository.findAllByLastCrawlAtAfterOrLastCrawlAtIsNull(DateUtil.midnightToday());
+            } else {
+                listShop = shopRepository.findAllByLastCrawlAtBeforeOrLastCrawlAtIsNull(DateUtil.midnightToday());
+            }
         }
         for (Shop shop : listShop) {
             ids.add(shop.getShopid());
@@ -195,7 +206,7 @@ public class ShopServiceImpl implements IShopService {
     @Override
     public void updateShopLastCrawlAt(String shopid) {
         Shop shop = this.findByShopId(shopid);
-        shop.setLastCrawlAt(new Date());
+        shop.setLastCrawlAt(Instant.now());
         shopRepository.save(shop);
     }
 }

@@ -14,10 +14,4 @@ public class CrawlerApplication {
 //		TimeZone.setDefault(TimeZone.getTimeZone("GMT+7:00"));
 		SpringApplication.run(CrawlerApplication.class, args);
 	}
-
-//	@PostConstruct
-//	public void init(){
-//		// Setting Spring Boot SetTimeZone
-//		TimeZone.setDefault(TimeZone.getTimeZone(ZoneId.of("Asia/Ho_Chi_Minh")));
-//	}
 }

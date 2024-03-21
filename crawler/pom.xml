@@ -15,7 +15,6 @@
 	<description>Crawler data in the web</description>
 	<properties>
 		<java.version>17</java.version>
-		<spring-boot.run.jvmArguments>-Duser.timezone=GMT+7</spring-boot.run.jvmArguments>
 	</properties>
 	<dependencies>
 		<dependency>

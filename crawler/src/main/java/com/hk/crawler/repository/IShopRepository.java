@@ -16,9 +16,9 @@ public interface IShopRepository extends MongoRepository<Shop, String> {
 
     Page<Shop> findAll(Pageable pageable);
 
-    Page<Shop> findAllByLastCrawlAtBefore(Pageable pageable, Date lastCrawlAt);
-    Page<Shop> findAllByLastCrawlAtAfter(Pageable pageable, Date lastCrawlAt);
+    Page<Shop> findAllByLastCrawlAtBeforeOrLastCrawlAtIsNull(Pageable pageable, Date lastCrawlAt);
+    Page<Shop> findAllByLastCrawlAtAfterOrLastCrawlAtIsNull(Pageable pageable, Date lastCrawlAt);
 
-    List<Shop> findAllByLastCrawlAtBefore(Date lastCrawlAt);
-    List<Shop> findAllByLastCrawlAtAfter(Date lastCrawlAt);
+    List<Shop> findAllByLastCrawlAtBeforeOrLastCrawlAtIsNull(Date lastCrawlAt);
+    List<Shop> findAllByLastCrawlAtAfterOrLastCrawlAtIsNull(Date lastCrawlAt);
 }
