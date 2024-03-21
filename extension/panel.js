@@ -74,7 +74,7 @@ getTabId();
 window.addEventListener('getCategories', (event) => {
     const {detail: {categoryTree}} = event;
     const flattenedDataCategoryTree = flattenChildren(categoryTree);
-    const slicedArray = flattenedDataCategoryTree.slice(0, 3);
+    const slicedArray = flattenedDataCategoryTree.slice(2, 3);
     localStorageManagerPanel.setItem(CATEGORY_TREE, slicedArray);
     window.dispatchEvent(
         new CustomEvent(
@@ -170,6 +170,7 @@ chrome.devtools.network.onRequestFinished.addListener(
                             out.push({
                                 shopid: item.shopid,
                                 shopLocation: item.shop_location,
+                                catid: currentCategory.catid
                             })
                         }
                     }
