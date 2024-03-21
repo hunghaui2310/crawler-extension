@@ -36,6 +36,11 @@ const getAllShopIdAPI = (isCrawled = false) => fetch(API_URL + "/shop?isCrawled=
     method: 'GET',
 }).then(response => response.json())
 
+// shop API
+const getCategoriesCrawled = () => fetch(API_URL + "/shop-product-raw/getDataCrawled", {
+    method: 'GET',
+}).then(response => response.json())
+
 /* shopInfo: {  shopid: string, 
                 rawInfo: string, 
                 detailAddress: string, 
