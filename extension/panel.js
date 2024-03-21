@@ -74,11 +74,11 @@ getTabId();
 window.addEventListener('getCategories', (event) => {
     const {detail: {categoryTree, categoriesCrawled}} = event;
     const flattenedDataCategoryTree = flattenChildren(categoryTree).filter((category) => {
-        return !categoriesCrawled.find(catid => category.catid === catid);
+        return !categoriesCrawled.find(catid => category.catid + '' === catid + '') && category.catid === 11035853;
     });
 
-    const slicedArray = flattenedDataCategoryTree.slice(2, 3);
-    localStorageManagerPanel.setItem(CATEGORY_TREE, slicedArray);
+    // const slicedArray = flattenedDataCategoryTree.slice(2, 3);
+    localStorageManagerPanel.setItem(CATEGORY_TREE, flattenedDataCategoryTree);
     window.dispatchEvent(
         new CustomEvent(
             'crawlShopByCategory'
@@ -221,6 +221,10 @@ document.getElementById('crawl-shop').addEventListener('click', () => {
 });
 
 document.getElementById('download-excel').addEventListener('click', () => {
+    const resultCrawl = document.getElementById('result-crawl');
+    const downloading = document.createElement('p');
+    downloading.textContent = 'Downloading...';
+    resultCrawl.appendChild(downloading);
     downloadExcelAPI().then(res => {
         const url = window.URL.createObjectURL(res);
         const a = document.createElement('a');
@@ -232,5 +236,6 @@ document.getElementById('download-excel').addEventListener('click', () => {
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
+        resultCrawl.remove(downloading)
     });
 });
