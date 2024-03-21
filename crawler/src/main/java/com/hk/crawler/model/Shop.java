@@ -52,21 +52,16 @@ public class Shop {
     @Field("last_crawl_at")
     private Instant lastCrawlAt;
 
-//    public void setRawInfo(String rawInfo) {
-//        if (rawInfo == null || "".equals(rawInfo)) return;
-//        if (this.rawInfo == null || this.getRawInfo().equals("")) {
-//            this.rawInfo = rawInfo;
-//        } else {
-//            this.rawInfo = this.getRawInfo().concat("\n").concat(rawInfo);
-//        }
-//    }
+    @CreatedDate
+    @Field("created_date")
+    private Date createdDate;
 
     public void setDetailAddress(String detailAddress) {
         if (detailAddress == null || "".equals(detailAddress)) return;
         if (this.detailAddress == null || this.getDetailAddress().equals("")) {
             this.detailAddress = detailAddress;
         } else {
-            this.detailAddress = this.getDetailAddress().concat("\n").concat(detailAddress);
+            this.detailAddress = this.getDetailAddress().concat("||").concat(detailAddress);
         }
     }
 
@@ -75,13 +70,9 @@ public class Shop {
         if (this.detailPhone == null || this.getDetailPhone().equals("")) {
             this.detailPhone = detailPhone;
         } else {
-            this.detailPhone = this.getDetailPhone().concat("\n").concat(detailPhone);
+            this.detailPhone = this.getDetailPhone().concat("||").concat(detailPhone);
         }
     }
-
-    @CreatedDate
-    @Field("created_date")
-    private Date createdDate;
 
     public Shop(String shopid, String shopName, String shopLocation) {
         this.shopid = shopid;
