@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -39,7 +40,7 @@ public class RawDataServiceImpl implements IRawDataService {
             newShop = productRawDataList.get(0);
             newShop.setData(shopProductRawData.getData());
         } else {
-            newShop = new ShopProductRawData(shopProductRawData.getData(), shopProductRawData.getUrl());
+            newShop = new ShopProductRawData(shopProductRawData.getData(), shopProductRawData.getUrl(), shopProductRawData.getCatid());
         }
         log.info("Saved data to Shop Product Raw Data! " + Thread.currentThread().getName());
         return shopProductRawDataRepository.save(newShop);
@@ -77,5 +78,11 @@ public class RawDataServiceImpl implements IRawDataService {
         }
         log.info("Saved data to Product Raw Data! " + Thread.currentThread().getName());
         return productRawDataRepository.save(newProduct);
+    }
+
+    @Override
+    public List<String> getDataCrawled() {
+        List<ShopProductRawData> shopProductRawDataList = shopProductRawDataRepository.findAll();
+        return shopProductRawDataList.stream().map(ShopProductRawData::getCatid).collect(Collectors.toList());
     }
 }
