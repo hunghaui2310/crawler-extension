@@ -72,8 +72,11 @@ function getTabId() {
 getTabId();
 
 window.addEventListener('getCategories', (event) => {
-    const {detail: {categoryTree}} = event;
-    const flattenedDataCategoryTree = flattenChildren(categoryTree);
+    const {detail: {categoryTree, categoriesCrawled}} = event;
+    const flattenedDataCategoryTree = flattenChildren(categoryTree).filter((category) => {
+        return !categoriesCrawled.find(catid => category.catid === catid);
+    });
+
     const slicedArray = flattenedDataCategoryTree.slice(2, 3);
     localStorageManagerPanel.setItem(CATEGORY_TREE, slicedArray);
     window.dispatchEvent(
@@ -201,11 +204,13 @@ chrome.devtools.network.onRequestFinished.addListener(
 document.getElementById('crawl-shop').addEventListener('click', () => {
     setTimeout(async () => {
         const allCategoriesData = await getAllCategories();
+        const categoriesCrawled = await getCategoriesCrawled() || [];
         window.dispatchEvent(new CustomEvent(
                 'getCategories',
                 {
                     detail: {
-                        categoryTree: allCategoriesData.data.category_list
+                        categoryTree: allCategoriesData.data.category_list,
+                        categoriesCrawled: categoriesCrawled
                     }
                 }
             )
