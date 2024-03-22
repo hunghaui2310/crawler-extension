@@ -77,15 +77,15 @@ window.addEventListener('getCategories', (event) => {
         return !categoriesCrawled.find(catid => category.catid + '' === catid + '');
     });
 
-    const slicedArray = flattenedDataCategoryTree.slice(0, 100); // Hung
+    const slicedArray = flattenedDataCategoryTree.slice(0, 10); // Hung
     // const slicedArray = flattenedDataCategoryTree.slice(100, 200); // Duy
     // const slicedArray = flattenedDataCategoryTree.slice(200, 317); // Kien
     localStorageManagerPanel.setItem(CATEGORY_TREE, slicedArray);
-    // window.dispatchEvent(
-    //     new CustomEvent(
-    //         'crawlShopByCategory'
-    //     )
-    // )
+    window.dispatchEvent(
+        new CustomEvent(
+            'crawlShopByCategory'
+        )
+    )
 });
 
 window.addEventListener('crawlShopByCategory', async (event) => {
