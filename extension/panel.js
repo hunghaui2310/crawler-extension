@@ -136,7 +136,7 @@ function routeToPage(link) {
 function buildURL(category, sortBy = 'pop', location = HASH_LOCATION) {
     let {display_name, catid, parent_catid} = category;
     display_name = display_name.replace(/&/g, '');
-    display_name = display_name.replace(/\s+/g, '-');
+    display_name = display_name.replace(/\s+|\/+/g, '-');
     let baseUrl;
     if (parent_catid !== 0) {
         baseUrl = `${display_name}-cat.${parent_catid}.${catid}`;
