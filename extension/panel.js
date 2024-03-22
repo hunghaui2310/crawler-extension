@@ -73,11 +73,12 @@ getTabId();
 
 window.addEventListener('getCategories', (event) => {
     const {detail: {categoryTree, categoriesCrawled}} = event;
-    const flattenedDataCategoryTree = flattenChildren(categoryTree).filter((category) => {
-        return !categoriesCrawled.find(catid => category.catid + '' === catid + '');
-    });
+    const flattenedDataCategoryTree = flattenChildren(categoryTree)
+    // const flattenedDataCategoryTree = flattenChildren(categoryTree).filter((category) => {
+    //     return !categoriesCrawled.find(catid => category.catid + '' === catid + '');
+    // });
 
-    const slicedArray = flattenedDataCategoryTree.slice(0, 10); // Hung
+    const slicedArray = flattenedDataCategoryTree.slice(0, 1); // Hung
     // const slicedArray = flattenedDataCategoryTree.slice(100, 200); // Duy
     // const slicedArray = flattenedDataCategoryTree.slice(200, 317); // Kien
     localStorageManagerPanel.setItem(CATEGORY_TREE, slicedArray);
