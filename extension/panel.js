@@ -44,7 +44,7 @@ let step;
 // });
 
 function getRandomTime() {
-    const arrayTime = [3000, 5000, 6000];
+    const arrayTime = [3000, 5000, 6000, 10000, 12000, 8000];
     const randomIndex = Math.floor(Math.random() * arrayTime.length);
     return arrayTime[randomIndex];
 }
