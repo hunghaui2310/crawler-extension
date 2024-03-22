@@ -74,16 +74,18 @@ getTabId();
 window.addEventListener('getCategories', (event) => {
     const {detail: {categoryTree, categoriesCrawled}} = event;
     const flattenedDataCategoryTree = flattenChildren(categoryTree).filter((category) => {
-        return !categoriesCrawled.find(catid => category.catid + '' === catid + '') && category.catid === 11035853;
+        return !categoriesCrawled.find(catid => category.catid + '' === catid + '');
     });
 
-    // const slicedArray = flattenedDataCategoryTree.slice(2, 3);
-    localStorageManagerPanel.setItem(CATEGORY_TREE, flattenedDataCategoryTree);
-    window.dispatchEvent(
-        new CustomEvent(
-            'crawlShopByCategory'
-        )
-    )
+    const slicedArray = flattenedDataCategoryTree.slice(0, 100); // Hung
+    // const slicedArray = flattenedDataCategoryTree.slice(100, 200); // Duy
+    // const slicedArray = flattenedDataCategoryTree.slice(200, 317); // Kien
+    localStorageManagerPanel.setItem(CATEGORY_TREE, slicedArray);
+    // window.dispatchEvent(
+    //     new CustomEvent(
+    //         'crawlShopByCategory'
+    //     )
+    // )
 });
 
 window.addEventListener('crawlShopByCategory', async (event) => {
