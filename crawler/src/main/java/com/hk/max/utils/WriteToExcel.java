@@ -40,6 +40,7 @@ public class WriteToExcel {
         createCell(row, 4, "Địa chỉ", style);
         createCell(row, 5, "Doanh thu", style);
         createCell(row, 6, "Ngày tạo shop", style);
+        createCell(row, 7, "Shop URL", style);
     }
 
     private void createCell(Row row, int columnCount, Object value, CellStyle style) {
@@ -74,6 +75,7 @@ public class WriteToExcel {
             createCell(row, columnCount++, shop.getAddress(), style);
             createCell(row, columnCount++, shop.getTotalRevenue(), style);
             createCell(row, columnCount++, shop.getShopCreateDate(), style);
+            createCell(row, columnCount++, shop.getShopUrl(), style);
         }
     }
 
