@@ -19,6 +19,7 @@ public class ShopExcelDTO {
     private String totalRevenue;
     private String shopLocation;
     private String shopCreateDate;
+    private String shopUrl;
 
     public ShopExcelDTO(String shopid, String name, String address, String totalRevenue, String shopLocation) {
         this.shopid = shopid;

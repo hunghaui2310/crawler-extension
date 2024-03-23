@@ -16,6 +16,7 @@ import com.hk.max.repository.IShopRepository;
 import com.hk.max.service.IProductService;
 import com.hk.max.service.IShopService;
 import com.hk.max.utils.CurrencyUtil;
+import com.hk.max.utils.DataUtil;
 import com.hk.max.utils.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -194,6 +195,7 @@ public class ShopServiceImpl implements IShopService {
             shopExcelDTO.setUsername(shop.getUsername());
             shopExcelDTO.setPhoneNumber(shop.getDetailPhone());
             shopExcelDTO.setShopCreateDate(DateUtil.convertTime(shop.getCtime()));
+            shopExcelDTO.setShopUrl(DataUtil.buildShopUrl(shop.getShopid()));
             shopExcelDTOS.add(shopExcelDTO);
         }
         return shopExcelDTOS;

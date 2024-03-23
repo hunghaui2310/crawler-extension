@@ -6,4 +6,8 @@ public class DataUtil {
         if (value instanceof String && value.equals("")) return defaultValue;
         return value == null ? defaultValue : value;
     }
+
+    public static String buildShopUrl(String shopId) {
+        return "https://shopee.vn/shop/" + shopId;
+    }
 }
