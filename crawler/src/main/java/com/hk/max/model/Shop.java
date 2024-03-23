@@ -50,6 +50,8 @@ public class Shop {
     @Field("last_crawl_at")
     private Instant lastCrawlAt;
 
+    private String catid;
+
     @CreatedDate
     @Field("created_date")
     private Date createdDate;
@@ -72,9 +74,14 @@ public class Shop {
         }
     }
 
-    public Shop(String shopid, String shopName, String shopLocation) {
+    public Shop(String shopid, String shopLocation, String catid) {
         this.shopid = shopid;
-        this.shopName = shopName;
+        if (this.catid == null || this.getCatid().equals("")) {
+            this.catid = catid;
+        } else {
+            this.catid = this.getCatid().concat("||").concat(catid);
+        }
+        this.catid = catid;
         this.shopLocation = shopLocation;
     }
 

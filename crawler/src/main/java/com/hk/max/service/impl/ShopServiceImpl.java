@@ -110,8 +110,7 @@ public class ShopServiceImpl implements IShopService {
                         ShopProductRawDTO dto = participantJsonList.get(j);
                         Shop optionalShop = this.findByShopId(dto.getShopid());
                         if (optionalShop == null) {
-                            Shop shop = new Shop(dto.getShopid(), dto.getShopLocation()
-                            );
+                            Shop shop = new Shop(dto.getShopid(), dto.getShopLocation(), dto.getCatid());
                             shops.add(shop);
                         }
                     }
