@@ -53,6 +53,9 @@ function flattenChildren(arr) {
     return arr.reduce((acc, curr) => {
         acc.push(curr);
         if (curr.children && curr.children.length > 0) {
+            curr.children.forEach(element => {
+                element.display_parent = curr.display_name;
+            });
             acc.push(...flattenChildren(curr.children));
             curr.children = null;
         }
@@ -73,15 +76,16 @@ getTabId();
 
 window.addEventListener('getCategories', (event) => {
     const {detail: {categoryTree, categoriesCrawled}} = event;
-    const flattenedDataCategoryTree = flattenChildren(categoryTree)
-    // const flattenedDataCategoryTree = flattenChildren(categoryTree).filter((category) => {
-    //     return !categoriesCrawled.find(catid => category.catid + '' === catid + '');
-    // });
+    // const flattenedDataCategoryTree = flattenChildren(categoryTree)
+    const flattenedDataCategoryTree = flattenChildren(categoryTree).filter((category) => {
+        return !categoriesCrawled.find(catid => category.catid + '' === catid + '');
+    });
 
-    const slicedArray = flattenedDataCategoryTree.slice(0, 1); // Hung
+    // const slicedArray = flattenedDataCategoryTree.slice(0, 1); // Hung
     // const slicedArray = flattenedDataCategoryTree.slice(100, 200); // Duy
     // const slicedArray = flattenedDataCategoryTree.slice(200, 317); // Kien
-    localStorageManagerPanel.setItem(CATEGORY_TREE, slicedArray);
+    // const slicedArray = flattenedDataCategoryTree.slice(310, 317); // Kien
+    localStorageManagerPanel.setItem(CATEGORY_TREE, flattenedDataCategoryTree);
     window.dispatchEvent(
         new CustomEvent(
             'crawlShopByCategory'
