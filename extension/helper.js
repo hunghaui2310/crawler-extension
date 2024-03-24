@@ -1,5 +1,8 @@
 // Get phone number by some format
 const getPhone = (inputString) => {
+  if (!inputString) {
+    return null;
+  }
   const stringTest =
     "0123456789 0123.123.123 0123 123 123 0123-123-123 0.1.2.3.4.5.6.7.8.9 0123.1233.12 0123 1234 12 0123-1234-12";
 
@@ -26,6 +29,9 @@ const getPhone = (inputString) => {
 
 //Get Address of shop
 const getAddress = (inputString) => {
+  if (!inputString) {
+    return null;
+  }
   // Get by: place, address, địa chỉ
   // const inputString = `"\u003c3 Tuyển ctv toàn quốc lấy hàng giá tận gốc\nVàng Bạc Khải Khải - Trang Sức Bạc 9999 cam kết :\n1 - Sản phẩm được chế tác từ LÀNG NGHỀ VÀNG BẠC LƯƠNG NGỌC\n2 - Shop cam kết cả về chất liệu vàng bạc  cũng như KIỂU DÁNG 100% GIỐNG ẢNH \n3 - bảo hành miễn phí làm sáng trọn đời\n4 - Sau quá trình sử dụng có thể bán lại \n5 - Hoàn tiền 100% nếu không phải vàng bạc \n📞 hotline: 0839463999🏡 Add: Lương Ngọc - Thúc Kháng- Bìng Giang-Hải Dương\n😄 Admin: KHẢI KHẢI"`;
 
@@ -58,10 +64,7 @@ const getAddress = (inputString) => {
       if (endIndex !== -1) {
         addressesSet.add(inputString.substring(startKey, endIndex + 1));
         continue;
-      } else {
-        addressesSet.add(subString);
-        continue;
-    }
+      }
   }
 }
 

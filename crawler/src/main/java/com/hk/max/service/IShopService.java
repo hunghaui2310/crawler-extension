@@ -20,7 +20,7 @@ public interface IShopService {
 
     String getRevenueByShop(String shopid);
 
-    List<ShopExcelDTO> getExcelData();
+    List<ShopExcelDTO> getExcelData(String catid);
 
     void updateShopLastCrawlAt(String shopid);
 }
