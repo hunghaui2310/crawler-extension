@@ -16,7 +16,7 @@ public interface IShopService {
 
     Shop updateShopInfo(ShopRawDTO shopRawDTO);
 
-    List<String> getShopByPage(boolean isCrawled, int page, int size);
+    List<String> getShopByPage(boolean isCrawled, String catid, int page, int size);
 
     String getRevenueByShop(String shopid);
 
