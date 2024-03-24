@@ -32,7 +32,7 @@ const statusRawItemAPI = (status) => fetch(API_URL + "/product-raw/status?status
 
 
 // shop API
-const getAllShopIdAPI = (isCrawled = false) => fetch(API_URL + "/shop?isCrawled=" + isCrawled, {
+const getAllShopIdAPI = (isCrawled = false, catid) => fetch(API_URL + `/shop?isCrawled=${isCrawled}&catid=${catid}`, {
     method: 'GET',
 }).then(response => response.json())
 
