@@ -16,16 +16,18 @@ public interface IShopRepository extends MongoRepository<Shop, String> {
 
     Page<Shop> findAll(Pageable pageable);
 
-//    Page<Shop> findAllByLastCrawlAtBeforeOrLastCrawlAtIsNull(Pageable pageable, Date lastCrawlAt);
-    Page<Shop> findAllByCatidAndLastCrawlAtBeforeOrLastCrawlAtIsNull(Pageable pageable, String catid, Date lastCrawlAt);
+    List<Shop> findAllByCatid(String catid);
+
+    //    Page<Shop> findAllByLastCrawlAtBeforeOrLastCrawlAtIsNull(Pageable pageable, Date lastCrawlAt);
+    Page<Shop> findAllByLastCrawlAtBeforeOrLastCrawlAtIsNullAndCatid(Pageable pageable, Date lastCrawlAt, String catid);
 
 //    Page<Shop> findAllByLastCrawlAtAfterOrLastCrawlAtIsNull(Pageable pageable, Date lastCrawlAt);
-    Page<Shop> findAllByCatidAndLastCrawlAtAfterOrLastCrawlAtIsNull(Pageable pageable, String catid, Date lastCrawlAt);
+    Page<Shop> findAllByLastCrawlAtAfterOrLastCrawlAtIsNullAndCatid(Pageable pageable, Date lastCrawlAt, String catid);
 
 //    List<Shop> findAllByLastCrawlAtBeforeOrLastCrawlAtIsNull(Date lastCrawlAt);
-    List<Shop> findAllByCatidAndLastCrawlAtBeforeOrLastCrawlAtIsNull(String catid, Date lastCrawlAt);
+    List<Shop> findAllByLastCrawlAtBeforeOrLastCrawlAtIsNullAndCatid(Date lastCrawlAt, String catid);
 
 //    List<Shop> findAllByLastCrawlAtAfterOrLastCrawlAtIsNull(Date lastCrawlAt);
-    List<Shop> findAllByCatidAndLastCrawlAtAfterOrLastCrawlAtIsNull(String catid, Date lastCrawlAt);
+    List<Shop> findAllByLastCrawlAtAfterOrLastCrawlAtIsNullAndCatid(Date lastCrawlAt, String catid);
 
 }

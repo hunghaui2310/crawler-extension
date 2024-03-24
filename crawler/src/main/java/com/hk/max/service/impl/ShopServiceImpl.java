@@ -80,7 +80,7 @@ public class ShopServiceImpl implements IShopService {
                 if (optionalShop == null) {
                     shops.add(participantJson);
                 } else {
-                    BeanUtils.copyProperties(participantJson, optionalShop, "id", "shopLocation"); // copy new value to old value
+                    BeanUtils.copyProperties(participantJson, optionalShop, "id", "shopLocation", "catid"); // copy new value to old value
                     shops.add(optionalShop);
                 }
                 if (shops.size() > 0) {
@@ -150,16 +150,16 @@ public class ShopServiceImpl implements IShopService {
             Pageable pageable = PageRequest.of(page, size);
             Page shopPage;
             if (isCrawled) {
-                shopPage = shopRepository.findAllByCatidAndLastCrawlAtAfterOrLastCrawlAtIsNull(pageable, catid , DateUtil.midnightToday());
+                shopPage = shopRepository.findAllByLastCrawlAtAfterOrLastCrawlAtIsNullAndCatid(pageable, DateUtil.midnightToday(), catid);
             } else {
-                shopPage = shopRepository.findAllByCatidAndLastCrawlAtBeforeOrLastCrawlAtIsNull(pageable, catid, DateUtil.midnightToday());
+                shopPage = shopRepository.findAllByLastCrawlAtBeforeOrLastCrawlAtIsNullAndCatid(pageable, DateUtil.midnightToday(), catid);
             }
             listShop = shopPage.getContent();
         } else {
             if (isCrawled) {
-                listShop = shopRepository.findAllByCatidAndLastCrawlAtAfterOrLastCrawlAtIsNull(catid, DateUtil.midnightToday());
+                listShop = shopRepository.findAllByLastCrawlAtAfterOrLastCrawlAtIsNullAndCatid(DateUtil.midnightToday(), catid);
             } else {
-                listShop = shopRepository.findAllByCatidAndLastCrawlAtBeforeOrLastCrawlAtIsNull(catid, DateUtil.midnightToday());
+                listShop = shopRepository.findAllByLastCrawlAtBeforeOrLastCrawlAtIsNullAndCatid(DateUtil.midnightToday(), catid);
             }
         }
         for (Shop shop : listShop) {
@@ -185,9 +185,9 @@ public class ShopServiceImpl implements IShopService {
     }
 
     @Override
-    public List<ShopExcelDTO> getExcelData() {
+    public List<ShopExcelDTO> getExcelData(String catid) {
         List<ShopExcelDTO> shopExcelDTOS = new ArrayList<>();
-        List<Shop> shops = shopRepository.findAll();
+        List<Shop> shops = shopRepository.findAllByCatid(catid);
         for (Shop shop : shops) {
             String totalRevenue = this.getRevenueByShop(shop.getShopid());
             ShopExcelDTO shopExcelDTO = new ShopExcelDTO(shop.getShopid(), shop.getShopName(), shop.getDetailAddress(), totalRevenue, shop.getShopLocation());

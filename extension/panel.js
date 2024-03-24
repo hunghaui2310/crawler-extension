@@ -232,7 +232,7 @@ document.getElementById('download-excel').addEventListener('click', () => {
     const downloading = document.createElement('p');
     downloading.textContent = 'Downloading...';
     resultCrawl.appendChild(downloading);
-    downloadExcelAPI().then(res => {
+    downloadExcelAPI(currentCatIdGlobal).then(res => {
         const url = window.URL.createObjectURL(res);
         const a = document.createElement('a');
         a.style.display = 'none';
@@ -243,6 +243,6 @@ document.getElementById('download-excel').addEventListener('click', () => {
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
-        resultCrawl.remove(downloading)
+        downloading.remove(downloading)
     });
 });

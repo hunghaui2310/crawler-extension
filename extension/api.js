@@ -68,7 +68,7 @@ const statusRawShopAPI = (status) => fetch(API_URL + "/shop-raw/status?status=" 
     method: 'GET',
 }).then(response => response.json())
 
-const downloadExcelAPI = () => fetch(API_URL + "/excel/shop", {
+const downloadExcelAPI = (catid) => fetch(API_URL + "/excel/shop?catid=" + catid, {
     method: 'GET',
 }).then(response => response.blob())
 

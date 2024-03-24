@@ -53,14 +53,14 @@ window.addEventListener('getItemsList', async (event) => {
         PAGE_SHOP = 0;
         const [firstShop, ...shops] = shopIds;
         currentShopId = firstShop;
-        let shop_crawled;
-        if (localStorageManager.getItem(SHOP_CRAWLED_IDS)) {
-            shop_crawled = [currentShopId, ...localStorageManager.getItem(SHOP_CRAWLED_IDS)];
-        } else {
-            shop_crawled = [currentShopId];
-        }
-        localStorageManager.removeItem(SHOP_CRAWLED_IDS);
-        localStorageManager.setItem(SHOP_CRAWLED_IDS, shop_crawled);
+        // let shop_crawled;
+        // if (localStorageManager.getItem(SHOP_CRAWLED_IDS)) {
+        //     shop_crawled = [currentShopId, ...localStorageManager.getItem(SHOP_CRAWLED_IDS)];
+        // } else {
+        //     shop_crawled = [currentShopId];
+        // }
+        // localStorageManager.removeItem(SHOP_CRAWLED_IDS);
+        // localStorageManager.setItem(SHOP_CRAWLED_IDS, shop_crawled);
         localStorageManager.removeItem(SHOP_IDS);
         localStorageManager.setItem(SHOP_IDS, shops);
         crawlShopItems(currentShopId);
