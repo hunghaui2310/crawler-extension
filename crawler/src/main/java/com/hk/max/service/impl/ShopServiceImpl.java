@@ -142,7 +142,7 @@ public class ShopServiceImpl implements IShopService {
     }
 
     @Override
-    public List<String> getShopByPage(boolean isCrawled, int page, int size) {
+    public List<String> getShopByPage(boolean isCrawled, String catid, int page, int size) {
         log.info("Thread to filter shop by id! " + Thread.currentThread().getName());
         List<String> ids = new ArrayList<>();
         List<Shop> listShop;
@@ -150,16 +150,16 @@ public class ShopServiceImpl implements IShopService {
             Pageable pageable = PageRequest.of(page, size);
             Page shopPage;
             if (isCrawled) {
-                shopPage = shopRepository.findAllByLastCrawlAtAfterOrLastCrawlAtIsNull(pageable, DateUtil.midnightToday());
+                shopPage = shopRepository.findAllByCatidAndLastCrawlAtAfterOrLastCrawlAtIsNull(pageable, catid , DateUtil.midnightToday());
             } else {
-                shopPage = shopRepository.findAllByLastCrawlAtBeforeOrLastCrawlAtIsNull(pageable, DateUtil.midnightToday());
+                shopPage = shopRepository.findAllByCatidAndLastCrawlAtBeforeOrLastCrawlAtIsNull(pageable, catid, DateUtil.midnightToday());
             }
             listShop = shopPage.getContent();
         } else {
             if (isCrawled) {
-                listShop = shopRepository.findAllByLastCrawlAtAfterOrLastCrawlAtIsNull(DateUtil.midnightToday());
+                listShop = shopRepository.findAllByCatidAndLastCrawlAtAfterOrLastCrawlAtIsNull(catid, DateUtil.midnightToday());
             } else {
-                listShop = shopRepository.findAllByLastCrawlAtBeforeOrLastCrawlAtIsNull(DateUtil.midnightToday());
+                listShop = shopRepository.findAllByCatidAndLastCrawlAtBeforeOrLastCrawlAtIsNull(catid, DateUtil.midnightToday());
             }
         }
         for (Shop shop : listShop) {

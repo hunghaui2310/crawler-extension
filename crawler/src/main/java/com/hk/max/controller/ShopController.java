@@ -16,10 +16,11 @@ public class ShopController {
 
     @GetMapping("")
     public ResponseEntity<?> getAll(@RequestParam(required = false, defaultValue = "false", name = "isCrawled") boolean isCrawled,
+                                    @RequestParam(required = false, defaultValue = "", name = "catid") String catid,
                                     @RequestParam(required = false, defaultValue = "0") int page,
                                     @RequestParam(required = false, defaultValue = "10") int size) {
         try {
-            return new ResponseEntity<>(shopService.getShopByPage(isCrawled, page, size), HttpStatus.OK);
+            return new ResponseEntity<>(shopService.getShopByPage(isCrawled, catid, page, size), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(e.getCause(), HttpStatus.INTERNAL_SERVER_ERROR);
