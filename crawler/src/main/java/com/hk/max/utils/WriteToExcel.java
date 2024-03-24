@@ -9,6 +9,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class WriteToExcel {
@@ -22,8 +23,8 @@ public class WriteToExcel {
         workbook = new XSSFWorkbook();
     }
 
-    private void writeHeaderLine() {
-        sheet = workbook.createSheet("Hải Dương_" + DateUtil.getCurrentTimeStamp(null));
+    private void writeHeaderLine(String name) {
+        sheet = workbook.createSheet("Hải Dương_" + name + DateUtil.getCurrentTimeStamp(null));
 
         Row row = sheet.createRow(0);
 
@@ -56,7 +57,7 @@ public class WriteToExcel {
         cell.setCellStyle(style);
     }
 
-    private void writeDataLines() {
+    private void writeDataLines(List<ShopExcelDTO> shops) {
         int rowCount = 1;
 
         CellStyle style = workbook.createCellStyle();
@@ -80,8 +81,14 @@ public class WriteToExcel {
     }
 
     public void export(HttpServletResponse response) throws IOException {
-        writeHeaderLine();
-        writeDataLines();
+//        for (int i = 0; i < 3; i++) {
+            writeHeaderLine("1");
+            writeDataLines(shops.subList(0, 1000));
+        writeHeaderLine("2");
+        writeDataLines(shops.subList(1000, 2000));
+
+//        }
+
 
         ServletOutputStream outputStream = response.getOutputStream();
         workbook.write(outputStream);
