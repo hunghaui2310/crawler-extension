@@ -5,9 +5,30 @@ const SHOP_IDS = 'SHOP_IDS';
 const SHOP_CRAWLED_IDS = 'SHOP_CRAWLED_IDS';
 const localStorageManager = new LocalStorageManager();
 let urlShop;
+let currentCatIdGlobal;
+
+async function getAllCategoriesStep2() {
+  const {data: {category_list}} = await getAllCategories();
+  const flattenedDataCategoryTree = flattenChildren(category_list);
+
+  document.getElementById('category-list').innerHTML = flattenedDataCategoryTree.map(category => {
+    let categoryName;
+    categoryName = category.display_parent ? category.display_parent + '->' + category.display_name : category.display_name;
+    return `<option value="${category.catid}">${categoryName}</option>`
+  }).join('')
+  
+  currentCatIdGlobal = flattenedDataCategoryTree[0].catid;
+}
+
+getAllCategoriesStep2();
+
+document.getElementById('category-list').addEventListener('change', (event) => {
+  currentCatIdGlobal = event.target.value;
+  console.log('currentCatIdGlobal', currentCatIdGlobal);
+});
 
 window.addEventListener('getListShops', async (event) => {
-    let response = await getAllShopIdAPI();
+    let response = await getAllShopIdAPI(false, currentCatIdGlobal);
     localStorageManager.setItem(SHOP_IDS, response);
     window.dispatchEvent(
         new CustomEvent(
