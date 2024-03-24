@@ -23,8 +23,8 @@ public class WriteToExcel {
         workbook = new XSSFWorkbook();
     }
 
-    private void writeHeaderLine(String name) {
-        sheet = workbook.createSheet("Hải Dương_" + name + DateUtil.getCurrentTimeStamp(null));
+    private void writeHeaderLine() {
+        sheet = workbook.createSheet("Hải Dương_" + DateUtil.getCurrentTimeStamp(null));
 
         Row row = sheet.createRow(0);
 
@@ -57,7 +57,7 @@ public class WriteToExcel {
         cell.setCellStyle(style);
     }
 
-    private void writeDataLines(List<ShopExcelDTO> shops) {
+    private void writeDataLines() {
         int rowCount = 1;
 
         CellStyle style = workbook.createCellStyle();
@@ -81,14 +81,8 @@ public class WriteToExcel {
     }
 
     public void export(HttpServletResponse response) throws IOException {
-//        for (int i = 0; i < 3; i++) {
-            writeHeaderLine("1");
-            writeDataLines(shops.subList(0, 1000));
-        writeHeaderLine("2");
-        writeDataLines(shops.subList(1000, 2000));
-
-//        }
-
+        writeHeaderLine();
+        writeDataLines();
 
         ServletOutputStream outputStream = response.getOutputStream();
         workbook.write(outputStream);
