@@ -18,7 +18,7 @@ public interface IShopService {
 
     List<String> getShopByPage(boolean isCrawled, String catid, int page, int size);
 
-    String getRevenueByShop(String shopid);
+    String getRevenueByShop(String shopid, boolean isMin);
 
     List<ShopExcelDTO> getExcelData(String catid);
 

@@ -39,9 +39,10 @@ public class WriteToExcel {
         createCell(row, 2, "Username", style);
         createCell(row, 3, "Số điện thoại", style);
         createCell(row, 4, "Địa chỉ", style);
-        createCell(row, 5, "Doanh thu", style);
-        createCell(row, 6, "Ngày tạo shop", style);
-        createCell(row, 7, "Shop URL", style);
+        createCell(row, 5, "Doanh thu từ", style);
+        createCell(row, 6, "Doanh thu đến", style);
+        createCell(row, 7, "Ngày tạo shop", style);
+        createCell(row, 8, "Shop URL", style);
     }
 
     private void createCell(Row row, int columnCount, Object value, CellStyle style) {
@@ -74,7 +75,8 @@ public class WriteToExcel {
             createCell(row, columnCount++, shop.getUsername(), style);
             createCell(row, columnCount++, shop.getPhoneNumber(), style);
             createCell(row, columnCount++, shop.getAddress(), style);
-            createCell(row, columnCount++, shop.getTotalRevenue(), style);
+            createCell(row, columnCount++, shop.getTotalRevenueMin(), style);
+            createCell(row, columnCount++, shop.getTotalRevenueMax(), style);
             createCell(row, columnCount++, shop.getShopCreateDate(), style);
             createCell(row, columnCount++, shop.getShopUrl(), style);
         }

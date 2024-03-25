@@ -30,7 +30,7 @@ public class ShopController {
     @GetMapping("/get-revenue")
     public ResponseEntity<?> getTotalRevenue(@RequestParam(name = "shopid") String shopid) {
         try {
-            return new ResponseEntity<>(shopService.getRevenueByShop(shopid), HttpStatus.OK);
+            return new ResponseEntity<>(shopService.getRevenueByShop(shopid, false), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
