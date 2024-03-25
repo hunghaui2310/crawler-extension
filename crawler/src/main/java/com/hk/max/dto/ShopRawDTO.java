@@ -13,6 +13,7 @@ public class ShopRawDTO {
     private String username;
     private String shopName;
     private String description;
+    private Long ctime;
 
     private String rawInfo;
     private String detailAddress;

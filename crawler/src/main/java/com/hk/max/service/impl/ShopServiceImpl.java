@@ -80,7 +80,7 @@ public class ShopServiceImpl implements IShopService {
                 if (optionalShop == null) {
                     shops.add(participantJson);
                 } else {
-                    BeanUtils.copyProperties(participantJson, optionalShop, "id", "shopLocation", "catid"); // copy new value to old value
+                    BeanUtils.copyProperties(participantJson, optionalShop, "id", "shopLocation", "catid", "ctime"); // copy new value to old value
                     shops.add(optionalShop);
                 }
                 if (shops.size() > 0) {
@@ -137,6 +137,7 @@ public class ShopServiceImpl implements IShopService {
         newShopData.setRawInfo(shopRawDTO.getRawInfo());
         newShopData.setDetailPhone(shopRawDTO.getDetailPhone());
         newShopData.setDetailAddress(shopRawDTO.getDetailAddress());
+        newShopData.setCtime(shopRawDTO.getCtime());
         shopRepository.save(newShopData);
         return newShopData;
     }
@@ -169,11 +170,11 @@ public class ShopServiceImpl implements IShopService {
     }
 
     @Override
-    public String getRevenueByShop(String shopid) {
+    public String getRevenueByShop(String shopid, boolean isMin) {
         List<Product> products = productService.filterByShop(shopid);
         Long totalRevenue = 0L;
         for (Product product : products) {
-            Long price = product.getPrice_max();
+            Long price = isMin ? product.getPrice_min() : product.getPrice_max();
             if (price == null) {
                 price = product.getPrice();
             }
@@ -189,8 +190,9 @@ public class ShopServiceImpl implements IShopService {
         List<ShopExcelDTO> shopExcelDTOS = new ArrayList<>();
         List<Shop> shops = shopRepository.findAllByCatid(catid);
         for (Shop shop : shops) {
-            String totalRevenue = this.getRevenueByShop(shop.getShopid());
-            ShopExcelDTO shopExcelDTO = new ShopExcelDTO(shop.getShopid(), shop.getShopName(), shop.getDetailAddress(), totalRevenue, shop.getShopLocation());
+            String totalRevenueMin = this.getRevenueByShop(shop.getShopid(), true);
+            String totalRevenueMax = this.getRevenueByShop(shop.getShopid(), false);
+            ShopExcelDTO shopExcelDTO = new ShopExcelDTO(shop.getShopid(), shop.getShopName(), shop.getDetailAddress(), totalRevenueMin, totalRevenueMax, shop.getShopLocation());
             shopExcelDTO.setUsername(shop.getUsername());
             shopExcelDTO.setPhoneNumber(shop.getDetailPhone());
             shopExcelDTO.setShopCreateDate(DateUtil.convertTime(shop.getCtime()));

@@ -15,7 +15,8 @@ public class CurrencyUtil {
         df.setCurrency(currency);
         NumberFormat numberFormat = NumberFormat.getCurrencyInstance(locale);
         numberFormat.setCurrency(currency);
-        return numberFormat.format(price);
+        String currencySymbol = Currency.getInstance(locale).getSymbol();
+        return numberFormat.format(price).replace(currencySymbol, "").trim();
     }
 
     public static Long removeLastNDigits(Long x, long n) {
