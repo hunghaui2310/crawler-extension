@@ -23,4 +23,6 @@ public interface IShopService {
     List<ShopExcelDTO> getExcelData(String catid);
 
     void updateShopLastCrawlAt(String shopid);
+
+    void testThread();
 }
