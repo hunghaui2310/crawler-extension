@@ -138,7 +138,7 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
       if (request.request.url && request.request.url.includes("get_shop_tab")) {
         request.getContent((content, mimeType) => {
           // console.log('content', content);
-    
+
           if (tempShopId !== currentShopId) {
             const { data } = JSON.parse(content);
             // console.log("phone: " + getPhone(content));
