@@ -27,6 +27,17 @@ public class ShopController {
         }
     }
 
+    @GetMapping("test")
+    public ResponseEntity<?> getAll() {
+        try {
+            shopService.testThread();
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getCause(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/get-revenue")
     public ResponseEntity<?> getTotalRevenue(@RequestParam(name = "shopid") String shopid) {
         try {

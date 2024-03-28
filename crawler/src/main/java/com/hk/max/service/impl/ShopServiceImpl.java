@@ -3,6 +3,7 @@ package com.hk.max.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hk.max.concurrence.ShopProductRawTask;
 import com.hk.max.dto.ShopExcelDTO;
 import com.hk.max.dto.ShopProductRawDTO;
 import com.hk.max.dto.ShopRawDTO;
@@ -207,5 +208,14 @@ public class ShopServiceImpl implements IShopService {
         Shop shop = this.findByShopId(shopid);
         shop.setLastCrawlAt(Instant.now());
         shopRepository.save(shop);
+    }
+
+    @Override
+    public void testThread() {
+        for (int i = 0; i < 10; i++) {
+            ShopProductRawTask shopProductRawTask = new ShopProductRawTask();
+            Thread thread = new Thread(shopProductRawTask);
+            thread.start();
+        }
     }
 }
