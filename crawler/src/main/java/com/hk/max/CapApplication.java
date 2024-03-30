@@ -1,26 +1,29 @@
 package com.hk.max;
 
+import com.hk.max.service.ICacheService;
 import com.hk.max.utils.AppUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.event.EventListener;
 
 import org.openqa.selenium.WebDriver;
 
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @SpringBootApplication
 @Slf4j
+@EnableCaching
 public class CapApplication {
+
+	@Autowired
+	private ICacheService cacheService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CapApplication.class, args);
@@ -60,18 +63,11 @@ public class CapApplication {
 //			robot.keyRelease(KeyEvent.VK_META);
 		// run python code to simulate key down
 		String pythonCmd = "python3 " + rootDir + "/autorun.py";
-			boolean result = AppUtils.RunCmd(pythonCmd);
-//			if (result) {
+		boolean result = AppUtils.RunCmd(pythonCmd);
+			if (result) {
+				cacheService.set("login", "1");
 //				driver.get(this.shopeeLink);
-//				try {
-//					Thread.sleep(5000);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
-////				driver.get("https://shopee.vn");
-////				this.autoLogin(driver);
-//				// send a socket to FE to auto crawl starting
-//			}
+			}
 
 		// Close the WebDriver
 //		driver.quit();

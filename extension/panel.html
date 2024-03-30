@@ -18,6 +18,8 @@ limitations under the License.
   <html style="display: flex">
     <head>
       <meta charset="utf8" />
+      <script src="./libs/sockjs-client.min.js"></script>
+      <script src="./libs/stomp.min.js"></script>
       <style>
         html {
           display: flex;
@@ -50,7 +52,8 @@ limitations under the License.
         <select name="category" id="category-list">
         </select>
         <div id="result-crawl">
-        </div> 
+        </div>
+        <div id="output"></div>
       </div>
       <!-- <button id="press">Press to Scroll</button> -->
       <script type="application/javascript" src="storage.js"></script>

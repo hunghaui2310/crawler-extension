@@ -83,6 +83,11 @@ const getAllCategories = () => fetch('./get_category_tree.json', {
   method: 'GET',
 }).then(response => response.json())
 
+// check Server status
+const checkServerAPI = () => fetch(API_URL + "/status", {
+    method: 'GET',
+}).then(response => response.json())
+
 const getListShop = {
   items: [98353787, 255447711],
   count: 2

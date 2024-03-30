@@ -24,6 +24,7 @@ let currentUrl = '';
 let currentCategory;
 let tempCategory;
 let step;
+let timeOutLoginId;
 // chrome.devtools.inspectedWindow.getResources((resources) => {
 //   resources.forEach((resource) => {
 //     if (!(resource.type in types)) {
@@ -246,3 +247,12 @@ document.getElementById('download-excel').addEventListener('click', () => {
         downloading.remove(downloading)
     });
 });
+
+timeOutLoginId = setTimeout(() => {
+    checkServerAPI().then(res => {
+        if (res == 1) {
+            document.getElementById('crawl-shop').click()
+            clearTimeout(timeOutLoginId)
+        }
+    })
+}, 5000);
