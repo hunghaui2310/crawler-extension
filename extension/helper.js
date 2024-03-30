@@ -72,3 +72,23 @@ const getAddress = (inputString) => {
 const uniqueAddresses = Array.from(addressesSet);
 return uniqueAddresses.join('\n|');
 };
+
+// starting web-socket
+// const socket = new WebSocket("ws://localhost:8080/websocket");
+
+// socket.onopen = function(event) {
+//     console.log("WebSocket connection established.");
+// };
+// socket.onmessage = function(event) {
+//     const outputDiv = document.getElementById("output");
+//     outputDiv.innerHTML += "<p>Server says: " + event.data + "</p>";
+// };
+// socket.onerror = function(error) {
+//     console.error("WebSocket error:", error);
+// };
+// function sendMessage() {
+//     const messageInput = document.getElementById("message");
+//     const message = messageInput.value;
+//     socket.send(message);
+//     messageInput.value = ""; // Clear the input field
+// }
