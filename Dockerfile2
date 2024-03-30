@@ -1,0 +1,24 @@
+# Set the base image
+FROM python:3.9-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Install necessary packages for graphical support
+RUN apt-get update && apt-get install -y \
+    x11-apps \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set the DISPLAY environment variable
+ENV DISPLAY=:0
+
+# Copy and install Python dependencies
+COPY ./requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application files
+COPY autorun.py autorun.py
+
+# Set the default command
+CMD ["python", "autorun.py"]
+

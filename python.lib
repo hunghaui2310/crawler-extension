@@ -1,4 +1,0 @@
-pip install pyautogui
-pip install pygetwindow
-pip install asyncio
-pip install websockets
