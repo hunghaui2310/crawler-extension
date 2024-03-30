@@ -3,16 +3,14 @@ package com.hk.max;
 import com.hk.max.service.ICacheService;
 import com.hk.max.utils.AppUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.event.EventListener;
-
-import org.openqa.selenium.WebDriver;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,6 +19,9 @@ import java.nio.file.Paths;
 @Slf4j
 @EnableCaching
 public class CapApplication {
+
+	@Value("${spring.app.root.dir}")
+	private String appRootDir;
 
 	@Autowired
 	private ICacheService cacheService;
@@ -35,8 +36,6 @@ public class CapApplication {
 		log.info("Starting open Google Chrome in incognito mode");
 		// Set path to the ChromeDriver executable
 //		System.setProperty("webdriver.chrome.driver", this.chromeDriverPath);
-		Path currentWorkingDir = Paths.get("").toAbsolutePath();
-		String rootDir = currentWorkingDir.getParent().toString();
 //		String extensionPath = rootDir + "/extension.crx";
 		// Path to the key file (.pem) if the extension is packed with a key
 //		String keyPath = rootDir + "/extension.pem";
@@ -62,7 +61,7 @@ public class CapApplication {
 //			robot.keyRelease(KeyEvent.VK_ALT);    // Release Option
 //			robot.keyRelease(KeyEvent.VK_META);
 		// run python code to simulate key down
-		String pythonCmd = "python3 " + rootDir + "/autorun.py";
+		String pythonCmd = "python3 " + this.appRootDir + "/autorun.py";
 		boolean result = AppUtils.RunCmd(pythonCmd);
 			if (result) {
 				cacheService.set("login", "1");
@@ -73,18 +72,18 @@ public class CapApplication {
 //		driver.quit();
 	}
 
-	private void autoLogin(WebDriver driver) {
-		WebElement useremail = driver.findElement(By.xpath("//input[@name='loginKey']"));
-		WebElement password = driver.findElement(By.xpath("//input[@name='password']"));
-		useremail.sendKeys("dungzboo@gmail.com");
-		password.sendKeys("Vietdungzykh");
-
-		WebElement formElement = driver.findElement(By.cssSelector("div#main form"));
-		formElement.findElements(By.tagName("button")).get(1).click();
+//	private void autoLogin(WebDriver driver) {
+//		WebElement useremail = driver.findElement(By.xpath("//input[@name='loginKey']"));
+//		WebElement password = driver.findElement(By.xpath("//input[@name='password']"));
+//		useremail.sendKeys("dungzboo@gmail.com");
+//		password.sendKeys("Vietdungzykh");
+//
+//		WebElement formElement = driver.findElement(By.cssSelector("div#main form"));
+//		formElement.findElements(By.tagName("button")).get(1).click();
 
 //		plants.get(1).click();
 
 //		String expectedurl= driver.getCurrentUrl();
 //		Assert.assertEquals(expectedurl,actualurl);
-	}
+//	}
 }
