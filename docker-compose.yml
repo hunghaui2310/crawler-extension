@@ -1,41 +1,31 @@
 version: "3.4"
 services:
-  # mongo:
-  #   image: mongo:latest
-  #   environment:
-  #     MONGO_INITDB_ROOT_USERNAME: admin
-  #     MONGO_INITDB_ROOT_PASSWORD: pass
-  #     DB_NAME: $DB_NAME
-  #     DB_USER: $DB_USER
-  #     DB_PASSWORD: $DB_PASSWORD
-  #   restart: always
-  #   ports:
-  #     - '27017:27017'
-  #   volumes:
-  #     # if you wish to setup additional user accounts specific per DB or with different roles you can use following entry point
-  #   - "$PWD/mongo-entrypoint/:/docker-entrypoint-initdb.d/"
-  #   # no --auth is needed here as presence of username and password add this option automatically
-  #   command: mongod
+  mongo:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pass
+      DB_NAME: $DB_NAME
+      DB_USER: $DB_USER
+      DB_PASSWORD: $DB_PASSWORD
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      # if you wish to setup additional user accounts specific per DB or with different roles you can use following entry point
+    - "$PWD/mongo-entrypoint/:/docker-entrypoint-initdb.d/"
+    # no --auth is needed here as presence of username and password add this option automatically
+    command: mongod
 
-  # spring-app:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   depends_on:
-  #     - mongo
-  #   restart: always
-  #   ports:
-  #     - "8080:8080"
-  #   environment:
-  #     - SPRING_DATASOURCE_URL=mongodb://user:pass@mongo:27017/crawler
-  #     - SPRING_MONGO_DATABASE=crawler
-  #     - APP_ROOT_DIR=/home/hungnndev/Documents/Myself/crawler-extension
-
-  python:
+  spring-app:
     build:
       context: .
-      dockerfile: Dockerfile2
-    volumes:
-      - .:/app
-    working_dir: /app
-    command: python3 autorun.py
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=mongodb://user:pass@mongo:27017/crawler
+      - SPRING_MONGO_DATABASE=crawler
