@@ -2,6 +2,7 @@ package com.hk.max;
 
 import com.hk.max.service.ICacheService;
 import com.hk.max.utils.AppUtils;
+import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,31 +10,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.event.EventListener;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 @SpringBootApplication
-@Slf4j
-@EnableCaching
 public class CapApplication {
-
-	@Value("${spring.app.root.dir}")
-	private String appRootDir;
-
-	@Autowired
-	private ICacheService cacheService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CapApplication.class, args);
 	}
 
-	@EventListener(ApplicationReadyEvent.class)
-	public void doSomethingAfterStartup() {
-		System.setProperty("java.awt.headless", "false");
-		log.info("Starting open Google Chrome in incognito mode");
+//		System.setProperty("java.awt.headless", "false");
 		// Set path to the ChromeDriver executable
 //		System.setProperty("webdriver.chrome.driver", this.chromeDriverPath);
 //		String extensionPath = rootDir + "/extension.crx";
@@ -61,16 +47,9 @@ public class CapApplication {
 //			robot.keyRelease(KeyEvent.VK_ALT);    // Release Option
 //			robot.keyRelease(KeyEvent.VK_META);
 		// run python code to simulate key down
-		String pythonCmd = "python3 " + this.appRootDir + "/autorun.py";
-		boolean result = AppUtils.RunCmd(pythonCmd);
-			if (result) {
-				cacheService.set("login", "1");
-//				driver.get(this.shopeeLink);
-			}
 
 		// Close the WebDriver
 //		driver.quit();
-	}
 
 //	private void autoLogin(WebDriver driver) {
 //		WebElement useremail = driver.findElement(By.xpath("//input[@name='loginKey']"));
