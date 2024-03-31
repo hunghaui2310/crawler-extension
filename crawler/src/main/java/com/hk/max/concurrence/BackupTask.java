@@ -2,9 +2,11 @@ package com.hk.max.concurrence;
 
 import com.hk.max.utils.AppUtils;
 import com.hk.max.utils.DateUtil;
+import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
@@ -22,9 +24,23 @@ public class BackupTask {
     @Autowired
     private MongoTemplate mongoTemplate;
 
+    @Value("${spring.app.backup_dir}")
+    private String backupDir;
+
+    @PostConstruct
+    public void backupDataAtStartup() {
+        log.info("Called to startup");
+        this.backupData();
+    }
+
     @PreDestroy
     public void backupDataBeforeShutdown() {
-        log.info("Called to backup data before shutdown");
+        log.info("Called to before shutdown");
+        this.backupData();
+    }
+
+    public void backupData() {
+        log.info("Called to backup data: " + this.backupDir);
         Set<String> collectionNames = mongoTemplate.getCollectionNames();
 
         for (String collectionName : collectionNames) {
@@ -34,11 +50,11 @@ public class BackupTask {
         }
     }
 
-    private void writeCollectionDataToFile(String collectionName, List<Object> collectionData) {
-        Path currentWorkingDir = Paths.get("").toAbsolutePath();
-        String rootDir = currentWorkingDir.toString();
+    public void writeCollectionDataToFile(String collectionName, List<Object> collectionData) {
+//        Path currentWorkingDir = Paths.get("").toAbsolutePath();
+//        String rootDir = currentWorkingDir.toString();
         String today = DateUtil.getCurrentTimeStamp(null);
-        String dir = rootDir + "/backup/" + today;
+        String dir = this.backupDir + "/backup/" + today;
         AppUtils.createFolderIfNotExist(dir);
 
         String fileName = dir + "/" + collectionName + ".json";
