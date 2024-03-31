@@ -18,6 +18,7 @@ services:
     command: mongod
 
   spring-app:
+    image: backend
     build:
       context: .
       dockerfile: Dockerfile
@@ -26,6 +27,10 @@ services:
     restart: always
     ports:
       - "8080:8080"
+      # mount dir to save data backup
+    volumes:
+      - /Users/dabeeovina/Downloads/docker:/home
     environment:
       - SPRING_DATASOURCE_URL=mongodb://user:pass@mongo:27017/crawler
       - SPRING_MONGO_DATABASE=crawler
+      - SPRING_APP_BACKUP_DIR=/home
