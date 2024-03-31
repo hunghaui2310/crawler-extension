@@ -3,6 +3,7 @@ package com.hk.max.utils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -46,5 +47,13 @@ public class AppUtils {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static boolean createFolderIfNotExist(String directoryPath) {
+        File directory = new File(directoryPath);
+        if (!directory.exists()) {
+            return directory.mkdirs();
+        }
+        return false;
     }
 }
