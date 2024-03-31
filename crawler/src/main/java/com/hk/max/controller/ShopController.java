@@ -1,6 +1,7 @@
 package com.hk.max.controller;
 
 import com.hk.max.dto.ShopRawDTO;
+import com.hk.max.service.IRawDataService;
 import com.hk.max.service.IShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,9 @@ public class ShopController {
 
     @Autowired
     IShopService shopService;
+
+    @Autowired
+    IRawDataService rawDataService;
 
     @GetMapping("")
     public ResponseEntity<?> getAll(@RequestParam(required = false, defaultValue = "false", name = "isCrawled") boolean isCrawled,
@@ -30,7 +34,7 @@ public class ShopController {
     @GetMapping("test")
     public ResponseEntity<?> getAll() {
         try {
-            shopService.testThread();
+            rawDataService.saveFromFile();
             return new ResponseEntity<>(true, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();

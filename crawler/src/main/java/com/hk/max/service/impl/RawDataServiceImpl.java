@@ -17,6 +17,8 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -105,6 +107,30 @@ public class RawDataServiceImpl implements IRawDataService {
             e.printStackTrace();
             log.error("Error when parse data");
             return null;
+        }
+    }
+
+    @Transactional
+    @Override
+    public void saveFromFile() {
+        String filePath = "/Users/dabeeovina/Desktop/data_duy.json";
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            List<ShopProductRawData> participantJsonList = mapper.readValue(new File(filePath), new TypeReference<>(){});
+            for (ShopProductRawData productRawData : participantJsonList) {
+                List<ShopProductRawData> shopProductRawDatas = shopProductRawDataRepository.findAllByUrl(productRawData.getUrl());
+                if (shopProductRawDatas.size() > 0) {
+                    for (ShopProductRawData shopProductRawData : shopProductRawDatas) {
+                        shopProductRawData.setData(productRawData.getUrl());
+                    }
+                    shopProductRawDataRepository.saveAll(shopProductRawDatas);
+                } else {
+                    shopProductRawDataRepository.save(new ShopProductRawData(productRawData.getData(), productRawData.getUrl()));
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            log.error("Error when parse data");
         }
     }
 }

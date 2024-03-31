@@ -23,8 +23,6 @@ def setCurrentAccount(new_value):
 def read_account():
     with open(root_directory + '/accounts.json', 'r') as file:
         data = json.load(file)
-    # Define the time threshold (1 hour ago)
-    # Search for a row with lastUpdate 1 hour ago
     found_index = None
     max_time_difference = None
     for index, row in enumerate(data):
@@ -45,7 +43,6 @@ def read_account():
             json.dump(data, file)
 
 
-    global currentAccount
 def open_chrome_incognito(url):
     system = platform.system()
     if system == 'Windows':

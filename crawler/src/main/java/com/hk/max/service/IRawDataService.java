@@ -15,4 +15,6 @@ public interface IRawDataService {
     ProductRawData saveToProductRawData(ProductRawData productRawData);
 
     Set<String> getDataCrawled();
+
+    void saveFromFile();
 }
