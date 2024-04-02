@@ -89,8 +89,5 @@ socket.onerror = function(error) {
     console.error("WebSocket error:", error);
 };
 function sendMessage() {
-    const messageInput = document.getElementById("message");
-    const message = messageInput.value;
-    socket.send(message);
-    messageInput.value = ""; // Clear the input field
+  socket.send(message);
 }
