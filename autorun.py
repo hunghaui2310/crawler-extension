@@ -11,6 +11,12 @@ import websockets
 
 urlShopee = 'https://shopee.vn/buyer/login?next=https%3A%2F%2Fshopee.vn%2F'
 currentAccount = {}
+isSuccess = True
+
+
+def setCurrentAccount(new_value):
+    global currentAccount
+    currentAccount = new_value
 
 # Starting websocket
 # Store a reference to connected clients
@@ -29,12 +35,14 @@ async def echo(websocket, path):
         connected_clients.remove(websocket)
 
 async def send_message():
-    # while True:
+    global isSuccess
+    while isSuccess:
         # Send a message to each connected client
-    for client in connected_clients:
-        await client.send("Hello from server!")
-    # Wait for 5 seconds before sending the next message
-    await asyncio.sleep(5)
+        for client in connected_clients:
+            await client.send("Hello from server!")
+            setIsSuccess(False)
+        # Wait for 5 seconds before sending the next message
+        await asyncio.sleep(5)
 
 start_server = websockets.serve(echo, "localhost", 8765)
 
@@ -46,9 +54,9 @@ asyncio.get_event_loop().run_until_complete(start_server)
 
 root_directory = os.path.dirname(os.path.abspath(__file__))
 
-def setCurrentAccount(new_value):
-    global currentAccount
-    currentAccount = new_value
+def setIsSuccess(new_value):
+    global isSuccess
+    isSuccess = new_value
 
 def read_account():
     with open(root_directory + '/accounts.json', 'r') as file:
@@ -109,18 +117,16 @@ def auto_open_console_and_nav_extension():
     system = platform.system()
     if system == 'Darwin':  # macOS
         pyautogui.hotkey('command' , 'option', 'j')
-        pyautogui.keyDown('command')
+        time.sleep(1)
         for x in range(2):
-            pyautogui.keyDown('[')
-            time.sleep(0.5)
-            pyautogui.keyUp('[')
-        pyautogui.keyUp('command')
+            pyautogui.hotkey('command', '[')
+            time.sleep(1)
     else:
         pyautogui.hotkey('ctrl', 'shift', 'j')
         time.sleep(1)
         for x in range(2):
             pyautogui.hotkey('ctrl', '[')
-            time.sleep(0.5)
+            time.sleep(1)
     time.sleep(3)
     asyncio.ensure_future(send_message())
 
