@@ -113,7 +113,7 @@ public class RawDataServiceImpl implements IRawDataService {
     @Transactional
     @Override
     public void saveFromFile() {
-        String filePath = "/Users/dabeeovina/Desktop/data_duy.json";
+        String filePath = "/Users/dabeeovina/Desktop/data_again.json";
         ObjectMapper mapper = new ObjectMapper();
         try {
             List<ShopProductRawData> participantJsonList = mapper.readValue(new File(filePath), new TypeReference<>(){});
@@ -121,7 +121,7 @@ public class RawDataServiceImpl implements IRawDataService {
                 List<ShopProductRawData> shopProductRawDatas = shopProductRawDataRepository.findAllByUrl(productRawData.getUrl());
                 if (shopProductRawDatas.size() > 0) {
                     for (ShopProductRawData shopProductRawData : shopProductRawDatas) {
-                        shopProductRawData.setData(productRawData.getUrl());
+                        shopProductRawData.setData(productRawData.getData());
                     }
                     shopProductRawDataRepository.saveAll(shopProductRawDatas);
                 } else {
