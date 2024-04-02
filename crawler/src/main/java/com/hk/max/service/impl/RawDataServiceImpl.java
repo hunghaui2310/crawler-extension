@@ -37,7 +37,6 @@ public class RawDataServiceImpl implements IRawDataService {
     private IShopRawDataRepository shopRawDataRepository;
 
     @Override
-    @Async("threadPoolTaskExecutor")
     @Transactional
     public ShopProductRawData saveToShopProductRawData(ShopProductRawData shopProductRawData) {
         log.info("Saving data to Shop Product Raw Data! " + Thread.currentThread().getName());
@@ -54,7 +53,6 @@ public class RawDataServiceImpl implements IRawDataService {
     }
 
     @Override
-    @Async("threadPoolTaskExecutor")
     @Transactional
     public ShopRawData saveToShopRawData(ShopRawData shopRawData) {
         log.info("Saving data to Shop Raw Data! " + Thread.currentThread().getName());
@@ -71,7 +69,6 @@ public class RawDataServiceImpl implements IRawDataService {
     }
 
     @Override
-    @Async("threadPoolTaskExecutor")
     @Transactional
     public ProductRawData saveToProductRawData(ProductRawData productRawData) {
         log.info("Saving data to Product Raw Data! " + Thread.currentThread().getName());
