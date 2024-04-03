@@ -25,11 +25,11 @@ connected_clients = set()
 async def echo(websocket, path):
     # Add the client to the set of connected clients
     connected_clients.add(websocket)
-    
+            
+    # Echo received messages back to the client
     try:
         async for message in websocket:
-            # Echo received messages back to the client
-            await websocket.send(message)
+            print(f"Received message from client: {message}")
     finally:
         # Remove the client from the set of connected clients when the connection is closed
         connected_clients.remove(websocket)
@@ -58,6 +58,18 @@ def setIsSuccess(new_value):
     global isSuccess
     isSuccess = new_value
 
+def update_cate(catid):
+    with open(root_directory + '/cates.json', 'r') as file:
+        data = json.load(file)
+    found_index = None
+    for index, row in enumerate(data):
+        if row['catid'] == catid:
+            found_index = index
+    if found_index is not None:
+        data[found_index]['status'] = 1
+        with open(root_directory + '/cates.json', 'w') as file:
+            json.dump(data, file)
+
 def read_account():
     with open(root_directory + '/accounts.json', 'r') as file:
         data = json.load(file)
@@ -79,6 +91,27 @@ def read_account():
         # Write updated data back to the JSON file
         with open(root_directory + '/accounts.json', 'w') as file:
             json.dump(data, file)
+
+def read_category_shopee():
+    with open(root_directory + '/extension/get_category_tree.json', 'r') as file:
+        data = json.load(file)
+    cates = []
+    for item in data['data']['category_list']:
+        obj = {
+            "status": 0,
+            "catid": item['catid']
+        }
+        cates.append(obj)
+        for child in item['children']:
+            obj2 = {
+                "status": 0,
+                "catid": child['catid']
+            }
+            cates.append(obj2)
+
+    with open(root_directory + '/cates.json', 'w') as f:
+    # Write content to the file
+        json.dump(cates, f)
 
 
 def open_chrome_incognito(url):
@@ -153,6 +186,7 @@ def auto_login():
     auto_open_console_and_nav_extension()
 
 
+# read_category_shopee()
 read_account()
 open_chrome_incognito(urlShopee)
 time.sleep(5)
