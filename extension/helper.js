@@ -1,3 +1,5 @@
+let currentCatIdGlobal;
+
 // Get phone number by some format
 const getPhone = (inputString) => {
   if (!inputString) {
@@ -81,6 +83,8 @@ socket.onopen = function(event) {
 };
 socket.onmessage = function(event) {
   const catid = event.data;
+  // TODO assign catid to catid global
+  // currentCatIdGlobal = catid;
   document.getElementById("crawl-shop").click();
     // const outputDiv = document.getElementById("output");
     // outputDiv.innerHTML += "<p>Server says: " + event.data + "</p>";
@@ -88,6 +92,6 @@ socket.onmessage = function(event) {
 socket.onerror = function(error) {
     console.error("WebSocket error:", error);
 };
-function sendMessage() {
+function sendMessage(message) {
   socket.send(message);
 }

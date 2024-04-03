@@ -5,7 +5,7 @@ const SHOP_IDS = 'SHOP_IDS';
 const SHOP_CRAWLED_IDS = 'SHOP_CRAWLED_IDS';
 const localStorageManager = new LocalStorageManager();
 let urlShop;
-let currentCatIdGlobal;
+let pageRequest = 0;
 
 async function getAllCategoriesStep2() {
   const {data: {category_list}} = await getAllCategories();
@@ -46,6 +46,11 @@ window.addEventListener('getItemsList', async (event) => {
         const step2Done = document.createElement('p');
         step2Done.textContent = 'Step 2 Done';
         document.getElementById('result-crawl').appendChild(step2Done);
+        const message = {
+          catid: currentCatIdGlobal,
+          status: 1
+        }
+        sendMessage(JSON.stringify(message));
 
         return;
     }
@@ -162,7 +167,16 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
       if (request.request.url && request.request.url.includes("shop/rcmd_items")) {
         request.getContent((content, mimeType) => {
           const { data } = JSON.parse(content);
+          ++pageRequest;
           if (!data.items || (data.items && data.items.length === 0 )) {
+            if (pageRequest >= 80) {
+              const message = {
+                catid: currentCatIdGlobal,
+                status: 2
+              }
+              sendMessage(JSON.stringify(message));
+              return;
+            };
             changeShopCrawlDone(currentShopId, true);
             window.dispatchEvent(
                 new CustomEvent(
