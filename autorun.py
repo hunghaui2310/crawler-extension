@@ -8,6 +8,7 @@ from datetime import datetime
 import os
 import asyncio
 import websockets
+import webbrowser
 
 urlShopee = 'https://shopee.vn/buyer/login?next=https%3A%2F%2Fshopee.vn%2F'
 currentAccount = {}
@@ -138,7 +139,9 @@ def read_category_shopee():
 def open_chrome_incognito(url):
     system = platform.system()
     if system == 'Windows':
-        command = 'chrome.exe --incognito'
+        chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s'
+        webbrowser.get(chrome_path).open(url)
+        return
     elif system == 'Darwin':  # macOS
         command = 'open -na "Google Chrome"'
     elif system == 'Linux':
