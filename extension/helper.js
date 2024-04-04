@@ -85,7 +85,7 @@ socket.onmessage = function(event) {
   const catid = event.data;
   // TODO assign catid to catid global
   currentCatIdGlobal = catid;
-  document.getElementById("crawl-shop").click();
+  document.getElementById("crawl-items-shop").click();
     const outputDiv = document.getElementById("output");
     outputDiv.innerHTML += "<p>Server says: " + event.data + "</p>";
 };
