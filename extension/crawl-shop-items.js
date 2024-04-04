@@ -49,9 +49,16 @@ window.addEventListener('getItemsList', async (event) => {
         const message = {
           catid: currentCatIdGlobal,
           status: 1
-        }
+        };
+        chrome.browsingData.remove(
+          {},
+          {
+            "cache": true,
+            "cacheStorage": true,
+            "cookies": true,
+          }
+        );
         sendMessage(JSON.stringify(message));
-
         return;
     }
     if (shopIds.length) {
@@ -174,6 +181,14 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
                 catid: currentCatIdGlobal,
                 status: 2
               }
+              chrome.browsingData.remove(
+                {},
+                {
+                  "cache": true,
+                  "cacheStorage": true,
+                  "cookies": true,
+                }
+              );
               sendMessage(JSON.stringify(message));
               return;
             };
