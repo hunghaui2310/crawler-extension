@@ -84,14 +84,23 @@ socket.onopen = function(event) {
 socket.onmessage = function(event) {
   const catid = event.data;
   // TODO assign catid to catid global
-  // currentCatIdGlobal = catid;
+  currentCatIdGlobal = catid;
   document.getElementById("crawl-shop").click();
-    // const outputDiv = document.getElementById("output");
-    // outputDiv.innerHTML += "<p>Server says: " + event.data + "</p>";
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML += "<p>Server says: " + event.data + "</p>";
 };
 socket.onerror = function(error) {
     console.error("WebSocket error:", error);
 };
+
+// document.getElementById('send').addEventListener('click', () => {
+//   const message = {
+//     catid: 11035568,
+//     status: 1
+//   }
+//   sendMessage(JSON.stringify(message))
+// })
+
 function sendMessage(message) {
   socket.send(message);
 }
