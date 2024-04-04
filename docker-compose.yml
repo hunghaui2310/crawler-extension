@@ -29,7 +29,7 @@ services:
       - "8080:8080"
       # mount dir to save data backup
     volumes:
-      - /Users/dabeeovina/Downloads/docker:/home
+      - C:\Data\backup:/home
     environment:
       - SPRING_DATASOURCE_URL=mongodb://user:pass@mongo:27017/crawler
       - SPRING_MONGO_DATABASE=crawler
