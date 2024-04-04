@@ -13,6 +13,15 @@ urlShopee = 'https://shopee.vn/buyer/login?next=https%3A%2F%2Fshopee.vn%2F'
 currentAccount = {}
 isSuccess = True
 
+def find_cate_to_craw():
+    with open(root_directory + '/cates.json', 'r') as file:
+        data = json.load(file)
+    found_index = None
+    for index, row in enumerate(data):
+        if row['status'] == 0:
+            found_index = index
+            break
+    return data[found_index]['catid']
 
 def setCurrentAccount(new_value):
     global currentAccount
@@ -29,7 +38,10 @@ async def echo(websocket, path):
     # Echo received messages back to the client
     try:
         async for message in websocket:
-            print(f"Received message from client: {message}")
+            update_cate(message)
+            close_chrome_tab()
+            time.sleep(3)
+            auto_run()
     finally:
         # Remove the client from the set of connected clients when the connection is closed
         connected_clients.remove(websocket)
@@ -39,7 +51,8 @@ async def send_message():
     while isSuccess:
         # Send a message to each connected client
         for client in connected_clients:
-            await client.send("Hello from server!")
+            catid = find_cate_to_craw()
+            await client.send(str(catid))
             setIsSuccess(False)
         # Wait for 5 seconds before sending the next message
         await asyncio.sleep(5)
@@ -58,17 +71,20 @@ def setIsSuccess(new_value):
     global isSuccess
     isSuccess = new_value
 
-def update_cate(catid):
-    with open(root_directory + '/cates.json', 'r') as file:
-        data = json.load(file)
-    found_index = None
-    for index, row in enumerate(data):
-        if row['catid'] == catid:
-            found_index = index
-    if found_index is not None:
-        data[found_index]['status'] = 1
-        with open(root_directory + '/cates.json', 'w') as file:
-            json.dump(data, file)
+def update_cate(infoCate):
+    parsed_data = json.loads(infoCate)
+    catid = parsed_data['catid']
+    if catid == 1:
+        with open(root_directory + '/cates.json', 'r') as file:
+            data = json.load(file)
+        found_index = None
+        for index, row in enumerate(data):
+            if row['catid'] == catid:
+                found_index = index
+        if found_index is not None:
+            data[found_index]['status'] = 1
+            with open(root_directory + '/cates.json', 'w') as file:
+                json.dump(data, file)
 
 def read_account():
     with open(root_directory + '/accounts.json', 'r') as file:
@@ -185,16 +201,18 @@ def auto_login():
     pyautogui.press('enter')
     auto_open_console_and_nav_extension()
 
-
 # read_category_shopee()
-read_account()
-open_chrome_incognito(urlShopee)
-time.sleep(5)
-# if is_chrome_focused():
-auto_login()
-# else:
-#     print("Chrome window is not focused.")
 
+def auto_run():
+    read_account()
+    open_chrome_incognito(urlShopee)
+    time.sleep(5)
+    # if is_chrome_focused():
+    auto_login()
+    # else:
+    #     print("Chrome window is not focused.")
+
+auto_run()
 
 # Start a task to send messages to clients asynchronously
 
