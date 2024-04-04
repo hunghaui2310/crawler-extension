@@ -38,13 +38,17 @@ async def echo(websocket, path):
     # Echo received messages back to the client
     try:
         async for message in websocket:
+            connected_clients.remove(websocket)
             update_cate(message)
+            time.sleep(3)
             close_chrome_tab()
+            setIsSuccess(True)
             time.sleep(3)
             auto_run()
     finally:
+        print(f'remove')
         # Remove the client from the set of connected clients when the connection is closed
-        connected_clients.remove(websocket)
+        # connected_clients.remove(websocket)
 
 async def send_message():
     global isSuccess
@@ -73,13 +77,14 @@ def setIsSuccess(new_value):
 
 def update_cate(infoCate):
     parsed_data = json.loads(infoCate)
+    status = parsed_data['status']
     catid = parsed_data['catid']
-    if catid == 1:
+    if int(status) == 1:
         with open(root_directory + '/cates.json', 'r') as file:
             data = json.load(file)
         found_index = None
         for index, row in enumerate(data):
-            if row['catid'] == catid:
+            if int(row['catid']) == int(catid):
                 found_index = index
         if found_index is not None:
             data[found_index]['status'] = 1
@@ -135,7 +140,7 @@ def open_chrome_incognito(url):
     if system == 'Windows':
         command = 'chrome.exe --incognito'
     elif system == 'Darwin':  # macOS
-        command = 'open -na "Google Chrome" --args --incognito'
+        command = 'open -na "Google Chrome"'
     elif system == 'Linux':
         command = 'google-chrome --incognito'
     else:
@@ -206,7 +211,7 @@ def auto_login():
 def auto_run():
     read_account()
     open_chrome_incognito(urlShopee)
-    time.sleep(5)
+    time.sleep(7)
     # if is_chrome_focused():
     auto_login()
     # else:
