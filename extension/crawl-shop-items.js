@@ -96,12 +96,6 @@ async function crawlShopItems(shopId) {
     routeToPage(url);
 }
 
-function getRandomTime() {
-    const arrayTime = [3000, 5000, 6000];
-    const randomIndex = Math.floor(Math.random() * arrayTime.length);
-    return arrayTime[randomIndex];
-}
-
 function saveShop(data, phone, address) {
   const out = {
     shopid: data.shopid,
@@ -117,7 +111,7 @@ function saveShop(data, phone, address) {
 
 chrome.devtools.network.onRequestFinished.addListener(function (request) {
   if(step === 2) {
-    if(request.request.url && request.request.url.includes('shpsec/web/report')) {
+    if(request.request.url && request.request.url.includes('captcha/generate')) {
       const message = {
         catid: currentCatIdGlobal,
         status: 2
@@ -161,11 +155,13 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
             )
             if (data.item_count === 0) {
               changeShopCrawlDone(currentShopId, true);
-              window.dispatchEvent(
+              setTimeout(() => {
+                window.dispatchEvent(
                   new CustomEvent(
                       'getItemsList'
                   )
-              )
+                )
+              }, getRandomTime());
               return;
             }
           }
@@ -217,11 +213,13 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
               return;
             };
             changeShopCrawlDone(currentShopId, true);
-            window.dispatchEvent(
+            setTimeout(() => {
+              window.dispatchEvent(
                 new CustomEvent(
                     'getItemsList'
                 )
-            )
+              )
+            }, getRandomTime());
             return;
         }
           saveRawProductAPI(JSON.stringify(data.items), urlShop);
