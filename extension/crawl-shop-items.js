@@ -117,6 +117,21 @@ function saveShop(data, phone, address) {
 
 chrome.devtools.network.onRequestFinished.addListener(function (request) {
   if(step === 2) {
+    if(request.request.url && request.request.url.includes('shpsec/web/report')) {
+      const message = {
+        catid: currentCatIdGlobal,
+        status: 2
+      }
+      chrome.browsingData.remove(
+        {},
+        {
+          "cache": true,
+          "cacheStorage": true,
+          "cookies": true,
+        }
+      );
+      sendMessage(JSON.stringify(message));
+    }
     if (request.request.url && request.request.url.includes("get_shop_base")) {
         request.getContent((content, mimeType) => {
           // console.log('content', content);
