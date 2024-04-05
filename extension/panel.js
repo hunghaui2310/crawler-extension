@@ -44,12 +44,6 @@ let timeOutLoginId;
 //   document.body.appendChild(div);
 // });
 
-function getRandomTime() {
-    const arrayTime = [3000, 5000, 6000, 10000, 12000, 8000];
-    const randomIndex = Math.floor(Math.random() * arrayTime.length);
-    return arrayTime[randomIndex];
-}
-
 function flattenChildren(arr) {
     return arr.reduce((acc, curr) => {
         acc.push(curr);
@@ -166,11 +160,13 @@ chrome.devtools.network.onRequestFinished.addListener(
                     console.log(PAGE_CATEGORY);
                     const { items } = JSON.parse(content);
                     if (!items) {
-                        window.dispatchEvent(
-                            new CustomEvent(
-                                'crawlShopByCategory'
+                        setTimeout(() => {
+                            window.dispatchEvent(
+                                new CustomEvent(
+                                    'crawlShopByCategory'
+                                )
                             )
-                        )
+                        }, getRandomTime())
                         return;
                     }
                     const out = [];

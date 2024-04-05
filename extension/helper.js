@@ -75,6 +75,12 @@ const uniqueAddresses = Array.from(addressesSet);
 return uniqueAddresses.join('\n|');
 };
 
+function getRandomTime() {
+  const randomSeconds = Math.floor(Math.random() * (72 - 40 + 1)) + 40;
+  const randomMilliseconds = randomSeconds * 1000;
+  return randomMilliseconds;
+}
+
 // starting web-socket
 const socket = new WebSocket("ws://localhost:8765");
 
