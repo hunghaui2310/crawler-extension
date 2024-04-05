@@ -144,6 +144,15 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
                     ctime: data.ctime
                 }
             )
+            if (data.item_count === 0) {
+              changeShopCrawlDone(currentShopId, true);
+              window.dispatchEvent(
+                  new CustomEvent(
+                      'getItemsList'
+                  )
+              )
+              return;
+            }
           }
         });
       }
