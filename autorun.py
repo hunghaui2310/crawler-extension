@@ -1,4 +1,4 @@
-import pyautogui
+# import pyautogui
 # import pygetwindow as gw
 import time
 import platform
@@ -10,6 +10,9 @@ import asyncio
 import websockets
 import webbrowser
 import random
+from pynput.keyboard import Key, Controller
+
+keyboard = Controller()
 
 urlShopee = 'https://shopee.vn/buyer/login?next=https%3A%2F%2Fshopee.vn%2F'
 currentAccount = {}
@@ -185,24 +188,38 @@ def close_chrome_tab():
 
 
 def auto_press(key):
-    time.sleep(0.6)
-    pyautogui.press(key)
+    keyboard.press(key)
+    time.sleep(0.5)
+    keyboard.release(key)
+    time.sleep(0.5)
+
+def press_hold(keys):
+    for key in keys:
+        keyboard.press(key)
+    for key in reversed(keys):
+        keyboard.release(key)
 
 
 def auto_open_console_and_nav_extension():
     system = platform.system()
     if system == 'Darwin':  # macOS
-        pyautogui.hotkey('command', 'option', 'j')
+        press_hold([Key.cmd, Key.alt, 'j'])
         time.sleep(1)
+        keyboard.press(Key.cmd)
         for x in range(2):
-            pyautogui.hotkey('command', '[')
-            time.sleep(1)
+            time.sleep(0.5)
+            keyboard.press('[')
+        keyboard.release('[')
+        keyboard.release(Key.cmd)
     else:
-        pyautogui.hotkey('ctrl', 'shift', 'j')
+        press_hold([Key.ctrl, Key.shift, 'j'])
         time.sleep(1)
+        keyboard.press(Key.ctrl)
         for x in range(2):
-            pyautogui.hotkey('ctrl', '[')
-            time.sleep(1)
+            time.sleep(0.5)
+            keyboard.press('[')
+        keyboard.release('[')
+        keyboard.release(Key.ctrl)
     time.sleep(3)
     asyncio.ensure_future(send_message())
 
@@ -216,16 +233,15 @@ def auto_login():
     # pyautogui.typewrite(username)
     # enter password
     time.sleep(1)
-    pyautogui.press('tab')
+    auto_press(Key.tab)
     time.sleep(1)
     password = currentAccount['password']
     passwords = list(password)
     for x in passwords:
         auto_press(x)
+    auto_press(Key.tab)
     time.sleep(1)
-    pyautogui.press('tab')
-    time.sleep(1)
-    pyautogui.press('enter')
+    auto_press(Key.enter)
     auto_open_console_and_nav_extension()
 
 # read_category_shopee()
