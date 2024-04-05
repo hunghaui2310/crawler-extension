@@ -9,6 +9,7 @@ import os
 import asyncio
 import websockets
 import webbrowser
+import random
 
 urlShopee = 'https://shopee.vn/buyer/login?next=https%3A%2F%2Fshopee.vn%2F'
 currentAccount = {}
@@ -24,32 +25,41 @@ def find_cate_to_craw():
             break
     return data[found_index]['catid']
 
+
 def setCurrentAccount(new_value):
     global currentAccount
     currentAccount = new_value
+
+
+def randomSleep():
+    sleep_time = random.uniform(30, 60)
+    time.sleep(sleep_time)
+
 
 # Starting websocket
 # Store a reference to connected clients
 connected_clients = set()
 
+
 async def echo(websocket, path):
     # Add the client to the set of connected clients
     connected_clients.add(websocket)
-            
+
     # Echo received messages back to the client
-    try:
-        async for message in websocket:
-            connected_clients.remove(websocket)
-            update_cate(message)
-            time.sleep(3)
-            close_chrome_tab()
-            setIsSuccess(True)
-            time.sleep(3)
-            auto_run()
-    finally:
-        print(f'remove')
+    # try:
+    async for message in websocket:
+        connected_clients.remove(websocket)
+        update_cate(message)
+        time.sleep(3)
+        close_chrome_tab()
+        setIsSuccess(True)
+        randomSleep()
+        auto_run()
+    # finally:
+    #     print(f'remove')
         # Remove the client from the set of connected clients when the connection is closed
         # connected_clients.remove(websocket)
+
 
 async def send_message():
     global isSuccess
@@ -72,9 +82,11 @@ asyncio.get_event_loop().run_until_complete(start_server)
 
 root_directory = os.path.dirname(os.path.abspath(__file__))
 
+
 def setIsSuccess(new_value):
     global isSuccess
     isSuccess = new_value
+
 
 def update_cate(infoCate):
     parsed_data = json.loads(infoCate)
@@ -92,27 +104,31 @@ def update_cate(infoCate):
             with open(root_directory + '/cates.json', 'w') as file:
                 json.dump(data, file)
 
+
 def read_account():
     with open(root_directory + '/accounts.json', 'r') as file:
         data = json.load(file)
     found_index = None
     max_time_difference = None
     for index, row in enumerate(data):
-        last_update = datetime.strptime(row['lastUpdate'], '%Y-%m-%d %H:%M:%S')  # Assuming lastUpdate is in 'YYYY-MM-DD HH:MM:SS' format
+        # Assuming lastUpdate is in 'YYYY-MM-DD HH:MM:SS' format
+        last_update = datetime.strptime(row['lastUpdate'], '%Y-%m-%d %H:%M:%S')
         time_difference = datetime.now() - last_update
         # Check if this row has the furthest lastUpdate
         if max_time_difference is None or time_difference > max_time_difference:
             max_time_difference = time_difference
             found_index = index
             setCurrentAccount(row)
-            
+
     if found_index is not None:
         # Update lastUpdate for the found row
-        data[found_index]['lastUpdate'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        data[found_index]['lastUpdate'] = datetime.now().strftime(
+            '%Y-%m-%d %H:%M:%S')
 
         # Write updated data back to the JSON file
         with open(root_directory + '/accounts.json', 'w') as file:
             json.dump(data, file)
+
 
 def read_category_shopee():
     with open(root_directory + '/extension/get_category_tree.json', 'r') as file:
@@ -132,7 +148,7 @@ def read_category_shopee():
             cates.append(obj2)
 
     with open(root_directory + '/cates.json', 'w') as f:
-    # Write content to the file
+        # Write content to the file
         json.dump(cates, f)
 
 
@@ -149,11 +165,12 @@ def open_chrome_incognito(url):
     else:
         print("Unsupported operating system")
         return
-    
+
     try:
         subprocess.run(command + ' ' + url, shell=True)
     except Exception as e:
         print("Error when open Google Incognito:", e)
+
 
 def close_chrome_tab():
     system = platform.system()
@@ -166,14 +183,16 @@ def close_chrome_tab():
     else:
         print("Unsupported operating system")
 
+
 def auto_press(key):
     time.sleep(0.6)
-    pyautogui.press(key)    
+    pyautogui.press(key)
+
 
 def auto_open_console_and_nav_extension():
     system = platform.system()
     if system == 'Darwin':  # macOS
-        pyautogui.hotkey('command' , 'option', 'j')
+        pyautogui.hotkey('command', 'option', 'j')
         time.sleep(1)
         for x in range(2):
             pyautogui.hotkey('command', '[')
@@ -211,6 +230,7 @@ def auto_login():
 
 # read_category_shopee()
 
+
 def auto_run():
     read_account()
     open_chrome_incognito(urlShopee)
@@ -219,6 +239,7 @@ def auto_run():
     auto_login()
     # else:
     #     print("Chrome window is not focused.")
+
 
 auto_run()
 
