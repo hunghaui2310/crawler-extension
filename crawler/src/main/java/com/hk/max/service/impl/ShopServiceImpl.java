@@ -152,16 +152,16 @@ public class ShopServiceImpl implements IShopService {
             Pageable pageable = PageRequest.of(page, size);
             Page shopPage;
             if (isCrawled) {
-                shopPage = shopRepository.findAllByLastCrawlAtAfterOrLastCrawlAtIsNullAndCatid(pageable, DateUtil.midnightToday(), catid);
+                shopPage = shopRepository.findAllByLastCrawlAtAfterOrLastCrawlAtIsNullAndCatid(pageable, DateUtil.midnightFiftyDayAgo(), catid);
             } else {
-                shopPage = shopRepository.findAllByLastCrawlAtBeforeOrLastCrawlAtIsNullAndCatid(pageable, DateUtil.midnightToday(), catid);
+                shopPage = shopRepository.findAllByLastCrawlAtBeforeOrLastCrawlAtIsNullAndCatid(pageable, DateUtil.midnightFiftyDayAgo(), catid);
             }
             listShop = shopPage.getContent();
         } else {
             if (isCrawled) {
-                listShop = shopRepository.findAllByLastCrawlAtAfterOrLastCrawlAtIsNullAndCatid(DateUtil.midnightToday(), catid);
+                listShop = shopRepository.findAllByLastCrawlAtAfterOrLastCrawlAtIsNullAndCatid(DateUtil.midnightFiftyDayAgo(), catid);
             } else {
-                listShop = shopRepository.findAllByLastCrawlAtBeforeOrLastCrawlAtIsNullAndCatid(DateUtil.midnightToday(), catid);
+                listShop = shopRepository.findAllByLastCrawlAtBeforeOrLastCrawlAtIsNullAndCatid(DateUtil.midnightFiftyDayAgo(), catid);
             }
         }
         for (Shop shop : listShop) {
