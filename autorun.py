@@ -14,7 +14,7 @@ from pynput.keyboard import Key, Controller
 
 keyboard = Controller()
 
-urlShopee = 'https://shopee.vn/buyer/login?next=https%3A%2F%2Fshopee.vn%2F'
+urlShopee = 'https://shopee.vn'
 currentAccount = {}
 isSuccess = True
 
@@ -158,7 +158,7 @@ def read_category_shopee():
 def open_chrome_incognito(url):
     system = platform.system()
     if system == 'Windows':
-        chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe %s'
+        chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe --incognito %s'
         webbrowser.get(chrome_path).open(url)
         return
     elif system == 'Darwin':  # macOS
@@ -242,17 +242,17 @@ def auto_login():
     auto_press(Key.tab)
     time.sleep(1)
     auto_press(Key.enter)
-    auto_open_console_and_nav_extension()
 
 # read_category_shopee()
 
 
 def auto_run():
-    read_account()
+    # read_account()
     open_chrome_incognito(urlShopee)
     time.sleep(7)
     # if is_chrome_focused():
-    auto_login()
+    # auto_login()
+    auto_open_console_and_nav_extension()
     # else:
     #     print("Chrome window is not focused.")
 

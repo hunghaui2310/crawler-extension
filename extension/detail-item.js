@@ -75,11 +75,11 @@ async function crawlItem(item) {
     routeToPage(url);
 }
 
-function getRandomTime() {
-    const arrayTime = [3000, 5000, 6000];
-    const randomIndex = Math.floor(Math.random() * arrayTime.length);
-    return arrayTime[randomIndex];
-}
+// function getRandomTime() {
+//     const arrayTime = [3000, 5000, 6000];
+//     const randomIndex = Math.floor(Math.random() * arrayTime.length);
+//     return arrayTime[randomIndex];
+// }
 
 chrome.devtools.network.onRequestFinished.addListener(
     function(request) {

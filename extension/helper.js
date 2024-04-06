@@ -76,9 +76,10 @@ return uniqueAddresses.join('\n|');
 };
 
 function getRandomTime() {
-  const randomSeconds = Math.floor(Math.random() * (72 - 40 + 1)) + 40;
-  const randomMilliseconds = randomSeconds * 1000;
-  return randomMilliseconds;
+  // const randomSeconds = Math.floor(Math.random() * (72 - 40 + 1)) + 40;
+  // const randomMilliseconds = randomSeconds * 1000;
+  // return randomMilliseconds;
+  return Math.floor(Math.random() * (30000 - 15000 + 1)) + 15000; // Random number between 30000ms (15s) and 60000ms (30s)
 }
 
 // starting web-socket
