@@ -28,8 +28,9 @@ public class DateUtil {
         return "";
     }
 
-    public static Date midnightToday() {
+    public static Date midnightFiftyDayAgo() {
         Calendar date = new GregorianCalendar();
+        date.set(Calendar.DAY_OF_MONTH, -15);
         date.set(Calendar.HOUR_OF_DAY, 0);
         date.set(Calendar.MINUTE, 0);
         date.set(Calendar.SECOND, 0);
