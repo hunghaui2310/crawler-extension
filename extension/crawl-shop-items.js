@@ -109,8 +109,25 @@ function saveShop(data, phone, address) {
   saveRawShopAPI(JSON.stringify(out), urlShop);
 }
 
+function checkAccountVerify() {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    if (tabs && tabs[0]) {
+      if (tabs[0].url.includes('/verify')) {
+        const message = {
+          catid: currentCatIdGlobal,
+          status: 2,
+          isActive: false,
+          username: currentUsername
+        }
+        sendMessage(JSON.stringify(message));
+      }
+    }
+  });
+}
+
 chrome.devtools.network.onRequestFinished.addListener(function (request) {
-  if(step === 2) {
+  if(2 === 2) {
+    checkAccountVerify();
     if(request.request.url && request.request.url.includes('captcha/generate')) {
       const message = {
         catid: currentCatIdGlobal,
@@ -203,8 +220,17 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
       }
       if (request.request.url && request.request.url.includes("shop/rcmd_items")) {
         request.getContent((content, mimeType) => {
-          const { data } = JSON.parse(content);
+          const { data, error } = JSON.parse(content);
           ++pageRequest;
+          if (error) {
+            setTimeout(() => {
+              window.dispatchEvent(
+                new CustomEvent(
+                    'getItemsList'
+                )
+              )
+            }, getRandomTime());
+          }
           if (!data.items || (data.items && data.items.length === 0 )) {
             if (pageRequest >= 80) {
               const message = {
