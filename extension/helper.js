@@ -89,12 +89,15 @@ socket.onopen = function(event) {
     console.log("WebSocket connection established.");
 };
 socket.onmessage = function(event) {
-  const catid = event.data;
+  let str = event.data
+  str = str.replace(/'/g, '"');
+  const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML += "<p>Crawling categorys: " + event.data + "</p>";
+  const { catid, username } = JSON.parse(str);
   // TODO assign catid to catid global
   currentCatIdGlobal = catid;
   document.getElementById("crawl-items-shop").click();
-    const outputDiv = document.getElementById("output");
-    outputDiv.innerHTML += "<p>Server says: " + event.data + "</p>";
+    
 };
 socket.onerror = function(error) {
     console.error("WebSocket error:", error);
@@ -103,7 +106,9 @@ socket.onerror = function(error) {
 // document.getElementById('send').addEventListener('click', () => {
 //   const message = {
 //     catid: 11035568,
-//     status: 1
+//     status: 1,
+//     isActive: false, // check active for account
+//     username: 'hathuhuong0605@gmail.com', // username of current account
 //   }
 //   sendMessage(JSON.stringify(message))
 // })
