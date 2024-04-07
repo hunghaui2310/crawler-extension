@@ -1,4 +1,5 @@
 let currentCatIdGlobal;
+let currentUsername;
 
 // Get phone number by some format
 const getPhone = (inputString) => {
@@ -96,6 +97,7 @@ socket.onmessage = function(event) {
   const { catid, username } = JSON.parse(str);
   // TODO assign catid to catid global
   currentCatIdGlobal = catid;
+  currentUsername = username;
   document.getElementById("crawl-items-shop").click();
     
 };
