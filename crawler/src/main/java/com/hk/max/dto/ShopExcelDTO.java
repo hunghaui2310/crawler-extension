@@ -16,13 +16,13 @@ public class ShopExcelDTO {
     private String name;
     private String phoneNumber;
     private String address;
-    private String totalRevenueMin;
-    private String totalRevenueMax;
+    private Long totalRevenueMin;
+    private Long totalRevenueMax;
     private String shopLocation;
     private String shopCreateDate;
     private String shopUrl;
 
-    public ShopExcelDTO(String shopid, String name, String address, String totalRevenueMin, String totalRevenueMax, String shopLocation) {
+    public ShopExcelDTO(String shopid, String name, String address, Long totalRevenueMin, Long totalRevenueMax, String shopLocation) {
         this.shopid = shopid;
         this.name = name;
         this.address = address;

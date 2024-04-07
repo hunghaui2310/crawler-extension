@@ -52,7 +52,9 @@ public class WriteToExcel {
             cell.setCellValue((Integer) value);
         } else if (value instanceof Boolean) {
             cell.setCellValue((Boolean) value);
-        }else {
+        } else if (value instanceof Long) {
+            cell.setCellValue((Long) value);
+        } else {
             cell.setCellValue((String) value);
         }
         cell.setCellStyle(style);
