@@ -1,5 +1,5 @@
 # import pyautogui
-# import pygetwindow as gw
+import pygetwindow as gw
 import time
 import platform
 import subprocess
@@ -8,7 +8,6 @@ from datetime import datetime
 import os
 import asyncio
 import websockets
-import webbrowser
 import random
 from pynput.keyboard import Key, Controller
 import subprocess
@@ -52,8 +51,13 @@ async def echo(websocket, path):
     # Echo received messages back to the client
     # try:
     async for message in websocket:
+        parsed_data = json.loads(message)
+        isActive = parsed_data['isActive']
+        if bool(isActive) is True:
+            update_cate(parsed_data)
+        else:
+            update_acc_inactive(parsed_data)
         connected_clients.remove(websocket)
-        update_cate(message)
         time.sleep(3)
         close_chrome_tab()
         setIsSuccess(True)
@@ -71,7 +75,7 @@ async def send_message():
         # Send a message to each connected client
         for client in connected_clients:
             catid = find_cate_to_craw()
-            await client.send(str(catid))
+            await client.send(str({ "catid": catid, "username": currentAccount['username'] }))
             setIsSuccess(False)
         # Wait for 5 seconds before sending the next message
         await asyncio.sleep(5)
@@ -80,9 +84,13 @@ start_server = websockets.serve(echo, "localhost", 8765)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 
-# def is_chrome_focused():
-#     chrome_windows = gw.getActiveWindow()
-#     return chrome_windows.strip() == 'Google Chrome'
+def is_chrome_focused():
+    # chrome_windows = gw.getActiveWindow()
+    # return chrome_windows.strip() == 'Google Chrome'
+    active_window = gw.getActiveWindow()
+    if active_window is None:
+        return False
+    return "Google Chrome" in active_window.title
 
 root_directory = os.path.dirname(os.path.abspath(__file__))
 
@@ -92,8 +100,27 @@ def setIsSuccess(new_value):
     isSuccess = new_value
 
 
-def update_cate(infoCate):
-    parsed_data = json.loads(infoCate)
+def update_acc_inactive(parsed_data):
+    print('called to qq')
+    username = parsed_data['username']
+    isActive = parsed_data['isActive']
+    if bool(isActive) is False:
+        with open(root_directory + '/accounts.json', 'r') as file:
+            data = json.load(file)
+    found_index = None
+    for index, row in enumerate(data):
+        if username == row['username']:
+            found_index = index
+
+    if found_index is not None:
+        data[found_index]['status'] = 2
+
+        # Write updated data back to the JSON file
+        with open(root_directory + '/accounts.json', 'w') as file:
+            json.dump(data, file)
+
+
+def update_cate(parsed_data):
     status = parsed_data['status']
     catid = parsed_data['catid']
     if int(status) == 1:
@@ -119,7 +146,7 @@ def read_account():
         last_update = datetime.strptime(row['lastUpdate'], '%Y-%m-%d %H:%M:%S')
         time_difference = datetime.now() - last_update
         # Check if this row has the furthest lastUpdate
-        if max_time_difference is None or time_difference > max_time_difference:
+        if (max_time_difference is None or time_difference > max_time_difference) and int(row['status']) == 1:
             max_time_difference = time_difference
             found_index = index
             setCurrentAccount(row)
@@ -160,7 +187,6 @@ def open_chrome_incognito(url):
     system = platform.system()
     if system == 'Windows':
         chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
-        # webbrowser.get(chrome_path).open(url)
         subprocess.Popen([chrome_path, "--incognito", url])
         return
     elif system == 'Darwin':  # macOS
@@ -251,11 +277,11 @@ def auto_run():
     read_account()
     open_chrome_incognito(urlShopee)
     time.sleep(7)
-    # if is_chrome_focused():
-    auto_login()
-    auto_open_console_and_nav_extension()
-    # else:
-    #     print("Chrome window is not focused.")
+    if is_chrome_focused():
+        auto_login()
+        auto_open_console_and_nav_extension()
+    else:
+        print("Chrome window is not focused.")
 
 
 auto_run()

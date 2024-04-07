@@ -1,3 +1,5 @@
 pyautogui
 asyncio
 websockets
+pynput
+pygetwindow
