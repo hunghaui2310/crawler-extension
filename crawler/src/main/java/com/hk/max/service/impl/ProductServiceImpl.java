@@ -74,6 +74,7 @@ public class ProductServiceImpl implements IProductService {
                     }
                 }
             }
+            log.info("Done to save from Product raw data! " + Thread.currentThread().getName());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             log.error("Error when parse data");
