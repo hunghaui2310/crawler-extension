@@ -48,7 +48,9 @@ window.addEventListener('getItemsList', async (event) => {
         document.getElementById('result-crawl').appendChild(step2Done);
         const message = {
           catid: currentCatIdGlobal,
-          status: 1
+          status: 1,
+          isActive: true,
+          username: currentUsername
         };
         chrome.browsingData.remove(
           {},
@@ -126,12 +128,14 @@ function checkAccountVerify() {
 }
 
 chrome.devtools.network.onRequestFinished.addListener(function (request) {
-  if(2 === 2) {
+  if(step === 2) {
     checkAccountVerify();
     if(request.request.url && request.request.url.includes('captcha/generate')) {
       const message = {
         catid: currentCatIdGlobal,
-        status: 2
+        status: 2,
+        isActive: true,
+        username: currentUsername
       }
       chrome.browsingData.remove(
         {},
@@ -235,7 +239,9 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
             if (pageRequest >= 80) {
               const message = {
                 catid: currentCatIdGlobal,
-                status: 2
+                status: 2,
+                isActive: true,
+                username: currentUsername
               }
               chrome.browsingData.remove(
                 {},
