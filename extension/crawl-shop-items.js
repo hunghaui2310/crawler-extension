@@ -134,6 +134,16 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
             // console.log('get_shop_base', content);
             //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
             const { data } = JSON.parse(content);
+            if (data.account.status === 0) {
+              setTimeout(() => {
+                window.dispatchEvent(
+                  new CustomEvent(
+                      'getItemsList'
+                  )
+                )
+              }, getRandomTime());
+              return;
+            }
             const phone = getPhone(data.description);
             const address = getAddress(data.description);
             const out = {

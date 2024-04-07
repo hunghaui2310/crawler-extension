@@ -11,10 +11,11 @@ import websockets
 import webbrowser
 import random
 from pynput.keyboard import Key, Controller
+import subprocess
 
 keyboard = Controller()
 
-urlShopee = 'https://shopee.vn'
+urlShopee = 'https://shopee.vn/buyer/login'
 currentAccount = {}
 isSuccess = True
 
@@ -158,8 +159,9 @@ def read_category_shopee():
 def open_chrome_incognito(url):
     system = platform.system()
     if system == 'Windows':
-        chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe --incognito %s'
-        webbrowser.get(chrome_path).open(url)
+        chrome_path = 'C:/Program Files/Google/Chrome/Application/chrome.exe'
+        # webbrowser.get(chrome_path).open(url)
+        subprocess.Popen([chrome_path, "--incognito", url])
         return
     elif system == 'Darwin':  # macOS
         command = 'open -na "Google Chrome"'
@@ -168,7 +170,6 @@ def open_chrome_incognito(url):
     else:
         print("Unsupported operating system")
         return
-
     try:
         subprocess.run(command + ' ' + url, shell=True)
     except Exception as e:
@@ -247,11 +248,11 @@ def auto_login():
 
 
 def auto_run():
-    # read_account()
+    read_account()
     open_chrome_incognito(urlShopee)
     time.sleep(7)
     # if is_chrome_focused():
-    # auto_login()
+    auto_login()
     auto_open_console_and_nav_extension()
     # else:
     #     print("Chrome window is not focused.")
