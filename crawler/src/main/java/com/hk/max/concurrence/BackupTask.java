@@ -29,13 +29,11 @@ public class BackupTask {
 
     @PostConstruct
     public void backupDataAtStartup() {
-        log.info("Called to startup");
         this.backupData();
     }
 
     @PreDestroy
     public void backupDataBeforeShutdown() {
-        log.info("Called to before shutdown");
         this.backupData();
     }
 
@@ -51,8 +49,6 @@ public class BackupTask {
     }
 
     public void writeCollectionDataToFile(String collectionName, List<Object> collectionData) {
-//        Path currentWorkingDir = Paths.get("").toAbsolutePath();
-//        String rootDir = currentWorkingDir.toString();
         String today = DateUtil.getCurrentTimeStamp(null);
         String dir = this.backupDir + "/backup/" + today;
         AppUtils.createFolderIfNotExist(dir);
