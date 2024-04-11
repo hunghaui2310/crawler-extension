@@ -55,8 +55,8 @@ public class Product {
 //    private Integer raw_discount;
     private String discount;
 //    private Boolean is_category_failed;
-    private Integer item_type;
-    private String reference_item_id;
+//    private Integer item_type;
+//    private String reference_item_id;
 //    private Boolean is_adult;
 //    private Boolean shopee_verified;
 //    private Boolean is_official_shop;
