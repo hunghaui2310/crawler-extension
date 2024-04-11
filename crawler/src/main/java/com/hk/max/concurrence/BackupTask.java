@@ -35,12 +35,12 @@ public class BackupTask {
 
     @PostConstruct
     public void backupDataAtStartup() {
-        this.backupData();
+//        this.backupData();
     }
 
     @PreDestroy
-    public void backupDataBeforeShutdown() throws IOException, InterruptedException {
-        this.backupData();
+    public void backupDataBeforeShutdown(){
+//        this.backupData();
     }
 
     public void backupData() {

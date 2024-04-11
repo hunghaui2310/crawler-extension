@@ -33,6 +33,9 @@ public class ProductRawData {
     @Field("created_date")
     private Date createdDate;
 
+    @Field("last_raw_at")
+    private Date lastRawAt;
+
     public ProductRawData(String data, String url) {
         this.data = data;
         this.url = url;
