@@ -91,7 +91,7 @@ public class ShopServiceImpl implements IShopService {
                     shopRepository.saveAll(shops);
                 }
             }
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error when parse data");
         }

@@ -5,17 +5,13 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: pass
-      DB_NAME: $DB_NAME
-      DB_USER: $DB_USER
-      DB_PASSWORD: $DB_PASSWORD
     restart: always
     ports:
       - '27017:27017'
     volumes:
       # if you wish to setup additional user accounts specific per DB or with different roles you can use following entry point
-    - "$PWD/mongo-entrypoint/:/docker-entrypoint-initdb.d/"
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     # no --auth is needed here as presence of username and password add this option automatically
-    command: mongod
 
   spring-app:
     image: backend
@@ -29,7 +25,7 @@ services:
       - "8080:8080"
       # mount dir to save data backup
     volumes:
-      - C:\Data\backup:/home
+      - /Users/dabeeovina/Documents/MySelf/crawler-extension/crawler:/home
     environment:
       - SPRING_DATASOURCE_URL=mongodb://user:pass@mongo:27017/crawler
       - SPRING_MONGO_DATABASE=crawler

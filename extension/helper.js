@@ -76,6 +76,23 @@ const uniqueAddresses = Array.from(addressesSet);
 return uniqueAddresses.join('\n|');
 };
 
+function getCurrentDay() {
+  let currentDate = new Date();
+
+    let day = currentDate.getDate();
+    let month = currentDate.getMonth() + 1;
+    let year = currentDate.getFullYear();
+    if (day < 10) {
+        day = '0' + day;
+    }
+    if (month < 10) {
+        month = '0' + month;
+    }
+    let formattedDate = `${day}_${month}_${year}`;
+
+    return formattedDate;
+}
+
 function getRandomTime() {
   // const randomSeconds = Math.floor(Math.random() * (72 - 40 + 1)) + 40;
   // const randomMilliseconds = randomSeconds * 1000;
@@ -102,7 +119,7 @@ socket.onmessage = function(event) {
     
 };
 socket.onerror = function(error) {
-    console.error("WebSocket error:", error);
+    // console.error("WebSocket error:", error);
 };
 
 // document.getElementById('send').addEventListener('click', () => {

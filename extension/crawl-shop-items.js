@@ -4,12 +4,14 @@ let tempShopId;
 const SHOP_IDS = 'SHOP_IDS';
 const SHOP_CRAWLED_IDS = 'SHOP_CRAWLED_IDS';
 const localStorageManager = new LocalStorageManager();
+let CATES = [];
 let urlShop;
 let pageRequest = 0;
 
 async function getAllCategoriesStep2() {
   const {data: {category_list}} = await getAllCategories();
   const flattenedDataCategoryTree = flattenChildren(category_list);
+  CATES = flattenedDataCategoryTree
 
   document.getElementById('category-list').innerHTML = flattenedDataCategoryTree.map(category => {
     let categoryName;
