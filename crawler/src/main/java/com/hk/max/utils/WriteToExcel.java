@@ -1,51 +1,103 @@
 package com.hk.max.utils;
 
 import com.hk.max.dto.ShopExcelDTO;
+import com.hk.max.model.Category;
+import com.hk.max.repository.ICategoryRepository;
+import com.hk.max.service.IShopService;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.WorkbookUtil;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
+@Component
 public class WriteToExcel {
 
     private XSSFWorkbook workbook;
-    private XSSFSheet sheet;
-    private List<ShopExcelDTO> shops;
+//    private XSSFSheet sheet;
+//    private List<ShopExcelDTO> shops;
+//    private List<Category> categories;
 
-    public WriteToExcel(List<ShopExcelDTO> shops) {
-        this.shops = shops;
-        workbook = new XSSFWorkbook();
+    private final ICategoryRepository categoryRepository;
+
+    private final IShopService shopService;
+
+    @Autowired
+    public WriteToExcel(ICategoryRepository categoryRepository, IShopService shopService) {
+        this.categoryRepository = categoryRepository;
+        this.shopService = shopService;
     }
 
-    private void writeHeaderLine() {
-        sheet = workbook.createSheet("Hải Dương_" + DateUtil.getCurrentTimeStamp(null));
+    public void writeHeaderLine() {
+        this.workbook = new XSSFWorkbook();
+        List<Category> categories = categoryRepository.findAll();
 
-        Row row = sheet.createRow(0);
+        for (Category category : categories) {
+            String replaced = category.getName().replaceAll("[\\\\/*\\[\\]:?]", "_");
+//            String name = replaced;
+//            int sheetIndex = workbook.getSheetIndex(replaced);
+            XSSFSheet sheet = workbook.createSheet(category.getCatid() + "-" + AppUtils.removeVietnameseDiacritics(replaced));;
+//            if (sheetIndex == -1) {
+//                sheet = workbook.createSheet(replaced);
+//            } else {
+//                sheet = workbook.createSheet(new Date().getTime() + replaced);
+//            }
+            Row row = sheet.createRow(0);
 
-        CellStyle style = workbook.createCellStyle();
-        XSSFFont font = workbook.createFont();
-        font.setBold(true);
-        font.setFontHeight(14);
-        style.setFont(font);
+            CellStyle style = workbook.createCellStyle();
+            XSSFFont font = workbook.createFont();
+            font.setBold(true);
+            font.setFontHeight(14);
+            style.setFont(font);
 
-        createCell(row, 0, "STT", style);
-        createCell(row, 1, "ShopID", style);
-        createCell(row, 2, "Username", style);
-        createCell(row, 3, "Số điện thoại", style);
-        createCell(row, 4, "Địa chỉ", style);
-        createCell(row, 5, "Doanh thu từ", style);
-        createCell(row, 6, "Doanh thu đến", style);
-        createCell(row, 7, "Ngày tạo shop", style);
-        createCell(row, 8, "Shop URL", style);
+            createCell(row, 0, "STT", style, sheet);
+            createCell(row, 1, "ShopID", style, sheet);
+            createCell(row, 2, "Username", style, sheet);
+            createCell(row, 3, "Số điện thoại", style, sheet);
+            createCell(row, 4, "Địa chỉ", style, sheet);
+            createCell(row, 5, "Doanh thu từ", style, sheet);
+            createCell(row, 6, "Doanh thu đến", style, sheet);
+            createCell(row, 7, "Ngày tạo shop", style, sheet);
+            createCell(row, 8, "Shop URL", style, sheet);
+
+            int rowCount = 1;
+            CellStyle style2 = workbook.createCellStyle();
+            XSSFFont font2 = workbook.createFont();
+            font2.setFontHeight(14);
+            style2.setFont(font2);
+
+            List<ShopExcelDTO> shops = shopService.getExcelData(category.getCatid().toString());
+
+            for (ShopExcelDTO shop : shops) {
+                Row rowData = sheet.createRow(rowCount++);
+                int columnCount = 0;
+
+                createCell(rowData, columnCount++, rowCount - 1, style2, sheet);
+                createCell(rowData, columnCount++, shop.getShopid(), style2, sheet);
+                createCell(rowData, columnCount++, shop.getUsername(), style2, sheet);
+                createCell(rowData, columnCount++, shop.getPhoneNumber(), style2, sheet);
+                createCell(rowData, columnCount++, shop.getAddress(), style2, sheet);
+                createCell(rowData, columnCount++, shop.getTotalRevenueMin(), style2, sheet);
+                createCell(rowData, columnCount++, shop.getTotalRevenueMax(), style2, sheet);
+                createCell(rowData, columnCount++, shop.getShopCreateDate(), style2, sheet);
+                createCell(rowData, columnCount++, shop.getShopUrl(), style2, sheet);
+            }
+
+//            rowCount++;
+        }
     }
 
-    private void createCell(Row row, int columnCount, Object value, CellStyle style) {
+    private void createCell(Row row, int columnCount, Object value, CellStyle style, XSSFSheet sheet) {
         sheet.autoSizeColumn(columnCount);
         Cell cell = row.createCell(columnCount);
         if (value instanceof Integer) {
@@ -61,32 +113,32 @@ public class WriteToExcel {
     }
 
     private void writeDataLines() {
-        int rowCount = 1;
-
-        CellStyle style = workbook.createCellStyle();
-        XSSFFont font = workbook.createFont();
-        font.setFontHeight(14);
-        style.setFont(font);
-
-        for (ShopExcelDTO shop : shops) {
-            Row row = sheet.createRow(rowCount++);
-            int columnCount = 0;
-
-            createCell(row, columnCount++, rowCount - 1, style);
-            createCell(row, columnCount++, shop.getShopid(), style);
-            createCell(row, columnCount++, shop.getUsername(), style);
-            createCell(row, columnCount++, shop.getPhoneNumber(), style);
-            createCell(row, columnCount++, shop.getAddress(), style);
-            createCell(row, columnCount++, shop.getTotalRevenueMin(), style);
-            createCell(row, columnCount++, shop.getTotalRevenueMax(), style);
-            createCell(row, columnCount++, shop.getShopCreateDate(), style);
-            createCell(row, columnCount++, shop.getShopUrl(), style);
-        }
+//        int rowCount = 1;
+//
+//        CellStyle style = workbook.createCellStyle();
+//        XSSFFont font = workbook.createFont();
+//        font.setFontHeight(14);
+//        style.setFont(font);
+//
+//        for (ShopExcelDTO shop : shops) {
+//            Row row = sheet.createRow(rowCount++);
+//            int columnCount = 0;
+//
+//            createCell(row, columnCount++, rowCount - 1, style);
+//            createCell(row, columnCount++, shop.getShopid(), style);
+//            createCell(row, columnCount++, shop.getUsername(), style);
+//            createCell(row, columnCount++, shop.getPhoneNumber(), style);
+//            createCell(row, columnCount++, shop.getAddress(), style);
+//            createCell(row, columnCount++, shop.getTotalRevenueMin(), style);
+//            createCell(row, columnCount++, shop.getTotalRevenueMax(), style);
+//            createCell(row, columnCount++, shop.getShopCreateDate(), style);
+//            createCell(row, columnCount++, shop.getShopUrl(), style);
+//        }
     }
 
     public void export(HttpServletResponse response) throws IOException {
         writeHeaderLine();
-        writeDataLines();
+//        writeDataLines();
 
         ServletOutputStream outputStream = response.getOutputStream();
         workbook.write(outputStream);

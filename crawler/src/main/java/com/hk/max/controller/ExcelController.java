@@ -1,6 +1,8 @@
 package com.hk.max.controller;
 
 import com.hk.max.dto.ShopExcelDTO;
+import com.hk.max.model.Category;
+import com.hk.max.repository.ICategoryRepository;
 import com.hk.max.service.IShopService;
 import com.hk.max.utils.DateUtil;
 import com.hk.max.utils.WriteToExcel;
@@ -19,7 +21,10 @@ import java.util.List;
 public class ExcelController {
 
     @Autowired
-    private IShopService shopService;
+    private WriteToExcel excelService;
+
+    @Autowired
+    private ICategoryRepository categoryRepository;
 
     @GetMapping("/shop")
     public void exportToExcel(@RequestParam(name = "catid") String catid, HttpServletResponse response) throws IOException {
@@ -29,10 +34,13 @@ public class ExcelController {
         String headerValue = "attachment; filename=shop_" + DateUtil.getCurrentTimeStamp(null) + ".xlsx";
         response.setHeader(headerKey, headerValue);
 
-        List<ShopExcelDTO> listShop = shopService.getExcelData(catid);
+        excelService.export(response);
 
-        WriteToExcel excelExporter = new WriteToExcel(listShop);
+//        List<ShopExcelDTO> listShop = shopService.getExcelData(catid);
+//        List<Category> categories = categoryRepository.findAll();
 
-        excelExporter.export(response);
+//        WriteToExcel excelExporter = new WriteToExcel(listShop);
+
+//        excelExporter.export(response);
     }
 }

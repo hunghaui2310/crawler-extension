@@ -240,7 +240,7 @@ document.getElementById('download-excel').addEventListener('click', () => {
         a.style.display = 'none';
         a.href = url;
         // the filename you want
-        a.download = getCurrentDay() + '-' + nameCate + '.xlsx';
+        a.download = getCurrentDay() + '.xlsx';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);

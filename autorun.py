@@ -168,17 +168,19 @@ def read_category_shopee():
     for item in data['data']['category_list']:
         obj = {
             "status": 0,
-            "catid": item['catid']
+            "catid": item['catid'],
+            "name": item['display_name']
         }
         cates.append(obj)
         for child in item['children']:
             obj2 = {
                 "status": 0,
-                "catid": child['catid']
+                "catid": child['catid'],
+                "name": item['display_name'] + '-' + child['display_name']
             }
             cates.append(obj2)
 
-    with open(root_directory + '/cates.json', 'w') as f:
+    with open(root_directory + '/cates2.json', 'w') as f:
         # Write content to the file
         json.dump(cates, f)
 
