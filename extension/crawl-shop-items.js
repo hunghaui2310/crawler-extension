@@ -18,8 +18,7 @@ async function getAllCategoriesStep2() {
     categoryName = category.display_parent ? category.display_parent + '->' + category.display_name : category.display_name;
     return `<option value="${category.catid}">${categoryName}</option>`
   }).join('')
-  
-  currentCatIdGlobal = flattenedDataCategoryTree[0].catid;
+  // currentCatIdGlobal = flattenedDataCategoryTree[0].catid;
 }
 
 getAllCategoriesStep2();

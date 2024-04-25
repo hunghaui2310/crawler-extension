@@ -15,14 +15,13 @@ limitations under the License.
   -->
 
   <!doctype html>
-  <html style="display: flex">
+  <html>
     <head>
       <meta charset="utf8" />
       <!-- <script src="./libs/sockjs-client.min.js"></script> -->
       <!-- <script src="./libs/stomp.min.js"></script> -->
       <style>
         html {
-          display: flex;
           position: fixed;
           top: 0;
           left: 0;
@@ -32,14 +31,16 @@ limitations under the License.
         body {
           margin: 0;
           padding: 0;
-          flex: 1;
-          display: flex;
           width: 100%;
         }
         #container {
           display: flex;
           flex: 1;
           width: 100%;
+        }
+        #dowload-container {
+          border-top: solid 1px #ccc;
+          padding-top: 10px;
         }
       </style>
     </head>
@@ -48,13 +49,17 @@ limitations under the License.
         <button id='crawl-shop'>Crawl Shop</button>
         <button id='crawl-items-shop'>Crawl Items Shop</button>
         <button id='crawl-detail-item'>Crawl detail Item</button>
-        <button id='download-excel'>Download Excel</button>
         <!-- <button id='send'>Send</button> -->
         <select name="category" id="category-list">
         </select>
         <div id="result-crawl">
         </div>
         <div id="output"></div>
+      </div>
+      <br/>
+      <div id="dowload-container" >
+        <button id='download-excel'>Download Excel</button>
+        <select name="category-download" id="category-list-download"></select>
       </div>
       <!-- <button id="press">Press to Scroll</button> -->
       <script type="application/javascript" src="storage.js"></script>
@@ -63,5 +68,6 @@ limitations under the License.
       <script type="application/javascript" src="panel.js"></script>
       <script type="application/javascript" src="crawl-shop-items.js"></script>
       <script type="application/javascript" src="detail-item.js"></script>
+      <script type="application/javascript" src="excel.js"></script>
     </body>
   </html>
