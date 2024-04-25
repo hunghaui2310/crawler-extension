@@ -42,7 +42,7 @@ window.addEventListener('getListShops', async (event) => {
 window.addEventListener('getItemsList', async (event) => {
     let shopIds = localStorageManager.getItem(SHOP_IDS);
     if (!shopIds || shopIds.length === 0) {
-        // await statusRawShopAPI(true);
+        await statusRawShopAPI(true);
         await statusRawItemAPI(true);
         step = null;
         const step2Done = document.createElement('p');
