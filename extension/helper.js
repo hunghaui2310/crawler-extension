@@ -1,5 +1,6 @@
 let currentCatIdGlobal;
 let currentUsername;
+let selectedCatId;
 
 // Get phone number by some format
 const getPhone = (inputString) => {
@@ -114,6 +115,17 @@ socket.onmessage = function(event) {
   const { catid, username } = JSON.parse(str);
   // TODO assign catid to catid global
   currentCatIdGlobal = catid;
+
+  // select category
+  const optionList = [...document.getElementById('category-list').getElementsByTagName('option')];
+  if (currentCatIdGlobal) {
+    for (var i = 0; i < optionList.length; i++) {
+      if (document.getElementById('category-list').getElementsByTagName('option')[i].value + '' === currentCatIdGlobal + '') {
+        document.getElementById('category-list').getElementsByTagName('option')[i].selected = true;
+      }
+    }
+  }
+
   currentUsername = username;
   document.getElementById("crawl-items-shop").click();
     

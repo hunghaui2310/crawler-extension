@@ -224,31 +224,6 @@ document.getElementById('crawl-shop').addEventListener('click', () => {
     }, 3000);
 });
 
-document.getElementById('download-excel').addEventListener('click', () => {
-    const resultCrawl = document.getElementById('result-crawl');
-    const downloading = document.createElement('p');
-    downloading.textContent = 'Downloading...';
-    resultCrawl.appendChild(downloading);
-    const cateFound = CATES.find(item => item.catid == currentCatIdGlobal)
-    let nameCate;
-    if (cateFound) {
-        nameCate = cateFound.display_parent ? cateFound.display_parent + '_' + cateFound.display_name : cateFound.display_name
-    }
-    downloadExcelAPI(currentCatIdGlobal).then(res => {
-        const url = window.URL.createObjectURL(res);
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = url;
-        // the filename you want
-        a.download = getCurrentDay() + '-' + nameCate + '.xlsx';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-        downloading.remove(downloading)
-    });
-});
-
 // timeOutLoginId = setTimeout(() => {
 //     checkServerAPI().then(res => {
 //         if (res == 1) {
