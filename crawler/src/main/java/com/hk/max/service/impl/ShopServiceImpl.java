@@ -141,7 +141,9 @@ public class ShopServiceImpl implements IShopService {
         newShopData.setRawInfo(shopRawDTO.getRawInfo());
         newShopData.setDetailPhone(shopRawDTO.getDetailPhone());
         newShopData.setDetailAddress(shopRawDTO.getDetailAddress());
-        newShopData.setCtime(shopRawDTO.getCtime());
+        if (shopRawDTO.getCtime() != null) {
+            newShopData.setCtime(shopRawDTO.getCtime());
+        }
         shopRepository.save(newShopData);
         return newShopData;
     }
