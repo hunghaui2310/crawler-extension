@@ -39,7 +39,7 @@ document.getElementById("download-excel").addEventListener("click", () => {
       ? cateFound.display_parent + "_" + cateFound.display_name
       : cateFound.display_name;
   }
-  downloadExcelAPI(currentCatIdGlobal).then((res) => {
+  downloadExcelAPI(selectedCatid).then((res) => {
     const url = window.URL.createObjectURL(res);
     const a = document.createElement("a");
     a.style.display = "none";
