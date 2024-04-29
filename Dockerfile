@@ -9,6 +9,9 @@ WORKDIR /app
 
 # Copy file JAR được build từ ứng dụng Spring Boot vào working directory trong container
 COPY crawler/build/*.jar app.jar
+# COPY autorun.py autorun.py
+
+VOLUME /hostpipe
 
 # Expose port của ứng dụng
 EXPOSE 8080

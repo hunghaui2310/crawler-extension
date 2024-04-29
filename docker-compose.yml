@@ -26,6 +26,7 @@ services:
       # mount dir to save data backup
     volumes:
       - C:\Data:/home
+      - /Users/dabeeovina/Documents/MySelf/crawler-extension/pipe:/hostpipe
     environment:
       - SPRING_DATASOURCE_URL=mongodb://user:pass@mongo:27017/crawler
       - SPRING_MONGO_DATABASE=crawler

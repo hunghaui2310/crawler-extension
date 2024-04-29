@@ -9,7 +9,7 @@ let urlShop;
 let pageRequest = 0;
 
 async function getAllCategoriesStep2() {
-  const {data: {category_list}} = await getAllCategories();
+  const { data: { category_list } } = await getAllCategories();
   const flattenedDataCategoryTree = flattenChildren(category_list);
   CATES = flattenedDataCategoryTree
 
@@ -29,74 +29,74 @@ document.getElementById('category-list').addEventListener('change', (event) => {
 });
 
 window.addEventListener('getListShops', async (event) => {
-    let response = await getAllShopIdAPI(false, currentCatIdGlobal);
-    localStorageManager.setItem(SHOP_IDS, response);
-    window.dispatchEvent(
-        new CustomEvent(
-            'getItemsList'
-        )
+  let response = await getAllShopIdAPI(false, currentCatIdGlobal);
+  localStorageManager.setItem(SHOP_IDS, response);
+  window.dispatchEvent(
+    new CustomEvent(
+      'getItemsList'
     )
+  )
 });
 
 window.addEventListener('getItemsList', async (event) => {
-    let shopIds = localStorageManager.getItem(SHOP_IDS);
-    if (!shopIds || shopIds.length === 0) {
-        await statusRawShopAPI(true);
-        await statusRawItemAPI(true);
-        step = null;
-        const step2Done = document.createElement('p');
-        step2Done.textContent = 'Step 2 Done';
-        document.getElementById('result-crawl').appendChild(step2Done);
-        const message = {
-          catid: currentCatIdGlobal,
-          status: 1,
-          isActive: true,
-          username: currentUsername
-        };
-        chrome.browsingData.remove(
-          {},
-          {
-            "cache": true,
-            "cacheStorage": true,
-            "cookies": true,
-          }
-        );
-        sendMessage(JSON.stringify(message));
-        return;
-    }
-    if (shopIds.length) {
-        PAGE_SHOP = 0;
-        const [firstShop, ...shops] = shopIds;
-        currentShopId = firstShop;
-        // let shop_crawled;
-        // if (localStorageManager.getItem(SHOP_CRAWLED_IDS)) {
-        //     shop_crawled = [currentShopId, ...localStorageManager.getItem(SHOP_CRAWLED_IDS)];
-        // } else {
-        //     shop_crawled = [currentShopId];
-        // }
-        // localStorageManager.removeItem(SHOP_CRAWLED_IDS);
-        // localStorageManager.setItem(SHOP_CRAWLED_IDS, shop_crawled);
-        localStorageManager.removeItem(SHOP_IDS);
-        localStorageManager.setItem(SHOP_IDS, shops);
-        crawlShopItems(currentShopId);
-    }
+  let shopIds = localStorageManager.getItem(SHOP_IDS);
+  if (!shopIds || shopIds.length === 0) {
+    await statusRawShopAPI(true);
+    await statusRawItemAPI(true);
+    step = null;
+    const step2Done = document.createElement('p');
+    step2Done.textContent = 'Step 2 Done';
+    document.getElementById('result-crawl').appendChild(step2Done);
+    const message = {
+      catid: currentCatIdGlobal,
+      status: 1,
+      isActive: true,
+      username: currentUsername
+    };
+    // chrome.browsingData.remove(
+    //   {},
+    //   {
+    //     "cache": true,
+    //     "cacheStorage": true,
+    //     "cookies": true,
+    //   }
+    // );
+    sendMessage(JSON.stringify(message));
+    return;
+  }
+  if (shopIds.length) {
+    PAGE_SHOP = 0;
+    const [firstShop, ...shops] = shopIds;
+    currentShopId = firstShop;
+    // let shop_crawled;
+    // if (localStorageManager.getItem(SHOP_CRAWLED_IDS)) {
+    //     shop_crawled = [currentShopId, ...localStorageManager.getItem(SHOP_CRAWLED_IDS)];
+    // } else {
+    //     shop_crawled = [currentShopId];
+    // }
+    // localStorageManager.removeItem(SHOP_CRAWLED_IDS);
+    // localStorageManager.setItem(SHOP_CRAWLED_IDS, shop_crawled);
+    localStorageManager.removeItem(SHOP_IDS);
+    localStorageManager.setItem(SHOP_IDS, shops);
+    crawlShopItems(currentShopId);
+  }
 });
 
 window.addEventListener('callLoopPageShop', (event) => {
-    if (currentShopId) {
-        PAGE_SHOP += 1;
-        crawlShopItems(currentShopId);
-    }
+  if (currentShopId) {
+    PAGE_SHOP += 1;
+    crawlShopItems(currentShopId);
+  }
 });
 
 function buildUrlShop(shopId) {
-    urlShop = `https://shopee.vn/shop/${shopId}?page=${PAGE_SHOP}&sortBy=pop`
-    return urlShop
+  urlShop = `https://shopee.vn/shop/${shopId}?page=${PAGE_SHOP}&sortBy=pop`
+  return urlShop
 }
 
 async function crawlShopItems(shopId) {
-    const url = buildUrlShop(shopId);
-    routeToPage(url);
+  const url = buildUrlShop(shopId);
+  routeToPage(url);
 }
 
 function saveShop(data, phone, address) {
@@ -129,154 +129,154 @@ function checkAccountVerify() {
 }
 
 chrome.devtools.network.onRequestFinished.addListener(function (request) {
-  if(step === 2) {
+  if (step === 2) {
     checkAccountVerify();
-    if(request.request.url && request.request.url.includes('captcha/generate')) {
+    if (request.request.url && request.request.url.includes('captcha/generate')) {
       const message = {
         catid: currentCatIdGlobal,
         status: 2,
         isActive: true,
         username: currentUsername
       }
-      chrome.browsingData.remove(
-        {},
-        {
-          "cache": true,
-          "cacheStorage": true,
-          "cookies": true,
-        }
-      );
+      // chrome.browsingData.remove(
+      //   {},
+      //   {
+      //     "cache": true,
+      //     "cacheStorage": true,
+      //     "cookies": true,
+      //   }
+      // );
       sendMessage(JSON.stringify(message));
     }
     if (request.request.url && request.request.url.includes("get_shop_base")) {
-        request.getContent((content, mimeType) => {
-          // console.log('content', content);
-          // console.log('phone ' + getPhone(content));
-          if (tempShopId !== currentShopId) {
-            // console.log('get_shop_base', content);
-            //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
-            const { data } = JSON.parse(content);
-            if (data.account.status !== 1) {
-              setTimeout(() => {
-                window.dispatchEvent(
-                  new CustomEvent(
-                      'getItemsList'
-                  )
-                )
-              }, getRandomTime());
-              return;
-            }
-            const phone = getPhone(data.description);
-            const address = getAddress(data.description);
-            const out = {
-                shopid: data.shopid,
-                username: data.account.username,
-                shopName: data.name,
-                description: data.description
-            };
-            console.log(out);
-            saveRawShopAPI(JSON.stringify(out), urlShop);
-            updateShopAPI(
-                {  
-                    shopid: currentShopId, 
-                    rawInfo: content, 
-                    detailAddress: address, 
-                    detailPhone: phone,
-                    ctime: data.ctime
-                }
-            )
-            if (data.item_count === 0) {
-              changeShopCrawlDone(currentShopId, true);
-              setTimeout(() => {
-                window.dispatchEvent(
-                  new CustomEvent(
-                      'getItemsList'
-                  )
-                )
-              }, getRandomTime());
-              return;
-            }
-          }
-        });
-      }
-      if (request.request.url && request.request.url.includes("get_shop_tab")) {
-        request.getContent((content, mimeType) => {
-          // console.log('content', content);
-
-          if (tempShopId !== currentShopId) {
-            const { data } = JSON.parse(content);
-            // console.log("phone: " + getPhone(content));
-            // console.log("address: " + getAddress(content));
-            const phone = getPhone(content);
-            const address = getAddress(content);
-            if (phone || address) {
-                updateShopAPI(
-                    {  
-                        shopid: currentShopId, 
-                        rawInfo: content, 
-                        detailAddress: address, 
-                        detailPhone: phone,
-                        ctime: data.ctime
-                    }
-                )
-            }
-          }
-        });
-      }
-      if (request.request.url && request.request.url.includes("shop/rcmd_items")) {
-        request.getContent((content, mimeType) => {
-          const { data, error } = JSON.parse(content);
-          ++pageRequest;
-          if (error) {
+      request.getContent((content, mimeType) => {
+        // console.log('content', content);
+        // console.log('phone ' + getPhone(content));
+        if (tempShopId !== currentShopId) {
+          // console.log('get_shop_base', content);
+          //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
+          const { data } = JSON.parse(content);
+          if (data.account.status !== 1) {
             setTimeout(() => {
               window.dispatchEvent(
                 new CustomEvent(
-                    'getItemsList'
-                )
-              )
-            }, getRandomTime());
-          }
-          if (!data.items || (data.items && data.items.length === 0 )) {
-            if (pageRequest >= 80) {
-              const message = {
-                catid: currentCatIdGlobal,
-                status: 2,
-                isActive: true,
-                username: currentUsername
-              }
-              chrome.browsingData.remove(
-                {},
-                {
-                  "cache": true,
-                  "cacheStorage": true,
-                  "cookies": true,
-                }
-              );
-              sendMessage(JSON.stringify(message));
-              return;
-            };
-            changeShopCrawlDone(currentShopId, true);
-            setTimeout(() => {
-              window.dispatchEvent(
-                new CustomEvent(
-                    'getItemsList'
+                  'getItemsList'
                 )
               )
             }, getRandomTime());
             return;
-        }
-          saveRawProductAPI(JSON.stringify(data.items), urlShop);
-          setTimeout(() => {
-            tempShopId = currentShopId;
-            if ((PAGE_SHOP + 1) * 30 > data.total) {
-              changeShopCrawlDone(currentShopId, true);
-              window.dispatchEvent(new CustomEvent("getItemsList"));
-            } else {
-              window.dispatchEvent(new CustomEvent("callLoopPageShop"));
+          }
+          const phone = getPhone(data.description);
+          const address = getAddress(data.description);
+          const out = {
+            shopid: data.shopid,
+            username: data.account.username,
+            shopName: data.name,
+            description: data.description
+          };
+          console.log(out);
+          saveRawShopAPI(JSON.stringify(out), urlShop);
+          updateShopAPI(
+            {
+              shopid: currentShopId,
+              rawInfo: content,
+              detailAddress: address,
+              detailPhone: phone,
+              ctime: data.ctime
             }
+          )
+          if (data.item_count === 0) {
+            changeShopCrawlDone(currentShopId, true);
+            setTimeout(() => {
+              window.dispatchEvent(
+                new CustomEvent(
+                  'getItemsList'
+                )
+              )
+            }, getRandomTime());
+            return;
+          }
+        }
+      });
+    }
+    if (request.request.url && request.request.url.includes("get_shop_tab")) {
+      request.getContent((content, mimeType) => {
+        // console.log('content', content);
+
+        if (tempShopId !== currentShopId) {
+          const { data } = JSON.parse(content);
+          // console.log("phone: " + getPhone(content));
+          // console.log("address: " + getAddress(content));
+          const phone = getPhone(content);
+          const address = getAddress(content);
+          if (phone || address) {
+            updateShopAPI(
+              {
+                shopid: currentShopId,
+                rawInfo: content,
+                detailAddress: address,
+                detailPhone: phone,
+                ctime: data.ctime
+              }
+            )
+          }
+        }
+      });
+    }
+    if (request.request.url && request.request.url.includes("shop/rcmd_items")) {
+      request.getContent((content, mimeType) => {
+        const { data, error } = JSON.parse(content);
+        ++pageRequest;
+        if (error) {
+          setTimeout(() => {
+            window.dispatchEvent(
+              new CustomEvent(
+                'getItemsList'
+              )
+            )
           }, getRandomTime());
-        });
-      }
+        }
+        if (!data.items || (data.items && data.items.length === 0)) {
+          if (pageRequest >= 80) {
+            const message = {
+              catid: currentCatIdGlobal,
+              status: 2,
+              isActive: true,
+              username: currentUsername
+            }
+            // chrome.browsingData.remove(
+            //   {},
+            //   {
+            //     "cache": true,
+            //     "cacheStorage": true,
+            //     "cookies": true,
+            //   }
+            // );
+            sendMessage(JSON.stringify(message));
+            return;
+          };
+          changeShopCrawlDone(currentShopId, true);
+          setTimeout(() => {
+            window.dispatchEvent(
+              new CustomEvent(
+                'getItemsList'
+              )
+            )
+          }, getRandomTime());
+          return;
+        }
+        saveRawProductAPI(JSON.stringify(data.items), urlShop);
+        setTimeout(() => {
+          tempShopId = currentShopId;
+          if ((PAGE_SHOP + 1) * 30 > data.total) {
+            changeShopCrawlDone(currentShopId, true);
+            window.dispatchEvent(new CustomEvent("getItemsList"));
+          } else {
+            window.dispatchEvent(new CustomEvent("callLoopPageShop"));
+          }
+        }, getRandomTime());
+      });
+    }
   }
 });
 

@@ -101,7 +101,6 @@ def setIsSuccess(new_value):
 
 
 def update_acc_inactive(parsed_data):
-    print('called to qq')
     username = parsed_data['username']
     isActive = parsed_data['isActive']
     if bool(isActive) is False:
@@ -190,7 +189,10 @@ def open_chrome_incognito(url):
         subprocess.Popen([chrome_path, "--incognito", url])
         return
     elif system == 'Darwin':  # macOS
-        command = 'open -na "Google Chrome"'
+        # chrome_path = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        # subprocess.Popen([chrome_path, "--incognito"])
+        # return
+        command = 'open -na "Google Chrome" --args --incognito'
     elif system == 'Linux':
         command = 'google-chrome --incognito'
     else:
@@ -277,11 +279,11 @@ def auto_run():
     read_account()
     open_chrome_incognito(urlShopee)
     time.sleep(7)
-    if is_chrome_focused():
-        auto_login()
-        auto_open_console_and_nav_extension()
-    else:
-        print("Chrome window is not focused.")
+    # if is_chrome_focused():
+    auto_login()
+    auto_open_console_and_nav_extension()
+    # else:
+    #     print("Chrome window is not focused.")
 
 
 auto_run()
