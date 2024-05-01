@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class AutoRunTask implements Runnable {
 
-    @Value("${spring.app.dir}")
-    private String appDir;
+//    @Value("${spring.app.dir}")
+//    private String appDir;
 
     @Override
     public void run() {
-        log.info("Starting auto run. Dir: " + this.appDir);
+//        log.info("Starting auto run. Dir: " + this.appDir);
 
-        String pythonCmd = this.appDir;
-        AppUtils.RunCmd(pythonCmd);
+//        String pythonCmd = this.appDir;
+//        AppUtils.RunCmd(pythonCmd);
 //        if (result) {
 //            log.info("Log from python file: " + result);
 //        }
