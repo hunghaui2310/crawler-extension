@@ -15,7 +15,7 @@ import subprocess
 keyboard = Controller()
 
 urlShopee = 'https://shopee.vn/buyer/login'
-currentAccount = {}
+currentAccount = None
 isSuccess = True
 
 def find_cate_to_craw():
@@ -54,20 +54,30 @@ async def echo(websocket, path):
         parsed_data = json.loads(message)
         isActive = parsed_data['isActive']
         if bool(isActive) is True:
-            update_cate(parsed_data)
+            isNext = update_cate(parsed_data)
+            if isNext:
+                setIsSuccess(True)
+                randomSleep()
+                asyncio.ensure_future(send_message())
+            else:
+                connected_clients.remove(websocket)
+                run_job_again()
         else:
             update_acc_inactive(parsed_data)
-        connected_clients.remove(websocket)
-        time.sleep(3)
-        close_chrome_tab()
-        setIsSuccess(True)
-        randomSleep()
-        auto_run()
+            connected_clients.remove(websocket)
+            run_job_again()
     # finally:
     #     print(f'remove')
         # Remove the client from the set of connected clients when the connection is closed
         # connected_clients.remove(websocket)
 
+
+def run_job_again():
+    time.sleep(3)
+    close_chrome_tab()
+    setIsSuccess(True)
+    randomSleep()
+    auto_run()
 
 async def send_message():
     global isSuccess
@@ -75,7 +85,10 @@ async def send_message():
         # Send a message to each connected client
         for client in connected_clients:
             catid = find_cate_to_craw()
-            await client.send(str({ "catid": catid, "username": currentAccount['username'] }))
+            if currentAccount is None:
+                await client.send(str({ "catid": catid, "username": 'No user to login' }))
+            else:
+                await client.send(str({ "catid": catid, "username": currentAccount['username'] }))
             setIsSuccess(False)
         # Wait for 5 seconds before sending the next message
         await asyncio.sleep(5)
@@ -122,18 +135,20 @@ def update_acc_inactive(parsed_data):
 def update_cate(parsed_data):
     status = parsed_data['status']
     catid = parsed_data['catid']
+    with open(root_directory + '/cates.json', 'r') as file:
+        data = json.load(file)
+    found_index = None
+    for index, row in enumerate(data):
+        if int(row['catid']) == int(catid):
+            found_index = index
+    if found_index is not None:
+        data[found_index]['status'] = 1
+        with open(root_directory + '/cates.json', 'w') as file:
+            json.dump(data, file)
     if int(status) == 1:
-        with open(root_directory + '/cates.json', 'r') as file:
-            data = json.load(file)
-        found_index = None
-        for index, row in enumerate(data):
-            if int(row['catid']) == int(catid):
-                found_index = index
-        if found_index is not None:
-            data[found_index]['status'] = 1
-            with open(root_directory + '/cates.json', 'w') as file:
-                json.dump(data, file)
-
+        return False
+    if int(status) == 3:
+        return True
 
 def read_account():
     with open(root_directory + '/accounts.json', 'r') as file:
@@ -254,6 +269,8 @@ def auto_open_console_and_nav_extension():
 
 
 def auto_login():
+    if currentAccount is None:
+        return
     username = currentAccount['username']
     usernames = list(username)
     # enter username
@@ -277,14 +294,14 @@ def auto_login():
 
 def auto_run():
     read_account()
-    open_chrome_incognito(urlShopee)
-    time.sleep(7)
+    if currentAccount is not None:
+        open_chrome_incognito(urlShopee)
+        time.sleep(7)
     # if is_chrome_focused():
-    auto_login()
-    auto_open_console_and_nav_extension()
+        auto_login()
+        auto_open_console_and_nav_extension()
     # else:
     #     print("Chrome window is not focused.")
-
 
 auto_run()
 

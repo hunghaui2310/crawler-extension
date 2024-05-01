@@ -224,6 +224,16 @@ document.getElementById('crawl-shop').addEventListener('click', () => {
     }, 3000);
 });
 
+// document.getElementById('send').addEventListener('click', () => {
+//     const message = {
+//         catid: '11035692',
+//         status: 3,
+//         isActive: true,
+//         username: 'lethieuthien1995@gmail.com'
+//       };
+//       sendMessage(JSON.stringify(message));
+// })
+
 // timeOutLoginId = setTimeout(() => {
 //     checkServerAPI().then(res => {
 //         if (res == 1) {

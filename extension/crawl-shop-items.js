@@ -49,7 +49,7 @@ window.addEventListener('getItemsList', async (event) => {
     document.getElementById('result-crawl').appendChild(step2Done);
     const message = {
       catid: currentCatIdGlobal,
-      status: 1,
+      status: 3,
       isActive: true,
       username: currentUsername
     };
