@@ -25,7 +25,7 @@ getAllCategoriesStep2();
 
 document.getElementById('category-list').addEventListener('change', (event) => {
   currentCatIdGlobal = event.target.value;
-  console.log('currentCatIdGlobal', currentCatIdGlobal);
+  // console.log('currentCatIdGlobal', currentCatIdGlobal);
 });
 
 window.addEventListener('getListShops', async (event) => {
@@ -43,9 +43,9 @@ window.addEventListener('getItemsList', async (event) => {
   if (!shopIds || shopIds.length === 0) {
     await statusRawShopAPI(true);
     await statusRawItemAPI(true);
-    step = null;
+    step = 2;
     const step2Done = document.createElement('p');
-    step2Done.textContent = 'Step 2 Done';
+    step2Done.textContent = 'Done ' + currentCatIdGlobal;
     document.getElementById('result-crawl').appendChild(step2Done);
     const message = {
       catid: currentCatIdGlobal,
@@ -68,6 +68,8 @@ window.addEventListener('getItemsList', async (event) => {
     PAGE_SHOP = 0;
     const [firstShop, ...shops] = shopIds;
     currentShopId = firstShop;
+    let lastPage = await getLastPageOfShop(currentShopId);
+    PAGE_SHOP = lastPage
     // let shop_crawled;
     // if (localStorageManager.getItem(SHOP_CRAWLED_IDS)) {
     //     shop_crawled = [currentShopId, ...localStorageManager.getItem(SHOP_CRAWLED_IDS)];

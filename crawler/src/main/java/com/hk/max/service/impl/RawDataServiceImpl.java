@@ -8,6 +8,7 @@ import com.hk.max.model.ProductRawData;
 import com.hk.max.model.ShopProductRawData;
 import com.hk.max.model.ShopRawData;
 import com.hk.max.repository.IProductRawDataRepository;
+import com.hk.max.repository.IProductRepository;
 import com.hk.max.repository.IShopProductRawDataRepository;
 import com.hk.max.repository.IShopRawDataRepository;
 import com.hk.max.service.IRawDataService;
@@ -129,5 +130,10 @@ public class RawDataServiceImpl implements IRawDataService {
             e.printStackTrace();
             log.error("Error when parse data");
         }
+    }
+
+    @Override
+    public List<ProductRawData> getLastRawProductByShop(String shopid) {
+        return productRawDataRepository.findAllByUrlRegex(shopid);
     }
 }

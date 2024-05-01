@@ -56,6 +56,10 @@ const changeShopCrawlDone = (shopId, isCrawlDone) => fetch(API_URL + "/shop/isCr
     method: 'GET',
 }).then(response => response.json())
 
+const getLastPageOfShop = (shopId) => fetch(API_URL + "/shop/get-last-page/" + shopId, {
+    method: 'GET',
+}).then(response => response.json())
+
 
 // shop-raw API
 const saveRawShopAPI = (data, url) => fetch(API_URL + "/shop-raw", {

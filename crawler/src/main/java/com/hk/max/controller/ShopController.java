@@ -42,6 +42,16 @@ public class ShopController {
         }
     }
 
+    @GetMapping("/get-last-page/{shopid}")
+    public ResponseEntity<?> getAll(@PathVariable(name = "shopid") String shopid) {
+        try {
+            return new ResponseEntity<>(rawDataService.getLastRawProductByShop(shopid).size(), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getCause(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @GetMapping("/get-revenue")
     public ResponseEntity<?> getTotalRevenue(@RequestParam(name = "shopid") String shopid) {
         try {

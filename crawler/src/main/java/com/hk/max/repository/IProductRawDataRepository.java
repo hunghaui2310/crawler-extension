@@ -14,6 +14,9 @@ public interface IProductRawDataRepository extends MongoRepository<ProductRawDat
     @Query("{url:'?0'}")
     List<ProductRawData> findAllByUrl(String url);
 
+    @Query(value = "{'url': {$regex : ?0, $options: 'i'}}")
+    List<ProductRawData> findAllByUrlRegex(String url);
+
     Page<ProductRawData> findAllByLastRawAtBeforeOrLastRawAtIsNull(Pageable pageable, Date afterAt);
 
     long countAllByLastRawAtBeforeOrLastRawAtIsNull(Date afterAt);

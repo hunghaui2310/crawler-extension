@@ -35,12 +35,12 @@ public class BackupTask {
 
     @PostConstruct
     public void backupDataAtStartup() {
-        this.backupData();
+//        this.backupData();
     }
 
     @PreDestroy
     public void backupDataBeforeShutdown(){
-        this.backupData();
+//        this.backupData();
     }
 
     public void backupData() {

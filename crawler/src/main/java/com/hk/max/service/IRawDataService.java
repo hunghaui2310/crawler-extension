@@ -4,6 +4,7 @@ import com.hk.max.model.ProductRawData;
 import com.hk.max.model.ShopProductRawData;
 import com.hk.max.model.ShopRawData;
 
+import java.util.List;
 import java.util.Set;
 
 public interface IRawDataService {
@@ -17,4 +18,6 @@ public interface IRawDataService {
     Set<String> getDataCrawled();
 
     void saveFromFile();
+
+    List<ProductRawData> getLastRawProductByShop(String shopid);
 }

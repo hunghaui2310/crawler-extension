@@ -111,7 +111,7 @@ socket.onmessage = function(event) {
   let str = event.data
   str = str.replace(/'/g, '"');
   const outputDiv = document.getElementById("output");
-    outputDiv.innerHTML += "<p>Crawling categorys: " + event.data + "</p>";
+    outputDiv.innerHTML = "<p>Crawling categorys: " + event.data + "</p>";
   const { catid, username } = JSON.parse(str);
   // TODO assign catid to catid global
   currentCatIdGlobal = catid;
