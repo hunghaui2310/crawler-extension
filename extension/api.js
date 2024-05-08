@@ -1,7 +1,8 @@
-const API_URL = 'http://localhost:8080/api';
+const API_URL = 'https://e50e-42-118-2-148.ngrok-free.app/api';
 const BASE_HEADER = {
     'Accept': 'application/json',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'ngrok-skip-browser-warning': 'true'
   };
 
 // shop-product-raw API
@@ -12,7 +13,8 @@ const saveShopItemRawDataAPI = (data, url) => fetch(API_URL + "/shop-product-raw
 }).then(response => response.json())
 
 const statusShopItemRawDataAPI = (status) => fetch(API_URL + "/shop-product-raw/status?status=" + status, {
-    method: 'GET'
+    method: 'GET',
+    headers: BASE_HEADER,
 }).then(response => response.json())
 
 
@@ -26,7 +28,8 @@ const saveRawProductAPI = (data, url) => fetch(API_URL + "/product-raw", {
 
 // call after crawl done all item to filter shopid from item. save if status = true
 const statusRawItemAPI = (status) => fetch(API_URL + "/product-raw/status?status=" + status, {
-    method: 'GET'
+    method: 'GET',
+    headers: BASE_HEADER,
 }).then(response => response.json())
 
 
@@ -34,11 +37,13 @@ const statusRawItemAPI = (status) => fetch(API_URL + "/product-raw/status?status
 // shop API
 const getAllShopIdAPI = (isCrawled = false, catid) => fetch(API_URL + `/shop?isCrawled=${isCrawled}&catid=${catid}`, {
     method: 'GET',
+    headers: BASE_HEADER,
 }).then(response => response.json())
 
 // shop API
 const getCategoriesCrawled = () => fetch(API_URL + "/shop-product-raw/getDataCrawled", {
     method: 'GET',
+    headers: BASE_HEADER,
 }).then(response => response.json())
 
 /* shopInfo: {  shopid: string, 
@@ -54,10 +59,12 @@ const updateShopAPI = (shopInfo) => fetch(API_URL + "/shop/update-info", {
 const changeShopCrawlDone = (shopId, isCrawlDone) => fetch(API_URL + "/shop/isCrawlDone?shopid=" 
             + shopId + "&isDone=" + isCrawlDone, {
     method: 'GET',
+    headers: BASE_HEADER,
 }).then(response => response.json())
 
 const getLastPageOfShop = (shopId) => fetch(API_URL + "/shop/get-last-page/" + shopId, {
     method: 'GET',
+    headers: BASE_HEADER,
 }).then(response => response.json())
 
 
@@ -70,10 +77,12 @@ const saveRawShopAPI = (data, url) => fetch(API_URL + "/shop-raw", {
 
 const statusRawShopAPI = (status) => fetch(API_URL + "/shop-raw/status?status=" + status, {
     method: 'GET',
+    headers: BASE_HEADER,
 }).then(response => response.json())
 
 const downloadExcelAPI = (catid) => fetch(API_URL + "/excel/shop?catid=" + catid, {
     method: 'GET',
+    headers: BASE_HEADER,
 }).then(response => response.blob())
 
 
@@ -81,10 +90,12 @@ const downloadExcelAPI = (catid) => fetch(API_URL + "/excel/shop?catid=" + catid
 // product API
 const getProductByShopAPI = (shopId) => fetch(API_URL + "/product/getByShop?shopid=" + shopId, {
     method: 'GET',
+    headers: BASE_HEADER,
 }).then(response => response.json())
 
 const getAllCategories = () => fetch('./get_category_tree.json', {
   method: 'GET',
+  headers: BASE_HEADER,
 }).then(response => response.json())
 
 // check Server status
