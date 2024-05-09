@@ -44,6 +44,7 @@ window.addEventListener('getItemsList', async (event) => {
     await statusRawShopAPI(true);
     await statusRawItemAPI(true);
     step = 2;
+    document.getElementById("crawl-items-shop").disabled = false;
     const step2Done = document.createElement('p');
     step2Done.textContent = 'Done ' + currentCatIdGlobal;
     document.getElementById('result-crawl').appendChild(step2Done);
