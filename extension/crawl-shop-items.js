@@ -155,10 +155,14 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
       request.getContent((content, mimeType) => {
         // console.log('content', content);
         // console.log('phone ' + getPhone(content));
+
         if (tempShopId !== currentShopId) {
           // console.log('get_shop_base', content);
           //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
           const { data } = JSON.parse(content);
+          if (data.account.status === 3 || data.account.status === 0) {
+            changeShopCrawlDone(currentShopId, false);
+          }
           if (data.account.status !== 1) {
             setTimeout(() => {
               window.dispatchEvent(
@@ -240,7 +244,7 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
           }, getRandomTime());
         }
         if (!data.items || (data.items && data.items.length === 0)) {
-          if (pageRequest >= 80) {
+          if (pageRequest >= 100) {
             const message = {
               catid: currentCatIdGlobal,
               status: 2,

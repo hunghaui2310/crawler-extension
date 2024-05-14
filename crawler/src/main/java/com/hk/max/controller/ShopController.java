@@ -78,6 +78,8 @@ public class ShopController {
         try {
             if (isDone) {
                 shopService.updateShopLastCrawlAt(shopid);
+            } else {
+                shopService.updateShopIsNotActive(shopid);
             }
             return new ResponseEntity<>(isDone, HttpStatus.OK);
         } catch (Exception e) {

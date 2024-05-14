@@ -206,7 +206,7 @@ public class ShopServiceImpl implements IShopService {
             shopExcelDTO.setShopCreateDate(DateUtil.convertTime(shop.getCtime()));
             shopExcelDTO.setShopUrl(DataUtil.buildShopUrl(shop.getShopid()));
             shopExcelDTO.setTotalProduct(shopDTO.getTotalProduct());
-            shopExcelDTO.setIsActive(shop.getLastCrawlAt() != null);
+            shopExcelDTO.setIsActive(shop.getLastCrawlAt() != null || shop.getIsActive() == 1);
             shopExcelDTOS.add(shopExcelDTO);
         }
         return shopExcelDTOS;
@@ -216,6 +216,14 @@ public class ShopServiceImpl implements IShopService {
     public void updateShopLastCrawlAt(String shopid) {
         Shop shop = this.findByShopId(shopid);
         shop.setLastCrawlAt(Instant.now());
+        shop.setIsActive(1);
+        shopRepository.save(shop);
+    }
+
+    @Override
+    public void updateShopIsNotActive(String shopid) {
+        Shop shop = this.findByShopId(shopid);
+        shop.setIsActive(0);
         shopRepository.save(shop);
     }
 

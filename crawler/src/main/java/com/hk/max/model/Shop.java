@@ -51,6 +51,7 @@ public class Shop {
     private Instant lastCrawlAt;
 
     private String catid;
+    private Integer isActive;
 
     @CreatedDate
     @Field("created_date")

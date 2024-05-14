@@ -25,5 +25,7 @@ public interface IShopService {
 
     void updateShopLastCrawlAt(String shopid);
 
+    void updateShopIsNotActive(String shopid);
+
     void testThread();
 }
