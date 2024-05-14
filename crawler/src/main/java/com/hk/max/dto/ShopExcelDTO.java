@@ -21,6 +21,9 @@ public class ShopExcelDTO {
     private String shopLocation;
     private String shopCreateDate;
     private String shopUrl;
+    private Long totalProduct;
+    private Boolean isActive;
+
 
     public ShopExcelDTO(String shopid, String name, String address, Long totalRevenueMin, Long totalRevenueMax, String shopLocation) {
         this.shopid = shopid;
@@ -29,5 +32,9 @@ public class ShopExcelDTO {
         this.totalRevenueMin = totalRevenueMin;
         this.totalRevenueMax = totalRevenueMax;
         this.shopLocation = shopLocation;
+    }
+
+    public String getIsActiveStr() {
+        return this.isActive ? "Hoạt động" : "Không hoạt động";
     }
 }

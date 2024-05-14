@@ -1,5 +1,6 @@
 package com.hk.max.service;
 
+import com.hk.max.dto.ShopDTO;
 import com.hk.max.dto.ShopExcelDTO;
 import com.hk.max.dto.ShopRawDTO;
 import com.hk.max.model.Shop;
@@ -18,7 +19,7 @@ public interface IShopService {
 
     List<String> getShopByPage(boolean isCrawled, String catid, int page, int size);
 
-    Long getRevenueByShop(String shopid, boolean isMin);
+    ShopDTO getRevenueByShop(String shopid, boolean isMin);
 
     List<ShopExcelDTO> getExcelData(String catid);
 

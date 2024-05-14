@@ -1,4 +1,4 @@
-const API_URL = 'https://e50e-42-118-2-148.ngrok-free.app/api';
+const API_URL = 'http://localhost:8080/api';
 const BASE_HEADER = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',

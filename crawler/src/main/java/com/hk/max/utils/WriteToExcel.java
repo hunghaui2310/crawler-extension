@@ -34,15 +34,16 @@ public class WriteToExcel {
         font.setFontHeight(14);
         style.setFont(font);
 
-        createCell(row, 0, "STT", style);
-        createCell(row, 1, "ShopID", style);
-        createCell(row, 2, "Username", style);
-        createCell(row, 3, "Số điện thoại", style);
-        createCell(row, 4, "Địa chỉ", style);
-        createCell(row, 5, "Doanh thu từ", style);
-        createCell(row, 6, "Doanh thu đến", style);
-        createCell(row, 7, "Ngày tạo shop", style);
-        createCell(row, 8, "Shop URL", style);
+        createCell(row, 0, "ShopID", style);
+        createCell(row, 1, "Username", style);
+        createCell(row, 2, "Số điện thoại", style);
+        createCell(row, 3, "Địa chỉ", style);
+        createCell(row, 4, "Doanh thu từ", style);
+        createCell(row, 5, "Doanh thu đến", style);
+        createCell(row, 6, "Ngày tạo shop", style);
+        createCell(row, 7, "Shop URL", style);
+        createCell(row, 8, "Tổng số SP", style);
+        createCell(row, 9, "Trạng thái", style);
     }
 
     private void createCell(Row row, int columnCount, Object value, CellStyle style) {
@@ -72,7 +73,7 @@ public class WriteToExcel {
             Row row = sheet.createRow(rowCount++);
             int columnCount = 0;
 
-            createCell(row, columnCount++, rowCount - 1, style);
+//            createCell(row, columnCount++, rowCount - 1, style);
             createCell(row, columnCount++, shop.getShopid(), style);
             createCell(row, columnCount++, shop.getUsername(), style);
             createCell(row, columnCount++, shop.getPhoneNumber(), style);
@@ -81,6 +82,8 @@ public class WriteToExcel {
             createCell(row, columnCount++, shop.getTotalRevenueMax(), style);
             createCell(row, columnCount++, shop.getShopCreateDate(), style);
             createCell(row, columnCount++, shop.getShopUrl(), style);
+            createCell(row, columnCount++, shop.getTotalProduct(), style);
+            createCell(row, columnCount++, shop.getIsActiveStr(), style);
         }
     }
 

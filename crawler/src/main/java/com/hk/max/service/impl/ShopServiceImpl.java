@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hk.max.concurrence.ShopProductRawTask;
+import com.hk.max.dto.ShopDTO;
 import com.hk.max.dto.ShopExcelDTO;
 import com.hk.max.dto.ShopProductRawDTO;
 import com.hk.max.dto.ShopRawDTO;
@@ -157,16 +158,16 @@ public class ShopServiceImpl implements IShopService {
             Pageable pageable = PageRequest.of(page, size);
             Page shopPage;
             if (isCrawled) {
-                shopPage = shopRepository.findAllByLastCrawlAtAfterOrLastCrawlAtIsNullAndCatid(pageable, DateUtil.midnightFiftyDayAgo(), catid);
+                shopPage = shopRepository.findAllByCatid(pageable, catid);
             } else {
-                shopPage = shopRepository.findAllByLastCrawlAtBeforeOrLastCrawlAtIsNullAndCatid(pageable, DateUtil.midnightFiftyDayAgo(), catid);
+                shopPage = shopRepository.findAllByLastCrawlAtIsNullAndCatid(pageable, catid);
             }
             listShop = shopPage.getContent();
         } else {
             if (isCrawled) {
-                listShop = shopRepository.findAllByLastCrawlAtAfterOrLastCrawlAtIsNullAndCatid(DateUtil.midnightFiftyDayAgo(), catid);
+                listShop = shopRepository.findAllByLastCrawlAtIsNullAndCatid(catid);
             } else {
-                listShop = shopRepository.findAllByLastCrawlAtBeforeOrLastCrawlAtIsNullAndCatid(DateUtil.midnightFiftyDayAgo(), catid);
+                listShop = shopRepository.findAllByLastCrawlAtIsNullAndCatid(catid);
             }
         }
         for (Shop shop : listShop) {
@@ -176,7 +177,7 @@ public class ShopServiceImpl implements IShopService {
     }
 
     @Override
-    public Long getRevenueByShop(String shopid, boolean isMin) {
+    public ShopDTO getRevenueByShop(String shopid, boolean isMin) {
         List<Product> products = productService.filterByShop(shopid);
         Long totalRevenue = 0L;
         for (Product product : products) {
@@ -187,7 +188,7 @@ public class ShopServiceImpl implements IShopService {
             totalRevenue += price * product.getHistorical_sold();
 
         }
-        return CurrencyUtil.removeLastNDigits(totalRevenue, 5);
+        return new ShopDTO(CurrencyUtil.removeLastNDigits(totalRevenue, 5), products.size());
 //        return CurrencyUtil.toMoneyVND(totalRevenue);
     }
 
@@ -196,13 +197,16 @@ public class ShopServiceImpl implements IShopService {
         List<ShopExcelDTO> shopExcelDTOS = new ArrayList<>();
         List<Shop> shops = shopRepository.findAllByCatid(catid);
         for (Shop shop : shops) {
-            Long totalRevenueMin = this.getRevenueByShop(shop.getShopid(), true);
-            Long totalRevenueMax = this.getRevenueByShop(shop.getShopid(), false);
+            ShopDTO shopDTO = this.getRevenueByShop(shop.getShopid(), true);
+            Long totalRevenueMin = shopDTO.getTotalRevenue();
+            Long totalRevenueMax = this.getRevenueByShop(shop.getShopid(), false).getTotalRevenue();
             ShopExcelDTO shopExcelDTO = new ShopExcelDTO(shop.getShopid(), shop.getShopName(), shop.getDetailAddress(), totalRevenueMin, totalRevenueMax, shop.getShopLocation());
             shopExcelDTO.setUsername(shop.getUsername());
             shopExcelDTO.setPhoneNumber(shop.getDetailPhone());
             shopExcelDTO.setShopCreateDate(DateUtil.convertTime(shop.getCtime()));
             shopExcelDTO.setShopUrl(DataUtil.buildShopUrl(shop.getShopid()));
+            shopExcelDTO.setTotalProduct(shopDTO.getTotalProduct());
+            shopExcelDTO.setIsActive(shop.getLastCrawlAt() != null);
             shopExcelDTOS.add(shopExcelDTO);
         }
         return shopExcelDTOS;
