@@ -13,9 +13,12 @@ async function getAllCategoriesStep2() {
   const flattenedDataCategoryTree = flattenChildren(category_list);
   CATES = flattenedDataCategoryTree
 
-  document.getElementById('category-list').innerHTML = flattenedDataCategoryTree.map(category => {
+  document.getElementById('category-list').innerHTML = flattenedDataCategoryTree.map((category, index) => {
     let categoryName;
     categoryName = category.display_parent ? category.display_parent + '->' + category.display_name : category.display_name;
+    if (index === 0) {
+      currentCatIdGlobal = category.catid
+    }
     return `<option value="${category.catid}">${categoryName}</option>`
   }).join('')
   // currentCatIdGlobal = flattenedDataCategoryTree[0].catid;
@@ -46,7 +49,9 @@ window.addEventListener('getItemsList', async (event) => {
     step = 2;
     document.getElementById("crawl-items-shop").disabled = false;
     const step2Done = document.createElement('p');
-    step2Done.textContent = 'Done ' + currentCatIdGlobal;
+    const categryFound = CATES.find(item => item.catid == currentCatIdGlobal)
+    const catName = categryFound.display_parent ? categryFound.display_parent + '->' + categryFound.display_name : categryFound.display_name
+    step2Done.textContent = 'Done ' + catName;
     document.getElementById('result-crawl').appendChild(step2Done);
     const message = {
       catid: currentCatIdGlobal,
@@ -160,11 +165,9 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
           // console.log('get_shop_base', content);
           //TODO: bóc tách dữ liệu lấy SĐT, địa chỉ từ raw content (text)
           const { data } = JSON.parse(content);
-          if (data.account.status === 3 || data.account.status === 0) {
-            changeShopCrawlDone(currentShopId, false);
-          }
           if (data.account.status !== 1) {
             setTimeout(() => {
+              changeShopCrawlDone(currentShopId, false);
               window.dispatchEvent(
                 new CustomEvent(
                   'getItemsList'
@@ -236,6 +239,7 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
         ++pageRequest;
         if (error) {
           setTimeout(() => {
+          changeShopCrawlDone(currentShopId, false);
             window.dispatchEvent(
               new CustomEvent(
                 'getItemsList'
@@ -243,7 +247,7 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
             )
           }, getRandomTime());
         }
-        if (!data.items || (data.items && data.items.length === 0)) {
+        if (!data?.items || (data.items && data.items.length === 0)) {
           if (pageRequest >= 100) {
             const message = {
               catid: currentCatIdGlobal,
