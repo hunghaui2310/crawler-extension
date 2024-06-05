@@ -53,3 +53,23 @@ document.getElementById("download-excel").addEventListener("click", () => {
     downloading.remove(downloading);
   });
 });
+
+document.getElementById("download-excel-all").addEventListener("click", () => {
+  const resultCrawl = document.getElementById("result-crawl");
+  const downloading = document.createElement("p");
+  downloading.textContent = "Downloading...";
+  resultCrawl.appendChild(downloading);
+  downloadExcelAllAPI().then((res) => {
+    const url = window.URL.createObjectURL(res);
+    const a = document.createElement("a");
+    a.style.display = "none";
+    a.href = url;
+    // the filename you want
+    a.download = getCurrentDay() + "_Hai_Duong.xlsx";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+    downloading.remove(downloading);
+  });
+});

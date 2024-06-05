@@ -195,7 +195,8 @@ public class ShopServiceImpl implements IShopService {
     @Override
     public List<ShopExcelDTO> getExcelData(String catid) {
         List<ShopExcelDTO> shopExcelDTOS = new ArrayList<>();
-        List<Shop> shops = shopRepository.findAllByCatid(catid);
+//        List<Shop> shops = shopRepository.findAllByCatid(catid);
+        List<Shop> shops = shopRepository.findAll();
         for (Shop shop : shops) {
             ShopDTO shopDTO = this.getRevenueByShop(shop.getShopid(), true);
             Long totalRevenueMin = shopDTO.getTotalRevenue();
