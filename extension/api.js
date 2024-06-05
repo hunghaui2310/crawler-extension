@@ -85,6 +85,10 @@ const downloadExcelAPI = (catid) => fetch(API_URL + "/excel/shop?catid=" + catid
     headers: BASE_HEADER,
 }).then(response => response.blob())
 
+const downloadExcelAllAPI = () => fetch(API_URL + "/excel/exportAll", {
+    method: 'GET',
+    headers: BASE_HEADER,
+}).then(response => response.blob())
 
 
 // product API
