@@ -15,8 +15,8 @@
 const CATEGORY_TREE = 'CATEGORY_TREE';
 const localStorageManagerPanel = new LocalStorageManager();
 const types = {};
-const LOCATION = 'Hải Dương';
-const HASH_LOCATION = 'H%25E1%25BA%25A3i%2520D%25C6%25B0%25C6%25A1ng';
+const LOCATION = 'Quảng Ninh';
+const HASH_LOCATION = 'Qu%25E1%25BA%25A3ng%2520Ninh';
 let PAGE_CATEGORY = 0;
 let idInterval;
 let tabId;
