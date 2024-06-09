@@ -36,7 +36,7 @@ public class ExcelController {
             String headerValue = "attachment; filename=shop_" + DateUtil.getCurrentTimeStamp(null) + ".xlsx";
             response.setHeader(headerKey, headerValue);
 
-            List<ShopExcelDTO> listShop = shopService.getExcelData(catid);
+            List<ShopExcelDTO> listShop = shopService.getExcelDataTemp(catid);
 
             WriteToExcel excelExporter = new WriteToExcel(listShop);
 

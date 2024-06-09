@@ -193,10 +193,36 @@ public class ShopServiceImpl implements IShopService {
     }
 
     @Override
-    public List<ShopExcelDTO> getExcelData(String catid) {
+    public List<ShopExcelDTO> getExcelDataTemp(String catid) {
         List<ShopExcelDTO> shopExcelDTOS = new ArrayList<>();
 //        List<Shop> shops = shopRepository.findAllByCatid(catid);
-        List<Shop> shops = shopRepository.findAll();
+        List<Shop> shops = shopRepository.findAllByLastCrawlAtIsNotNull();
+        for (Shop shop : shops) {
+            ShopDTO shopDTO = this.getRevenueByShop(shop.getShopid(), true);
+            Long totalRevenueMin = shopDTO.getTotalRevenue();
+            Long totalRevenueMax = this.getRevenueByShop(shop.getShopid(), false).getTotalRevenue();
+            if (totalRevenueMax < 500000000 && (shop.getDetailAddress() == null || shop.getDetailAddress().equals("")
+                    && (shop.getDetailPhone() == null || shop.getDetailPhone().equals("") ))) {
+                continue;
+            }
+                ShopExcelDTO shopExcelDTO = new ShopExcelDTO(shop.getShopid(), shop.getShopName(), shop.getDetailAddress(), totalRevenueMin, totalRevenueMax, shop.getShopLocation());
+                shopExcelDTO.setUsername(shop.getUsername());
+                shopExcelDTO.setPhoneNumber(shop.getDetailPhone());
+                shopExcelDTO.setShopCreateDate(DateUtil.convertTime(shop.getCtime()));
+                shopExcelDTO.setShopUrl(DataUtil.buildShopUrl(shop.getShopid()));
+                shopExcelDTO.setTotalProduct(shopDTO.getTotalProduct());
+                shopExcelDTO.setIsActive(shop.getLastCrawlAt() != null || (shop.getIsActive() != null && shop.getIsActive() == 1));
+                shopExcelDTOS.add(shopExcelDTO);
+
+        }
+        return shopExcelDTOS;
+    }
+
+    @Override
+    public List<ShopExcelDTO> getExcelData(String catid) {
+        List<ShopExcelDTO> shopExcelDTOS = new ArrayList<>();
+        List<Shop> shops = shopRepository.findAllByCatid(catid);
+//        List<Shop> shops = shopRepository.findAll();
         for (Shop shop : shops) {
             ShopDTO shopDTO = this.getRevenueByShop(shop.getShopid(), true);
             Long totalRevenueMin = shopDTO.getTotalRevenue();
@@ -207,7 +233,7 @@ public class ShopServiceImpl implements IShopService {
             shopExcelDTO.setShopCreateDate(DateUtil.convertTime(shop.getCtime()));
             shopExcelDTO.setShopUrl(DataUtil.buildShopUrl(shop.getShopid()));
             shopExcelDTO.setTotalProduct(shopDTO.getTotalProduct());
-            shopExcelDTO.setIsActive(shop.getLastCrawlAt() != null || shop.getIsActive() == 1);
+            shopExcelDTO.setIsActive(shop.getLastCrawlAt() != null || (shop.getIsActive() != null && shop.getIsActive() == 1));
             shopExcelDTOS.add(shopExcelDTO);
         }
         return shopExcelDTOS;

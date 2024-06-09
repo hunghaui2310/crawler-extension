@@ -248,7 +248,7 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
           }, getRandomTime());
         }
         if (!data?.items || (data.items && data.items.length === 0)) {
-          if (pageRequest >= 100) {
+          if (pageRequest >= 1000000) {
             const message = {
               catid: currentCatIdGlobal,
               status: 2,

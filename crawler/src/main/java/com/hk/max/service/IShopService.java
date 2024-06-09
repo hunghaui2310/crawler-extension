@@ -21,6 +21,8 @@ public interface IShopService {
 
     ShopDTO getRevenueByShop(String shopid, boolean isMin);
 
+    List<ShopExcelDTO> getExcelDataTemp(String catid);
+
     List<ShopExcelDTO> getExcelData(String catid);
 
     void updateShopLastCrawlAt(String shopid);

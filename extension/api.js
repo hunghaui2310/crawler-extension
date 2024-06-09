@@ -1,3 +1,4 @@
+// const API_URL = 'https://1ac7-42-112-235-167.ngrok-free.app/api';
 const API_URL = 'http://localhost:8080/api';
 const BASE_HEADER = {
     'Accept': 'application/json',
@@ -66,7 +67,7 @@ const getLastPageOfShop = (shopId) => fetch(API_URL + "/shop/get-last-page/" + s
     method: 'GET',
     headers: BASE_HEADER,
 }).then(response => response.json())
-
+ 
 
 // shop-raw API
 const saveRawShopAPI = (data, url) => fetch(API_URL + "/shop-raw", {
