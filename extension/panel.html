@@ -21,6 +21,7 @@ limitations under the License.
   <meta charset="utf8" />
   <!-- <script src="./libs/sockjs-client.min.js"></script> -->
   <!-- <script src="./libs/stomp.min.js"></script> -->
+  <link rel="stylesheet" href="bulma.min.css">
   <style>
     html {
       position: fixed;
@@ -46,12 +47,69 @@ limitations under the License.
       border-top: solid 1px #ccc;
       padding-top: 10px;
     }
+
+    .progress {
+      border: 0;
+      border-radius: 0px !important;
+    }
+
+    .section {
+      border: 2px #079b85 solid;
+    }
+
+    .overlay {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      background-color: rgb(245 245 245 / 71%);
+    }
+
+    .overlay__inner {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+
+    .overlay__content {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 25px;
+      font-weight: bold;
+      color: #079b85;
+    }
+
+    .spinner {
+      width: 75px;
+      height: 75px;
+      display: inline-block;
+      border-width: 3px;
+      border-color: rgba(255, 255, 255, 0.05);
+      border-top-color: #079b85;
+      animation: spin 1s infinite linear;
+      border-radius: 100%;
+      border-style: solid;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   </style>
-  <link rel="stylesheet" href="bulma.min.css">
 </head>
 
 <body>
-  <progress class="progress is-small is-primary" max="100">5%</progress>
+  <progress id="progress-bar" class="progress is-small is-primary is-hidden" max="100"></progress>
   <div class="container">
     <section class="section is-medium">
       <h1 class="title has-text-centered">Hệ thống thu thập dữ liệu</h1>
@@ -91,10 +149,18 @@ limitations under the License.
           </div>
         </div>
       </div>
+    </section>
+    <!-- <button id='crawl-detail-item' class="button is-primary">Crawl detail Item</button> -->
+    <!-- <button id='send'>Send</button> -->
   </div>
-  </section>
-  <!-- <button id='crawl-detail-item' class="button is-primary">Crawl detail Item</button> -->
-  <!-- <button id='send'>Send</button> -->
+  <div id="overlay-loading" class="overlay is-hidden">
+    <div class="overlay__inner">
+      <div class="overlay__content">
+        <span class="spinner"></span>
+        <span class="mt-1" id='download-text-content'>Đang tải xuống ...</span>
+        <div id="warning-download" class="mt-1 is-hidden">Lượng dữ liệu lớn có thể mất nhiều thời gian để tải xuống! Vui lòng đợi!</div>
+      </div>
+    </div>
   </div>
   <!-- <button id="press">Press to Scroll</button> -->
   <script type="application/javascript" src="storage.js"></script>

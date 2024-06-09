@@ -48,6 +48,8 @@ window.addEventListener('getItemsList', async (event) => {
     await statusRawItemAPI(true);
     step = 2;
     document.getElementById("crawl-items-shop").disabled = false;
+    document.getElementById("crawl-items-shop").classList.remove("is-loading");
+    document.getElementById("progress-bar").classList.add("is-hidden");
     const step2Done = document.createElement('p');
     const categryFound = CATES.find(item => item.catid == currentCatIdGlobal)
     const catName = categryFound.display_parent ? categryFound.display_parent + '->' + categryFound.display_name : categryFound.display_name
@@ -301,4 +303,6 @@ document.getElementById("crawl-items-shop").addEventListener("click", () => {
   );
   step = 2;
   document.getElementById("crawl-items-shop").disabled = true;
+  document.getElementById("crawl-items-shop").classList.add("is-loading");
+  document.getElementById("progress-bar").classList.remove("is-hidden");
 });

@@ -98,6 +98,7 @@ window.addEventListener('crawlShopByCategory', async (event) => {
         document.getElementById('result-crawl').appendChild(step1Done);
         document.getElementById('crawl-shop').disabled = false;
         document.getElementById('crawl-shop').classList.remove("is-loading");
+        document.getElementById('progress-bar').classList.add("is-hidden");
         return;
     }
     if (categoryTree.length) {
@@ -223,6 +224,7 @@ document.getElementById('crawl-shop').addEventListener('click', () => {
         );
         document.getElementById('crawl-shop').disabled = true;
         document.getElementById('crawl-shop').classList.add("is-loading");
+        document.getElementById('progress-bar').classList.remove("is-hidden");
         step = 1;
     }, 3000);
 });
