@@ -207,7 +207,7 @@ public class ShopServiceImpl implements IShopService {
             shopExcelDTO.setShopCreateDate(DateUtil.convertTime(shop.getCtime()));
             shopExcelDTO.setShopUrl(DataUtil.buildShopUrl(shop.getShopid()));
             shopExcelDTO.setTotalProduct(shopDTO.getTotalProduct());
-            shopExcelDTO.setIsActive(shop.getLastCrawlAt() != null || shop.getIsActive() == 1);
+            shopExcelDTO.setIsActive(shop.getLastCrawlAt() != null || (shop.getIsActive() != null && shop.getIsActive() == 1));
             shopExcelDTOS.add(shopExcelDTO);
         }
         return shopExcelDTOS;
