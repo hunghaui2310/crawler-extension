@@ -20,6 +20,8 @@ public interface IShopRepository extends MongoRepository<Shop, String> {
 
     Page<Shop> findAllByCatid(Pageable pageable, String catid);
 
+    List<Shop> findAllByLastCrawlAtIsNotNull();
+
     //    Page<Shop> findAllByLastCrawlAtBeforeOrLastCrawlAtIsNull(Pageable pageable, Date lastCrawlAt);
     Page<Shop> findAllByLastCrawlAtIsNullAndCatid(Pageable pageable, String catid);
 

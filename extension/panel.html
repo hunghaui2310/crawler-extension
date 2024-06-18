@@ -47,28 +47,54 @@ limitations under the License.
       padding-top: 10px;
     }
   </style>
+  <link rel="stylesheet" href="bulma.min.css">
 </head>
 
 <body>
+  <progress class="progress is-small is-primary" max="100">5%</progress>
   <div class="container">
-    <button id='crawl-shop'>Crawl Shop</button>
-    <button id='crawl-items-shop'>Crawl Items Shop</button>
-    <button id='crawl-detail-item'>Crawl detail Item</button>
-    <!-- <button id='send'>Send</button> -->
-    <select name="category" id="category-list">
-    </select>
-    <div id="result-crawl"></div>
-    <div id="output"></div>
+    <section class="section is-medium">
+      <h1 class="title has-text-centered">Hệ thống thu thập dữ liệu</h1>
+      <div class="columns">
+        <div class="column">
+          <button id='crawl-shop' class="button is-primary is-fullwidth">Thu thập shop</button>
+        </div>
+        <div class='column'>
+          <button id='crawl-items-shop' class="button is-primary is-fullwidth">Thu thập thông tin shop</button>
+        </div>
+        <div class="column is-three-fifths">
+          <div class="select is-primary">
+            <select name="category" id="category-list">
+            </select>
+          </div>
+        </div>
+      </div>
+      <div id="result-crawl">
+      </div>
+      <div id="output">
+      </div>
+      <br />
+      <div class="columns">
+        <div class="column">
+          <button id='download-excel-all' class="button is-primary is-fullwidth">
+            Tải xuống tất cả dữ liệu
+          </button>
+        </div>
+        <div class="column">
+          <button id='download-excel' class="button is-primary is-fullwidth">
+            Tải xuống theo danh mục
+          </button>
+        </div>
+        <div class="column is-three-fifths">
+          <div class="select is-primary">
+            <select name="category-download" id="category-list-download"></select>
+          </div>
+        </div>
+      </div>
   </div>
-  <br />
-  <div>
-    <div id="dowload-container">
-      <button id='download-excel'>Download Excel</button>
-      <select name="category-download" id="category-list-download"></select>
-    </div>
-    <div>
-      <button id='download-excel-all'>Download All</button>
-    </div>
+  </section>
+  <!-- <button id='crawl-detail-item' class="button is-primary">Crawl detail Item</button> -->
+  <!-- <button id='send'>Send</button> -->
   </div>
   <!-- <button id="press">Press to Scroll</button> -->
   <script type="application/javascript" src="storage.js"></script>
