@@ -247,3 +247,21 @@ document.getElementById('crawl-shop').addEventListener('click', () => {
 //         }
 //     })
 // }, 5000);
+
+
+// RESET ACCOUNT - RESET CATEGORY
+document.getElementById('reset-account').addEventListener('click', async () => {
+    document.getElementById('reset-account').disabled = true;
+    document.getElementById('progress-bar').classList.remove("is-hidden");
+    const resetAccount = await resetAccount();
+    document.getElementById('progress-bar').classList.add("is-hidden");
+    document.getElementById('reset-account').disabled = false;
+});
+
+document.getElementById('reset-category').addEventListener('click', async () => {
+    document.getElementById('reset-category').disabled = true;
+    document.getElementById('progress-bar').classList.remove("is-hidden");
+    const resetCategory = await resetCategory();
+    document.getElementById('progress-bar').classList.add("is-hidden");
+    document.getElementById('reset-category').disabled = false;
+});
