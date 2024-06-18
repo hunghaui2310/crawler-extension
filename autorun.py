@@ -176,7 +176,7 @@ def read_account():
 
 
 def read_category_shopee():
-    with open(root_directory + '/extension/get_category_tree.json', 'r') as file:
+    with open(root_directory + '/extension/get_category_tree.json', 'r', encoding="utf8") as file:
         data = json.load(file)
     cates = []
     for item in data['data']['category_list']:
