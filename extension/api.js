@@ -102,15 +102,17 @@ const getAllCategories = () => fetch('./get_category_tree.json', {
   headers: BASE_HEADER,
 }).then(response => response.json())
 
-const resetAccount = () => fetch(API_URL + '/reset/account', {
+// app API
+const resetAccount = () => fetch(API_URL + '/app/reset-account', {
     method: 'GET',
     headers: BASE_HEADER,
   }).then(response => response.json())
 
-const resetCategory = () => fetch(API_URL + '/reset/category', {
+const resetCategory = () => fetch(API_URL + '/app/reset-cate', {
     method: 'GET',
     headers: BASE_HEADER,
   }).then(response => response.json())
+
 
 // check Server status
 // const checkServerAPI = () => fetch(API_URL + "/status", {
