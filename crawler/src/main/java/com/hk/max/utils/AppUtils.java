@@ -1,11 +1,16 @@
 package com.hk.max.utils;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
+import java.util.Map;
 
 @Slf4j
 public class AppUtils {
@@ -73,5 +78,19 @@ public class AppUtils {
         str = str.replaceAll("[ỲÝỴỶỸ]", "Y");
         str = str.replaceAll("[Đ]", "D");
         return str;
+    }
+
+    public static void extractCatIds(JsonNode node, List<Map<String, Integer>> result) {
+        if (node.isArray()) {
+            for (JsonNode category : node) {
+                if (category.has("catid")) {
+                    int catid = category.get("catid").asInt();
+                    result.add(Map.of("status", 0, "catid", catid));
+                }
+                if (category.has("children")) {
+                    extractCatIds(category.get("children"), result);
+                }
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.hk.max.controller;
 
 import com.hk.max.concurrence.AutoRunTask;
+import com.hk.max.service.IAppService;
 import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -17,6 +18,9 @@ public class AppController {
     @Autowired
     private ConfigurableApplicationContext applicationContext;
 
+    @Autowired
+    private IAppService appService;
+
     @GetMapping("/auto-run")
     public ResponseEntity<?> autoRunApp() {
         try {
@@ -27,6 +31,28 @@ public class AppController {
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/reset-cate")
+    public ResponseEntity<?> resetCate() {
+        try {
+            appService.resetCategory();
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/reset-account")
+    public ResponseEntity<?> resetAccount() {
+        try {
+            appService.resetAccount();
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
