@@ -289,7 +289,7 @@ def auto_login():
     time.sleep(1)
     auto_press(Key.enter)
 
-# read_category_shopee()
+read_category_shopee()
 
 
 def auto_run():
@@ -303,7 +303,7 @@ def auto_run():
     # else:
     #     print("Chrome window is not focused.")
 
-auto_run()
+# auto_run()
 
 # Start a task to send messages to clients asynchronously
 
