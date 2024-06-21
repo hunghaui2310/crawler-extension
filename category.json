@@ -1,0 +1,635 @@
+{"_id": {"$oid": "6628b73eaee40fdbf3d765af"}, "status": 1, "catid": 11035567, "name": "Thời Trang Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b0"}, "status": 1, "catid": 11035568, "name": "Thời Trang Nam-Áo Khoác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b1"}, "status": 1, "catid": 11035572, "name": "Thời Trang Nam-Áo Vest và Blazer"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b2"}, "status": 1, "catid": 11035578, "name": "Thời Trang Nam-Áo Hoodie, Áo Len & Áo Nỉ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b3"}, "status": 1, "catid": 11035583, "name": "Thời Trang Nam-Quần Jeans"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b4"}, "status": 1, "catid": 11035584, "name": "Thời Trang Nam-Quần Dài/Quần Âu"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b5"}, "status": 1, "catid": 11035590, "name": "Thời Trang Nam-Quần Short"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b6"}, "st[{"_id": {"$oid": "6628b73eaee40fdbf3d765af"}, "status": 1, "catid": 11035567, "name": "Thời Trang Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b0"}, "status": 1, "catid": 11035568, "name": "Thời Trang Nam-Áo Khoác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b1"}, "status": 1, "catid": 11035572, "name": "Thời Trang Nam-Áo Vest và Blazer"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b2"}, "status": 1, "catid": 11035578, "name": "Thời Trang Nam-Áo Hoodie, Áo Len & Áo Nỉ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b3"}, "status": 1, "catid": 11035583, "name": "Thời Trang Nam-Quần Jeans"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b4"}, "status": 1, "catid": 11035584, "name": "Thời Trang Nam-Quần Dài/Quần Âu"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b5"}, "status": 1, "catid": 11035590, "name": "Thời Trang Nam-Quần Short"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b6"}, "status": 1, "catid": 11035592, "name": "Thời Trang Nam-Áo"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b7"}, "status": 1, "catid": 11035597, "name": "Thời Trang Nam-Áo Ba Lỗ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b8"}, "status": 1, "catid": 11035598, "name": "Thời Trang Nam-Đồ Lót"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b9"}, "status": 1, "catid": 11035603, "name": "Thời Trang Nam-Đồ Ngủ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ba"}, "status": 1, "catid": 11035604, "name": "Thời Trang Nam-Đồ Bộ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765bb"}, "status": 1, "catid": 11035605, "name": "Thời Trang Nam-Vớ/Tất"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765bc"}, "status": 1, "catid": 11035606, "name": "Thời Trang Nam-Trang Phục Truyền Thống"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765bd"}, "status": 1, "catid": 11035611, "name": "Thời Trang Nam-Đồ Hóa Trang"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765be"}, "status": 1, "catid": 11035612, "name": "Thời Trang Nam-Trang Phục Ngành Nghề"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765bf"}, "status": 1, "catid": 11035613, "name": "Thời Trang Nam-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c0"}, "status": 1, "catid": 11035614, "name": "Thời Trang Nam-Trang Sức Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c1"}, "status": 1, "catid": 11035620, "name": "Thời Trang Nam-Kính Mắt Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c2"}, "status": 1, "catid": 11035625, "name": "Thời Trang Nam-Thắt Lưng Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c3"}, "status": 1, "catid": 11035626, "name": "Thời Trang Nam-Cà vạt & Nơ cổ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c4"}, "status": 1, "catid": 11035627, "name": "Thời Trang Nam-Phụ Kiện Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c5"}, "status": 1, "catid": 11035639, "name": "Thời Trang Nữ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c6"}, "status": 1, "catid": 11035648, "name": "Thời Trang Nữ-Quần"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c7"}, "status": 1, "catid": 11035652, "name": "Thời Trang Nữ-Quần đùi"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c8"}, "status": 1, "catid": 11035656, "name": "Thời Trang Nữ-Chân váy"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c9"}, "status": 1, "catid": 11035657, "name": "Thời Trang Nữ-Quần jeans"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ca"}, "status": 1, "catid": 11035658, "name": "Thời Trang Nữ-Đầm/Váy"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765cb"}, "status": 1, "catid": 11035659, "name": "Thời Trang Nữ-Váy cưới"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765cc"}, "status": 1, "catid": 11035660, "name": "Thời Trang Nữ-Đồ liền thân"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765cd"}, "status": 1, "catid": 11035665, "name": "Thời Trang Nữ-Áo khoác, Áo choàng & Vest"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ce"}, "status": 1, "catid": 11035672, "name": "Thời Trang Nữ-Áo len & Cardigan"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765cf"}, "status": 1, "catid": 11035673, "name": "Thời Trang Nữ-Hoodie và Áo nỉ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d0"}, "status": 1, "catid": 11035677, "name": "Thời Trang Nữ-Bộ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d1"}, "status": 1, "catid": 11035682, "name": "Thời Trang Nữ-Đồ lót"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d2"}, "status": 1, "catid": 11035692, "name": "Thời Trang Nữ-Đồ ngủ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d3"}, "status": 1, "catid": 11035640, "name": "Thời Trang Nữ-Áo"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d4"}, "status": 1, "catid": 11035730, "name": "Thời Trang Nữ-Đồ tập"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d5"}, "status": 1, "catid": 11035697, "name": "Thời Trang Nữ-Đồ Bầu"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d6"}, "status": 1, "catid": 11035705, "name": "Thời Trang Nữ-Đồ truyền thống"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d7"}, "status": 1, "catid": 11035711, "name": "Thời Trang Nữ-Đồ hóa trang"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d8"}, "status": 1, "catid": 11035713, "name": "Thời Trang Nữ-Vải"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d9"}, "status": 1, "catid": 11035726, "name": "Thời Trang Nữ-Vớ/ Tất"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765da"}, "status": 1, "catid": 11035712, "name": "Thời Trang Nữ-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765db"}, "status": 1, "catid": 11036030, "name": "Điện Thoại & Phụ Kiện"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765dc"}, "status": 1, "catid": 11036031, "name": "Điện Thoại & Phụ Kiện-Điện thoại"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765dd"}, "status": 1, "catid": 11036041, "name": "Điện Thoại & Phụ Kiện-Máy tính bảng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765de"}, "status": 1, "catid": 11036048, "name": "Điện Thoại & Phụ Kiện-Pin Dự Phòng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765df"}, "status": 1, "catid": 11036054, "name": "Điện Thoại & Phụ Kiện-Pin Gắn Trong, Cáp và Bộ Sạc"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e0"}, "status": 1, "catid": 11036060, "name": "Điện Thoại & Phụ Kiện-Ốp lưng, bao da, Miếng dán điện thoại"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e1"}, "status": 1, "catid": 11036064, "name": "Điện Thoại & Phụ Kiện-Bảo vệ màn hình"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e2"}, "status": 1, "catid": 11036074, "name": "Điện Thoại & Phụ Kiện-Đế giữ điện thoại"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e3"}, "status": 1, "catid": 11036083, "name": "Điện Thoại & Phụ Kiện-Thẻ nhớ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e4"}, "status": 1, "catid": 11036084, "name": "Điện Thoại & Phụ Kiện-Sim"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e5"}, "status": 1, "catid": 11036091, "name": "Điện Thoại & Phụ Kiện-Phụ kiện khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e6"}, "status": 1, "catid": 11036097, "name": "Điện Thoại & Phụ Kiện-Thiết bị khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e7"}, "status": 1, "catid": 11036194, "name": "Mẹ & Bé"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e8"}, "status": 1, "catid": 11036195, "name": "Mẹ & Bé-Đồ dùng du lịch cho bé"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e9"}, "status": 1, "catid": 11036204, "name": "Mẹ & Bé-Đồ dùng ăn dặm cho bé"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ea"}, "status": 1, "catid": 11036213, "name": "Mẹ & Bé-Phụ kiện cho mẹ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765eb"}, "status": 1, "catid": 11036217, "name": "Mẹ & Bé-Chăm sóc sức khỏe mẹ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ec"}, "status": 0, "catid": 11036222, "name": "Mẹ & Bé-Đồ dùng phòng tắm & Chăm sóc cơ thể bé"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ed"}, "status": 0, "catid": 11036233, "name": "Mẹ & Bé-Đồ dùng phòng ngủ cho bé"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ee"}, "status": 0, "catid": 11036240, "name": "Mẹ & Bé-An toàn cho bé"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ef"}, "status": 0, "catid": 11036248, "name": "Mẹ & Bé-Thực phẩm cho bé"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f0"}, "status": 0, "catid": 11036253, "name": "Mẹ & Bé-Chăm sóc sức khỏe bé"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f1"}, "status": 0, "catid": 11036260, "name": "Mẹ & Bé-Tã & bô em bé"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f2"}, "status": 0, "catid": 11036266, "name": "Mẹ & Bé-Đồ chơi"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f3"}, "status": 0, "catid": 11036277, "name": "Mẹ & Bé-Bộ & Gói quà tặng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f4"}, "status": 0, "catid": 11036278, "name": "Mẹ & Bé-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f5"}, "status": 0, "catid": 11059299, "name": "Mẹ & Bé-Sữa công thức trên 24 tháng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f6"}, "status": 0, "catid": 11059300, "name": "Mẹ & Bé-Sữa công thức 0-24 tháng tuổi"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f7"}, "status": 1, "catid": 11036132, "name": "Thiết Bị Điện Tử"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f8"}, "status": 0, "catid": 11036160, "name": "Thiết Bị Điện Tử-Thiết bị đeo thông minh"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f9"}, "status": 0, "catid": 11036167, "name": "Thiết Bị Điện Tử-Phụ kiện tivi"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765fa"}, "status": 0, "catid": 11036172, "name": "Thiết Bị Điện Tử-Máy Game Console"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765fb"}, "status": 0, "catid": 11036182, "name": "Thiết Bị Điện Tử-Phụ kiện Console"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765fc"}, "status": 0, "catid": 11036184, "name": "Thiết Bị Điện Tử-Đĩa game"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765fd"}, "status": 0, "catid": 11036133, "name": "Thiết Bị Điện Tử-Linh phụ kiện"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765fe"}, "status": 0, "catid": 11036143, "name": "Thiết Bị Điện Tử-Tai nghe nhét tai"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ff"}, "status": 0, "catid": 11036135, "name": "Thiết Bị Điện Tử-Loa"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76600"}, "status": 0, "catid": 11036151, "name": "Thiết Bị Điện Tử-Tivi"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76601"}, "status": 0, "catid": 11036157, "name": "Thiết Bị Điện Tử-Tivi Box"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76602"}, "status": 0, "catid": 11109141, "name": "Thiết Bị Điện Tử-Headphones"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76603"}, "status": 0, "catid": 11036670, "name": "Nhà Cửa & Đời Sống"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76604"}, "status": 0, "catid": 11036683, "name": "Nhà Cửa & Đời Sống-Chăn, Ga, Gối & Nệm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76605"}, "status": 0, "catid": 11036695, "name": "Nhà Cửa & Đời Sống-Đồ nội thất"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76606"}, "status": 0, "catid": 11036717, "name": "Nhà Cửa & Đời Sống-Trang trí nhà cửa"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76607"}, "status": 0, "catid": 11036732, "name": "Nhà Cửa & Đời Sống-Dụng cụ & Thiết bị tiện ích"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76608"}, "status": 0, "catid": 11036748, "name": "Nhà Cửa & Đời Sống-Đồ dùng nhà bếp và hộp đựng thực phẩm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76609"}, "status": 0, "catid": 11036760, "name": "Nhà Cửa & Đời Sống-Đèn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7660a"}, "status": 0, "catid": 11036776, "name": "Nhà Cửa & Đời Sống-Ngoài trời & Sân vườn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7660b"}, "status": 0, "catid": 11036671, "name": "Nhà Cửa & Đời Sống-Đồ dùng phòng tắm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7660c"}, "status": 0, "catid": 11111670, "name": "Nhà Cửa & Đời Sống-Vật phẩm thờ cúng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7660d"}, "status": 0, "catid": 11111669, "name": "Nhà Cửa & Đời Sống-Đồ trang trí tiệc"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7660e"}, "status": 0, "catid": 11111665, "name": "Nhà Cửa & Đời Sống-Chăm sóc nhà cửa và giặt ủi"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7660f"}, "status": 0, "catid": 11111668, "name": "Nhà Cửa & Đời Sống-Sắp xếp nhà cửa"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76610"}, "status": 0, "catid": 11111666, "name": "Nhà Cửa & Đời Sống-Dụng cụ pha chế"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76611"}, "status": 0, "catid": 11111664, "name": "Nhà Cửa & Đời Sống-Tinh dầu thơm phòng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76612"}, "status": 0, "catid": 11111667, "name": "Nhà Cửa & Đời Sống-Đồ dùng phòng ăn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76613"}, "status": 0, "catid": 11035954, "name": "Máy Tính & Laptop"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76614"}, "status": 0, "catid": 11035955, "name": "Máy Tính & Laptop-Máy Tính Bàn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76615"}, "status": 0, "catid": 11035961, "name": "Máy Tính & Laptop-Màn Hình"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76616"}, "status": 0, "catid": 11035962, "name": "Máy Tính & Laptop-Linh Kiện Máy Tính"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76617"}, "status": 0, "catid": 11035975, "name": "Máy Tính & Laptop-Thiết Bị Lưu Trữ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76618"}, "status": 0, "catid": 11035983, "name": "Máy Tính & Laptop-Thiết Bị Mạng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76619"}, "status": 0, "catid": 11035993, "name": "Máy Tính & Laptop-Máy In, Máy Scan & Máy Chiếu"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7661a"}, "status": 0, "catid": 11036000, "name": "Máy Tính & Laptop-Phụ Kiện Máy Tính"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7661b"}, "status": 0, "catid": 11036015, "name": "Máy Tính & Laptop-Laptop"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7661c"}, "status": 0, "catid": 11036016, "name": "Máy Tính & Laptop-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7661d"}, "status": 0, "catid": 11036023, "name": "Máy Tính & Laptop-Gaming"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7661e"}, "status": 0, "catid": 11036279, "name": "Sắc Đẹp"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7661f"}, "status": 0, "catid": 11036328, "name": "Sắc Đẹp-Chăm sóc da mặt"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76620"}, "status": 0, "catid": 11036280, "name": "Sắc Đẹp-Tắm & chăm sóc cơ thể"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76621"}, "status": 0, "catid": 11036314, "name": "Sắc Đẹp-Trang điểm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76622"}, "status": 0, "catid": 11036297, "name": "Sắc Đẹp-Chăm sóc tóc"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76623"}, "status": 0, "catid": 11036321, "name": "Sắc Đẹp-Dụng cụ & Phụ kiện Làm đẹp"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76624"}, "status": 0, "catid": 11111646, "name": "Sắc Đẹp-Vệ sinh răng miệng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76625"}, "status": 0, "catid": 11036310, "name": "Sắc Đẹp-Nước hoa"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76626"}, "status": 0, "catid": 11036304, "name": "Sắc Đẹp-Chăm sóc nam giới"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76627"}, "status": 0, "catid": 11036344, "name": "Sắc Đẹp-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76628"}, "status": 0, "catid": 11111647, "name": "Sắc Đẹp-Chăm sóc phụ nữ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76629"}, "status": 0, "catid": 11036343, "name": "Sắc Đẹp-Bộ sản phẩm làm đẹp"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7662a"}, "status": 0, "catid": 11036101, "name": "Máy Ảnh & Máy Quay Phim"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7662b"}, "status": 0, "catid": 11036102, "name": "Máy Ảnh & Máy Quay Phim-Máy ảnh - Máy quay phim"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7662c"}, "status": 0, "catid": 11036109, "name": "Máy Ảnh & Máy Quay Phim-Camera giám sát & Camera hệ thống"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7662d"}, "status": 0, "catid": 11036114, "name": "Máy Ảnh & Máy Quay Phim-Thẻ nhớ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7662e"}, "status": 0, "catid": 11036115, "name": "Máy Ảnh & Máy Quay Phim-Ống kính"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7662f"}, "status": 0, "catid": 11036119, "name": "Máy Ảnh & Máy Quay Phim-Phụ kiện máy ảnh"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76630"}, "status": 0, "catid": 11036129, "name": "Máy Ảnh & Máy Quay Phim-Máy bay camera & Phụ kiện"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76631"}, "status": 0, "catid": 11036345, "name": "Sức Khỏe"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76632"}, "status": 0, "catid": 11036352, "name": "Sức Khỏe-Vật tư y tế"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76633"}, "status": 0, "catid": 11036373, "name": "Sức Khỏe-Chống muỗi & xua đuổi côn trùng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76634"}, "status": 0, "catid": 11036346, "name": "Sức Khỏe-Thực phẩm chức năng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76635"}, "status": 0, "catid": 11036370, "name": "Sức Khỏe-Tã người lớn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76636"}, "status": 0, "catid": 11036348, "name": "Sức Khỏe-Hỗ trợ làm đẹp"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76637"}, "status": 0, "catid": 11036375, "name": "Sức Khỏe-Hỗ trợ tình dục"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76638"}, "status": 0, "catid": 11036372, "name": "Sức Khỏe-Dụng cụ massage và trị liệu"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76639"}, "status": 0, "catid": 11036381, "name": "Sức Khỏe-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7663a"}, "status": 0, "catid": 11035788, "name": "Đồng Hồ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7663b"}, "status": 0, "catid": 11035789, "name": "Đồng Hồ-Đồng Hồ Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7663c"}, "status": 0, "catid": 11035790, "name": "Đồng Hồ-Đồng Hồ Nữ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7663d"}, "status": 0, "catid": 11035791, "name": "Đồng Hồ-Bộ Đồng Hồ & Đồng Hồ Cặp"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7663e"}, "status": 0, "catid": 11035792, "name": "Đồng Hồ-Đồng Hồ Trẻ Em"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7663f"}, "status": 0, "catid": 11035793, "name": "Đồng Hồ-Phụ Kiện Đồng Hồ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76640"}, "status": 0, "catid": 11035800, "name": "Đồng Hồ-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76641"}, "status": 0, "catid": 11035825, "name": "Giày Dép Nữ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76642"}, "status": 0, "catid": 11035826, "name": "Giày Dép Nữ-Bốt"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76643"}, "status": 0, "catid": 11035830, "name": "Giày Dép Nữ-Giày Thể Thao/ Sneaker"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76644"}, "status": 0, "catid": 11035831, "name": "Giày Dép Nữ-Giày Đế Bằng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76645"}, "status": 0, "catid": 11035837, "name": "Giày Dép Nữ-Giày Cao Gót"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76646"}, "status": 0, "catid": 11035838, "name": "Giày Dép Nữ-Giày Đế Xuồng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76647"}, "status": 0, "catid": 11035839, "name": "Giày Dép Nữ-Xăng-đan Và Dép"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76648"}, "status": 0, "catid": 11035845, "name": "Giày Dép Nữ-Phụ Kiện Giày"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76649"}, "status": 0, "catid": 11035852, "name": "Giày Dép Nữ-Giày Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7664a"}, "status": 0, "catid": 11035801, "name": "Giày Dép Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7664b"}, "status": 0, "catid": 11035802, "name": "Giày Dép Nam-Bốt"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7664c"}, "status": 0, "catid": 11035807, "name": "Giày Dép Nam-Giày Thể Thao/ Sneakers"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7664d"}, "status": 0, "catid": 11035808, "name": "Giày Dép Nam-Giày Sục"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7664e"}, "status": 0, "catid": 11035809, "name": "Giày Dép Nam-Giày Tây Lười"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7664f"}, "status": 0, "catid": 11035810, "name": "Giày Dép Nam-Giày Oxfords & Giày Buộc Dây"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76650"}, "status": 0, "catid": 11035811, "name": "Giày Dép Nam-Xăng-đan và Dép"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76651"}, "status": 0, "catid": 11035817, "name": "Giày Dép Nam-Phụ kiện giày dép"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76652"}, "status": 0, "catid": 11035824, "name": "Giày Dép Nam-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76653"}, "status": 0, "catid": 11035761, "name": "Túi Ví Nữ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76654"}, "status": 0, "catid": 11035762, "name": "Túi Ví Nữ-Ba Lô Nữ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76655"}, "status": 0, "catid": 11035763, "name": "Túi Ví Nữ-Cặp Laptop"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76656"}, "status": 0, "catid": 11035768, "name": "Túi Ví Nữ-Ví Dự Tiệc & Ví Cầm Tay"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76657"}, "status": 0, "catid": 11035769, "name": "Túi Ví Nữ-Túi Đeo Hông & Túi Đeo Ngực"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76658"}, "status": 0, "catid": 11035770, "name": "Túi Ví Nữ-Túi Tote"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76659"}, "status": 0, "catid": 11035771, "name": "Túi Ví Nữ-Túi Quai Xách"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7665a"}, "status": 0, "catid": 11035772, "name": "Túi Ví Nữ-Túi Đeo Chéo & Túi Đeo Vai"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7665b"}, "status": 0, "catid": 11035773, "name": "Túi Ví Nữ-Ví/Bóp Nữ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7665c"}, "status": 0, "catid": 11035780, "name": "Túi Ví Nữ-Phụ Kiện Túi"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7665d"}, "status": 0, "catid": 11035787, "name": "Túi Ví Nữ-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7665e"}, "status": 0, "catid": 11036971, "name": "Thiết Bị Điện Gia Dụng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7665f"}, "status": 0, "catid": 11036972, "name": "Thiết Bị Điện Gia Dụng-Đồ gia dụng nhà bếp"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76660"}, "status": 0, "catid": 11036990, "name": "Thiết Bị Điện Gia Dụng-Đồ gia dụng lớn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76661"}, "status": 0, "catid": 11037000, "name": "Thiết Bị Điện Gia Dụng-Máy hút bụi & Thiết bị làm sạch"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76662"}, "status": 0, "catid": 11037007, "name": "Thiết Bị Điện Gia Dụng-Quạt & Máy nóng lạnh"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76663"}, "status": 0, "catid": 11037016, "name": "Thiết Bị Điện Gia Dụng-Thiết bị chăm sóc quần áo"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76664"}, "status": 0, "catid": 11037023, "name": "Thiết Bị Điện Gia Dụng-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76665"}, "status": 0, "catid": 11111623, "name": "Thiết Bị Điện Gia Dụng-Máy xay, ép, máy đánh trứng trộn bột, máy xay thực phẩm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76666"}, "status": 0, "catid": 11111620, "name": "Thiết Bị Điện Gia Dụng-Bếp điện"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76667"}, "status": 0, "catid": 11035853, "name": "Phụ Kiện & Trang Sức Nữ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76668"}, "status": 0, "catid": 11035854, "name": "Phụ Kiện & Trang Sức Nữ-Nhẫn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76669"}, "status": 0, "catid": 11035855, "name": "Phụ Kiện & Trang Sức Nữ-Bông tai"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7666a"}, "status": 0, "catid": 11035856, "name": "Phụ Kiện & Trang Sức Nữ-Khăn choàng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7666b"}, "status": 0, "catid": 11035857, "name": "Phụ Kiện & Trang Sức Nữ-Găng tay"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7666c"}, "status": 0, "catid": 11035858, "name": "Phụ Kiện & Trang Sức Nữ-Phụ kiện tóc"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7666d"}, "status": 0, "catid": 11035865, "name": "Phụ Kiện & Trang Sức Nữ-Vòng tay & Lắc tay"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7666e"}, "status": 0, "catid": 11035866, "name": "Phụ Kiện & Trang Sức Nữ-Lắc chân"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7666f"}, "status": 0, "catid": 11035867, "name": "Phụ Kiện & Trang Sức Nữ-Mũ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76670"}, "status": 0, "catid": 11035868, "name": "Phụ Kiện & Trang Sức Nữ-Dây chuyền"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76671"}, "status": 0, "catid": 11035869, "name": "Phụ Kiện & Trang Sức Nữ-Kính mắt"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76672"}, "status": 0, "catid": 11035874, "name": "Phụ Kiện & Trang Sức Nữ-Kim loại quý"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76673"}, "status": 0, "catid": 11035880, "name": "Phụ Kiện & Trang Sức Nữ-Thắt lưng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76674"}, "status": 0, "catid": 11035881, "name": "Phụ Kiện & Trang Sức Nữ-Cà vạt & Nơ cổ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76675"}, "status": 0, "catid": 11035882, "name": "Phụ Kiện & Trang Sức Nữ-Phụ kiện thêm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76676"}, "status": 0, "catid": 11035891, "name": "Phụ Kiện & Trang Sức Nữ-Bộ phụ kiện"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76677"}, "status": 0, "catid": 11035892, "name": "Phụ Kiện & Trang Sức Nữ-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76678"}, "status": 0, "catid": 11035893, "name": "Phụ Kiện & Trang Sức Nữ-Vớ/ Tất"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76679"}, "status": 0, "catid": 11035897, "name": "Phụ Kiện & Trang Sức Nữ-Ô/Dù"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7667a"}, "status": 0, "catid": 11035478, "name": "Thể Thao & Du Lịch"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7667b"}, "status": 0, "catid": 11035479, "name": "Thể Thao & Du Lịch-Vali"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7667c"}, "status": 0, "catid": 11035487, "name": "Thể Thao & Du Lịch-Túi du lịch"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7667d"}, "status": 0, "catid": 11035492, "name": "Thể Thao & Du Lịch-Phụ kiện du lịch"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7667e"}, "status": 0, "catid": 11035503, "name": "Thể Thao & Du Lịch-Dụng Cụ Thể Thao & Dã Ngoại"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7667f"}, "status": 0, "catid": 11035531, "name": "Thể Thao & Du Lịch-Giày Thể Thao"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76680"}, "status": 0, "catid": 11035543, "name": "Thể Thao & Du Lịch-Thời Trang Thể Thao & Dã Ngoại"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76681"}, "status": 0, "catid": 11035553, "name": "Thể Thao & Du Lịch-Phụ Kiện Thể Thao & Dã Ngoại"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76682"}, "status": 0, "catid": 11035566, "name": "Thể Thao & Du Lịch-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76683"}, "status": 0, "catid": 11036525, "name": "Bách Hóa Online"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76684"}, "status": 0, "catid": 11036532, "name": "Bách Hóa Online-Đồ ăn vặt"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76685"}, "status": 0, "catid": 11036526, "name": "Bách Hóa Online-Đồ chế biến sẵn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76686"}, "status": 0, "catid": 11036544, "name": "Bách Hóa Online-Nhu yếu phẩm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76687"}, "status": 0, "catid": 11036552, "name": "Bách Hóa Online-Nguyên liệu nấu ăn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76688"}, "status": 0, "catid": 11036562, "name": "Bách Hóa Online-Đồ làm bánh"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76689"}, "status": 0, "catid": 11036591, "name": "Bách Hóa Online-Sữa - trứng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7668a"}, "status": 0, "catid": 11036576, "name": "Bách Hóa Online-Đồ uống"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7668b"}, "status": 0, "catid": 11036570, "name": "Bách Hóa Online-Ngũ cốc & mứt"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7668c"}, "status": 0, "catid": 11036611, "name": "Bách Hóa Online-Các loại bánh"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7668d"}, "status": 0, "catid": 11036616, "name": "Bách Hóa Online-Đồ uống có cồn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7668e"}, "status": 0, "catid": 11036622, "name": "Bách Hóa Online-Bộ quà tặng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7668f"}, "status": 0, "catid": 11036601, "name": "Bách Hóa Online-Thực phẩm tươi sống và thực phẩm đông lạnh"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76690"}, "status": 0, "catid": 11036623, "name": "Bách Hóa Online-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76691"}, "status": 0, "catid": 11036793, "name": "Ô Tô & Xe Máy & Xe Đạp"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76692"}, "status": 0, "catid": 11036794, "name": "Ô Tô & Xe Máy & Xe Đạp-Xe đạp, xe điện"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76693"}, "status": 0, "catid": 11036804, "name": "Ô Tô & Xe Máy & Xe Đạp-Mô tô, xe máy"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76694"}, "status": 0, "catid": 11036811, "name": "Ô Tô & Xe Máy & Xe Đạp-Xe Ô tô"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76695"}, "status": 0, "catid": 11036817, "name": "Ô Tô & Xe Máy & Xe Đạp-Mũ bảo hiểm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76696"}, "status": 0, "catid": 11036824, "name": "Ô Tô & Xe Máy & Xe Đạp-Phụ kiện xe máy"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76697"}, "status": 0, "catid": 11036846, "name": "Ô Tô & Xe Máy & Xe Đạp-Phụ kiện xe đạp"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76698"}, "status": 0, "catid": 11108984, "name": "Ô Tô & Xe Máy & Xe Đạp-Phụ kiện bên trong ô tô"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d76699"}, "status": 0, "catid": 11108967, "name": "Ô Tô & Xe Máy & Xe Đạp-Dầu nhớt & dầu nhờn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7669a"}, "status": 0, "catid": 11109015, "name": "Ô Tô & Xe Máy & Xe Đạp-Phụ tùng ô tô"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7669b"}, "status": 0, "catid": 11108953, "name": "Ô Tô & Xe Máy & Xe Đạp-Phụ tùng xe máy"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7669c"}, "status": 0, "catid": 11109002, "name": "Ô Tô & Xe Máy & Xe Đạp-Phụ kiện bên ngoài ô tô"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7669d"}, "status": 0, "catid": 11108974, "name": "Ô Tô & Xe Máy & Xe Đạp-Chăm sóc ô tô"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7669e"}, "status": 0, "catid": 11116267, "name": "Ô Tô & Xe Máy & Xe Đạp-Dịch vụ cho xe"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d7669f"}, "status": 0, "catid": 11036863, "name": "Nhà Sách Online"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a0"}, "status": 0, "catid": 11108503, "name": "Nhà Sách Online-Sách Tiếng Việt"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a1"}, "status": 0, "catid": 11108540, "name": "Nhà Sách Online-Sách ngoại văn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a2"}, "status": 0, "catid": 11108576, "name": "Nhà Sách Online-Gói Quà"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a3"}, "status": 0, "catid": 11108584, "name": "Nhà Sách Online-Bút viết"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a4"}, "status": 0, "catid": 11108591, "name": "Nhà Sách Online-Dụng cụ học sinh & văn phòng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a5"}, "status": 0, "catid": 11108635, "name": "Nhà Sách Online-Màu, Họa Cụ và Đồ Thủ Công"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a6"}, "status": 0, "catid": 11108610, "name": "Nhà Sách Online-Sổ và Giấy Các Loại"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a7"}, "status": 0, "catid": 11036914, "name": "Nhà Sách Online-Quà Lưu Niệm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a8"}, "status": 0, "catid": 11108624, "name": "Nhà Sách Online-Nhạc cụ và phụ kiện âm nhạc"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a9"}, "status": 0, "catid": 11035741, "name": "Balo & Túi Ví Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766aa"}, "status": 0, "catid": 11035742, "name": "Balo & Túi Ví Nam-Ba Lô Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ab"}, "status": 0, "catid": 11035743, "name": "Balo & Túi Ví Nam-Ba Lô Laptop Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ac"}, "status": 0, "catid": 11035744, "name": "Balo & Túi Ví Nam-Túi & Cặp Đựng Laptop"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ad"}, "status": 0, "catid": 11035747, "name": "Balo & Túi Ví Nam-Túi Chống Sốc Laptop Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ae"}, "status": 0, "catid": 11035748, "name": "Balo & Túi Ví Nam-Túi Tote Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766af"}, "status": 0, "catid": 11035749, "name": "Balo & Túi Ví Nam-Cặp Xách Công Sở Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b0"}, "status": 0, "catid": 11035750, "name": "Balo & Túi Ví Nam-Ví Cầm Tay Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b1"}, "status": 0, "catid": 11035751, "name": "Balo & Túi Ví Nam-Túi Đeo Hông & Túi Đeo Ngực Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b2"}, "status": 0, "catid": 11035752, "name": "Balo & Túi Ví Nam-Túi Đeo Chéo Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b3"}, "status": 0, "catid": 11035753, "name": "Balo & Túi Ví Nam-Bóp/Ví Nam"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b4"}, "status": 0, "catid": 11035760, "name": "Balo & Túi Ví Nam-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b5"}, "status": 0, "catid": 11036382, "name": "Thời Trang Trẻ Em"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b6"}, "status": 0, "catid": 11036418, "name": "Thời Trang Trẻ Em-Trang phục bé trai"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b7"}, "status": 0, "catid": 11036438, "name": "Thời Trang Trẻ Em-Trang phục bé gái"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b8"}, "status": 0, "catid": 11036461, "name": "Thời Trang Trẻ Em-Giày dép bé trai"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b9"}, "status": 0, "catid": 11036469, "name": "Thời Trang Trẻ Em-Giày dép bé gái"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ba"}, "status": 0, "catid": 11036477, "name": "Thời Trang Trẻ Em-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766bb"}, "status": 0, "catid": 11036383, "name": "Thời Trang Trẻ Em-Quần áo em bé"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766bc"}, "status": 0, "catid": 11036396, "name": "Thời Trang Trẻ Em-Giày tập đi & Tất sơ sinh"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766bd"}, "status": 0, "catid": 11036397, "name": "Thời Trang Trẻ Em-Phụ kiện trẻ em"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766be"}, "status": 0, "catid": 11036932, "name": "Đồ Chơi"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766bf"}, "status": 0, "catid": 11036933, "name": "Đồ Chơi-Sở thích & Sưu tầm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c0"}, "status": 0, "catid": 11036939, "name": "Đồ Chơi-Đồ chơi giải trí"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c1"}, "status": 0, "catid": 11036946, "name": "Đồ Chơi-Đồ chơi giáo dục"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c2"}, "status": 0, "catid": 11036954, "name": "Đồ Chơi-Đồ chơi cho trẻ sơ sinh & trẻ nhỏ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c3"}, "status": 0, "catid": 11036960, "name": "Đồ Chơi-Đồ chơi vận động & ngoài trời"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c4"}, "status": 0, "catid": 11036966, "name": "Đồ Chơi-Búp bê & Đồ chơi nhồi bông"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c5"}, "status": 0, "catid": 11036624, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c6"}, "status": 0, "catid": 11036625, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Giặt giũ & Chăm sóc nhà cửa"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c7"}, "status": 0, "catid": 11036634, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Giấy vệ sinh, khăn giấy"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c8"}, "status": 0, "catid": 11036639, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Vệ sinh nhà cửa"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c9"}, "status": 0, "catid": 11036647, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Vệ sinh bát đĩa"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ca"}, "status": 0, "catid": 11036649, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Dụng cụ vệ sinh"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766cb"}, "status": 0, "catid": 11036654, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Chất khử mùi, làm thơm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766cc"}, "status": 0, "catid": 11036660, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Thuốc diệt côn trùng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766cd"}, "status": 0, "catid": 11036664, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Túi, màng bọc thực phẩm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ce"}, "status": 0, "catid": 11036668, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Bao bì, túi đựng rác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766cf"}, "status": 0, "catid": 11036478, "name": "Chăm Sóc Thú Cưng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d0"}, "status": 0, "catid": 11036479, "name": "Chăm Sóc Thú Cưng-Thức ăn cho thú cưng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d1"}, "status": 0, "catid": 11036490, "name": "Chăm Sóc Thú Cưng-Phụ kiện cho thú cưng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d2"}, "status": 0, "catid": 11036498, "name": "Chăm Sóc Thú Cưng-Vệ sinh cho thú cưng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d3"}, "status": 0, "catid": 11036510, "name": "Chăm Sóc Thú Cưng-Quần áo thú cưng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d4"}, "status": 0, "catid": 11036519, "name": "Chăm Sóc Thú Cưng-Chăm sóc sức khỏe"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d5"}, "status": 0, "catid": 11116223, "name": "Chăm Sóc Thú Cưng-Làm đẹp cho thú cưng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d6"}, "status": 0, "catid": 11036524, "name": "Chăm Sóc Thú Cưng-Khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d7"}, "status": 0, "catid": 11082137, "name": "Deal Gần Bạn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d8"}, "status": 0, "catid": 11082138, "name": "Deal Gần Bạn-Scan & Pay Voucher"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d9"}, "status": 0, "catid": 11082139, "name": "Deal Gần Bạn-Deals"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766da"}, "status": 0, "catid": 11035898, "name": "Voucher & Dịch Vụ"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766db"}, "status": 0, "catid": 11035905, "name": "Voucher & Dịch Vụ-Nhà hàng & Ăn uống"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766dc"}, "status": 0, "catid": 11035899, "name": "Voucher & Dịch Vụ-Sự kiện & Giải trí"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766dd"}, "status": 0, "catid": 11035931, "name": "Voucher & Dịch Vụ-Nạp tiền tài khoản"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766de"}, "status": 0, "catid": 11035922, "name": "Voucher & Dịch Vụ-Sức khỏe & Làm đẹp"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766df"}, "status": 0, "catid": 11035929, "name": "Voucher & Dịch Vụ-Gọi xe"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e0"}, "status": 0, "catid": 11035930, "name": "Voucher & Dịch Vụ-Khóa học"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e1"}, "status": 0, "catid": 11035936, "name": "Voucher & Dịch Vụ-Du lịch & Khách sạn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e2"}, "status": 0, "catid": 11035909, "name": "Voucher & Dịch Vụ-Mua sắm"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e3"}, "status": 0, "catid": 11035949, "name": "Voucher & Dịch Vụ-Mã quà tặng Shopee"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e4"}, "status": 0, "catid": 11035913, "name": "Voucher & Dịch Vụ-Thanh toán hóa đơn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e5"}, "status": 0, "catid": 11035914, "name": "Voucher & Dịch Vụ-Dịch vụ khác"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e6"}, "status": 0, "catid": 11116484, "name": "Dụng cụ và thiết bị tiện ích"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e7"}, "status": 0, "catid": 11116487, "name": "Dụng cụ và thiết bị tiện ích-Dụng cụ cầm tay"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e8"}, "status": 0, "catid": 11116485, "name": "Dụng cụ và thiết bị tiện ích-Dụng cụ điện và thiết bị lớn"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e9"}, "status": 0, "catid": 11116489, "name": "Dụng cụ và thiết bị tiện ích-Thiết bị mạch điện"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ea"}, "status": 0, "catid": 11116488, "name": "Dụng cụ và thiết bị tiện ích-Vật liệu xây dựng"},
+{"_id": {"$oid": "6628b73eaee40fdbf3d766eb"}, "status": 0, "catid": 11116486, "name": "Dụng cụ và thiết bị tiện ích-Thiết bị và phụ kiện xây dựng"}
+]
+atus": 1, "catid": 11035592, "name": "Thời Trang Nam-Áo"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b7"}, "status": 1, "catid": 11035597, "name": "Thời Trang Nam-Áo Ba Lỗ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b8"}, "status": 1, "catid": 11035598, "name": "Thời Trang Nam-Đồ Lót"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765b9"}, "status": 1, "catid": 11035603, "name": "Thời Trang Nam-Đồ Ngủ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ba"}, "status": 1, "catid": 11035604, "name": "Thời Trang Nam-Đồ Bộ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765bb"}, "status": 1, "catid": 11035605, "name": "Thời Trang Nam-Vớ/Tất"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765bc"}, "status": 1, "catid": 11035606, "name": "Thời Trang Nam-Trang Phục Truyền Thống"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765bd"}, "status": 1, "catid": 11035611, "name": "Thời Trang Nam-Đồ Hóa Trang"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765be"}, "status": 1, "catid": 11035612, "name": "Thời Trang Nam-Trang Phục Ngành Nghề"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765bf"}, "status": 1, "catid": 11035613, "name": "Thời Trang Nam-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c0"}, "status": 1, "catid": 11035614, "name": "Thời Trang Nam-Trang Sức Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c1"}, "status": 1, "catid": 11035620, "name": "Thời Trang Nam-Kính Mắt Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c2"}, "status": 1, "catid": 11035625, "name": "Thời Trang Nam-Thắt Lưng Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c3"}, "status": 1, "catid": 11035626, "name": "Thời Trang Nam-Cà vạt & Nơ cổ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c4"}, "status": 1, "catid": 11035627, "name": "Thời Trang Nam-Phụ Kiện Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c5"}, "status": 1, "catid": 11035639, "name": "Thời Trang Nữ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c6"}, "status": 1, "catid": 11035648, "name": "Thời Trang Nữ-Quần"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c7"}, "status": 1, "catid": 11035652, "name": "Thời Trang Nữ-Quần đùi"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c8"}, "status": 1, "catid": 11035656, "name": "Thời Trang Nữ-Chân váy"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765c9"}, "status": 1, "catid": 11035657, "name": "Thời Trang Nữ-Quần jeans"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ca"}, "status": 1, "catid": 11035658, "name": "Thời Trang Nữ-Đầm/Váy"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765cb"}, "status": 1, "catid": 11035659, "name": "Thời Trang Nữ-Váy cưới"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765cc"}, "status": 1, "catid": 11035660, "name": "Thời Trang Nữ-Đồ liền thân"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765cd"}, "status": 1, "catid": 11035665, "name": "Thời Trang Nữ-Áo khoác, Áo choàng & Vest"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ce"}, "status": 1, "catid": 11035672, "name": "Thời Trang Nữ-Áo len & Cardigan"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765cf"}, "status": 1, "catid": 11035673, "name": "Thời Trang Nữ-Hoodie và Áo nỉ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d0"}, "status": 1, "catid": 11035677, "name": "Thời Trang Nữ-Bộ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d1"}, "status": 1, "catid": 11035682, "name": "Thời Trang Nữ-Đồ lót"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d2"}, "status": 1, "catid": 11035692, "name": "Thời Trang Nữ-Đồ ngủ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d3"}, "status": 1, "catid": 11035640, "name": "Thời Trang Nữ-Áo"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d4"}, "status": 1, "catid": 11035730, "name": "Thời Trang Nữ-Đồ tập"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d5"}, "status": 1, "catid": 11035697, "name": "Thời Trang Nữ-Đồ Bầu"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d6"}, "status": 1, "catid": 11035705, "name": "Thời Trang Nữ-Đồ truyền thống"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d7"}, "status": 1, "catid": 11035711, "name": "Thời Trang Nữ-Đồ hóa trang"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d8"}, "status": 1, "catid": 11035713, "name": "Thời Trang Nữ-Vải"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765d9"}, "status": 1, "catid": 11035726, "name": "Thời Trang Nữ-Vớ/ Tất"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765da"}, "status": 1, "catid": 11035712, "name": "Thời Trang Nữ-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765db"}, "status": 1, "catid": 11036030, "name": "Điện Thoại & Phụ Kiện"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765dc"}, "status": 1, "catid": 11036031, "name": "Điện Thoại & Phụ Kiện-Điện thoại"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765dd"}, "status": 1, "catid": 11036041, "name": "Điện Thoại & Phụ Kiện-Máy tính bảng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765de"}, "status": 1, "catid": 11036048, "name": "Điện Thoại & Phụ Kiện-Pin Dự Phòng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765df"}, "status": 1, "catid": 11036054, "name": "Điện Thoại & Phụ Kiện-Pin Gắn Trong, Cáp và Bộ Sạc"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e0"}, "status": 1, "catid": 11036060, "name": "Điện Thoại & Phụ Kiện-Ốp lưng, bao da, Miếng dán điện thoại"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e1"}, "status": 1, "catid": 11036064, "name": "Điện Thoại & Phụ Kiện-Bảo vệ màn hình"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e2"}, "status": 1, "catid": 11036074, "name": "Điện Thoại & Phụ Kiện-Đế giữ điện thoại"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e3"}, "status": 1, "catid": 11036083, "name": "Điện Thoại & Phụ Kiện-Thẻ nhớ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e4"}, "status": 1, "catid": 11036084, "name": "Điện Thoại & Phụ Kiện-Sim"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e5"}, "status": 1, "catid": 11036091, "name": "Điện Thoại & Phụ Kiện-Phụ kiện khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e6"}, "status": 1, "catid": 11036097, "name": "Điện Thoại & Phụ Kiện-Thiết bị khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e7"}, "status": 1, "catid": 11036194, "name": "Mẹ & Bé"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e8"}, "status": 1, "catid": 11036195, "name": "Mẹ & Bé-Đồ dùng du lịch cho bé"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765e9"}, "status": 1, "catid": 11036204, "name": "Mẹ & Bé-Đồ dùng ăn dặm cho bé"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ea"}, "status": 1, "catid": 11036213, "name": "Mẹ & Bé-Phụ kiện cho mẹ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765eb"}, "status": 1, "catid": 11036217, "name": "Mẹ & Bé-Chăm sóc sức khỏe mẹ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ec"}, "status": 0, "catid": 11036222, "name": "Mẹ & Bé-Đồ dùng phòng tắm & Chăm sóc cơ thể bé"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ed"}, "status": 0, "catid": 11036233, "name": "Mẹ & Bé-Đồ dùng phòng ngủ cho bé"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ee"}, "status": 0, "catid": 11036240, "name": "Mẹ & Bé-An toàn cho bé"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ef"}, "status": 0, "catid": 11036248, "name": "Mẹ & Bé-Thực phẩm cho bé"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f0"}, "status": 0, "catid": 11036253, "name": "Mẹ & Bé-Chăm sóc sức khỏe bé"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f1"}, "status": 0, "catid": 11036260, "name": "Mẹ & Bé-Tã & bô em bé"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f2"}, "status": 0, "catid": 11036266, "name": "Mẹ & Bé-Đồ chơi"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f3"}, "status": 0, "catid": 11036277, "name": "Mẹ & Bé-Bộ & Gói quà tặng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f4"}, "status": 0, "catid": 11036278, "name": "Mẹ & Bé-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f5"}, "status": 0, "catid": 11059299, "name": "Mẹ & Bé-Sữa công thức trên 24 tháng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f6"}, "status": 0, "catid": 11059300, "name": "Mẹ & Bé-Sữa công thức 0-24 tháng tuổi"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f7"}, "status": 1, "catid": 11036132, "name": "Thiết Bị Điện Tử"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f8"}, "status": 0, "catid": 11036160, "name": "Thiết Bị Điện Tử-Thiết bị đeo thông minh"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765f9"}, "status": 0, "catid": 11036167, "name": "Thiết Bị Điện Tử-Phụ kiện tivi"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765fa"}, "status": 0, "catid": 11036172, "name": "Thiết Bị Điện Tử-Máy Game Console"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765fb"}, "status": 0, "catid": 11036182, "name": "Thiết Bị Điện Tử-Phụ kiện Console"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765fc"}, "status": 0, "catid": 11036184, "name": "Thiết Bị Điện Tử-Đĩa game"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765fd"}, "status": 0, "catid": 11036133, "name": "Thiết Bị Điện Tử-Linh phụ kiện"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765fe"}, "status": 0, "catid": 11036143, "name": "Thiết Bị Điện Tử-Tai nghe nhét tai"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d765ff"}, "status": 0, "catid": 11036135, "name": "Thiết Bị Điện Tử-Loa"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76600"}, "status": 0, "catid": 11036151, "name": "Thiết Bị Điện Tử-Tivi"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76601"}, "status": 0, "catid": 11036157, "name": "Thiết Bị Điện Tử-Tivi Box"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76602"}, "status": 0, "catid": 11109141, "name": "Thiết Bị Điện Tử-Headphones"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76603"}, "status": 0, "catid": 11036670, "name": "Nhà Cửa & Đời Sống"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76604"}, "status": 0, "catid": 11036683, "name": "Nhà Cửa & Đời Sống-Chăn, Ga, Gối & Nệm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76605"}, "status": 0, "catid": 11036695, "name": "Nhà Cửa & Đời Sống-Đồ nội thất"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76606"}, "status": 0, "catid": 11036717, "name": "Nhà Cửa & Đời Sống-Trang trí nhà cửa"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76607"}, "status": 0, "catid": 11036732, "name": "Nhà Cửa & Đời Sống-Dụng cụ & Thiết bị tiện ích"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76608"}, "status": 0, "catid": 11036748, "name": "Nhà Cửa & Đời Sống-Đồ dùng nhà bếp và hộp đựng thực phẩm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76609"}, "status": 0, "catid": 11036760, "name": "Nhà Cửa & Đời Sống-Đèn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7660a"}, "status": 0, "catid": 11036776, "name": "Nhà Cửa & Đời Sống-Ngoài trời & Sân vườn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7660b"}, "status": 0, "catid": 11036671, "name": "Nhà Cửa & Đời Sống-Đồ dùng phòng tắm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7660c"}, "status": 0, "catid": 11111670, "name": "Nhà Cửa & Đời Sống-Vật phẩm thờ cúng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7660d"}, "status": 0, "catid": 11111669, "name": "Nhà Cửa & Đời Sống-Đồ trang trí tiệc"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7660e"}, "status": 0, "catid": 11111665, "name": "Nhà Cửa & Đời Sống-Chăm sóc nhà cửa và giặt ủi"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7660f"}, "status": 0, "catid": 11111668, "name": "Nhà Cửa & Đời Sống-Sắp xếp nhà cửa"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76610"}, "status": 0, "catid": 11111666, "name": "Nhà Cửa & Đời Sống-Dụng cụ pha chế"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76611"}, "status": 0, "catid": 11111664, "name": "Nhà Cửa & Đời Sống-Tinh dầu thơm phòng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76612"}, "status": 0, "catid": 11111667, "name": "Nhà Cửa & Đời Sống-Đồ dùng phòng ăn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76613"}, "status": 0, "catid": 11035954, "name": "Máy Tính & Laptop"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76614"}, "status": 0, "catid": 11035955, "name": "Máy Tính & Laptop-Máy Tính Bàn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76615"}, "status": 0, "catid": 11035961, "name": "Máy Tính & Laptop-Màn Hình"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76616"}, "status": 0, "catid": 11035962, "name": "Máy Tính & Laptop-Linh Kiện Máy Tính"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76617"}, "status": 0, "catid": 11035975, "name": "Máy Tính & Laptop-Thiết Bị Lưu Trữ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76618"}, "status": 0, "catid": 11035983, "name": "Máy Tính & Laptop-Thiết Bị Mạng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76619"}, "status": 0, "catid": 11035993, "name": "Máy Tính & Laptop-Máy In, Máy Scan & Máy Chiếu"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7661a"}, "status": 0, "catid": 11036000, "name": "Máy Tính & Laptop-Phụ Kiện Máy Tính"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7661b"}, "status": 0, "catid": 11036015, "name": "Máy Tính & Laptop-Laptop"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7661c"}, "status": 0, "catid": 11036016, "name": "Máy Tính & Laptop-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7661d"}, "status": 0, "catid": 11036023, "name": "Máy Tính & Laptop-Gaming"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7661e"}, "status": 0, "catid": 11036279, "name": "Sắc Đẹp"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7661f"}, "status": 0, "catid": 11036328, "name": "Sắc Đẹp-Chăm sóc da mặt"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76620"}, "status": 0, "catid": 11036280, "name": "Sắc Đẹp-Tắm & chăm sóc cơ thể"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76621"}, "status": 0, "catid": 11036314, "name": "Sắc Đẹp-Trang điểm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76622"}, "status": 0, "catid": 11036297, "name": "Sắc Đẹp-Chăm sóc tóc"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76623"}, "status": 0, "catid": 11036321, "name": "Sắc Đẹp-Dụng cụ & Phụ kiện Làm đẹp"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76624"}, "status": 0, "catid": 11111646, "name": "Sắc Đẹp-Vệ sinh răng miệng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76625"}, "status": 0, "catid": 11036310, "name": "Sắc Đẹp-Nước hoa"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76626"}, "status": 0, "catid": 11036304, "name": "Sắc Đẹp-Chăm sóc nam giới"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76627"}, "status": 0, "catid": 11036344, "name": "Sắc Đẹp-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76628"}, "status": 0, "catid": 11111647, "name": "Sắc Đẹp-Chăm sóc phụ nữ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76629"}, "status": 0, "catid": 11036343, "name": "Sắc Đẹp-Bộ sản phẩm làm đẹp"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7662a"}, "status": 0, "catid": 11036101, "name": "Máy Ảnh & Máy Quay Phim"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7662b"}, "status": 0, "catid": 11036102, "name": "Máy Ảnh & Máy Quay Phim-Máy ảnh - Máy quay phim"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7662c"}, "status": 0, "catid": 11036109, "name": "Máy Ảnh & Máy Quay Phim-Camera giám sát & Camera hệ thống"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7662d"}, "status": 0, "catid": 11036114, "name": "Máy Ảnh & Máy Quay Phim-Thẻ nhớ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7662e"}, "status": 0, "catid": 11036115, "name": "Máy Ảnh & Máy Quay Phim-Ống kính"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7662f"}, "status": 0, "catid": 11036119, "name": "Máy Ảnh & Máy Quay Phim-Phụ kiện máy ảnh"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76630"}, "status": 0, "catid": 11036129, "name": "Máy Ảnh & Máy Quay Phim-Máy bay camera & Phụ kiện"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76631"}, "status": 0, "catid": 11036345, "name": "Sức Khỏe"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76632"}, "status": 0, "catid": 11036352, "name": "Sức Khỏe-Vật tư y tế"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76633"}, "status": 0, "catid": 11036373, "name": "Sức Khỏe-Chống muỗi & xua đuổi côn trùng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76634"}, "status": 0, "catid": 11036346, "name": "Sức Khỏe-Thực phẩm chức năng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76635"}, "status": 0, "catid": 11036370, "name": "Sức Khỏe-Tã người lớn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76636"}, "status": 0, "catid": 11036348, "name": "Sức Khỏe-Hỗ trợ làm đẹp"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76637"}, "status": 0, "catid": 11036375, "name": "Sức Khỏe-Hỗ trợ tình dục"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76638"}, "status": 0, "catid": 11036372, "name": "Sức Khỏe-Dụng cụ massage và trị liệu"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76639"}, "status": 0, "catid": 11036381, "name": "Sức Khỏe-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7663a"}, "status": 0, "catid": 11035788, "name": "Đồng Hồ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7663b"}, "status": 0, "catid": 11035789, "name": "Đồng Hồ-Đồng Hồ Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7663c"}, "status": 0, "catid": 11035790, "name": "Đồng Hồ-Đồng Hồ Nữ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7663d"}, "status": 0, "catid": 11035791, "name": "Đồng Hồ-Bộ Đồng Hồ & Đồng Hồ Cặp"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7663e"}, "status": 0, "catid": 11035792, "name": "Đồng Hồ-Đồng Hồ Trẻ Em"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7663f"}, "status": 0, "catid": 11035793, "name": "Đồng Hồ-Phụ Kiện Đồng Hồ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76640"}, "status": 0, "catid": 11035800, "name": "Đồng Hồ-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76641"}, "status": 0, "catid": 11035825, "name": "Giày Dép Nữ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76642"}, "status": 0, "catid": 11035826, "name": "Giày Dép Nữ-Bốt"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76643"}, "status": 0, "catid": 11035830, "name": "Giày Dép Nữ-Giày Thể Thao/ Sneaker"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76644"}, "status": 0, "catid": 11035831, "name": "Giày Dép Nữ-Giày Đế Bằng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76645"}, "status": 0, "catid": 11035837, "name": "Giày Dép Nữ-Giày Cao Gót"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76646"}, "status": 0, "catid": 11035838, "name": "Giày Dép Nữ-Giày Đế Xuồng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76647"}, "status": 0, "catid": 11035839, "name": "Giày Dép Nữ-Xăng-đan Và Dép"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76648"}, "status": 0, "catid": 11035845, "name": "Giày Dép Nữ-Phụ Kiện Giày"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76649"}, "status": 0, "catid": 11035852, "name": "Giày Dép Nữ-Giày Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7664a"}, "status": 0, "catid": 11035801, "name": "Giày Dép Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7664b"}, "status": 0, "catid": 11035802, "name": "Giày Dép Nam-Bốt"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7664c"}, "status": 0, "catid": 11035807, "name": "Giày Dép Nam-Giày Thể Thao/ Sneakers"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7664d"}, "status": 0, "catid": 11035808, "name": "Giày Dép Nam-Giày Sục"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7664e"}, "status": 0, "catid": 11035809, "name": "Giày Dép Nam-Giày Tây Lười"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7664f"}, "status": 0, "catid": 11035810, "name": "Giày Dép Nam-Giày Oxfords & Giày Buộc Dây"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76650"}, "status": 0, "catid": 11035811, "name": "Giày Dép Nam-Xăng-đan và Dép"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76651"}, "status": 0, "catid": 11035817, "name": "Giày Dép Nam-Phụ kiện giày dép"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76652"}, "status": 0, "catid": 11035824, "name": "Giày Dép Nam-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76653"}, "status": 0, "catid": 11035761, "name": "Túi Ví Nữ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76654"}, "status": 0, "catid": 11035762, "name": "Túi Ví Nữ-Ba Lô Nữ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76655"}, "status": 0, "catid": 11035763, "name": "Túi Ví Nữ-Cặp Laptop"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76656"}, "status": 0, "catid": 11035768, "name": "Túi Ví Nữ-Ví Dự Tiệc & Ví Cầm Tay"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76657"}, "status": 0, "catid": 11035769, "name": "Túi Ví Nữ-Túi Đeo Hông & Túi Đeo Ngực"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76658"}, "status": 0, "catid": 11035770, "name": "Túi Ví Nữ-Túi Tote"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76659"}, "status": 0, "catid": 11035771, "name": "Túi Ví Nữ-Túi Quai Xách"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7665a"}, "status": 0, "catid": 11035772, "name": "Túi Ví Nữ-Túi Đeo Chéo & Túi Đeo Vai"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7665b"}, "status": 0, "catid": 11035773, "name": "Túi Ví Nữ-Ví/Bóp Nữ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7665c"}, "status": 0, "catid": 11035780, "name": "Túi Ví Nữ-Phụ Kiện Túi"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7665d"}, "status": 0, "catid": 11035787, "name": "Túi Ví Nữ-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7665e"}, "status": 0, "catid": 11036971, "name": "Thiết Bị Điện Gia Dụng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7665f"}, "status": 0, "catid": 11036972, "name": "Thiết Bị Điện Gia Dụng-Đồ gia dụng nhà bếp"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76660"}, "status": 0, "catid": 11036990, "name": "Thiết Bị Điện Gia Dụng-Đồ gia dụng lớn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76661"}, "status": 0, "catid": 11037000, "name": "Thiết Bị Điện Gia Dụng-Máy hút bụi & Thiết bị làm sạch"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76662"}, "status": 0, "catid": 11037007, "name": "Thiết Bị Điện Gia Dụng-Quạt & Máy nóng lạnh"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76663"}, "status": 0, "catid": 11037016, "name": "Thiết Bị Điện Gia Dụng-Thiết bị chăm sóc quần áo"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76664"}, "status": 0, "catid": 11037023, "name": "Thiết Bị Điện Gia Dụng-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76665"}, "status": 0, "catid": 11111623, "name": "Thiết Bị Điện Gia Dụng-Máy xay, ép, máy đánh trứng trộn bột, máy xay thực phẩm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76666"}, "status": 0, "catid": 11111620, "name": "Thiết Bị Điện Gia Dụng-Bếp điện"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76667"}, "status": 0, "catid": 11035853, "name": "Phụ Kiện & Trang Sức Nữ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76668"}, "status": 0, "catid": 11035854, "name": "Phụ Kiện & Trang Sức Nữ-Nhẫn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76669"}, "status": 0, "catid": 11035855, "name": "Phụ Kiện & Trang Sức Nữ-Bông tai"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7666a"}, "status": 0, "catid": 11035856, "name": "Phụ Kiện & Trang Sức Nữ-Khăn choàng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7666b"}, "status": 0, "catid": 11035857, "name": "Phụ Kiện & Trang Sức Nữ-Găng tay"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7666c"}, "status": 0, "catid": 11035858, "name": "Phụ Kiện & Trang Sức Nữ-Phụ kiện tóc"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7666d"}, "status": 0, "catid": 11035865, "name": "Phụ Kiện & Trang Sức Nữ-Vòng tay & Lắc tay"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7666e"}, "status": 0, "catid": 11035866, "name": "Phụ Kiện & Trang Sức Nữ-Lắc chân"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7666f"}, "status": 0, "catid": 11035867, "name": "Phụ Kiện & Trang Sức Nữ-Mũ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76670"}, "status": 0, "catid": 11035868, "name": "Phụ Kiện & Trang Sức Nữ-Dây chuyền"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76671"}, "status": 0, "catid": 11035869, "name": "Phụ Kiện & Trang Sức Nữ-Kính mắt"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76672"}, "status": 0, "catid": 11035874, "name": "Phụ Kiện & Trang Sức Nữ-Kim loại quý"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76673"}, "status": 0, "catid": 11035880, "name": "Phụ Kiện & Trang Sức Nữ-Thắt lưng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76674"}, "status": 0, "catid": 11035881, "name": "Phụ Kiện & Trang Sức Nữ-Cà vạt & Nơ cổ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76675"}, "status": 0, "catid": 11035882, "name": "Phụ Kiện & Trang Sức Nữ-Phụ kiện thêm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76676"}, "status": 0, "catid": 11035891, "name": "Phụ Kiện & Trang Sức Nữ-Bộ phụ kiện"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76677"}, "status": 0, "catid": 11035892, "name": "Phụ Kiện & Trang Sức Nữ-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76678"}, "status": 0, "catid": 11035893, "name": "Phụ Kiện & Trang Sức Nữ-Vớ/ Tất"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76679"}, "status": 0, "catid": 11035897, "name": "Phụ Kiện & Trang Sức Nữ-Ô/Dù"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7667a"}, "status": 0, "catid": 11035478, "name": "Thể Thao & Du Lịch"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7667b"}, "status": 0, "catid": 11035479, "name": "Thể Thao & Du Lịch-Vali"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7667c"}, "status": 0, "catid": 11035487, "name": "Thể Thao & Du Lịch-Túi du lịch"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7667d"}, "status": 0, "catid": 11035492, "name": "Thể Thao & Du Lịch-Phụ kiện du lịch"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7667e"}, "status": 0, "catid": 11035503, "name": "Thể Thao & Du Lịch-Dụng Cụ Thể Thao & Dã Ngoại"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7667f"}, "status": 0, "catid": 11035531, "name": "Thể Thao & Du Lịch-Giày Thể Thao"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76680"}, "status": 0, "catid": 11035543, "name": "Thể Thao & Du Lịch-Thời Trang Thể Thao & Dã Ngoại"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76681"}, "status": 0, "catid": 11035553, "name": "Thể Thao & Du Lịch-Phụ Kiện Thể Thao & Dã Ngoại"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76682"}, "status": 0, "catid": 11035566, "name": "Thể Thao & Du Lịch-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76683"}, "status": 0, "catid": 11036525, "name": "Bách Hóa Online"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76684"}, "status": 0, "catid": 11036532, "name": "Bách Hóa Online-Đồ ăn vặt"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76685"}, "status": 0, "catid": 11036526, "name": "Bách Hóa Online-Đồ chế biến sẵn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76686"}, "status": 0, "catid": 11036544, "name": "Bách Hóa Online-Nhu yếu phẩm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76687"}, "status": 0, "catid": 11036552, "name": "Bách Hóa Online-Nguyên liệu nấu ăn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76688"}, "status": 0, "catid": 11036562, "name": "Bách Hóa Online-Đồ làm bánh"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76689"}, "status": 0, "catid": 11036591, "name": "Bách Hóa Online-Sữa - trứng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7668a"}, "status": 0, "catid": 11036576, "name": "Bách Hóa Online-Đồ uống"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7668b"}, "status": 0, "catid": 11036570, "name": "Bách Hóa Online-Ngũ cốc & mứt"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7668c"}, "status": 0, "catid": 11036611, "name": "Bách Hóa Online-Các loại bánh"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7668d"}, "status": 0, "catid": 11036616, "name": "Bách Hóa Online-Đồ uống có cồn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7668e"}, "status": 0, "catid": 11036622, "name": "Bách Hóa Online-Bộ quà tặng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7668f"}, "status": 0, "catid": 11036601, "name": "Bách Hóa Online-Thực phẩm tươi sống và thực phẩm đông lạnh"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76690"}, "status": 0, "catid": 11036623, "name": "Bách Hóa Online-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76691"}, "status": 0, "catid": 11036793, "name": "Ô Tô & Xe Máy & Xe Đạp"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76692"}, "status": 0, "catid": 11036794, "name": "Ô Tô & Xe Máy & Xe Đạp-Xe đạp, xe điện"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76693"}, "status": 0, "catid": 11036804, "name": "Ô Tô & Xe Máy & Xe Đạp-Mô tô, xe máy"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76694"}, "status": 0, "catid": 11036811, "name": "Ô Tô & Xe Máy & Xe Đạp-Xe Ô tô"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76695"}, "status": 0, "catid": 11036817, "name": "Ô Tô & Xe Máy & Xe Đạp-Mũ bảo hiểm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76696"}, "status": 0, "catid": 11036824, "name": "Ô Tô & Xe Máy & Xe Đạp-Phụ kiện xe máy"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76697"}, "status": 0, "catid": 11036846, "name": "Ô Tô & Xe Máy & Xe Đạp-Phụ kiện xe đạp"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76698"}, "status": 0, "catid": 11108984, "name": "Ô Tô & Xe Máy & Xe Đạp-Phụ kiện bên trong ô tô"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d76699"}, "status": 0, "catid": 11108967, "name": "Ô Tô & Xe Máy & Xe Đạp-Dầu nhớt & dầu nhờn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7669a"}, "status": 0, "catid": 11109015, "name": "Ô Tô & Xe Máy & Xe Đạp-Phụ tùng ô tô"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7669b"}, "status": 0, "catid": 11108953, "name": "Ô Tô & Xe Máy & Xe Đạp-Phụ tùng xe máy"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7669c"}, "status": 0, "catid": 11109002, "name": "Ô Tô & Xe Máy & Xe Đạp-Phụ kiện bên ngoài ô tô"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7669d"}, "status": 0, "catid": 11108974, "name": "Ô Tô & Xe Máy & Xe Đạp-Chăm sóc ô tô"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7669e"}, "status": 0, "catid": 11116267, "name": "Ô Tô & Xe Máy & Xe Đạp-Dịch vụ cho xe"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d7669f"}, "status": 0, "catid": 11036863, "name": "Nhà Sách Online"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a0"}, "status": 0, "catid": 11108503, "name": "Nhà Sách Online-Sách Tiếng Việt"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a1"}, "status": 0, "catid": 11108540, "name": "Nhà Sách Online-Sách ngoại văn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a2"}, "status": 0, "catid": 11108576, "name": "Nhà Sách Online-Gói Quà"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a3"}, "status": 0, "catid": 11108584, "name": "Nhà Sách Online-Bút viết"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a4"}, "status": 0, "catid": 11108591, "name": "Nhà Sách Online-Dụng cụ học sinh & văn phòng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a5"}, "status": 0, "catid": 11108635, "name": "Nhà Sách Online-Màu, Họa Cụ và Đồ Thủ Công"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a6"}, "status": 0, "catid": 11108610, "name": "Nhà Sách Online-Sổ và Giấy Các Loại"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a7"}, "status": 0, "catid": 11036914, "name": "Nhà Sách Online-Quà Lưu Niệm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a8"}, "status": 0, "catid": 11108624, "name": "Nhà Sách Online-Nhạc cụ và phụ kiện âm nhạc"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766a9"}, "status": 0, "catid": 11035741, "name": "Balo & Túi Ví Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766aa"}, "status": 0, "catid": 11035742, "name": "Balo & Túi Ví Nam-Ba Lô Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ab"}, "status": 0, "catid": 11035743, "name": "Balo & Túi Ví Nam-Ba Lô Laptop Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ac"}, "status": 0, "catid": 11035744, "name": "Balo & Túi Ví Nam-Túi & Cặp Đựng Laptop"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ad"}, "status": 0, "catid": 11035747, "name": "Balo & Túi Ví Nam-Túi Chống Sốc Laptop Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ae"}, "status": 0, "catid": 11035748, "name": "Balo & Túi Ví Nam-Túi Tote Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766af"}, "status": 0, "catid": 11035749, "name": "Balo & Túi Ví Nam-Cặp Xách Công Sở Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b0"}, "status": 0, "catid": 11035750, "name": "Balo & Túi Ví Nam-Ví Cầm Tay Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b1"}, "status": 0, "catid": 11035751, "name": "Balo & Túi Ví Nam-Túi Đeo Hông & Túi Đeo Ngực Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b2"}, "status": 0, "catid": 11035752, "name": "Balo & Túi Ví Nam-Túi Đeo Chéo Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b3"}, "status": 0, "catid": 11035753, "name": "Balo & Túi Ví Nam-Bóp/Ví Nam"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b4"}, "status": 0, "catid": 11035760, "name": "Balo & Túi Ví Nam-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b5"}, "status": 0, "catid": 11036382, "name": "Thời Trang Trẻ Em"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b6"}, "status": 0, "catid": 11036418, "name": "Thời Trang Trẻ Em-Trang phục bé trai"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b7"}, "status": 0, "catid": 11036438, "name": "Thời Trang Trẻ Em-Trang phục bé gái"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b8"}, "status": 0, "catid": 11036461, "name": "Thời Trang Trẻ Em-Giày dép bé trai"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766b9"}, "status": 0, "catid": 11036469, "name": "Thời Trang Trẻ Em-Giày dép bé gái"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ba"}, "status": 0, "catid": 11036477, "name": "Thời Trang Trẻ Em-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766bb"}, "status": 0, "catid": 11036383, "name": "Thời Trang Trẻ Em-Quần áo em bé"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766bc"}, "status": 0, "catid": 11036396, "name": "Thời Trang Trẻ Em-Giày tập đi & Tất sơ sinh"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766bd"}, "status": 0, "catid": 11036397, "name": "Thời Trang Trẻ Em-Phụ kiện trẻ em"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766be"}, "status": 0, "catid": 11036932, "name": "Đồ Chơi"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766bf"}, "status": 0, "catid": 11036933, "name": "Đồ Chơi-Sở thích & Sưu tầm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c0"}, "status": 0, "catid": 11036939, "name": "Đồ Chơi-Đồ chơi giải trí"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c1"}, "status": 0, "catid": 11036946, "name": "Đồ Chơi-Đồ chơi giáo dục"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c2"}, "status": 0, "catid": 11036954, "name": "Đồ Chơi-Đồ chơi cho trẻ sơ sinh & trẻ nhỏ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c3"}, "status": 0, "catid": 11036960, "name": "Đồ Chơi-Đồ chơi vận động & ngoài trời"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c4"}, "status": 0, "catid": 11036966, "name": "Đồ Chơi-Búp bê & Đồ chơi nhồi bông"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c5"}, "status": 0, "catid": 11036624, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c6"}, "status": 0, "catid": 11036625, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Giặt giũ & Chăm sóc nhà cửa"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c7"}, "status": 0, "catid": 11036634, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Giấy vệ sinh, khăn giấy"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c8"}, "status": 0, "catid": 11036639, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Vệ sinh nhà cửa"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766c9"}, "status": 0, "catid": 11036647, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Vệ sinh bát đĩa"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ca"}, "status": 0, "catid": 11036649, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Dụng cụ vệ sinh"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766cb"}, "status": 0, "catid": 11036654, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Chất khử mùi, làm thơm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766cc"}, "status": 0, "catid": 11036660, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Thuốc diệt côn trùng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766cd"}, "status": 0, "catid": 11036664, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Túi, màng bọc thực phẩm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ce"}, "status": 0, "catid": 11036668, "name": "Giặt Giũ & Chăm Sóc Nhà Cửa-Bao bì, túi đựng rác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766cf"}, "status": 0, "catid": 11036478, "name": "Chăm Sóc Thú Cưng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d0"}, "status": 0, "catid": 11036479, "name": "Chăm Sóc Thú Cưng-Thức ăn cho thú cưng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d1"}, "status": 0, "catid": 11036490, "name": "Chăm Sóc Thú Cưng-Phụ kiện cho thú cưng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d2"}, "status": 0, "catid": 11036498, "name": "Chăm Sóc Thú Cưng-Vệ sinh cho thú cưng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d3"}, "status": 0, "catid": 11036510, "name": "Chăm Sóc Thú Cưng-Quần áo thú cưng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d4"}, "status": 0, "catid": 11036519, "name": "Chăm Sóc Thú Cưng-Chăm sóc sức khỏe"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d5"}, "status": 0, "catid": 11116223, "name": "Chăm Sóc Thú Cưng-Làm đẹp cho thú cưng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d6"}, "status": 0, "catid": 11036524, "name": "Chăm Sóc Thú Cưng-Khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d7"}, "status": 0, "catid": 11082137, "name": "Deal Gần Bạn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d8"}, "status": 0, "catid": 11082138, "name": "Deal Gần Bạn-Scan & Pay Voucher"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766d9"}, "status": 0, "catid": 11082139, "name": "Deal Gần Bạn-Deals"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766da"}, "status": 0, "catid": 11035898, "name": "Voucher & Dịch Vụ"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766db"}, "status": 0, "catid": 11035905, "name": "Voucher & Dịch Vụ-Nhà hàng & Ăn uống"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766dc"}, "status": 0, "catid": 11035899, "name": "Voucher & Dịch Vụ-Sự kiện & Giải trí"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766dd"}, "status": 0, "catid": 11035931, "name": "Voucher & Dịch Vụ-Nạp tiền tài khoản"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766de"}, "status": 0, "catid": 11035922, "name": "Voucher & Dịch Vụ-Sức khỏe & Làm đẹp"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766df"}, "status": 0, "catid": 11035929, "name": "Voucher & Dịch Vụ-Gọi xe"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e0"}, "status": 0, "catid": 11035930, "name": "Voucher & Dịch Vụ-Khóa học"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e1"}, "status": 0, "catid": 11035936, "name": "Voucher & Dịch Vụ-Du lịch & Khách sạn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e2"}, "status": 0, "catid": 11035909, "name": "Voucher & Dịch Vụ-Mua sắm"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e3"}, "status": 0, "catid": 11035949, "name": "Voucher & Dịch Vụ-Mã quà tặng Shopee"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e4"}, "status": 0, "catid": 11035913, "name": "Voucher & Dịch Vụ-Thanh toán hóa đơn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e5"}, "status": 0, "catid": 11035914, "name": "Voucher & Dịch Vụ-Dịch vụ khác"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e6"}, "status": 0, "catid": 11116484, "name": "Dụng cụ và thiết bị tiện ích"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e7"}, "status": 0, "catid": 11116487, "name": "Dụng cụ và thiết bị tiện ích-Dụng cụ cầm tay"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e8"}, "status": 0, "catid": 11116485, "name": "Dụng cụ và thiết bị tiện ích-Dụng cụ điện và thiết bị lớn"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766e9"}, "status": 0, "catid": 11116489, "name": "Dụng cụ và thiết bị tiện ích-Thiết bị mạch điện"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766ea"}, "status": 0, "catid": 11116488, "name": "Dụng cụ và thiết bị tiện ích-Vật liệu xây dựng"}
+{"_id": {"$oid": "6628b73eaee40fdbf3d766eb"}, "status": 0, "catid": 11116486, "name": "Dụng cụ và thiết bị tiện ích-Thiết bị và phụ kiện xây dựng"}

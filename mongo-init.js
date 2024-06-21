@@ -6,6 +6,7 @@ db.createUser({
   passwordDigestor: 'server',
 });
 
+db.createCollection('category');
 db.createCollection('product');
 db.createCollection('product_raw_data');
 db.createCollection('shop');
