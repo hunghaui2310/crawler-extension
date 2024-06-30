@@ -23,13 +23,16 @@ public class AppServiceImpl implements IAppService {
     @Value("${spring.app.abs.dir}")
     private String parentDir;
 
+    @Value("${spring.extension.dir}")
+    private String extensionDir;
+
     @Override
     public void resetCategory() throws IOException {
 //        File currentDir = new File(System.getProperty("user.dir"));
 //        String parentDir = currentDir.getParentFile().getAbsolutePath();
-        String filePath = parentDir + "/extension/get_category_tree.json";
+        String filePath = extensionDir + "get_category_tree.json";
 
-        File outputJsonFile = new File(parentDir + "/cates.json");
+        File outputJsonFile = new File(parentDir + "cates.json");
         ObjectMapper objectMapper = new ObjectMapper();
 
         // Read the JSON file into a JsonNode
@@ -48,7 +51,7 @@ public class AppServiceImpl implements IAppService {
     public void resetAccount() throws IOException {
 //        File currentDir = new File(System.getProperty("user.dir"));
 //        String parentDir = currentDir.getParentFile().getAbsolutePath();
-        String filePath = parentDir + "/accounts.json";
+        String filePath = parentDir + "accounts.json";
 
         ObjectMapper objectMapper = new ObjectMapper();
         // Read JSON array from file
