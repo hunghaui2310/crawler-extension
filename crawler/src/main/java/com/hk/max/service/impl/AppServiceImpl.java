@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.hk.max.service.IAppService;
 import com.hk.max.utils.AppUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -19,13 +20,16 @@ import java.util.Map;
 @Slf4j
 public class AppServiceImpl implements IAppService {
 
+    @Value("${spring.app.abs.dir}")
+    private String parentDir;
+
     @Override
     public void resetCategory() throws IOException {
-        File currentDir = new File(System.getProperty("user.dir"));
-        String parentDir = currentDir.getParentFile().getAbsolutePath();
-        String filePath = parentDir + "\\extension\\get_category_tree.json";
+//        File currentDir = new File(System.getProperty("user.dir"));
+//        String parentDir = currentDir.getParentFile().getAbsolutePath();
+        String filePath = parentDir + "/extension/get_category_tree.json";
 
-        File outputJsonFile = new File(parentDir + "\\cates.json");
+        File outputJsonFile = new File(parentDir + "/cates.json");
         ObjectMapper objectMapper = new ObjectMapper();
 
         // Read the JSON file into a JsonNode
@@ -42,9 +46,9 @@ public class AppServiceImpl implements IAppService {
 
     @Override
     public void resetAccount() throws IOException {
-        File currentDir = new File(System.getProperty("user.dir"));
-        String parentDir = currentDir.getParentFile().getAbsolutePath();
-        String filePath = parentDir + "\\accounts.json";
+//        File currentDir = new File(System.getProperty("user.dir"));
+//        String parentDir = currentDir.getParentFile().getAbsolutePath();
+        String filePath = parentDir + "/accounts.json";
 
         ObjectMapper objectMapper = new ObjectMapper();
         // Read JSON array from file
