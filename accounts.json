@@ -1,1 +1,14 @@
-[{"username": "vuongngocminh303@gmail.com", "password": "Hiroxima123456", "lastUpdate": "2024-06-19 22:56:10", "status": 1}, {"username": "letrucanh129@gmail.com", "password": "123456aA", "lastUpdate": "2024-06-19 22:53:59", "status": 2}]
+[
+  {
+    "username": "vuongngocminh303@gmail.com",
+    "password": "Hiroxima123456",
+    "lastUpdate": "2024-06-19 22:56:10",
+    "status": 1
+  },
+  {
+    "username": "letrucanh129@gmail.com",
+    "password": "123456aA",
+    "lastUpdate": "2024-06-19 22:53:59",
+    "status": 1
+  }
+]
