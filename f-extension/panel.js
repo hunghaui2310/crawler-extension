@@ -64,10 +64,11 @@ function buildScriptUpdateUrl(url) {
 
 window.addEventListener('routeToPage', (event) => {
     console.log('routeToPage', event);
-    // browser.runtime.sendMessage({
-    //     tabId: browser.devtools.inspectedWindow.tabId,
-    //     script: buildScriptUpdateUrl('https://shopee.vn')
-    // });
+    const {detail: {link}} = event;
+    browser.runtime.sendMessage({
+        tabId: browser.devtools.inspectedWindow.tabId,
+        script: buildScriptUpdateUrl(link)
+    });
 });
 
 window.addEventListener('getCategories', (event) => {
