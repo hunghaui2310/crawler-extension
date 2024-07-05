@@ -60,16 +60,13 @@ function flattenChildren(arr) {
 
 console.log('panel.js', browser.devtools.inspectedWindow.tabId);
 
-function getTabId() {
-    browser.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        if (tabs && tabs[0]) {
-            tabId = tabs[0].id;
-            currentUrl = tabs[0].url
-        }
-    });
-}
-
-getTabId();
+const scriptToAttach = `window.location.replace('https://shopee.vn/Th%E1%BB%9Di-Trang-Nam-cat.11035567?locations=H%C3%A0%20N%E1%BB%99i&page=1&sortBy=pop')`;
+document.getElementById("button_message").addEventListener("click", () => {
+  browser.runtime.sendMessage({
+    tabId: browser.devtools.inspectedWindow.tabId,
+    script: scriptToAttach
+  });
+});
 
 window.addEventListener('getCategories', (event) => {
     const {detail: {categoryTree, categoriesCrawled}} = event;

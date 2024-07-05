@@ -2,10 +2,14 @@
     "name": "Cap Extensions",
     "description": "Project for Community",
     "version": "1.0",
-    "manifest_version": 3,
+    "manifest_version": 2,
     "permissions": [
       "tabs",
-      "browsingData"
+      "browsingData",
+      "<all_urls>"
     ],
-    "devtools_page": "devtools.html"
+    "devtools_page": "devtools.html",
+    "background": {
+      "scripts": ["background.js"]
+    }
   }
