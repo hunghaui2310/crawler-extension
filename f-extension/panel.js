@@ -58,14 +58,16 @@ function flattenChildren(arr) {
     }, []);
 }
 
-console.log('panel.js', browser.devtools.inspectedWindow.tabId);
+function buildScriptUpdateUrl(url) {
+    return `window.location.replace('${url}')`;
+}
 
-const scriptToAttach = `window.location.replace('https://shopee.vn/Th%E1%BB%9Di-Trang-Nam-cat.11035567?locations=H%C3%A0%20N%E1%BB%99i&page=1&sortBy=pop')`;
-document.getElementById("button_message").addEventListener("click", () => {
-  browser.runtime.sendMessage({
-    tabId: browser.devtools.inspectedWindow.tabId,
-    script: scriptToAttach
-  });
+window.addEventListener('routeToPage', (event) => {
+    console.log('routeToPage', event);
+    // browser.runtime.sendMessage({
+    //     tabId: browser.devtools.inspectedWindow.tabId,
+    //     script: buildScriptUpdateUrl('https://shopee.vn')
+    // });
 });
 
 window.addEventListener('getCategories', (event) => {
@@ -126,12 +128,14 @@ function download(content, fileName, contentType) {
 }
 
 function routeToPage(link) {
-    browser.tabs.update(
-        tabId,
-        {
-            active: false,
-            url: link
-        }
+    window.dispatchEvent(new CustomEvent(
+            'routeToPage',
+            {
+                detail: {
+                    link: link
+                }
+            }
+        )
     );
 }
 
