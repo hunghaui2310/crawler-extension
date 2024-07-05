@@ -30,4 +30,5 @@ services:
       - SPRING_DATASOURCE_URL=mongodb://user:pass@mongo:27017/crawler
       - SPRING_MONGO_DATABASE=crawler
       - SPRING_APP_BACKUP_DIR=/home
-      - SPRING_APP_DIR=python C:\Users\hungh\OneDrive\Desktop\Myself\crawler-extension\autorun.py
+      - SPRING_APP_ABS_DIR=/Users/dabeeovina/Documents/MySelf/crawler-extension
+      - SPRING_EXTENSION_DIR=Users/dabeeovina/Documents/MySelf/crawler-extension/extension
