@@ -1,0 +1,11 @@
+{
+    "name": "Cap Extensions",
+    "description": "Project for Community",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": [
+      "tabs",
+      "browsingData"
+    ],
+    "devtools_page": "devtools.html"
+  }
