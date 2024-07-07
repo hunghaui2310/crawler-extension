@@ -61,7 +61,7 @@ window.addEventListener('getItemsList', async (event) => {
       isActive: true,
       username: currentUsername
     };
-    // chrome.browsingData.remove(
+    // browser.browsingData.remove(
     //   {},
     //   {
     //     "cache": true,
@@ -122,25 +122,24 @@ function saveShop(data, phone, address) {
   saveRawShopAPI(JSON.stringify(out), urlShop);
 }
 
+browser.runtime.onMessage.addListener((message) => {
+  if (message.code === 'verifyAccount') {
+    checkAccountVerify();
+  }
+})
+
 function checkAccountVerify() {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    if (tabs && tabs[0]) {
-      if (tabs[0].url.includes('/verify')) {
-        const message = {
-          catid: currentCatIdGlobal,
-          status: 2,
-          isActive: false,
-          username: currentUsername
-        }
-        sendMessage(JSON.stringify(message));
-      }
-    }
-  });
+  const message = {
+    catid: currentCatIdGlobal,
+    status: 2,
+    isActive: false,
+    username: currentUsername
+  }
+  sendMessage(JSON.stringify(message));
 }
 
-chrome.devtools.network.onRequestFinished.addListener(function (request) {
+browser.devtools.network.onRequestFinished.addListener(function (request) {
   if (step === 2) {
-    checkAccountVerify();
     if (request.request.url && request.request.url.includes('captcha/generate')) {
       const message = {
         catid: currentCatIdGlobal,
@@ -148,7 +147,7 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
         isActive: true,
         username: currentUsername
       }
-      // chrome.browsingData.remove(
+      // browser.browsingData.remove(
       //   {},
       //   {
       //     "cache": true,
@@ -257,7 +256,7 @@ chrome.devtools.network.onRequestFinished.addListener(function (request) {
               isActive: true,
               username: currentUsername
             }
-            // chrome.browsingData.remove(
+            // browser.browsingData.remove(
             //   {},
             //   {
             //     "cache": true,

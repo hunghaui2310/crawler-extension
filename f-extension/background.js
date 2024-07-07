@@ -21,3 +21,9 @@ function handleMessage(request, sender, sendResponse) {
   Listen for messages from our devtools panel.
   */
   browser.runtime.onMessage.addListener(handleMessage); 
+
+  browser.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+    if (changeInfo.status == "complete" && tab.url.includes('/verify')) {
+        browser.runtime.sendMessage({code: 'veridyAccount'});
+    }
+  });
